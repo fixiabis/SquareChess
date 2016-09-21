@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=no,minimum-scale=0.5,maximum-scale=0.5" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon" type="image/x-icon">
+<title>Square.Connect</title>
+<style>@import 'Style.css';</style>
+<script src="VB.js"></script>
+<script src="AI/Core.js"></script>
+<script src="Core.js"></script>
+<script src="Board.js"></script>
+<script>function lg(){if(Controls('lg').style.display=='inline'){Controls('lg').style.display='none'}else{Controls('lg').style.display='inline'}}
+function ps(v){var s=document.getElementsByClassName("Area");for(i in s){s[i].style.display=v}}
+function n(id,ctt){id.innerHTML=ctt}</script>
+</head>
+<body onload="create()" onresize="resize()" onscroll="resize()" onbeforeunload="if(Turn>0)return '棋局尚未結束'" oncontextmenu="event.preventDefault();lg()">
+<div id="t1"><font onclick="window.location='http://fb.me/qobidop.square.connect'" title="粉絲專業">Square.Connect </font><font onclick="window.location='Dir/index.html'" class="to" title="使用說明">?</font></div>
+<div id="t2"><font color="blue">Square</font><font color="red">.</font>Connect</div>
+<div style="z-index:1;height:100%;display:none;overflow:auto;background-color:black;color:deepskyblue;position:fixed;top:0;width:100%;opacity:0.8" id="lg" ondblclick="ps('inline')" onclick="ps('none')"><div style="float:right;text-decoration:underline" onclick="lg()">點我關閉</div>
+遊戲介紹:<br>
+首回合符號<font onclick="if(RS==1){RS=0;n(this,'可隨意設置');Cln('')}else{RS=1;n(this,'採隨機設置');if(Turn==0)RdS()}" color="pink">可隨意設置</font>，<font onclick="if(RB==1){RB=0;n(this,'不允許');Cln('')}else{RB=1;n(this,'已允許');RdB()}this.innerHTML+='隨機產生區域'" color="pink">未允許隨機產生區域</font><br>
+雙方設置符號時，須遵照<font color="lightgreen" onclick="Controls('ct').style.display='inline'">連線協定</font>設置符號<br>
+使對方無法繼續設置符號取勝<br>
+<font color="lightgreen" onclick="window.location='Dir/index.html'">了解更多</font><br>
+<font color="lightgreen" style="display:none" id="ct" onclick="Controls('ct').style.display='none'">連線協定:<br>以一個符號為中心，附近前，後，左，右，左前，右前，左後，右後八格位連線區域，符號僅可以設置於連線區域<br></font>
+</div>
+<span id="Board"></span><center>
+<input type="button" class="bt" value="Undo" id="h1" onclick="Rdr(Val(Turn-1))" oncontextmenu="Controls('lg').style.display='inline';Rdr(Val(prompt('輸入想前往的回合')-1))"/><input type="button" class="bt" value="Clean" id="h2" onclick="if(confirm('確認清除棋盤?')==1&&Turn>0){Cln('');Log('棋盤已清空<hr>')}else if(Turn==0){Cln('')}"/>
+</center>
+</body>
+</html>

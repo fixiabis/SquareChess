@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon" type="image/x-icon">
+<title>ColorBox</title>
+<style>@import '../Style.css';</style>
+<script src="../VB.js"></script>
+<script src="Core.js"></script>
+<script>
+function create(){var bd="<table border='0' cellpadding='0' cellspacing='0' align='center'>";for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td><div id='"+Chr(cd1)+cd2+"' onmouseover='Dst(this.id,event.button)' onclick='Set(this.id)' oncontextmenu='Clr(this.id)' ondblclick='Cst(this.id)' class='bt'></div></td>"}bd+="</tr>"}bd+="</table>";Controls("Board").innerHTML=bd;resize();Controls("E5").style.backgroundColor="lightgray";Controls("UC").style.display="inline"}
+function resize(){var size=Val(document.body.clientWidth/9);for(i=0;i<document.getElementsByClassName("bt").length;i++){document.getElementsByClassName("bt")[i].style.fontSize=size-10+"px";document.getElementsByClassName("bt")[i].style.height=size+"px";document.getElementsByClassName("bt")[i].style.width=size+"px"}for(i=0;i<document.getElementsByClassName("bt3").length;i++){document.getElementsByClassName("bt3")[i].style.fontSize=size-10+"px";document.getElementsByClassName("bt3")[i].style.width=size*3+"px";Controls("UC").style.width=size*9+"px"}}
+</script>
+<script src="../KeyCode.js"></script>
+</head>
+<body onload="create()" onresize="resize()" onscroll="resize()" onbeforeunload="if(Turn>0)return 'Game is not over'" onkeydown="cmd(event.which)" onkeyup="if(event.which==17)ctl=0" oncontextmenu="event.preventDefault()">
+<div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
+<table border="0" cellspacing="0" cellpadding="0" id="UC" align="center"><tr><td><div class="bt3" id="Undo" onclick="Rdr(Turn-1)" oncontextmenu="Rdr(Val(prompt('Go to turn:',Turn)))">Undo</div></td><td><div class="bt3" id="Rec" onclick="Rec()" ondbclick="Srt()" oncontextmenu="Mov=[]">Rec</div></td><td><div class="bt3" id="Clean" onclick="Cln()">Clean</div></td></tr>
+</table>
+</body>
+</html>

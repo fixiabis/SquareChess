@@ -1,0 +1,24 @@
+@charset "utf-8";
+body{-moz-user-select :none;-webkit-user-select:none;margin:0px;}
+.title{font-size:40px;position:fixed;width:100%;height:50px;background-color:white;color:black}
+.menu{position:absolute;top:10px;width:30px;height:30px;z-index:1;left:10px}
+.list{display:block;cursor:pointer;text-decoration:none;color:black}
+.list:hover{font-weight:bolder}
+.bod,.cmd,.cnd{background-color:white;color:black}
+.Val{border:medium none ;background-color:lightgray;width:15px;}
+.lst:hover{background-color:gray;color:black;}
+.bod:hover{opacity:0.5}
+.Cd{background-color:white;border:solid 1px;float:right}
+select{width:30%;background-color:white}
+div a{height:30px;line-height:30px;}
+div a:hover{background-color:#999;border-left-width:medium;border-left-style:solid;border-left-color:#555;}
+@media screen and (min-width:1000px),screen and (min-width:768px){
+.bod,.cmd,.cnd{height:80px;font-size:60px;border:2px black solid}
+.bod{width:80px}.cmd{width:720px}.cnd{width:360px}.list{width:200px}
+}
+@media screen and (max-width:768px),screen and (max-width:480px){
+.bod,.cmd,.cnd{height:40px;font-size:30px;border:1px black solid}
+.bod{width:40px}.cmd{width:360px}.cnd{width:180px}
+.list{width:100%}.list,select,#Val,.Cd,#Comd{font-size:36px}
+div a{line-height:40px;height:40px;}
+}

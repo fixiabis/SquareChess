@@ -1,0 +1,13 @@
+.bt,.bt45{color:black;background-color:white;border:none;text-align:center;transition:background-color 1s}
+.bt45:hover{color:lightgray}
+body{-o-user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;cursor:default;margin:0px}
+#run{
+	width:100px;height:100px;background:gray;border-radius:10px;line-height:100px;test-align:center;
+	transition: transform 2s;-webkit-animation: core 2s;
+}
+@-webkit-keyframes core{
+	0%  {transform:rotate(0deg)   ;opacity:0   ;}
+	25% {transform:rotate(360deg) ;opacity:0.25;}
+	50% {transform:rotate(0deg) ;opacity:0.5; }
+	100%{transform:rotate(360deg);opacity:1   ;}
+}

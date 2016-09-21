@@ -1,0 +1,31 @@
+var Data={
+	"Ara":{
+		"A":["" ,"black"       ,"dodgerblue"     ],
+		"B":[" ","black"       ,"dimgray"        ],
+		"C":["" ,"black"       ,"indianred"      ],
+		"D":["" ,"black"       ,"crimson"        ],
+		"E":["" ,"black"       ,"firebrick"      ],
+		"F":["" ,"black"       ,"seagreen"       ],
+		"G":["" ,"black"       ,"orchid"         ],
+		"H":["" ,"black"       ,"lightsteelblue" ],
+		"I":["" ,"black"       ,"deepskyblue"    ],
+		"J":["" ,"black"       ,"hotpink"        ],
+		"K":["" ,"black"       ,"royalblue"      ],
+		"L":["" ,"black"       ,"darkgray"       ],
+		"M":["" ,"black"       ,"tan"            ],
+		"N":["" ,"black"       ,"blueviolet"     ],
+		"O":["" ,"black"       ,"cyan"           ],
+		"P":["" ,"black"       ,"lightgray"      ],
+		"Q":["" ,"black"       ,"palevioletred"  ],
+		"R":["" ,"black"       ,"gainsboro"      ],
+		"S":["" ,"black"       ,"orange"         ],
+		"T":["" ,"black"       ,"powderblue"     ],
+		"U":["" ,"black"       ,"mediumvioletred"],
+		"V":["" ,"black"       ,"lightskyblue"   ],
+		"W":["" ,"black"       ,"darkslategray"  ],
+		"X":["" ,"black"       ,"fuchsia"        ],
+		"Y":["" ,"black"       ,"steelblue"      ],
+		"Z":["" ,"black"       ,"greenyellow"    ],
+		"2":["" ,"black"       ,"white"          ]
+	}
+}

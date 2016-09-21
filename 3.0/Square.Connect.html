@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no, minimum-scale=0.9, maximum-scale=0.9" /> <meta name="mobile-web-app-capable" content="yes" />
+<title>Square.Connect</title>
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon" type="image/x-icon" >
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="icon" type="image/x-icon" >
+<script src="script/Game.js"></script><script>
+function coor(name){return(document.getElementById(name))}
+function Chr(value){return(String.fromCharCode(value))}
+function checkoff(){var Sym=0
+for(cd1=65;cd1<74;cd1++){
+    for(cd2=1;cd2<10;cd2++){
+		if(coor(Chr(cd1)+cd2).value!="")Sym++
+	}
+}
+return Sym
+}//棋盤確認
+function dragoverHandler(evt){evt.preventDefault();}
+function destroyClickedElement(evt){document.body.removeChild(evt.target);}
+function dropHandler(evt) {
+evt.preventDefault();var files=evt.dataTransfer.files;
+for (var i in files) {
+var fr=new FileReader();
+fr.onload=function openfile(evt) {coor('exm').value=evt.target.result;}
+fr.readAsText(files[i]);document.all.Command.style.display="inline"
+}
+}//讀取拖曳檔案
+function OutputText(_text) {
+	var _fileName=prompt("輸入下載檔名，點選取消即可複製字串")
+	if(_fileName==null){
+	    prompt('下列字串為要導出的檔案內容文字，歡迎複製',_text)
+	}else{
+		var textFileAsBlob = new Blob([_text]);
+		var downloadLink = document.createElement("a");
+		downloadLink.download = _fileName+".qre";
+		downloadLink.innerHTML = "Download File";
+		if (window.webkitURL != null) {
+			downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+		} else {
+			downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+			downloadLink.onclick = destroyClickedElement;
+			downloadLink.style.display = "none";
+			document.body.appendChild(downloadLink);
+		}
+		downloadLink.click();
+	}
+}//輸出回合檔案
+</script><script src="script/Menu.js"></script>
+<style type="text/css">
+@import "Shell.css";
+.list{height:100%;background-color:#ddd;z-index:1;overflow:auto;float:right;display:none}
+</style>
+<script src="script/Shell.js"></script>
+</head>
+<body leftmargin="0" topmargin="0" onbeforeunload="if(checkoff()>0)return '棋局尚未結束'" oncontextmenu="return false" onload="CleanBoard();Select('Crt')">
+<div style="float:right;width:50px;height:50px;position:relative">
+<div class="menu" onclick="list('')" id="menu" style="background:url(images/listh.bmp)"></div>
+</div>
+<div class="title" align="center">
+<div class="menu" onclick="history.back()" style="background:url(images/back.bmp)"></div>
+<font color="blue">Square</font><font color="red">.</font>Connect
+</div><div style="height:50px"></div><div style="position:fixed;top:50px;width:20px" onmouseover="list('')" id="content"></div>
+<div id="list" class="list" align="center" onmouseover="list('i');dire()" onmouseout="list('n')">
+<div>簡易指令輸入</div><select id="Typ" onchange="Select(coor('Typ').value)">
+<option value="Crt">Crt</option><option value="Ara">Ara</option><option value="Shp">Shp</option><option value="Rul">Rul</option><option value="Sym">Sym</option><option value="Cnt">Cnt</option>
+</select><select id="Cls">
+</select><select id="Fct">
+</select><input id="Val" type="text" value="" maxlength="2" style="width:9%;background-color:white;border:solid 1px" onmouseout="dire()"><br>
+<input type="button" value="Del" onclick="Del()" class="Cd"/><input type="button" value="Add" onclick="Add()" class="Cd"/><br><br><div>額外指令輸入</div>
+<textarea id="Comd" style="width:100%;height:120px"></textarea><br><input type="button" value="Del" onclick="Des()" class="Cd"/><input type="button" value="Add" onclick="Ads()" class="Cd"/><br><br><div id="Direction" align="left"></div>
+</div>
+<div id="Game" ondragover="dragoverHandler(event)" ondrop="dropHandler(event)" align="center">
+               <table id="Weapon" align="center" border="0" width="100" style="display:none">
+                  <tr align="center" valign="middle">
+                      <td>
+                          <input value="Cancel" class="cmd" onclick="document.all.Weapon.style.display='none'" type="button" />
+                          <input value="Drug" class="cmd" onclick="Wdug()" type="button" /><script>function Wdug(){
+                              if(coor(SetCrd[Turn-1]).value!=""){
+                                  coor(SetCrd[Turn-1]).value="δ"
+    if(coor(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-1)).value==O|coor(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-1)).value==X)coor(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-1)).style.color="dodgerblue"
+    if(coor(SetCrd[Turn-1].substr(0,1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+1)).value==O|coor(SetCrd[Turn-1].substr(0,1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+1)).value==X)coor(SetCrd[Turn-1].substr(0,1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+1)).style.color="dodgerblue"
+    if(coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+1)+parseInt(SetCrd[Turn-1].substr(1,1))).value==O|coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+1)+parseInt(SetCrd[Turn-1].substr(1,1))).value==X)coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+1)+parseInt(SetCrd[Turn-1].substr(1,1))).style.color="dodgerblue"
+    if(coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-1)+parseInt(SetCrd[Turn-1].substr(1,1))).value==O|coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-1)+parseInt(SetCrd[Turn-1].substr(1,1))).value==X)coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-1)+parseInt(SetCrd[Turn-1].substr(1,1))).style.color="dodgerblue"
+                              }document.all.Weapon.style.display="none"
+                          }</script>
+                          <input value="Spear" class="cmd" onclick="Wspr()" type="button" /><script>function Wspr(){
+                               if(coor(SetCrd[Turn-1]).value!=""){
+                                  coor(SetCrd[Turn-1]).value="ϝ"
+                                  var Crd=prompt('輸入攻擊方向' ,'輸入F(前)B(後)R(右)L(左)')
+                                  for(C=1;C<3;C++){
+                                      if(Crd=="F")Blood(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-C),2)
+                                      if(Crd=="B")Blood(SetCrd[Turn-1].substr(0,1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+C),2)
+                                      if(Crd=="R")Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+C)+parseInt(SetCrd[Turn-1].substr(1,1)),2)
+                                      if(Crd=="L")Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-C)+parseInt(SetCrd[Turn-1].substr(1,1)),2)
+                                  }coor(SetCrd[Turn-1]).style.color="maroon"
+                                   }
+                          }</script>
+                          <input value="Knife" class="cmd" onclick="Wknf()" type="button" /><script>function Wknf(){
+                              if(coor(SetCrd[Turn-1]).value!=""){
+                                  coor(SetCrd[Turn-1]).value="ϡ"
+                                  Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+1)+parseInt(SetCrd[Turn-1].substr(1,1)-1),2)
+                                  Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-1)+parseInt(SetCrd[Turn-1].substr(1,1)-1),2)
+                                  Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+1),2)
+                                  Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+1),2)
+                              coor(SetCrd[Turn-1]).style.color="maroon"
+                              }
+                          }</script>
+                          <input value="Sword" class="cmd" onclick="Wswd()" type="button" /><script>function Wswd(){
+                               if(coor(SetCrd[Turn-1]).value!=""){
+                                  coor(SetCrd[Turn-1]).value="Ξ"
+                                  Blood(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-1),2)
+                                  Blood(SetCrd[Turn-1].substr(0,1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+1),2)
+                                  Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+1)+parseInt(SetCrd[Turn-1].substr(1,1)),2)
+                                  Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-1)+parseInt(SetCrd[Turn-1].substr(1,1)),2)
+                                  }coor(SetCrd[Turn-1]).style.color="maroon"
+                              }</script>
+                          <input value="Ax" class="cmd" onclick="Wax()" type="button" /><script>function Wax(){
+                          if(coor(SetCrd[Turn-1]).value!="")coor(SetCrd[Turn-1]).value=")|(";document.all.Weapon.style.display="none"
+                          }</script>
+                          <input value="Bow" class="cmd" onclick="Wbw()" type="button" /><script>function Wbw(){
+                               if(coor(SetCrd[Turn-1]).value!=""){
+                                  coor(SetCrd[Turn-1]).value="Φ"
+                                  var Crd=prompt('輸入攻擊方向與值' ,'輸入F(前)B(後)R(右)L(左)')
+                                  for(i=0;i<=parseInt(Crd.substr(1,1))+1;i++){
+                                      if(Crd.search("F")>=0){
+                                          if(coor(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-i)).value=="Θ"&&coor(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-i)).style.color=="black"){
+                                              alert("攻擊失效");break
+                                          }
+                                          if(i==parseInt(Crd.substr(1,1)))Blood(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-i),1)
+                                      }
+                                      if(Crd.search("B")>=0){
+                                          if(coor(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)+i)).value=="Θ"&&coor(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)+C)).style.color=="black"){
+                                              alert("攻擊失效");break
+                                          }
+                                          if(i==parseInt(Crd.substr(1,1)))Blood(SetCrd[Turn-1].substr(0,1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+i),1)
+                                      }
+                                      if(Crd.search("R")>=0){
+                                          if(coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+i)+parseInt(SetCrd[Turn-1].substr(1,1))).value=="Θ"&&coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+i)+parseInt(SetCrd[Turn-1].substr(1,1))).style.color=="black"){
+                                              alert("攻擊失效");break
+                                          }
+                                          if(i==parseInt(Crd.substr(1,1)))Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+i)+parseInt(SetCrd[Turn-1].substr(1,1)),1)
+                                      }
+                                      if(Crd.search("L")>=0){
+                                          if(coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-i)+parseInt(SetCrd[Turn-1].substr(1,1))).value=="Θ"&&coor(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-i)+parseInt(SetCrd[Turn-1].substr(1,1))).style.color=="black"){
+                                              alert("攻擊失效");break
+                                          }
+                                          if(i==parseInt(Crd.substr(1,1)))Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-i)+parseInt(SetCrd[Turn-1].substr(1,1)),1)
+                                      }
+                                  }
+                                  coor(SetCrd[Turn-1]).style.color="maroon"
+                              }
+                          }</script>
+                          <input value="Shield" class="cmd" onclick="Wshd()" type="button" /><script>function Wshd(){
+                              if(coor(SetCrd[Turn-1]).value!="")coor(SetCrd[Turn-1]).value="Θ";document.all.Weapon.style.display="none"
+                          }</script>
+                          <input value="Fork" class="cmd" onclick="Wfrk()" type="button" /><script>function Wfrk(){
+                               if(coor(SetCrd[Turn-1]).value!=""){
+                                  coor(SetCrd[Turn-1]).value="Ψ"
+                                  var Crd=prompt('輸入攻擊方向' ,'輸入F(前)B(後)R(右)L(左)')
+                                  if(Crd=="F")Blood(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-1),3)
+                                  if(Crd=="B")Blood(SetCrd[Turn-1].substr(0,1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+1),3)
+                                  if(Crd=="R")Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+1)+parseInt(SetCrd[Turn-1].substr(1,1)),3)
+                                  if(Crd=="L")Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-1)+parseInt(SetCrd[Turn-1].substr(1,1)),3)
+                                  }coor(SetCrd[Turn-1]).style.color="maroon"
+                          }</script>
+                          <input value="Lance" class="cmd" onclick="Wlcr()" type="button" /><script>function Wlcr(){
+                               if(coor(SetCrd[Turn-1]).value!=""){
+                                  coor(SetCrd[Turn-1]).value="Λ"
+                                  var Crd=prompt('輸入攻擊方向' ,'輸入F(前)B(後)R(右)L(左)')
+                                  for(C=1;C<4;C++){
+                                      if(Crd=="F")Blood(SetCrd[Turn-1].substr(0,1)+parseInt(SetCrd[Turn-1].substr(1,1)-C),1)
+                                      if(Crd=="B")Blood(SetCrd[Turn-1].substr(0,1)+parseInt(parseInt(SetCrd[Turn-1].substr(1,1))+C),1)
+                                      if(Crd=="R")Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))+C)+parseInt(SetCrd[Turn-1].substr(1,1)),1)
+                                      if(Crd=="L")Blood(Chr(SetCrd[Turn-1].charCodeAt(SetCrd[Turn-1].substr(0,1))-C)+parseInt(SetCrd[Turn-1].substr(1,1)),1)
+                                  }coor(SetCrd[Turn-1]).style.color="maroon"
+                                   }
+                          }</script>
+                      </td>
+                  </tr>
+                </table>
+               <table align="center">
+                  <tr><td>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td><input id="A1" class="bod" onclick="SetSym('A1')" /></td>
+                            <td><input id="B1" class="bod" onclick="SetSym('B1')" /></td>
+                            <td><input id="C1" class="bod" onclick="SetSym('C1')" /></td>
+                            <td><input id="D1" class="bod" onclick="SetSym('D1')" /></td>
+                            <td><input id="E1" class="bod" onclick="SetSym('E1')" /></td>
+                            <td><input id="F1" class="bod" onclick="SetSym('F1')" /></td>
+                            <td><input id="G1" class="bod" onclick="SetSym('G1')" /></td>
+                            <td><input id="H1" class="bod" onclick="SetSym('H1')" /></td>
+                            <td><input id="I1" class="bod" onclick="SetSym('I1')" /></td>
+                          </tr>
+                          <tr>
+                            <td><input id="A2" class="bod" onclick="SetSym('A2')" /></td>
+                            <td><input id="B2" class="bod" onclick="SetSym('B2')" /></td>
+                            <td><input id="C2" class="bod" onclick="SetSym('C2')" /></td>
+                            <td><input id="D2" class="bod" onclick="SetSym('D2')" /></td>
+                            <td><input id="E2" class="bod" onclick="SetSym('E2')" /></td>
+                            <td><input id="F2" class="bod" onclick="SetSym('F2')" /></td>
+                            <td><input id="G2" class="bod" onclick="SetSym('G2')" /></td>
+                            <td><input id="H2" class="bod" onclick="SetSym('H2')" /></td>
+                            <td><input id="I2" class="bod" onclick="SetSym('I2')" /></td>
+                          </tr>
+                          <tr>
+                            <td><input id="A3" class="bod" onclick="SetSym('A3')" /></td>
+                            <td><input id="B3" class="bod" onclick="SetSym('B3')" /></td>
+                            <td><input id="C3" class="bod" onclick="SetSym('C3')" /></td>
+                            <td><input id="D3" class="bod" onclick="SetSym('D3')" /></td>
+                            <td><input id="E3" class="bod" onclick="SetSym('E3')" /></td>
+                            <td><input id="F3" class="bod" onclick="SetSym('F3')" /></td>
+                            <td><input id="G3" class="bod" onclick="SetSym('G3')" /></td>
+                            <td><input id="H3" class="bod" onclick="SetSym('H3')" /></td>
+                            <td><input id="I3" class="bod" onclick="SetSym('I3')" /></td>
+                          </tr>
+                          <tr>                            
+                            <td><input id="A4" class="bod" onclick="SetSym('A4')" /></td>
+                            <td><input id="B4" class="bod" onclick="SetSym('B4')" /></td>
+                            <td><input id="C4" class="bod" onclick="SetSym('C4')" /></td>
+                            <td><input id="D4" class="bod" onclick="SetSym('D4')" /></td>
+                            <td><input id="E4" class="bod" onclick="SetSym('E4')" /></td>
+                            <td><input id="F4" class="bod" onclick="SetSym('F4')" /></td>
+                            <td><input id="G4" class="bod" onclick="SetSym('G4')" /></td>
+                            <td><input id="H4" class="bod" onclick="SetSym('H4')" /></td>
+                            <td><input id="I4" class="bod" onclick="SetSym('I4')" /></td>
+                          </tr>
+                          <tr>
+                            <td><input id="A5" class="bod" onclick="SetSym('A5')" /></td>
+                            <td><input id="B5" class="bod" onclick="SetSym('B5')" /></td>
+                            <td><input id="C5" class="bod" onclick="SetSym('C5')" /></td>
+                            <td><input id="D5" class="bod" onclick="SetSym('D5')" /></td>
+                            <td><input id="E5" class="bod" onclick="SetSym('E5')" /></td>
+                            <td><input id="F5" class="bod" onclick="SetSym('F5')" /></td>
+                            <td><input id="G5" class="bod" onclick="SetSym('G5')" /></td>
+                            <td><input id="H5" class="bod" onclick="SetSym('H5')" /></td>
+                            <td><input id="I5" class="bod" onclick="SetSym('I5')" /></td>
+                          </tr>
+                          <tr>
+                            <td><input id="A6" class="bod" onclick="SetSym('A6')" /></td>
+                            <td><input id="B6" class="bod" onclick="SetSym('B6')" /></td>
+                            <td><input id="C6" class="bod" onclick="SetSym('C6')" /></td>
+                            <td><input id="D6" class="bod" onclick="SetSym('D6')" /></td>
+                            <td><input id="E6" class="bod" onclick="SetSym('E6')" /></td>
+                            <td><input id="F6" class="bod" onclick="SetSym('F6')" /></td>
+                            <td><input id="G6" class="bod" onclick="SetSym('G6')" /></td>
+                            <td><input id="H6" class="bod" onclick="SetSym('H6')" /></td>
+                            <td><input id="I6" class="bod" onclick="SetSym('I6')" /></td>
+                          </tr>
+                          <tr>
+                            <td><input id="A7" class="bod" onclick="SetSym('A7')" /></td>
+                            <td><input id="B7" class="bod" onclick="SetSym('B7')" /></td>
+                            <td><input id="C7" class="bod" onclick="SetSym('C7')" /></td>
+                            <td><input id="D7" class="bod" onclick="SetSym('D7')" /></td>
+                            <td><input id="E7" class="bod" onclick="SetSym('E7')" /></td>
+                            <td><input id="F7" class="bod" onclick="SetSym('F7')" /></td>
+                            <td><input id="G7" class="bod" onclick="SetSym('G7')" /></td>
+                            <td><input id="H7" class="bod" onclick="SetSym('H7')" /></td>
+                            <td><input id="I7" class="bod" onclick="SetSym('I7')" /></td>
+                          </tr>
+                          <tr>
+                            <td><input id="A8" class="bod" onclick="SetSym('A8')" /></td>
+                            <td><input id="B8" class="bod" onclick="SetSym('B8')" /></td>
+                            <td><input id="C8" class="bod" onclick="SetSym('C8')" /></td>
+                            <td><input id="D8" class="bod" onclick="SetSym('D8')" /></td>
+                            <td><input id="E8" class="bod" onclick="SetSym('E8')" /></td>
+                            <td><input id="F8" class="bod" onclick="SetSym('F8')" /></td>
+                            <td><input id="G8" class="bod" onclick="SetSym('G8')" /></td>
+                            <td><input id="H8" class="bod" onclick="SetSym('H8')" /></td>
+                            <td><input id="I8" class="bod" onclick="SetSym('I8')" /></td>
+                          </tr>
+                          <tr>
+                            <td><input id="A9" class="bod" onclick="SetSym('A9')" /></td>
+                            <td><input id="B9" class="bod" onclick="SetSym('B9')" /></td>
+                            <td><input id="C9" class="bod" onclick="SetSym('C9')" /></td>
+                            <td><input id="D9" class="bod" onclick="SetSym('D9')" /></td>
+                            <td><input id="E9" class="bod" onclick="SetSym('E9')" /></td>
+                            <td><input id="F9" class="bod" onclick="SetSym('F9')" /></td>
+                            <td><input id="G9" class="bod" onclick="SetSym('G9')" /></td>
+                            <td><input id="H9" class="bod" onclick="SetSym('H9')" /></td>
+                            <td><input id="I9" class="bod" onclick="SetSym('I9')" /></td>
+                          </tr>
+                        </table>
+                    <input value="Command" id="Cmd" class="cmd" onclick="coor('OFD').type='Text'" type="button" ondblclick="document.all.Command.style.display='inline'" title="導入指令"/><br />
+                    <input value="Direction" id="Dir" class="cnd" onclick="alert(Direction(coor('OFD').value))" type="button" title="模式說明"/><input value="Output" class="cnd" onclick="OutputText(Board[Turn])" type="button" title="導出資料" /><br />
+                    <input value="Clean" id="Cln" class="cnd" onclick="if(confirm('是否清除棋盤？')==true)CleanBoard()" type="button" title="清除棋盤"  /><input value="Undo(0)" id="Undo" class="cnd" onclick="if(Turn>2){Turn--;Reader(Board[Turn]+'undo')}else{alert('重做失敗')};coor('Undo').value='Undo('+(Turn-1)+')'" ondblclick="var C=prompt('輸入你要回去的回合');if(parseInt(C)>0){Turn=parseInt(C)+1;Reader(Board[Turn]+'undo');coor('Undo').value='Undo('+(Turn-1)+')'}" type="button" title="回上一步" /><br />
+                    <input value="Rul.Ato" class="cmd" id="OFD" type="hidden" />
+                  </td></tr>
+                </table> 
+          </div>
+</body>
+</html>

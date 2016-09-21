@@ -1,0 +1,64 @@
+Square.Connect Command
+
+[Crd]=A1-I9
+[Crd.asc]=65-73
+[Crd.num]=1-9
+[Sym]=OX
+[Crt]=A-Z
+[Ara]=A-Z
+[Dym.typ]=VHTR
+[Act.typ]=TR
+[Chs.typ]=a-i
+[Sym.typ]=0-2
+[Chs.crd]=FBRL84XY
+[Chs.ftn]=sj
+[Chs.mod]=klf
+
+Cnt(Connect)
+ .rmt
+ .abn
+ .non
+
+Rul(Rule)
+ .Ara
+  .scr
+  .prt<9>
+  .tgt
+   -[Sym]:9
+ .Chs
+  .Ldr
+ .Wpn
+ .Bld
+ .Ldr
+
+Ara(Area)
+ .[Ara].Rnd
+ .[Ara].Rnd<99>
+
+Crt(Charater)
+ .[Crt].Rnd
+ .[Crt].Rnd<99>
+ .[Crt].Dym<[Dym.typ]>
+ .[Crt].Act
+ .[Crt].Act<99>
+ .[Crt].Act<[Act.typ]>
+ .Q.Dym>[Crd]:[sec]>
+ .Q.DRd>[Crd]:[sec]>
+ .Q.Act>[Crd]:[turn]>
+ .Q.ARd>[Crd]:[turn]>
+
+Shp(Shape)
+ .[Shp].nml
+ .[Shp].nml<9>
+ .[Shp].rpl
+ .[Shp].kil
+ .[Shp].scr
+
+Sym(Symbol)
+ .Ara.[Ara]
+ .Rnd
+
+[Crt][Crd.asc][Crd.num]
+[Crd.asc][Crd.num][Ara]
+[Crd.asc][Crd.num][Sym.typ][Chs.typ].[Chs.crd].[Chs.ftn].[Chs.mod]
+[Sym]-[Crd]:9
