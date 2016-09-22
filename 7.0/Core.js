@@ -43,6 +43,7 @@ function Cmd(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 		case  8:Udo();break
 		case 13:Rdo();break
 		case 18:Adn();break
+		case 35:Lst();break
 		case 37:if(c){e.preventDefault();Udo()}else Dft.Dir+="L";break
 		case 38:if(c)Cli();else Dft.Dir+="F";break
 		case 39:if(c){e.preventDefault();Rdo()}else Dft.Dir+="R";break
