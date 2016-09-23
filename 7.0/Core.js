@@ -61,7 +61,7 @@ function Lst(){Rdr(Hst.Brd.length-1)}
 function Gto(){Rdr(prompt("Go to turn:"))}
 function Cli(){if(Turn>2)Cln("Clean Board?","");else Cln("","")}
 function Adn(){bdB()}
-function Set(c){if(!Lmt(c)){Hst.Crd[Turn+1]=c;Id(c,"T",Sbl[Turn%2]);Turn++}Rul();Wtr()}
+function Set(c){if(!Lmt(c)){Hst.Crd[Turn+1]=c;Qre(c,"T",Sbl[Turn%2]);Turn++}Rul();Wtr()}
 function Wtr(){var b=""
 	for(cd1=65;cd1<74;cd1++){
 		for(cd2=1;cd2<10;cd2++){
