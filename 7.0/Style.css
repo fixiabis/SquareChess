@@ -8,7 +8,7 @@ a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 #menu{color:white;background:gray;animation:listdw 1s;overflow:hidden;height:40px;transition:all 1s}
 #content{animation:show 2s;}
 #T{text-align:center;transition:all 1s}
-#C:hover,#CA:hover,#CD:hover{color:royalblue}#B:hover{color:crimson}#D:hover,#DZ:hover{color:seagreen}
+#C:hover,#CA:hover,#CD:hover,#CS:hover{color:royalblue}#B:hover{color:crimson}#D:hover,#DZ:hover{color:seagreen}
 #DIR{float:right;transition:all 2s}
 .cover,.mcover{overflow:hidden;transition:all 1s}
 ul{transition:all 1s}.key{color:steelblue}.mus{color:indianred}.opt{color:darkslateblue}
