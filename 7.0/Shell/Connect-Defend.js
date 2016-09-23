@@ -14,12 +14,12 @@ function ExR(){var O=0,X=0
 		for(j in dc[i]){
 			if(Qre(dc[i][j],"T")=="O")Os++
 			if(Qre(dc[i][j],"T")=="X")Xs++
-		}if(Os>5&&Xs==0||Os==9){O++}else if(Xs>5&&Os==0||Xs==9){X++}
+		}if(Os>5&&Xs==0||Os==9)O++;else if(Xs>5&&Os==0||Xs==9)X++
 	}
 	if(Turn%2==0){
-		if(O>X)Cln("O Win.","")
-		if(O<X)Cln("X Win.","")
-		if(O==X&&O!=0)Cln("Draw.","")
+		if(O>X)Cln("O Win")
+		if(O<X)Cln("X Win")
+		if(O==X&&O!=0)Cln("Draw")
 	}
 }
 function ExB(){var bc=["cornflowerblue","dodgerblue","lightskyblue","lightsteelblue","lightblue"]
@@ -29,4 +29,4 @@ function ExB(){var bc=["cornflowerblue","dodgerblue","lightskyblue","lightsteelb
 }
 function Adn(){bdR()}
 function Brd(){ExB();crR()}
-Cln("","")
+Cln()

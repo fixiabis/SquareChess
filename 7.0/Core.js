@@ -5,7 +5,7 @@ function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' onconte
 			bd+="<td id='"+Chr(cd1)+cd2+"' onclick='Set(this.id)' ondblclick='ToS(this.id)' class='bt'></td>"
 		}bd+="</tr>"
 	}
-	Id("Board").innerHTML=bd+"</table><div id='UC'><table><tr><td class='bt' onClick='Udo()' onContextMenu='Gto()'>Undo</td><td class='bt' onClick='Cli()' onContextMenu='Adn()'>Clean</td></tr></table></div>";Id("Board").style.animation="down 2s";Rsz();Cln("","")
+	Id("Board").innerHTML=bd+"</table><div id='UC'><table><tr><td class='bt' onClick='Udo()' onContextMenu='Gto()'>Undo</td><td class='bt' onClick='Cli()' onContextMenu='Adn()'>Clean</td></tr></table></div>";Id("Board").style.animation="down 2s";Rsz();Cln()
 }
 function Rsz(){
 	Id("Board").style.height="0px";Id("UC").style.display="none"
@@ -47,8 +47,8 @@ function Cmd(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 		case 37:if(c){e.preventDefault();Udo()}else Dft.Dir+="L";break
 		case 38:if(c)Cli();else Dft.Dir+="F";break
 		case 39:if(c){e.preventDefault();Rdo()}else Dft.Dir+="R";break
-		case 40:if(c)Cln("","");else Dft.Dir+="B";break
-		case 46:if(s)Cln("","");else Cli();break
+		case 40:if(c)Cln();else Dft.Dir+="B";break
+		case 46:if(s)Cln();else Cli();break
 		case 89:if(c)Rdo();break
 		case 90:if(c)Udo();break
 		case 72:if(c){e.preventDefault();Gto();break}
@@ -59,7 +59,7 @@ function Udo(){Rdr(Turn-1)}
 function Rdo(){Rdr(Turn+1)}
 function Lst(){Rdr(Hst.Brd.length-1)}
 function Gto(){Rdr(prompt("Go to turn:"))}
-function Cli(){if(Turn>2)Cln("Clean Board?","");else Cln("","")}
+function Cli(){if(Turn>2)Cln("Clean Board?","");else Cln()}
 function Adn(){bdB()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Turn+1]=c;Qre(c,"T",Sbl[Turn%2]);Turn++}Rul();Wtr()}
 function Wtr(){var b=""
@@ -120,7 +120,7 @@ function Sym(c,v){
 	}
 	for(i=0;i<3;i++)if(Qre(c,"T")==Sbl[i])return i
 }
-function Cln(m,t){var ck=1
+function Cln(m,t){var ck=1;if(!m)m="";if(!t)t=""
 	if(m!="")ck=confirm(m)
 	if(ck){Turn=0;Hst.Brd=[]
 		for(cd1=65;cd1<74;cd1++){
@@ -142,7 +142,7 @@ function bdB(){
 	if(typeof Bk=="number"){
 		if(Bk<0)Bk=0;if(Bk>27)Bk=27
 		Dft.Blk=Bk
-	}if(Turn==0){Cln("","")}
+	}if(Turn==0){Cln()}
 }
 function crB(){var b=0
 	while(b!=Dft.Blk){var cd1=Val(Rnd()*9)+65,cd2=Val(Rnd()*9+1),clr=Qre(Chr(cd1)+cd2,"B")
@@ -150,4 +150,7 @@ function crB(){var b=0
 			Sym(Chr(cd1)+cd2,3)
 		}
 	}
+}
+function OgC(c){var c1=Asc(c[0]),c2=Val(c[1])
+	if((c1+c2)%2)Qre(c,"B","white");else Qre(c,"B","white")
 }

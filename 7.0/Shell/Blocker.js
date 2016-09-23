@@ -7,16 +7,15 @@ function Lmt(c,s){if(!s)s=Sbl[Turn%2]
 	return Loc(c,s)
 }
 function Loc(c,s){var c1=Asc(c[0]),c2=Val(c[1])
-if((c1+c2)%2){Qre(c,"B","white")}else{Qre(c,"B","white")}
 	for(var cd1=65;cd1<74;cd1++){if(Qre(Chr(cd1)+c2,"T")!=s)continue
 		for(var cd2=1;cd2<10;cd2++){if(Qre(Chr(c1)+cd2,"T")!=s)continue
 			if(Qre(Chr(cd1)+cd2,"T")==s){var r=[c1],l=[c2]
-				if(cd1>c1){r.push(cd1)}else{r.unshift(cd1)}
-				if(cd2>c2){l.push(cd2)}else{l.unshift(cd2)}
+				if(cd1>c1)r.push(cd1);else r.unshift(cd1)
+				if(cd2>c2)l.push(cd2);else l.unshift(cd2)
 				Blk(r,l,s);return 0
 			}
 		}
-	}return 0
+	}OgC(c);return 0
 }
 function Blk(r,l,s){
 	for(var cd1=65;cd1<74;cd1++){
@@ -36,17 +35,15 @@ function Rul(){var Ara={O:0,X:0,P:0}
 			if(Qre(Chr(cd1)+cd2,"T")==" "&&Qre(Chr(cd1)+cd2,"B")!="dimgray"){var bc=Qre(Chr(cd1)+cd2,"B");Ara.P++
 				if(bc==Sqr[1][2])Ara.O++
 				if(bc==Sqr[2][2])Ara.X++
-			}else if(Qre(Chr(cd1)+cd2,"T")==""){Ara.P++
-			}else if(Qre(Chr(cd1)+cd2,"B")!="dimgray"){var bc=""
+			}else if(Qre(Chr(cd1)+cd2,"T")=="")Ara.P++
+			;else if(Qre(Chr(cd1)+cd2,"B")!="dimgray"){var bc=""
 				if((cd1+cd2)%2==0)bc="lightgray";Qre(Chr(cd1)+cd2,"B",bc)
 			}
 		}
 	}
-	if(Ara.P==0&&Ara.O>Ara.X||Ara.O>Ara.P/2){
-		Cln("O Win.","")
-	}else if(Ara.P==0&&Ara.O<Ara.X||Ara.X>Ara.P/2){
-		Cln("X Win.","")
-	}else if(Ara.P==0){
-		Cln("Draw.","")
+	if(Ara.P==0){
+		if(Ara.O>Ara.X||Ara.O>Ara.P/2)Cln("O Win")
+		else if(Ara.O<Ara.X||Ara.X>Ara.P/2)Cln("X Win")
+		else Cln("Draw")
 	}
 }

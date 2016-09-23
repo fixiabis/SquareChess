@@ -13,6 +13,7 @@ var ctr=0
 function d(v){
 	Id("menu").style.transform="translateY(-100%)";
 	Id("content").style.display="none";
+	if(Mid(v,0,6)=="Square")v=Mid(v,7,v.length-6)
 	setTimeout("location='chess.html?mode='+'"+v+"'",500)
 }
 function resize(){var v=document.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game").length;ctr=0
