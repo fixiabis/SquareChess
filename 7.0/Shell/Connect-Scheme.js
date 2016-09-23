@@ -7,11 +7,11 @@ function ExR(){Dft.Clr=1
 				Sym(Crd(Hst.Crd[Turn],cd8[i]),Turn+3)
 			}
 		}
-		for(cd1=65;cd1<74;cd1++){
-			for(cd2=1;cd2<10;cd2++){var c=Chr(cd1)+cd2
-				if(Qre(c,"B")==Sqr[2][2]&&Qre(c,"T")=="O")Cln("O Win.","")
-				if(Qre(c,"B")==Sqr[1][2]&&Qre(c,"T")=="X")Cln("X Win.","")
-			}
+	}
+	for(cd1=65;cd1<74;cd1++){
+		for(cd2=1;cd2<10;cd2++){var c=Chr(cd1)+cd2
+			if(Qre(c,"B")==Sqr[2][2]&&Qre(c,"T")=="O")Cln("O Win.","")
+			if(Qre(c,"B")==Sqr[1][2]&&Qre(c,"T")=="X")Cln("X Win.","")
 		}
 	}
 }
