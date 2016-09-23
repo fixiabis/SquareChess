@@ -23,10 +23,10 @@ function Rsz(){
 	Id("UC").style.marginLeft=(document.body.clientWidth-(sz*9))/2+"px"	
 }
 function Ldr(){
-	if(location.search){
-		var ld=location.search.split("?mode=")[1].split(":")
+	if(location.search){var sr=location.search.replace("%3A",":");doc.title=sr.split("?mode=")[1]
+		var ld=doc.title.split(":")
 		for(i in ld){var ct=ld[i];
-			if(i>0)for(s=0;s<i;s++)ct=ld[s]+"-"+ct;doc.title=ct
+			if(i>0)for(s=0;s<i;s++)ct=ld[s]+"-"+ct
 			var s=doc.createElement("script");s.src="Shell/"+ct+".js";doc.body.appendChild(s)
 		}
 	}Cre()
