@@ -52,7 +52,7 @@ function Cmd(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 		case 89:if(c)Rdo();break
 		case 90:if(c)Udo();break
 		case 72:if(c){e.preventDefault();Gto();break}
-		default:if(k>64&&k<74){if(s)ToS(Chr(k)+prompt("Enter coordinate");else if(!c)Set(Chr(k)+prompt("Enter coordinate"))}
+		default:if(k>64&&k<74){if(s){ToS(Chr(k)+prompt("Enter coordinate")}else if(!c)Set(Chr(k)+prompt("Enter coordinate"))}
 	}
 }
 function Udo(){Rdr(Turn-1)}
