@@ -9,8 +9,8 @@ function ExR(){Dft.Clr=1
 		}
 		for(cd1=65;cd1<74;cd1++){
 			for(cd2=1;cd2<10;cd2++){var c=Chr(cd1)+cd2
-				if(Qre(c,"B")=="royalblue"&&Qre(c,"T")=="O")Cln("O Win.","")
-				if(Qre(c,"B")=="crimson"&&Qre(c,"T")=="X")Cln("X Win.","")
+				if(Qre(c,"B")==Sqr[2][2]&&Qre(c,"T")=="O")Cln("O Win.","")
+				if(Qre(c,"B")==Sqr[1][2]&&Qre(c,"T")=="X")Cln("X Win.","")
 			}
 		}
 	}
