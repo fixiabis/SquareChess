@@ -4,8 +4,7 @@ function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' onconte
 		for(cd1=65;cd1<74;cd1++){
 			bd+="<td id='"+Chr(cd1)+cd2+"' onclick='Set(this.id)' ondblclick='ToS(this.id)' class='bt'></td>"
 		}bd+="</tr>"
-	}
-	Id("Board").innerHTML=bd+"</table><div id='UC'><table><tr><td class='bt' onClick='Udo()' onContextMenu='Gto()'>Undo</td><td class='bt' onClick='Cli()' onContextMenu='Adn()'>Clean</td></tr></table></div>";Id("Board").style.animation="down 2s";Rsz();Cln()
+	}Id("Board").innerHTML=bd+"</table><div id='UC'><table><tr><td class='bt' onClick='Udo()' onContextMenu='Gto()'>Undo</td><td class='bt' onClick='Cli()' onContextMenu='Adn()'>Clean</td></tr></table></div>";Id("Board").style.animation="down 2s";Rsz();Cln()
 }
 function Rsz(){
 	Id("Board").style.height="0px";Id("UC").style.display="none"
@@ -17,9 +16,7 @@ function Rsz(){
 		Class("bt")[i].style.fontSize=sz-10+"px"
 		Class("bt")[i].style.lineHeight=sz+"px"
 	}
-	for(i=81;i<83;i++){
-		Class("bt")[i].style.width=sz*4.5+"px"
-	}
+	for(i=81;i<83;i++)Class("bt")[i].style.width=sz*4.5+"px"
 	Id("Board").style.height=sz*9+"px";Id("UC").style.width=sz*9+"px"
 	Id("Board").style.marginLeft=(document.body.clientWidth-(sz*9))/2+"px"
 	if(C)Id("Board").style.marginTop=(document.body.clientHeight-(sz*9))/2+"px"
@@ -35,8 +32,7 @@ function Ldr(){
 	}Cre()
 }
 function Mnu(e){var sz="0px";if(!Id("Board"))return
-	if(e.pageX<Split(Id("Board").style.marginLeft,"px")[0]&&Id("UCL").clientLeft==0)sz="160px"
-	Id("UCL").style.width=sz
+	if(e.pageX<Split(Id("Board").style.marginLeft,"px")[0]&&Id("UCL").clientLeft==0)sz="160px";Id("UCL").style.width=sz
 }
 function Cmd(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 	switch(k){
@@ -62,38 +58,24 @@ function Gto(){Rdr(prompt("Go to turn:"))}
 function Cli(){if(Turn>2)Cln("Clean Board?","");else Cln()}
 function Adn(){bdB()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Turn+1]=c;Qre(c,"T",Sbl[Turn%2]);Turn++}Rul();Wtr()}
-function Wtr(){var b=""
-	for(cd1=65;cd1<74;cd1++){
-		for(cd2=1;cd2<10;cd2++){
-			b+=Sym(Chr(cd1)+cd2)
-		}
-	}Hst.Brd[Turn]=b
-}
+function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Turn]=b}
 function Rdr(b){
 	if(typeof b=="number"){if(Hst.Brd[b]){Rdr(Hst.Brd[b]);Turn=b}return}
-	for(cd1=65;cd1<74;cd1++){
-		for(cd2=1;cd2<10;cd2++){
-			Sym(Chr(cd1)+cd2,Val(b[(cd1-65)*9+cd2-1]))
-		}
-	}
+	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Sym(Chr(cd1)+cd2,Val(b[(cd1-65)*9+cd2-1]))
 }
 function Crd(c,r){var x=0,y=0
-	for(var i in r){
-		switch(r[i]){
-			case"F":y--;break
-			case"B":y++;break
-			case"R":x++;break
-			case"L":x--;
-		}
+	for(var i in r)switch(r[i]){
+		case"F":y--;break
+		case"B":y++;break
+		case"R":x++;break
+		case"L":x--;
 	}return Chr(Asc(c[0])+x)+Val(Val(c[1])+y)
 }
 function Qre(c,a,v){
-	if(Id(c)){
-		switch(a){
-			case"F":if(v)Id(c).style.color=v;return Id(c).style.color;break
-			case"B":if(v)Id(c).style.backgroundColor=v;return Id(c).style.backgroundColor;break
-			case"T":if(v)Id(c).innerHTML=v;return Id(c).innerHTML;break
-		}
+	if(Id(c))switch(a){
+		case"F":if(v)Id(c).style.color=v;return Id(c).style.color;break
+		case"B":if(v)Id(c).style.backgroundColor=v;return Id(c).style.backgroundColor;break
+		case"T":if(v)Id(c).innerHTML=v;return Id(c).innerHTML;break
 	}
 }
 function Sym(c,v){
@@ -107,10 +89,8 @@ function Sym(c,v){
 				if((Asc(c[0])+Val(c[1]))%2==0)bc="lightgray"
 				Id(c).style.backgroundColor=bc
 				Id(c).style.color=fc
-			}
-			Id(c).innerHTML=Sbl[v]
-		}
-		return v
+			}Id(c).innerHTML=Sbl[v]
+		}return v
 	}
 	for(i in Sqr){var n=0
 		if(Qre(c,"F")==Sqr[i][1])n++
@@ -123,12 +103,10 @@ function Sym(c,v){
 function Cln(m,t){var ck=1;if(!m)m="";if(!t)t=""
 	if(m!="")ck=confirm(m)
 	if(ck){Turn=0;Hst.Brd=[]
-		for(cd1=65;cd1<74;cd1++){
-			for(cd2=1;cd2<10;cd2++){if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue
+		for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue
 				Sym(Chr(cd1)+cd2,2);var c=""
 				if((cd1+cd2)%2==0)c="lightgray"
 				Qre(Chr(cd1)+cd2,"B",c)
-			}
 		}Brd();Wtr()
 	}
 }
@@ -140,15 +118,12 @@ function ToS(c){for(i in Hst.Crd){if(Hst.Crd[i]==c)Rdr(Val(i))}}
 function bdB(){
 	var Bk=Val(prompt("Add Block?(Max:27)",Dft.Blk))
 	if(typeof Bk=="number"){
-		if(Bk<0)Bk=0;if(Bk>27)Bk=27
-		Dft.Blk=Bk
-	}if(Turn==0){Cln()}
+		if(Bk<0)Bk=0;if(Bk>27)Bk=27;Dft.Blk=Bk
+	}if(Turn==0)Cln()
 }
 function crB(){var b=0
 	while(b!=Dft.Blk){var cd1=Val(Rnd()*9)+65,cd2=Val(Rnd()*9+1),clr=Qre(Chr(cd1)+cd2,"B")
-		if(clr=="lightgray"&&(cd1+cd2)%2==0&&Qre(Chr(cd1)+cd2,"T")==""){b++
-			Sym(Chr(cd1)+cd2,3)
-		}
+		if(clr=="lightgray"&&(cd1+cd2)%2==0&&Qre(Chr(cd1)+cd2,"T")==""){b++;Sym(Chr(cd1)+cd2,3)}
 	}
 }
 function OgC(c){var c1=Asc(c[0]),c2=Val(c[1])
