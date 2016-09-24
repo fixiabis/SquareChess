@@ -1,13 +1,9 @@
 Sqr[1]=["","","crimson"];Sqr[2]=["","","royalblue"]
 var Ara=[[],[]],
-Lt=[
-	"FF","FFR","FFL","FRR","FLL",
-	"BB","BBR","BBL","BRR","BLL",
-	"RR","LL","FFRR","FFLL","BBRR","BBLL"
-];Dft.Blk=27
+Lt=[];Dft.Blk=27
 function ExR(){
+	if(Turn==1)for(i in Lt)if(Instr("FBRL",Lt[i][1])>-1)Lt[i]=Crd(Hst.Crd[Turn],Lt[i])
 	if(Turn<3){
-		if(Turn==1)for(i in Lt)Lt[i]=Crd(Hst.Crd[Turn],Lt[i])
 		for(i in cd8){var c=Crd(Hst.Crd[Turn],cd8[i]),b=Qre(c,"B")
 			if(b==""||b=="lightgray"){Qre(c,"B",Sqr[Turn][2]);Ara[Turn-1].push(c)}
 		}
@@ -21,7 +17,10 @@ function ExR(){
 		else if(Xs||Of==Ara[0].length)Cln("X Win")
 	}OgC(Hst.Crd[Turn])
 }
-function ExL(c){
-	if(Lt.indexOf(c)>-1&&Turn<3)return 1;else return 0
-}
-function Adn(){}function Brd(){crB()}
+function ExL(c){if(Lt.indexOf(c)>-1&&Turn<2)return 1;else return 0}
+function Brd(){crB();Lt=[
+	"FF","FFR","FFL","FRR","FLL",
+	"BB","BBR","BBL","BRR","BLL",
+	"RR","LL","FFRR","FFLL","BBRR","BBLL"
+]}
+function Adn(){}
