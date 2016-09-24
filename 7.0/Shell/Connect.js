@@ -37,4 +37,4 @@ function crR(){if(!Dft.Rnd)return
 	var R=[["E4","E6","D5","F5"],["D4","D6","F4","F6"]]
 	for(i in R){var p=Val(Rnd()*4);Set(R[i][p])}
 }
-function ExB(){}function ExR(){}Cln()
+function ExB(){}function ExR(){}
