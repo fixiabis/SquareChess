@@ -16,3 +16,4 @@ function ExR(){
 	}OgC(Hst.Crd[Turn])
 }
 function Adn(){bdB()}function Brd(){crB()}
+LdK.push("Connect-Scheme");LdC()

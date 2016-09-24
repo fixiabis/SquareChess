@@ -38,3 +38,4 @@ function crR(){if(!Dft.Rnd)return
 	for(i in R){var p=Val(Rnd()*4);Set(R[i][p])}
 }
 function ExB(){}function ExR(){}
+LdK.push("Connect");LdC()

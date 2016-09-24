@@ -47,3 +47,4 @@ function Rul(){var Ara={O:0,X:0,P:0}
 		else Cln("Draw")
 	}
 }
+LdK.push("Blocker");LdC()

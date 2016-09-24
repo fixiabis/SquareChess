@@ -29,4 +29,4 @@ function ExB(){var bc=["cornflowerblue","dodgerblue","lightskyblue","lightsteelb
 }
 function Adn(){bdR()}
 function Brd(){ExB();crR()}
-Cln()
+LdK.push("Connect-Defend");LdC()
