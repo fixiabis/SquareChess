@@ -15,5 +15,4 @@ function ExR(){
 		else if(Xs)Cln("X Win")
 	}OgC(Hst.Crd[Turn])
 }
-function Adn(){bdB()}
-function Brd(){crB()}
+function Adn(){bdB()}function Brd(){crB()}Cln()
