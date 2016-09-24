@@ -21,7 +21,7 @@ function ExR(){
 		else if(Xs||Of==Ara[0].length)Cln("X Win")
 	}OgC(Hst.Crd[Turn])
 }
-function ExL(c){alert(c+Lt.indexOf(c))
-	if(Lt.indexOf(c)>-1)return 1;else return 0
+function ExL(c){
+	if(Lt.indexOf(c)>-1&&Turn<3)return 1;else return 0
 }
 function Adn(){}function Brd(){crB()}
