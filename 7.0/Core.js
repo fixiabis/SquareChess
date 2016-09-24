@@ -121,4 +121,4 @@ function crB(){var b=0
 function OgC(c){var bc=""
 	if((Asc(c[0])+Val(c[1]))%2==0)bc="lightgray";Qre(c,"B",bc);Qre(c,"F","")
 }
-function LdC(){if(LdK.length==LdQ.length){Cre();Cln()}}
+function LdC(){if(LdK.length==LdQ.length){Cre();Cln()}console.log(LdQ)}
