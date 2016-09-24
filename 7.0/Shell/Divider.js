@@ -1,7 +1,6 @@
-function Lmt(c,s){if(!s)s=Sbl[Turn%2]
-	if(!Id(c))return 1
+function Lmt(c,s){var k=ExL(c);if(!s)s=Sbl[Turn%2]
+	if(!Id(c)||Qre(c,"T")!="")return 1;if(k)return k
 	if(Turn<2&&Qre(c,"T")=="")return 0
-	if(Qre(c,"T")!="")return 1
 	for(i in cd8){var tx=cd8[i]
 		while(true){
 			if(Id(Crd(c,tx))){
@@ -40,4 +39,4 @@ function Rul(){var Ara={O:0,X:0,P:0}
 		if(Ara.X==0)Cln("O Win.","")
 	}ExR()
 }
-function ExR(){}
+function ExR(){}function ExL(){return 0}

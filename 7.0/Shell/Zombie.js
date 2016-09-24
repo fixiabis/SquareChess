@@ -7,5 +7,5 @@ function ExR(){var zb=[];if(Turn<10)return
 				if(t!=s&&zb.indexOf(c)==-1){zb.push(c);break}
 			}
 		}
-}for(i in zb){Sym(zb[i],4);alert(zb[i]+":"+Sym(zb[i]))};if(zb.length>0)Rul()
+}for(i in zb)Sym(zb[i],4);if(zb.length>0)Rul()
 }
