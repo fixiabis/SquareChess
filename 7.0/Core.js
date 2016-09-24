@@ -1,4 +1,4 @@
-var Turn=0,Dft={Clr:1,Blk:0,Dir:""},Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],cd8="F,B,R,L,FR,FL,BR,BL".split(","),Hst={},LdK=0
+var Turn=0,Dft={Clr:1,Blk:0,Dir:""},Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],cd8="F,B,R,L,FR,FL,BR,BL".split(","),Hst={},LdM=[]
 function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' oncontextmenu='Lst()'>"
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>"
 		for(cd1=65;cd1<74;cd1++){
@@ -24,14 +24,14 @@ function Rsz(){
 }
 function Ldr(){
 	if(location.search){var sr=location.search.replace("%3A",":");doc.title=sr.split("?mode=")[1]
-		var ld=doc.title.split(":")
-		for(i in ld){var ct=ld[i];LdK++
-			var s=doc.createElement("script")
-			s.src="Shell/"+ct+".js"
-			s.onload=function(){LdK--;LdC()}
-			doc.body.appendChild(s)
-		}
+		var ld=doc.title.split(":");for(i in ld)LdM.push(ld[i]);LMd(0)
 	}
+}
+function LMd(n){
+	var s=doc.createElement("script")
+	s.src="Shell/"+LdM[n]+".js"
+	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln()}
+	doc.body.appendChild(s)
 }
 function Mnu(e){var sz="0px";if(!Id("Board"))return
 	if(e.pageX<Split(Id("Board").style.marginLeft,"px")[0]&&Id("UCL").clientLeft==0)sz="160px";Id("UCL").style.width=sz
@@ -125,4 +125,3 @@ function crB(){var b=0
 function OgC(c){var bc="";if(!c)return
 	if((Asc(c[0])+Val(c[1]))%2==0)bc="lightgray";Qre(c,"B",bc);Qre(c,"F","")
 }
-function LdC(){if(LdK==0){Cre();Cln()}}
