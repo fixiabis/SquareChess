@@ -6,7 +6,7 @@ function Lmt(c,s){if(!s)s=Sbl[Turn%2]
 	if(Turn<2&&Qre(c,"T")=="")return 0
 	if(Qre(c,"T")!="")return 1
 	for(i in cd8)if(Id(Crd(c,cd8[i])))if(Qre(Crd(c,cd8[i]),"T")==s)return 0
-	return 1
+	return ExL(c)
 }
 function Rul(){var Ara={O:0,X:0,P:0}
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){if(Qre(Chr(cd1)+cd2,"T")!="")continue;var c=Chr(cd1)+cd2
@@ -37,4 +37,4 @@ function crR(){if(!Dft.Rnd)return
 	var R=[["E4","E6","D5","F5"],["D4","D6","F4","F6"]]
 	for(i in R){var p=Val(Rnd()*4);Set(R[i][p])}
 }
-function ExB(){}function ExR(){}
+function ExB(){}function ExR(){}function ExL(){return 1}
