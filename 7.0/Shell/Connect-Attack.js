@@ -15,4 +15,3 @@ function ExB(){var bc=["crimson","royalblue","palevioletred","lightsteelblue"],c
 }
 function Adn(){bdB()}
 function Brd(){ExB();crB()}
-LdK.push("Connect-Attack");LdC()

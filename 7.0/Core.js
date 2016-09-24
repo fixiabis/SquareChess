@@ -1,4 +1,4 @@
-var Turn=0,Dft={Clr:1,Blk:0,Dir:""},Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],cd8="F,B,R,L,FR,FL,BR,BL".split(","),Hst={Brd:[],Crd:[]},LdK=[],LdQ=[]
+var Turn=0,Dft={Clr:1,Blk:0,Dir:""},Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],cd8="F,B,R,L,FR,FL,BR,BL".split(","),Hst={Brd:[],Crd:[]},LdK=0
 function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' oncontextmenu='Lst()'>"
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>"
 		for(cd1=65;cd1<74;cd1++){
@@ -25,8 +25,13 @@ function Rsz(){
 function Ldr(){
 	if(location.search){var sr=location.search.replace("%3A",":");doc.title=sr.split("?mode=")[1]
 		var ld=doc.title.split(":")
-		for(i in ld){var ct=ld[i];if(i>0)for(s=0;s<i;s++)ct=ld[s]+"-"+ct;LdQ.push(ct)}
-		for(i in LdQ){var s=doc.createElement("script");s.src="Shell/"+LdQ[i]+".js";doc.body.appendChild(s)}
+		for(i in ld){var ct=ld[i];LdK++
+			if(i>0)for(s=0;s<i;s++)ct=ld[s]+"-"+ct
+			var s=doc.createElement("script")
+			s.src="Shell/"+ct+".js"
+			s.onload=function(){LdK--;LdC()}
+			doc.body.appendChild(s)
+		}
 	}
 }
 function Mnu(e){var sz="0px";if(!Id("Board"))return
@@ -121,4 +126,4 @@ function crB(){var b=0
 function OgC(c){var bc=""
 	if((Asc(c[0])+Val(c[1]))%2==0)bc="lightgray";Qre(c,"B",bc);Qre(c,"F","")
 }
-function LdC(){if(LdK.length==LdQ.length){Cre();Cln()}console.log(LdK)}
+function LdC(){if(LdK==0){Cre();Cln()}}

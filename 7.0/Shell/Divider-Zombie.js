@@ -10,4 +10,3 @@ function ExR(){var zb=[];if(Turn<10)return
 	}Dft.Clr=0
 	for(i in zb)Sym(zb[i],4);if(zb.length>0)Rul()
 }
-LdK.push("Divider-Zombie");LdC()

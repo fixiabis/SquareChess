@@ -25,4 +25,3 @@ function Rul(){var ord=Split("B;R;BR;BL",";"),scr={O:0,X:0}
 	}
 }
 function bdP(){Dft.Pro=confirm("Use Gomoku-Pro Rule? Now is "+Dft.Pro);if(Turn==0)Cln()}
-LdK.push("Gomoku");LdC()
