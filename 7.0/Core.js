@@ -4,7 +4,7 @@ function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' onconte
 		for(cd1=65;cd1<74;cd1++){
 			bd+="<td id='"+Chr(cd1)+cd2+"' onclick='Set(this.id)' ondblclick='ToS(this.id)' class='bt'></td>"
 		}bd+="</tr>"
-	}Id("Board").innerHTML=bd+"</table><div id='UC'><table><tr><td class='bt' onClick='Udo()' onContextMenu='Gto()'>Undo</td><td class='bt' onClick='Cli()' onContextMenu='Adn()'>Clean</td></tr></table></div>";Id("Board").style.animation="down 2s";Rsz();Cln()
+	}Id("Board").innerHTML=bd+"</table><div id='UC'><table><tr><td class='bt' onClick='Udo()' onContextMenu='Gto()'>Undo</td><td class='bt' onClick='Cli()' onContextMenu='Adn()'>Clean</td></tr></table></div>";Id("Board").style.animation="down 2s";Rsz()
 }
 function Rsz(){
 	Id("Board").style.height="0px";Id("UC").style.display="none"
