@@ -1,7 +1,7 @@
 Dft.Rnd=false
 function Adn(){bdB();bdR()}
 function Brd(){ExB();crB();crR()}
-function Lmt(c,s){Dft.Clr=0;if(!s)s=Sbl[Turn%2]
+function Lmt(c,s){if(!s)s=Sbl[Turn%2]
 	if(!Id(c))return 1
 	if(Turn<2&&Qre(c,"T")=="")return 0
 	if(Qre(c,"T")!="")return 1
@@ -26,7 +26,7 @@ function Rul(){var Ara={O:0,X:0,P:0}
 			if(!Os&&Xs){Id(c).title="X"+i;Ara.X++}
 		}
 	}
-	if(Ara.P==0&&Turn%2==1){
+	if(Ara.P==0&&Turn%2==0){
 		if(Ara.O>Ara.X)Cln("O Win")
 		else if(Ara.O<Ara.X)Cln("X Win")
 		else Cln("Draw")

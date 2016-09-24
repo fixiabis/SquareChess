@@ -18,7 +18,7 @@ function Rul(){var ord=Split("B;R;BR;BL",";"),scr={O:0,X:0}
 			}
 		}
 	}
-	if(Turn%2==1)if(scr.O!=0||scr.X!=0){
+	if(Turn%2==0)if(scr.O!=0||scr.X!=0){
 		if(scr.O==scr.X)Cln("Draw")
 		if(scr.O>scr.X)Cln("O Win")
 		if(scr.O<scr.X)Cln("X Win")

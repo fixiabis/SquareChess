@@ -8,7 +8,7 @@ var dc=[
 	["B5","B6","B7","C6","C7","C8","D6","D7","D8"],
 	["E8","F6","F7","F8","G6","G7","G8","H6","H7"],
 	["B3","B4","C2","C3","C4","D2","D3","D4","E2"]
-]
+];Dft.Clr=0
 function ExR(){var O=0,X=0
 	for(i in dc){var Os=0,Xs=0
 		for(j in dc[i]){
