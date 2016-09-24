@@ -1,4 +1,4 @@
-var dc=[["A2","B1","B2"],["H8","H9","I8"],["A3","B3","C1","C2","C3"],["G7","G8","G9","H7","I7"]];Dft.Clr=1
+var dc=[["A2","B1","B2"],["H8","H9","I8"],["A3","B3","C1","C2","C3"],["G7","G8","G9","H7","I7"]]
 function ExR(){var Ara={O:0,X:0}
 	for(i in dc){var s=0
 		for(j in dc[i])if(Qre(dc[i][j],"T")==Sbl[i%2])s++
@@ -14,4 +14,4 @@ function ExB(){var bc=["crimson","royalblue","palevioletred","lightsteelblue"],c
 	for(i in c){OgC(c[i]);Set(c[i])}
 }
 function Adn(){bdB()}
-function Brd(){ExB();crB();Dft.Clr=1}
+function Brd(){ExB();crB();Dft.Clr=0}
