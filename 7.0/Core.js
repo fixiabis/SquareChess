@@ -60,7 +60,7 @@ function Adn(){bdB()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Turn+1]=c;Qre(c,"T",Sbl[Turn%2]);Turn++}Rul();Wtr()}
 function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Turn]=b}
 function Rdr(b){
-	if(typeof b=="number"){if(Hst.Brd[b]){Rdr(Hst.Brd[b]);Turn=b}return}
+	if(typeof b=="number")if(Hst.Brd[b]){Rdr(Hst.Brd[b]);Turn=b}if(!b.length)return
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Sym(Chr(cd1)+cd2,Val(b[(cd1-65)*9+cd2-1]))
 }
 function Crd(c,r){var x=0,y=0
@@ -71,11 +71,11 @@ function Crd(c,r){var x=0,y=0
 		case"L":x--;
 	}return Chr(Asc(c[0])+x)+Val(Val(c[1])+y)
 }
-function Qre(c,a,v){
+function Qre(c,a,v){var k=0;if(typeof v=="string")k=1
 	if(Id(c))switch(a){
-		case"F":if(v)Id(c).style.color=v;return Id(c).style.color;break
-		case"B":if(v)Id(c).style.backgroundColor=v;return Id(c).style.backgroundColor;break
-		case"T":if(v)Id(c).innerHTML=v;return Id(c).innerHTML;break
+		case"F":if(k)Id(c).style.color=v;return Id(c).style.color;break
+		case"B":if(k)Id(c).style.backgroundColor=v;return Id(c).style.backgroundColor;break
+		case"T":if(k)Id(c).innerHTML=v;return Id(c).innerHTML;break
 	}
 }
 function Sym(c,v){
@@ -85,11 +85,7 @@ function Sym(c,v){
 			Qre(c,"B",Sqr[i][2])
 			Qre(c,"T",Sqr[i][0])
 		}else{
-			if(Dft.Clr){var bc="",fc=""
-				if((Asc(c[0])+Val(c[1]))%2==0)bc="lightgray"
-				Id(c).style.backgroundColor=bc
-				Id(c).style.color=fc
-			}Id(c).innerHTML=Sbl[v]
+			if(Dft.Clr)OgC(c);Qre(c,"T",Sbl[v])
 		}return v
 	}
 	for(i in Sqr){var n=0
@@ -100,13 +96,11 @@ function Sym(c,v){
 	}
 	for(i=0;i<3;i++)if(Qre(c,"T")==Sbl[i])return i
 }
-function Cln(m,t){var ck=1;if(!m)m="";if(!t)t=""
-	if(m!="")ck=confirm(m)
-	if(ck){Turn=0;Hst.Brd=[]
+function Cln(m,t){var k=1;if(!m)m="";if(!t)t=""
+	if(m!="")k=confirm(m)
+	if(k){Turn=0;Hst.Brd=[]
 		for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue
-				Sym(Chr(cd1)+cd2,2);var c=""
-				if((cd1+cd2)%2==0)c="lightgray"
-				Qre(Chr(cd1)+cd2,"B",c)
+			Sym(Chr(cd1)+cd2,2)
 		}Brd();Wtr()
 	}
 }
@@ -126,6 +120,6 @@ function crB(){var b=0
 		if(clr=="lightgray"&&(cd1+cd2)%2==0&&Qre(Chr(cd1)+cd2,"T")==""){b++;Sym(Chr(cd1)+cd2,3)}
 	}
 }
-function OgC(c){var c1=Asc(c[0]),c2=Val(c[1])
-	if((c1+c2)%2)Qre(c,"B","white");else Qre(c,"B","white")
+function OgC(c){var bc=""
+	if((Asc(c[0])+Val(c[1]))%2==0)bc="lightgray";Qre(c,"B",bc);Qre(c,"F","")
 }
