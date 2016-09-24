@@ -1,5 +1,5 @@
 Sqr[1]=["","","crimson"];Sqr[2]=["","","royalblue"]
-var Ara=[[],[]]
+var Ara=[[],[]];Dft.Blk=27
 function ExR(){
 	if(Turn<3)for(i in cd8){var c=Crd(Hst.Crd[Turn],cd8[i]),b=Qre(c,"B")
 		if(b==""||b=="lightgray"){Qre(c,"B",Sqr[Turn][2]);Ara[Turn-1].push(c)}
@@ -13,4 +13,4 @@ function ExR(){
 		else if(Xs||Of==Ara[0].length)Cln("X Win")
 	}OgC(Hst.Crd[Turn])
 }
-function Adn(){}function Brd(){Dft.Blk=27;crB()}
+function Adn(){}function Brd(){crB()}
