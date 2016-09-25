@@ -16,7 +16,7 @@ function ExL(c){var t=Qre(c,"T"),k=0
 		for(i in Lt)if(Instr("FBRL",Lt[i][1])>-1)Lt[i]=Crd(c,Lt[i]);k=1
 	}
 	if(Lt.indexOf(c)==-1&&Turn==1)k=1
-	if(Turn<2&&t==""&&t!=" "&&k){Ara[Turn]=[]
+	if(Turn<2&&t==""&&t!=" "&&k){Ara[Turn]=[];alert(c)
 		for(i in cd8){var d=Crd(c,cd8[i]),b=Qre(d,"B")
 			if(b==""||b=="lightgray"){Qre(d,"B",Sqr[Turn+1][2]);Ara[Turn].push(d)}
 		}

@@ -1,4 +1,4 @@
-function Lmt(c,s){var k=ExL(c);if(!s)s=Sbl[Turn%2]
+function Lmt(c,s){var k=0;if(!s){s=Sbl[Turn%2];k=ExL(c)}
 	if(!Id(c)||Qre(c,"T")!="")return 1;if(k)return k
 	if(Turn<2&&Qre(c,"T")=="")return 0
 	for(i in cd8){var tx=cd8[i]
