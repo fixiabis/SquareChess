@@ -1,7 +1,7 @@
 Dft.Rnd=false
 function Adn(){bdB();bdR()}
 function Brd(){ExB();crB();crR()}
-function Lmt(c,s){var k=ExL(c);if(!s)s=Sbl[Turn%2]
+function Lmt(c,s){var k=0;if(!s){s=Sbl[Turn%2];k=ExL(c)}
 	if(!Id(c)||Qre(c,"T")!="")return 1;if(k)return k
 	if(Turn<2&&Qre(c,"T")=="")return 0
 	for(i in cd8)if(Id(Crd(c,cd8[i])))if(Qre(Crd(c,cd8[i]),"T")==s)return 0
