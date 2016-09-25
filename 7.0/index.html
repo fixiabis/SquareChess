@@ -19,9 +19,10 @@ function d(v){
 function resize(){var v=document.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game").length;ctr=0
 	Id("T").style.width="300px"
 	if(s==0){Id("T").style.width=document.body.clientWidth;s=Math.floor(document.body.clientWidth/160);ctr=1}
-	if(s>p){s=p;ctr=0};Id("DIR").style.width=s*160
+	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160
 	Id("DIR").style.marginRight="0px"
 	if(ctr)Id("DIR").style.marginRight=(document.body.clientWidth-Id("DIR").clientWidth)/2
+	Id("menu").style.width=document.body.clientWidth+"px"
 }
 function menu(v){var h=Id("menu").scrollHeight+"px";resize()
 	if(v){
@@ -30,7 +31,7 @@ function menu(v){var h=Id("menu").scrollHeight+"px";resize()
 	}else{
 		Id("menu").style.height="40px"
 		Id("T").style.lineHeight="40px"
-	}
+	}Id("mens").style.height=Id("menu").style.height
 }
 function c(v,o){var s=0
 	for(i=0;i<Class("game").length;i++){var d=0
@@ -47,13 +48,9 @@ function mc(v,o){
 }
 function mf(){
     if(document.body.scrollTop>Id("menu").clientHeight){
-        Id("menu").style.position="fixed"
-		Id("menu").style.width=document.body.clientWidth+"px"
         Id("menu").style.opacity=0.8
         Id("toTop").style.opacity=0.8
     }else{
-        Id("menu").style.position=""
-		Id("menu").style.width=""
         Id("menu").style.opacity=1
         Id("toTop").style.opacity=0
     }
@@ -61,10 +58,8 @@ function mf(){
 function Lan(){var typ=navigator.language.substr(0,2)
 	if(location.hash)typ=location.hash.substr(1,2)
 	if(!language[typ])typ="en"
-	for(i in language[typ]){
-		Id(i).innerHTML=language[typ][i]
-	}mc(0,0)
-	resize()
+	for(i in language[typ])Id(i).innerHTML=language[typ][i]
+	mc(0,0);resize()
 }
 </script>
 </head>
@@ -83,6 +78,7 @@ function Lan(){var typ=navigator.language.substr(0,2)
 <div class="game">Freedom Mode</div>
 </div>
 </div>
+<div id="mens"></div>
 <div id="content">
 <div class="mcover"><h1 id="Start"></h1><font id="operationT"></font><ul id="operation"></ul></div>
 <div class="mcover">

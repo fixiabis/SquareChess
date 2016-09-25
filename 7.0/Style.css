@@ -5,7 +5,8 @@ body{margin:0px;cursor:default;user-select:none;-moz-user-select:none;-webkit-us
 .game{height:40px;line-height:40px;font-size:20px;transition:background-color 1s;width:160px;text-align:center;float:left;}
 .game:hover{background-color:lightgray;height:40px;color:dimgray}
 a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
-#menu{color:white;background:gray;animation:listdw 1s;overflow:hidden;height:40px;transition:all 1s}
+#menu{color:white;background:gray;animation:listdw 1s;overflow:hidden;position:fixed}
+#mens,#menu{height:40px;transition:all 1s}
 #content{animation:show 2s;}
 #T{text-align:center;transition:all 1s}
 #C:hover,#CA:hover,#CD:hover,#CS:hover{color:royalblue}#B:hover{color:crimson}#D:hover,#DZ:hover{color:seagreen}
