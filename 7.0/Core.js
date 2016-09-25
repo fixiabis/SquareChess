@@ -31,7 +31,7 @@ function Ldr(){
 			"Connect:Attack","Connect:Defend","Connect:Scheme",
 			"Divider:Zombie","Divider:Scheme","Connect.Zombie"
 		];Id("Board").childNodes[0].childNodes[0].innerHTML="Directing..."
-		setTimeout('location="chess.html?mode="+"'+Mod[Val(Rnd()*Mod.length)]+'"',3000)
+		setTimeout('location="chess.html?mode="+"'+Mod[Val(Rnd()*Mod.length)]+'"',2000)
 	}
 }
 function LMd(n){
