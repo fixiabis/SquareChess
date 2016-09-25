@@ -11,7 +11,14 @@
 </head>
 <body onLoad="Ldr()" onResize="Rsz()" onBeforeUnload="if(Turn>2)return '棋局尚未結束'" onContextMenu="event.preventDefault()" onKeyDown="Cmd(event)" onmouseover="Mnu(event)" onKeyUp="Nir(event)">
 <div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
-<div id='UCL'><div onclick='Cli()' class='game'>Clean</div><div onclick='Udo()' class='game'>Undo</div><div onclick='Rdo()' class='game'>Redo</div><div onclick='Gto()' class='game'>Goto</div><div onclick='Adn()' class='game'>Addons</div><div onclick='window.history.back()' class='game'>Home</div></div>
+<div id='UCL'>
+<div onclick='Cli()' class='game'>Clean</div>
+<div onclick='Udo()' class='game'>Undo</div>
+<div onclick='Rdo()' class='game'>Redo</div>
+<div onclick='Gto()' class='game'>Goto</div>
+<div onclick='Adn()' class='game'>Addons</div>
+<div onclick='if(!history.back())location="index.html";else history.back()' class='game'>Home</div>
+</div>
 <audio autoplay loop><source src="music.mp3" type="audio/mpeg"></audio>
 </body>
 </html>

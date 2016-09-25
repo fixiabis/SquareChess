@@ -25,6 +25,13 @@ function Rsz(){
 function Ldr(){
 	if(location.search){var sr=location.search.replace("%3A",":");doc.title=sr.split("?mode=")[1]
 		var ld=doc.title.split(":");for(i in ld)LdM.push(ld[i]);LMd(0)
+	}else{
+		var Mod=[
+			"Connect","Blocker","Divider",
+			"Connect:Attack","Connect:Defend","Connect:Scheme",
+			"Divider:Zombie","Divider:Scheme","Connect.Zombie"
+		];Id("Board").childNodes[0].childNodes[0].innerHTML="Directing..."
+		setTimeout('location="chess.html?mode="+"'+Mod[Val(Rnd()*Mod.length)]+'"',3000)
 	}
 }
 function LMd(n){
