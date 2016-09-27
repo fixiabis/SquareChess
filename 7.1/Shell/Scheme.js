@@ -14,8 +14,8 @@ function ExL(c){var t=Qre(c,"T"),k=0
 	if(Turn==0){
 		Lt=["FF","BB","RR","LL","FFLL","BBLL","FFR","FFL","FRR","FLL","FFRR","BBR","BBL","BRR","BLL","BBRR"]
 		for(i in Lt)if(Instr("FBRL",Lt[i][1])>-1)Lt[i]=Crd(c,Lt[i]);k=1
-	}
-	if(Ctn(Lt,"X")>0&&Turn==1)k=1
+	}console.log(Ctn(Lt,"X"))
+	if(Lt.indexOf(c)<0&&Turn==1)k=1
 	if(Turn<2&&t==""&&t!=" "&&k){Ara[Turn]=[]
 		for(i in cd8){var d=Crd(c,cd8[i]),b=Qre(d,"B")
 			if(b==""||b=="lightgray"){Qre(d,"B",Sqr[Turn+1][2]);Ara[Turn].push(d)}
