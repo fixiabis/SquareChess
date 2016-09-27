@@ -29,19 +29,17 @@ function Blk(r,l,s){
 		}
 	}
 }
-function Rul(){var Ara={O:0,X:0,P:0}
-	for(cd1=65;cd1<74;cd1++){
-		for(cd2=1;cd2<10;cd2++){
-			if(Qre(Chr(cd1)+cd2,"T")==" "&&Qre(Chr(cd1)+cd2,"B")!="dimgray"){var bc=Qre(Chr(cd1)+cd2,"B");Ara.P++
-				if(bc==Sqr[1][2])Ara.O++
-				if(bc==Sqr[2][2])Ara.X++
-			}else if(Qre(Chr(cd1)+cd2,"T")=="")Ara.P++
-			;else if(Qre(Chr(cd1)+cd2,"B")!="dimgray"){var bc=""
-				if((cd1+cd2)%2==0)bc="lightgray";Qre(Chr(cd1)+cd2,"B",bc)
-			}
+function Rul(){Scr={O:0,X:0,P:0}
+	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
+		if(Qre(Chr(cd1)+cd2,"T")==" "&&Qre(Chr(cd1)+cd2,"B")!="dimgray"){var bc=Qre(Chr(cd1)+cd2,"B");Scr.P++
+			if(bc==Sqr[1][2])Scr.O++
+			if(bc==Sqr[2][2])Scr.X++
+		}else if(Qre(Chr(cd1)+cd2,"T")=="")Scr.P++
+		;else if(Qre(Chr(cd1)+cd2,"B")!="dimgray"){var bc=""
+			if((cd1+cd2)%2==0)bc="lightgray";Qre(Chr(cd1)+cd2,"B",bc)
 		}
 	}
-	if(Ara.O>Ara.X||Ara.O>Ara.P/2)Cln("O Win")
-	if(Ara.O<Ara.X||Ara.X>Ara.P/2)Cln("X Win")
-	if(Ara.P==0)Cln("Draw")
+	if(Scr.O>Scr.X||Scr.O>Scr.P/2)Cln("O Win")
+	if(Scr.O<Scr.X||Scr.X>Scr.P/2)Cln("X Win")
+	if(Scr.P==0)Cln("Draw")
 }

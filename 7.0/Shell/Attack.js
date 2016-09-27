@@ -11,7 +11,6 @@ function ExR(){var Ara={O:0,X:0}
 }
 function ExB(){var bc=["crimson","royalblue","palevioletred","lightsteelblue"],c=["A1","I9"]
 	for(i in bc)for(j in dc[i])Qre(dc[i][j],"B",bc[i])
-	for(i in c){OgC(c[i]);Set(c[i])}
+	for(i in c){OgC(c[i]);Set(c[i])}crB()
 }
-function Adn(){bdB()}
-function Brd(){ExB();crB();Dft.Clr=0}
+function Brd(){ExB();;Dft.Clr=0}
