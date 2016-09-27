@@ -1,7 +1,7 @@
 body{margin:0px;cursor:default;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;overflow:hidden;font-family:Consolas}
 #UC{display:none}
 #UCL{position:fixed;background-color:gray;top:0px;left:0px;z-index:0;overflow:hidden;transition:all 2s;width:0px;opacity:0.8}
-.bt{transition:all 1s;text-align:center}
+.bt{transition:all 1s;text-align:center;font-size:Arial}
 .game{height:40px;line-height:40px;font-size:18px;transition:background-color 1s;width:160px;text-align:center;float:left;}
 .game:hover{background-color:lightgray;height:40px;color:dimgray}
 a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
