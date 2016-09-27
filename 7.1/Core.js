@@ -49,10 +49,8 @@ function LMd(n){
 	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln();Rsz()}
 	doc.body.appendChild(s)
 }
-function Mnu(e){var sz=0;if(!Id("Board"))return
-	if(e.pageX<Split(Id("Board").style.marginLeft,"px")[0]&&Id("UCL").clientLeft==0)sz=160
-	Id("UCL").style.width=sz+"px";Id("UCT").style.left=sz+4+"px"
-}
+function MsO(e){Mnu(e.pageX<Split(Id("Board").style.marginLeft,"px")[0]&&Id("UCL").clientLeft==0)}
+function Mnu(c){var sz=0;if(!Id("Board"))return;if(c)sz=160;Id("UCL").style.width=sz+"px";Id("UCT").style.left=sz+4+"px"}
 function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 	switch(k){
 		case  8:Udo();break
