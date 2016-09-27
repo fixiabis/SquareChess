@@ -69,18 +69,18 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 	}
 }
 function KUp(e){
-	if(e.which<41&&e.which>36&&Hst.Dir!=""){Set(Crd(Hst.Crd[Turn],Hst.Dir));Hst.Dir=""}
+	if(e.which<41&&e.which>36&&Hst.Dir!=""){Set(Crd(Hst.Crd[Tn],Hst.Dir));Hst.Dir=""}
 }
-function Udo(){Rdr(Turn-1)}
-function Rdo(){Rdr(Turn+1)}
+function Udo(){Rdr(Tn-1)}
+function Rdo(){Rdr(Tn+1)}
 function Lst(){Rdr(Hst.Brd.length-1)}
 function Gto(){Rdr(prompt("Go to turn:"))}
-function Clr(){if(Turn>2)Cln("Clean Board?");else Cln()}
+function Clr(){if(Tn>2)Cln("Clean Board?");else Cln()}
 function Adn(){bdB();ExA()}
-function Set(c){if(!Lmt(c)){Hst.Crd[Turn+1]=c;Qre(c,"T",Sbl[Turn%2]);Turn++}Rul();Wtr()}
-function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Turn]=b}
+function Set(c){if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}
+function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Tn]=b}
 function Rdr(b){
-	if(typeof b=="number")if(Hst.Brd[b]){Rdr(Hst.Brd[b]);Turn=b}if(!b.length)return
+	if(typeof b=="number")if(Hst.Brd[b]){Rdr(Hst.Brd[b]);Tn=b}if(!b.length)return
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Sym(Chr(cd1)+cd2,Val(b[(cd1-65)*9+cd2-1]))
 }
 function Crd(c,r){var x=0,y=0
@@ -118,7 +118,7 @@ function Sym(c,v){
 }
 function Cln(m,t){var k=1;if(!m)m="";if(!t)t=""
 	if(m!="")k=confirm(m)
-	if(k){Turn=0;Hst={Brd:[],Crd:[]}
+	if(k){Tn=0;Hst={Brd:[],Crd:[]}
 		for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue
 			Sym(Chr(cd1)+cd2,2)
 		}Brd();Wtr()
@@ -132,7 +132,7 @@ function bdB(){
 	var Bk=Val(prompt("Add Block?(Max:27)",Dft.Blk))
 	if(typeof Bk=="number"){
 		if(Bk<0)Bk=0;if(Bk>27)Bk=27;Dft.Blk=Bk
-	}if(Turn==0)Cln()
+	}if(Tn==0)Cln()
 }
 function crB(){var b=0
 	while(b!=Dft.Blk){var cd1=Val(Rnd()*9)+65,cd2=Val(Rnd()*9+1),clr=Qre(Chr(cd1)+cd2,"B")
