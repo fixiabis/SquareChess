@@ -9,7 +9,7 @@ function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' onconte
 			bd+="<td id='"+Chr(cd1)+cd2+"' onclick='Set(this.id)' ondblclick='ToS(this.id)' class='bt'></td>"
 		}bd+="</tr>"
 	}Id("Board").innerHTML=bd+"</table><div id='UC'><table><tr><td class='bt' onClick='Udo()' onContextMenu='Gto()'>Undo</td><td class='bt' onclick='Clr()' onContextMenu='Adn()'>Clean</td></tr></table></div>"
-	Id("Board").style.animation="down 2s";Rsz()
+	Id("Board").style.animation="down 2s"
 }
 function Rsz(){
 	Id("Board").style.height="0px";Id("UC").style.display="none"
@@ -26,7 +26,9 @@ function Rsz(){
 	Id("Board").style.height=sz*9+"px";Id("UC").style.width=sz*9+"px"
 	Id("Board").style.marginLeft=(document.body.clientWidth-(sz*9))/2+"px"
 	if(C)Id("Board").style.marginTop=(document.body.clientHeight-(sz*9))/2+"px"
-	Id("UC").style.marginLeft=(document.body.clientWidth-(sz*9))/2+"px"	
+	Id("UC").style.marginLeft=(document.body.clientWidth-(sz*9))/2+"px"
+	if(Val(Split(Id("Board").style.marginLeft,"px")[0])<40)Id("UCT").style.display="none"
+	else Id("UCT").style.display="inline"
 }
 function Ldr(){
 	if(location.search&&location.search!="?"){var sr=location.search.replace("%3A",":")
@@ -44,12 +46,12 @@ function Ldr(){
 function LMd(n){
 	var s=doc.createElement("script")
 	s.src="Shell/"+LdM[n]+".js"
-	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln()}
+	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln();Rsz()}
 	doc.body.appendChild(s)
 }
-function Mnu(e){var sz="0px";if(!Id("Board"))return
-	if(e.pageX<Split(Id("Board").style.marginLeft,"px")[0]&&Id("UCL").clientLeft==0)sz="160px"
-	Id("UCL").style.width=sz
+function Mnu(e){var sz=0;if(!Id("Board"))return
+	if(e.pageX<Split(Id("Board").style.marginLeft,"px")[0]&&Id("UCL").clientLeft==0)sz=160
+	Id("UCL").style.width=sz+"px";Id("UCT").style.left=sz+4+"px"
 }
 function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 	switch(k){
