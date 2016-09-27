@@ -2,7 +2,7 @@ body{margin:0px;cursor:default;user-select:none;-moz-user-select:none;-webkit-us
 #UC{display:none}
 #UCL{position:fixed;background-color:gray;top:0px;left:0px;z-index:0;overflow:hidden;transition:all 2s;width:0px;opacity:0.8}
 .bt{transition:all 1s;text-align:center}
-.game{height:40px;line-height:40px;font-size:20px;transition:background-color 1s;width:160px;text-align:center;float:left;}
+.game{height:40px;line-height:40px;font-size:18px;transition:background-color 1s;width:160px;text-align:center;float:left;}
 .game:hover{background-color:lightgray;height:40px;color:dimgray}
 a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 #menu{color:white;background:gray;animation:listdw 1s;overflow:hidden;position:fixed}
@@ -13,7 +13,7 @@ a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 #DIR{float:right;transition:all 2s}
 .cover,.mcover{overflow:hidden;transition:all 1s}
 ul{transition:all 1s}.key{color:steelblue}.mus{color:indianred}.opt{color:darkslateblue}
-#run{width:100px;height:100px;background:gray;border-radius:10px;line-height:100px;text-align:center;transition:transform 2s;animation:core 3s infinite;color:white}
+#run{width:100px;height:100px;background:gray;border-radius:10px;line-height:100px;text-align:center;transition:transform 2s;animation:core 3s infinite;color:white;font-size:15px}
 @keyframes core{
 	0%{transform:opacity:0}
 	50%{transform:rotate(720deg);opacity:1}
