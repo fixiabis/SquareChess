@@ -10,7 +10,7 @@
 <script src="Core.js"></script>
 </head>
 <body onLoad="Ldr()" onResize="Rsz()" onBeforeUnload="if(Turn>2)return '棋局尚未結束'" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)" onmouseover="MsO(event)" onKeyUp="KUp(event)">
-<div id="UCT" onclick="if(Id('UCL').style.width=='0px')Mnu(1);else Mnu(0)"></div>
+<div id="UCT" onclick="if(Id('UCL').style.width!='0px')Mnu(0)"></div>
 <div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
 <div id='UCL'>
 <div onclick='Clr()' class='game'>Clean</div>
