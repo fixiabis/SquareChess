@@ -1,5 +1,5 @@
 Sqr[1]=[" ","","palevioletred"];Sqr[2]=[" ","","lightsteelblue"]
-function Lmt(c,s){if(!s)s=Sbl[Turn%2]
+function Lmt(c,s){if(!s)s=Sbl[Tn%2]
 	if("OX".search(Qre(c,"T"))>-1&&Qre(c,"T")!="")return 1
 	if(Qre(c,"B")==Sqr[1][2]&&s!="O")return 1
 	if(Qre(c,"B")==Sqr[2][2]&&s!="X")return 1

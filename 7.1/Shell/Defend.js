@@ -13,7 +13,7 @@ function ExR(){Scr={O:0,X:0}
 	for(i in dc){var Os=Ctn(dc[i],"O"),Xs=Ctn(dc[i],"X")
 		if(Os>5&&Xs==0||Os==9)Scr.O++;else if(Xs>5&&Os==0||Xs==9)Scr.X++
 	}
-	if(Turn%2==0){
+	if(Tn%2==0){
 		if(Scr.O>Scr.X)Cln("O Win")
 		if(Scr.O<Scr.X)Cln("X Win")
 		if(Scr.O==Scr.X&&Scr.O!=0)Cln("Draw")

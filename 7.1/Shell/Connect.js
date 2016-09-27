@@ -1,8 +1,8 @@
 Dft.Rnd=false
 function ExA(){bdR()}
-function Lmt(c,s){var k=0;if(!s){s=Sbl[Turn%2];k=ExL(c)}
+function Lmt(c,s){var k=0;if(!s){s=Sbl[Tn%2];k=ExL(c)}
 	if(!Id(c)||Qre(c,"T")!="")return 1;if(k)return k
-	if(Turn<2&&Qre(c,"T")=="")return 0
+	if(Tn<2&&Qre(c,"T")=="")return 0
 	for(i in cd8)if(Id(Crd(c,cd8[i])))if(Qre(Crd(c,cd8[i]),"T")==s)return 0
 	return 1
 }
@@ -20,13 +20,13 @@ function Rul(){Scr={O:0,X:0,P:0}
 			if(!Os&&Xs){Id(c).title="X"+i;Scr.X++}
 		}
 	}
-	if(Scr.P==0&&Turn%2==0){
+	if(Scr.P==0&&Tn%2==0){
 		if(Scr.O>Scr.X)Cln("O Win")
 		else if(Scr.O<Scr.X)Cln("X Win")
 		else Cln("Draw")
 	}ExR()
 }
-function bdR(){Dft.Rnd=confirm("First Set fixed? Now is "+Dft.Rnd);if(Turn==0)Cln()}
+function bdR(){Dft.Rnd=confirm("First Set fixed? Now is "+Dft.Rnd);if(Tn==0)Cln()}
 function crR(){if(!Dft.Rnd)return
 	var R=[["E4","E6","D5","F5"],["D4","D6","F4","F6"]]
 	for(i in R){var p=Val(Rnd()*4);Set(R[i][p])}

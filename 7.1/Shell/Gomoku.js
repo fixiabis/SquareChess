@@ -2,7 +2,7 @@ Dft.Pro=false
 function Adn(){bdB();bdP()}
 function Lmt(c){
 	if(Qre(c,"T")!="")return 1
-	if(Turn==2&&Dft.Pro)if(Asc(c[0])>66&&Asc(c[0])<72&&c[1]>2&&c[1]<8)return 1
+	if(Tn==2&&Dft.Pro)if(Asc(c[0])>66&&Asc(c[0])<72&&c[1]>2&&c[1]<8)return 1
 	return 0
 }
 function Brd(){crB();if(Dft.Pro)Set("E5")}
@@ -18,10 +18,10 @@ function Rul(){var cd4=Split("B;R;BR;BL",";");Scr={O:0,X:0}
 			}
 		}
 	}
-	if(Turn%2==0)if(Scr.O!=0||Scr.X!=0){
+	if(Tn%2==0)if(Scr.O!=0||Scr.X!=0){
 		if(Scr.O==Scr.X)Cln("Draw")
 		if(Scr.O>Scr.X)Cln("O Win")
 		if(Scr.O<Scr.X)Cln("X Win")
 	}
 }
-function bdP(){Dft.Pro=confirm("Use Gomoku-Pro Rule? Now is "+Dft.Pro);if(Turn==0)Cln()}
+function bdP(){Dft.Pro=confirm("Use Gomoku-Pro Rule? Now is "+Dft.Pro);if(Tn==0)Cln()}
