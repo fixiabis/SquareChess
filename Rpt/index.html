@@ -8,7 +8,7 @@
 <style>
 body{background:gray;margin:0px}
 .s{background:lightgray;color:gray;border:none}
-#Content,#Sent{width:100%}#Title{width:50%}
+#Content,#Sent{width:500px}#Title{width:200px}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
@@ -33,15 +33,24 @@ function rf(){
 		case 2:Id("Title").placeholder="Statements";Id("Content").placeholder="Best translate or provide new language"
 	}
 }
+function resize(){
+	if(document.body.clientWidth<500){
+		Id("Content").style.width="100%"
+		Id("Title").style.width="50%"
+	}else{
+		Id("Content").style.width="500px"
+		Id("Title").style.width="200px"
+	}
+}
 </script>
 </head>
-<body>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+<body onresize="resize()">
+<table border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
   <td colspan="2" style="color:white;font-size:24px">Report your problem or suggest or best translate</td>
   </tr>
   <tr>
-    <td width="10%">Type</td>
+    <td>Type</td>
     <td>
         <select id="Type" class="s" onChange="rf()">
             <option>Problem</option>
