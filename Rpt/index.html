@@ -8,7 +8,7 @@
 <style>
 body{background:gray;margin:0px}
 .s{background:lightgray;color:gray;border:none}
-#Content,#Sent{width:500px}#Title{width:200px}
+#Sent{width:100%}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
@@ -44,7 +44,7 @@ function resize(){
 }
 </script>
 </head>
-<body onresize="resize()">
+<body onresize="resize()" onload="resize()">
 <table border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
   <td colspan="2" style="color:white;font-size:24px">Report your problem or suggest or best translate</td>
