@@ -11,7 +11,8 @@ var language={
 		SDRule:"<li>Set the symbol need connect(no limit distance nearby your before the symbol set)</li><li>If you can't set the symbol, then you lose.</li>",
 		SDZRule:"<li>Inherit Square.Divider's Rule</li><li>Over turn 10,nearby symbol is not your symbol,then symbol will turn to Zombie.</li>",
 		CGRule:"<a href='https://en.wikipedia.org/wiki/Gomoku' target='new'>Gomoku Rule</a>",
-		FRule:"No limit to set symbol."
+		FRule:"No limit to set symbol.",
+		Report:"Report a problem or provide best translate"
 	},
 	zh:{
 		Start:"開始遊玩Square棋盤系列",
@@ -25,6 +26,7 @@ var language={
 		SDRule:"<li>設置符號需產生連線(即設置在你之前所設置的符號八方無限距離，只要不被對方符號擋下皆可)</li><li>如果你無法設置符號，那你就輸了</li>",
 		CGRule:"<a href='https://zh.wikipedia.org/wiki/gomoku' target='new'>五子棋遊戲規則</a>",
 		SDZRule:"<li>延用Square.Divider的規則</li><li>超過十回合後，附近的符號若非我方符號，將會變成殭屍</li>",
-		FRule:"可隨意設置符號"
+		FRule:"可隨意設置符號",
+		Report:"回報問題"
 	}
 }
