@@ -13,7 +13,8 @@ a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 #C:hover,#CA:hover,#CD:hover,#CS:hover{color:royalblue}#B:hover{color:crimson}#D:hover,#DZ:hover{color:seagreen}
 #DIR{float:right;transition:all 2s}
 .cover,.mcover{overflow:hidden;transition:all 1s}
-#Report{float:right;font-size:20px}#Report:hover{color:red}
+#Report,#facebook,#twitter{float:right;font-size:20px;margin-left:10px}#Report:hover{color:red}
+#facebook:hover{color:#3b5998}#twitter:hover{color:#1da1f2}
 ul{transition:all 1s}.key{color:steelblue}.mus{color:indianred}.opt{color:darkslateblue}
 #run{width:100px;height:100px;background:gray;border-radius:10px;line-height:100px;text-align:center;transition:transform 2s;animation:core 3s infinite;color:white;font-size:15px}
 @keyframes core{
