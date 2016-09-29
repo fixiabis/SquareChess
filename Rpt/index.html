@@ -13,7 +13,7 @@ body{background:gray;margin:0px}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 function Id(id){return document.getElementById(id)}
-function Send(){if(Id("Title").value==""){alert("No title!");return}var ver=location.hash.split("#")[1];
+function Send(){if(Id("Title").value==""){alert("No title!");return}var ver=location.hash.split("#")[1];if(!ver)ver=""
 	Id("Submit").onclick=function (){};Id("Submit").style.backgroundColor="dimgray"
 	$.get("https://script.google.com/macros/s/AKfycbwz5OUuveX4rVcbrhizhfh3Hn7X1wG9P9VXPgCxCkbwJQCi54tH/exec",{
 		"Type":Id("Type").childNodes[Id("Type").selectedIndex+1].innerHTML,
