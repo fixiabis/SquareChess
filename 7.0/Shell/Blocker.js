@@ -41,7 +41,7 @@ function Rul(){var Ara={O:0,X:0,P:0}
 			}
 		}
 	}
-	if(Ara.O>Ara.X||Ara.O>Ara.P/2)Cln("O Win")
-	if(Ara.O<Ara.X||Ara.X>Ara.P/2)Cln("X Win")
+	if(Ara.O>Ara.X&&Ara.O>Ara.P/2)Cln("O Win")
+	if(Ara.O<Ara.X&&Ara.X>Ara.P/2)Cln("X Win")
 	if(Ara.P==0)Cln("Draw")
 }
