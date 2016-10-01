@@ -4,7 +4,7 @@ function Lmt(c,s){var k=0;if(!s){s=Sbl[Tn%2];k=ExL(c)}
 	for(i in cd8){var tx=cd8[i]
 		while(true){
 			if(Id(Crd(c,tx))){
-				if(Qre(Crd(c,tx),"T")==s)return 0;else if(Qre(Crd(c,tx),"T")!="")break
+				if(Qre(Crd(c,tx),"T")==s){Dft.Fcd=Crd(c,tx);return 0}else if(Qre(Crd(c,tx),"T")!="")break
 			}else break;tx+=cd8[i]
 		}
 	}return 1

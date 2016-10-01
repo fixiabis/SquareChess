@@ -3,7 +3,7 @@ function ExA(){bdR()}
 function Lmt(c,s){var k=0;if(!s){s=Sbl[Tn%2];k=ExL(c)}
 	if(!Id(c)||Qre(c,"T")!="")return 1;if(k)return k
 	if(Tn<2&&Qre(c,"T")=="")return 0
-	for(i in cd8)if(Id(Crd(c,cd8[i])))if(Qre(Crd(c,cd8[i]),"T")==s)return 0
+	for(i in cd8)if(Id(Crd(c,cd8[i])))if(Qre(Crd(c,cd8[i]),"T")==s){Dft.Fcd=Crd(c,cd8[i]);return 0}
 	return 1
 }
 function Rul(){Scr={O:0,X:0,P:0}
@@ -31,4 +31,4 @@ function crR(){if(!Dft.Rnd)return
 	var R=[["E4","E6","D5","F5"],["D4","D6","F4","F6"]]
 	for(i in R){var p=Val(Rnd()*4);Set(R[i][p])}
 }
-function ExB(){crR()}function ExR(){}function ExL(){return 0}
+function ExB(){crR()}
