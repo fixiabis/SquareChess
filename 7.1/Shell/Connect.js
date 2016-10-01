@@ -1,10 +1,10 @@
 Dft.Rnd=false
 function ExA(){bdR()}
-function Lmt(c,s){var k=0;if(!s){s=Sbl[Tn%2];k=ExL(c)}
+function Lmt(c,s){var k=0,r=1;if(!s){s=Sbl[Tn%2];k=ExL(c)}
 	if(!Id(c)||Qre(c,"T")!="")return 1;if(k)return k
 	if(Tn<2&&Qre(c,"T")=="")return 0
-	for(i in cd8)if(Id(Crd(c,cd8[i])))if(Qre(Crd(c,cd8[i]),"T")==s){Dft.Fcd=Crd(c,cd8[i]);return 0}
-	return 1
+	for(i in cd8)if(Id(Crd(c,cd8[i])))if(Qre(Crd(c,cd8[i]),"T")==s){Dft.Fcd+=Crd(c,cd8[i]);r=0}
+	return r
 }
 function Rul(){Scr={O:0,X:0,P:0}
 	for(var i=0;i<9;i++)for(cd1=65;cd1<74;cd1++){

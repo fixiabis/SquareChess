@@ -4,5 +4,5 @@ function ExL(c){
 }
 function XLt(c){
 	if(!Hst.Crd[Tn-2]){Dft.Lmt=0;return 0}Lmt(c);Dft.Lmt=0
-	if(Dft.Fcd!=Hst.Crd[Tn-1])return 1;else return 0
+	if(Instr(Dft.Fcd,Hst.Crd[Tn-1])<0)return 1;else return 0
 }
