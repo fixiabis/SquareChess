@@ -1,10 +1,10 @@
-function Lmt(c,s){var k=0,r=1;if(!s){s=Sbl[Tn%2];k=ExL(c)}
+function Lmt(c,s){var k=0,r=1;Dft.Fcd="";if(!s){s=Sbl[Tn%2];k=ExL(c)}
 	if(!Id(c)||Qre(c,"T")!="")return 1;if(k)return k
 	if(Tn<2&&Qre(c,"T")=="")return 0
 	for(i in cd8){var tx=cd8[i]
 		while(true){
 			if(Id(Crd(c,tx))){
-				if(Qre(Crd(c,tx),"T")==s){Dft.Fcd=Crd(c,tx);r=0}else if(Qre(Crd(c,tx),"T")!="")break
+				if(Qre(Crd(c,tx),"T")==s){Dft.Fcd+=Crd(c,tx);r=0}else if(Qre(Crd(c,tx),"T")!="")break
 			}else break;tx+=cd8[i]
 		}
 	}return r

@@ -1,6 +1,6 @@
 Dft.Rnd=false
 function ExA(){bdR()}
-function Lmt(c,s){var k=0,r=1;if(!s){s=Sbl[Tn%2];k=ExL(c)}
+function Lmt(c,s){var k=0,r=1;Dft.Fcd="";if(!s){s=Sbl[Tn%2];k=ExL(c)}
 	if(!Id(c)||Qre(c,"T")!="")return 1;if(k)return k
 	if(Tn<2&&Qre(c,"T")=="")return 0
 	for(i in cd8)if(Id(Crd(c,cd8[i])))if(Qre(Crd(c,cd8[i]),"T")==s){Dft.Fcd+=Crd(c,cd8[i]);r=0}
