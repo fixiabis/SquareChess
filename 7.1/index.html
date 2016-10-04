@@ -39,8 +39,9 @@ function c(v,o){var s=0
 	for(i=0;i<Class("game").length;i++){var d=0
 		if(o||Class("game")[i]==v||ctr){d=Class("cover")[i].scrollHeight;s=d}
 		Class("cover")[i].style.height=d+"px"
-	}
-	Class("mcover")[1].style.height=s+Class("mcover")[1].firstChild.clientHeight+"px"
+	}s=s+Class("mcover")[1].firstChild.clientHeight
+	if(ctr)s=Class("mcover")[1].clientHeight+"px"
+	Class("mcover")[1].style.height=s+"px"
 }
 function mc(v,o){
 	for(var i=0;i<Class("mcover").length;i++){var d=0
