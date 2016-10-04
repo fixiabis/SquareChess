@@ -39,7 +39,7 @@ function Ldr(){
 			"Connect","Blocker","Divider",
 			"Connect:Attack","Connect:Defend","Connect:Scheme",
 			"Divider:Zombie","Divider:Scheme","Connect:Zombie",
-			"Divider:Follow","Connect:Follow"
+			"Divider:Follow","Connect:Follow","Blocker:ByLine"
 		];Id("Board").childNodes[0].childNodes[0].innerHTML="Directing..."
 		setTimeout('location="chess.html?mode="+"'+Mod[Val(Rnd()*Mod.length)]+'"',2000)
 	}

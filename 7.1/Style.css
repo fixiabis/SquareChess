@@ -11,7 +11,7 @@ a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 #content{animation:show 2s;}
 #T{text-align:center;transition:all 1s}
 #C:hover,#CA:hover,#CD:hover,#CS:hover{color:royalblue}
-#B:hover{color:crimson}
+#B:hover,#BB:hover{color:crimson}
 #D:hover,#DZ:hover,#DF:hover{color:seagreen}
 #DIR{float:right;transition:all 2s}
 .cover,.mcover{overflow:hidden;transition:all 1s}
