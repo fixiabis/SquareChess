@@ -27,10 +27,12 @@ function resize(){var v=document.body.scrollWidth-300,s=Math.floor(v/160),p=Clas
 function menu(v){var h=Id("menu").scrollHeight+"px";resize()
 	if(v){
 		Id("menu").style.height=h
+		Id("Ctt").style.top=h
 		if(!ctr)Id("T").style.lineHeight=h
 	}else{
 		Id("menu").style.height="40px"
 		Id("T").style.lineHeight="40px"
+		Id("Ctt").style.top="40px"
 	}Id("mens").style.height=Id("menu").style.height
 }
 function c(v,o){var s=0
@@ -80,10 +82,10 @@ function Lan(){var typ=navigator.language.substr(0,2)
 </div>
 <div id="mens"></div>
 <div id="content">
-<div style="height:20px;overflow:hidden;line-height:20px">
-<div onclick="location='../Rpt/index.html#7.1'" id="Report"></div>
-<div id="facebook" onclick="location='https://fb.me/SquareChessGame'">like us </div>
-<div id="twitter" onclick="location='https://twitter.com/SquareChessGame'">follow us</div>
+<div id="Ctt">
+<div onClick="location='../Rpt/index.html#7.1'" id="Report"></div>
+<div id="facebook" onClick="location='https://fb.me/SquareChessGame'">like us </div>
+<div id="twitter" onClick="location='https://twitter.com/SquareChessGame'">follow us</div>
 </div>
 <div class="mcover"><h1 id="Start"></h1><font id="operationT"></font><ul id="operation"></ul></div>
 <div class="mcover">
