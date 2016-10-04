@@ -1,5 +1,5 @@
 Sqr[1]=[" ","","palevioletred"];Sqr[2]=[" ","","lightsteelblue"]
-function Lmt(c,s){if(!s)s=Sbl[Tn%2]
+function Lmt(c,s){if(!s)s=Sbl[Tn%2];ExL(c,s)
 	if("OX".search(Qre(c,"T"))>-1&&Qre(c,"T")!="")return 1
 	if(Qre(c,"B")==Sqr[1][2]&&s!="O")return 1
 	if(Qre(c,"B")==Sqr[2][2]&&s!="X")return 1
@@ -15,7 +15,7 @@ function Loc(c,s){var c1=Asc(c[0]),c2=Val(c[1])
 				Blk(r,l,s);return 0
 			}
 		}
-	}OgC(c);return 0
+	}return 0
 }
 function Blk(r,l,s){
 	for(var cd1=65;cd1<74;cd1++){

@@ -109,6 +109,7 @@ function Sym(c,v){
 			if(Dft.Clr)OgC(c);Qre(c,"T",Sbl[v])
 		}return v
 	}
+	if(c.length<2)for(i=0;i<3;i++)if(c==Sbl[i])return i
 	for(i in Sqr){var n=0
 		if(Qre(c,"F")==Sqr[i][1])n++
 		if(Qre(c,"B")==Sqr[i][2])n++
