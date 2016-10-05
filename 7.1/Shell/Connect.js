@@ -23,9 +23,13 @@ function Rul(){var a=0;Scr={O:0,X:0,P:0}
 		}
 	}
 	if(Scr.P==0&&Tn%2==0){
-		if(Scr.O>Scr.X)Cln("O Win")
-		else if(Scr.O<Scr.X)Cln("X Win")
-		else Cln("Draw")
+		if(Scr.O>Scr.X)Cln("O Win.","")
+		else if(Scr.O<Scr.X)Cln("X Win.","")
+		else Cln("Draw","")
+	}else if(Tn>2){
+		if(Scr.O==0&&Scr.X==0)Cln("Draw","")
+		else if(Scr.O==0)Cln("X Win.","")
+		else if(Scr.X==0)Cln("O Win.","")
 	}ExR()
 }
 function bdR(){Dft.Rnd=confirm("First Set fixed? Now is "+Dft.Rnd);if(Tn==0)Cln()}
