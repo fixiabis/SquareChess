@@ -52,7 +52,7 @@ function LMd(n){
 }
 function PLd(){
 	if(location.hash){
-		var crd=parseInt(location.hash.split("#")[1],36).toString(18).toUpperCase()
+		var crd=parseInt(location.hash.split("#")[1],36).toString(19).toUpperCase()
 		for(var i=0;i<crd.length;i+=2)Set(crd[i]+crd[i+1])
 	}
 }
@@ -79,7 +79,7 @@ function KUp(e){
 	if(e.which<41&&e.which>36&&Hst.Dir!=""){Set(Crd(Hst.Crd[Tn],Hst.Dir));Hst.Dir=""}
 }
 function Rec(){var r="",l=location.href
-	for(i=1;i<Hst.Crd.length;i++)r+=Hst.Crd[i];prompt("Copy this url:",l.replace(location.hash,"")+"#"+parseInt(r,18).toString(36))
+	for(i=1;i<Hst.Crd.length;i++)r+=Hst.Crd[i];prompt("Copy this url:",l.replace(location.hash,"")+"#"+parseInt(r,19).toString(36))
 }
 function Udo(){Rdr(Tn-1)}
 function Rdo(){Rdr(Tn+1)}
