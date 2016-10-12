@@ -5,6 +5,7 @@
 <link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
 <meta name="mobile-web-app-capable" content="yes" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <style>@import "Style.css";</style>
 <script src="language.js"></script>
 <script src="Simplify.js"></script>
@@ -15,6 +16,20 @@ function d(v){
 	Id("content").style.display="none";
 	if(Mid(v,0,6)=="Square")v=Mid(v,7,v.length-6)
 	setTimeout("location='chess.html?mode='+'"+v+"'",500)
+}
+function Send(){if(Id("Title").value==""){alert("No title!");return}
+	Id("Submit").onclick=function (){};Id("Submit").style.backgroundColor="dimgray"
+	$.get("https://script.google.com/macros/s/AKfycbwz5OUuveX4rVcbrhizhfh3Hn7X1wG9P9VXPgCxCkbwJQCi54tH/exec",{
+		Type:"Problem:7.1.1",
+		Title:Id("Title").value,
+		Content:Id("Content").value
+	 },function (data){
+		alert("Thanks your report!")
+		Id("Submit").onclick=function (){Send()}
+		Id("Submit").style.backgroundColor="lightgray"
+		Id("Title").value="";Id("Content").value=""
+	   }
+	)
 }
 function resize(){var v=document.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game").length;ctr=0
 	Id("T").style.width="300px"
@@ -85,7 +100,7 @@ function Lan(){var typ=navigator.language.substr(0,2)
 <div id="mens"></div>
 <div id="content">
 <div id="Ctt">
-<div onClick="location='../Rpt/index.html#7.1'" id="Report"></div>
+<div onClick="mc(2,0)" id="Report"></div>
 <div id="facebook" onClick="location='https://fb.me/SquareChessGame'">like us </div>
 <div id="twitter" onClick="location='https://twitter.com/SquareChessGame'">follow us</div>
 </div>
@@ -105,6 +120,8 @@ function Lan(){var typ=navigator.language.substr(0,2)
 <div class="cover">Divider:Follow:<ul id="SDFRule"></ul></div>
 <div class="cover">Gomoku<ul id="CGRule"></ul></div>
 <div class="cover">Freedom Mode<ul id="FRule"></ul></div>
+</div>
+<div class="mcover" id="RPT">
 </div>
 </div>
 <div id="toTop" class="cover" style="border-radius:50px;width:50px;height:50px;text-align:center;line-height:50px;color:white;background:gray;bottom:5px;right:5px;position:fixed;opacity:0" onClick="document.body.scrollTop=0">Top</div>

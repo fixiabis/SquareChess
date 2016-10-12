@@ -17,7 +17,8 @@ var language={
 		FRule:"No limit to set symbol.",
 		Report:"Report a problem or provide best translate",
 		facebook:"Like us",
-		twitter:"Follow us"
+		twitter:"Follow us",
+		RPT:""
 	},
 	zh:{
 		Start:"開始遊玩Square棋盤系列",
@@ -37,6 +38,7 @@ var language={
 		FRule:"可隨意設置符號",
 		Report:"回報問題",
 		facebook:"給個讚吧",
-		twitter:"跟隨我們"
+		twitter:"跟隨我們",
+		RPT:"<form id='RForm'><input type='text' id='Title' placeholder='輸入標題' class='txt'/><br /><textarea rows='5' class='txt' id='Content' placeholder='簡短說明你遇到的問題'></textarea><div class='btn' id='Submit' onClick='Send()'>確認</div><div class='btn' id='Reset' onClick='Id('RForm').reset()'>取消</div></form>"
 	}
 }
