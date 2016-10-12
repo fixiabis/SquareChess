@@ -10,33 +10,37 @@
 <script src="language.js"></script>
 <script src="Simplify.js"></script>
 <script>
-var ctr=0
+var ctr=0,lg="",lng={en:{NT:"NO title",TK:"Thanks your report!"},zh:{NT:"無標題",TK:"感謝你的回報！"}}
 function d(v){
 	Id("menu").style.transform="translateY(-100%)";
 	Id("content").style.display="none";
 	if(Mid(v,0,6)=="Square")v=Mid(v,7,v.length-6)
 	setTimeout("location='chess.html?mode='+'"+v+"'",500)
 }
-function Send(){if(Id("Title").value==""){alert("No title!");return}
-	Id("Submit").onclick=function (){};Id("Submit").style.backgroundColor="dimgray"
+function Send(){if(Id("Title").value==""){alert(lng[lg].NT);return}
+	Id("Submit").onclick=function (){};Id("Submit").style.backgroundColor="white"
 	$.get("https://script.google.com/macros/s/AKfycbwz5OUuveX4rVcbrhizhfh3Hn7X1wG9P9VXPgCxCkbwJQCi54tH/exec",{
 		Type:"Problem:7.1.1",
 		Title:Id("Title").value,
 		Content:Id("Content").value
 	 },function (data){
-		alert("Thanks your report!")
+		alert(lng[lg].TK)
 		Id("Submit").onclick=function (){Send()}
 		Id("Submit").style.backgroundColor="lightgray"
 		Id("Title").value="";Id("Content").value=""
 	   }
 	)
 }
-function resize(){var v=document.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game").length;ctr=0
+function resize(){var v=doc.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game").length;ctr=0
 	Id("T").style.width="300px"
-	if(s==0){Id("T").style.width=document.body.clientWidth;s=Math.floor(document.body.clientWidth/160);ctr=1}
+	if(s==0){Id("T").style.width=doc.body.clientWidth;s=Math.floor(doc.body.clientWidth/160);ctr=1}
 	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160;Id("DIR").style.marginRight="0px"
-	if(ctr)Id("DIR").style.marginRight=(document.body.clientWidth-Id("DIR").clientWidth)/2
-	Id("menu").style.width=document.body.clientWidth+"px"
+		Id("RPP").parentNode.childNodes[3].style.width="60%"
+	if(ctr){
+		Id("DIR").style.marginRight=(doc.body.clientWidth-Id("DIR").clientWidth)/2
+		Id("RPP").parentNode.childNodes[3].style.width="100%"
+	}
+	Id("menu").style.width=doc.body.clientWidth+"px"
 }
 function menu(v){var h=Id("menu").scrollHeight+"px";resize()
 	if(v){
@@ -64,7 +68,7 @@ function mc(v,o){if(ctr)return
 	}
 }
 function mf(){
-    if(document.body.scrollTop>Id("menu").clientHeight){
+    if(doc.body.scrollTop>Id("menu").clientHeight){
         Id("menu").style.opacity=0.8
         Id("toTop").style.opacity=0.8
     }else{
@@ -74,7 +78,7 @@ function mf(){
 }
 function Lan(){var typ=navigator.language.substr(0,2)
 	if(location.hash)typ=location.hash.substr(1,2)
-	if(!language[typ])typ="en"
+	if(!language[typ])typ="en";lg=typ
 	for(i in language[typ])Id(i).innerHTML=language[typ][i]
 	resize();if(!ctr)mc(0,0)
 }
@@ -121,10 +125,14 @@ function Lan(){var typ=navigator.language.substr(0,2)
 <div class="cover">Gomoku<ul id="CGRule"></ul></div>
 <div class="cover">Freedom Mode<ul id="FRule"></ul></div>
 </div>
-<div class="mcover" id="RPT">
+<div class="mcover">
+<h1 id="RPP"></h1>
+<table align="center" style="border:none">
+<tr><td id="RPT"></td></tr>
+</table>
 </div>
 </div>
-<div id="toTop" class="cover" style="border-radius:50px;width:50px;height:50px;text-align:center;line-height:50px;color:white;background:gray;bottom:5px;right:5px;position:fixed;opacity:0" onClick="document.body.scrollTop=0">Top</div>
+<div id="toTop" class="cover" style="border-radius:50px;width:50px;height:50px;text-align:center;line-height:50px;color:white;background:gray;bottom:5px;right:5px;position:fixed;opacity:0" onClick="doc.body.scrollTop=0">Top</div>
 <script>
 for(i in Class("game")){
 	Class("game")[i].addEventListener("click",function(){d(this.innerHTML)})
