@@ -18,7 +18,7 @@ var language={
 		Report:"Report a problem or provide best translate",
 		facebook:"Like us",
 		twitter:"Follow us",
-		RPT:""
+		RPT:"<form id='RForm'><input type='text' id='Title' placeholder='title' class='txt'/><br /><textarea rows='5' class='txt' id='Content' placeholder='content'></textarea><div class='btn' id='Submit' onClick='Send()'>Submit</div><div class='btn' id='Reset' onClick='Id('RForm').reset()'>Cancel</div></form>"
 	},
 	zh:{
 		Start:"開始遊玩Square棋盤系列",
