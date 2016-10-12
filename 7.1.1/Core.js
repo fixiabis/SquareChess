@@ -47,14 +47,8 @@ function Ldr(){
 function LMd(n){
 	var s=doc.createElement("script")
 	s.src="Shell/"+LdM[n]+".js"
-	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln();Rsz();PLd()}
+	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln();Rsz()}
 	doc.body.appendChild(s)
-}
-function PLd(){
-	if(location.hash){
-		var crd=parseInt(location.hash.split("#")[1],36).toString(19).toUpperCase()
-		for(var i=0;i<crd.length;i+=2)Set(crd[i]+crd[i+1])
-	}
 }
 function MsO(e){Mnu(e.pageX<Split(Id("Board").style.marginLeft,"px")[0]&&Id("UCL").clientLeft==0)}
 function Mnu(c){var sz=0;if(!Id("Board"))return;if(c)sz=160;Id("UCL").style.width=sz+"px";Id("UCT").style.left=sz+4+"px"}
@@ -78,16 +72,13 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 function KUp(e){
 	if(e.which<41&&e.which>36&&Hst.Dir!=""){Set(Crd(Hst.Crd[Tn],Hst.Dir));Hst.Dir=""}
 }
-function Rec(){var r="",l=location.href
-	for(i=1;i<Hst.Crd.length;i++)r+=Hst.Crd[i];prompt("Copy this url:",l.replace(location.hash,"")+"#"+parseInt(r,19).toString(36))
-}
 function Udo(){Rdr(Tn-1)}
 function Rdo(){Rdr(Tn+1)}
 function Lst(){Rdr(Hst.Brd.length-1)}
 function Gto(){Rdr(prompt("Go to turn:"))}
 function Clr(){if(Tn>2)Cln("Clean Board?");else Cln()}
 function Adn(){bdB();ExA()}
-function Set(c){console.log(c);if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}
+function Set(c){if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}
 function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Tn]=b}
 function Rdr(b){
 	if(typeof b=="number")if(Hst.Brd[b]){Rdr(Hst.Brd[b]);Tn=b}if(!b.length)return

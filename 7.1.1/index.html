@@ -19,8 +19,7 @@ function d(v){
 function resize(){var v=document.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game").length;ctr=0
 	Id("T").style.width="300px"
 	if(s==0){Id("T").style.width=document.body.clientWidth;s=Math.floor(document.body.clientWidth/160);ctr=1}
-	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160
-	Id("DIR").style.marginRight="0px"
+	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160;Id("DIR").style.marginRight="0px"
 	if(ctr)Id("DIR").style.marginRight=(document.body.clientWidth-Id("DIR").clientWidth)/2
 	Id("menu").style.width=document.body.clientWidth+"px"
 }
@@ -35,7 +34,7 @@ function menu(v){var h=Id("menu").scrollHeight+"px";resize()
 		Id("Ctt").style.top="40px"
 	}Id("mens").style.height=Id("menu").style.height
 }
-function c(v,o){var s=0
+function c(v,o){var s=0;if(ctr)return
 	for(i=0;i<Class("game").length;i++){var d=0
 		if(o||Class("game")[i]==v||ctr){d=Class("cover")[i].scrollHeight;s=d}
 		Class("cover")[i].style.height=d+"px"
@@ -43,7 +42,7 @@ function c(v,o){var s=0
 	if(ctr)s=Class("mcover")[1].clientHeight+"px"
 	Class("mcover")[1].style.height=s+"px"
 }
-function mc(v,o){
+function mc(v,o){if(ctr)return
 	for(var i=0;i<Class("mcover").length;i++){var d=0
 		if(o||i==v)d=Class("mcover")[i].scrollHeight
 		Class("mcover")[i].style.height=d+"px"
@@ -62,7 +61,7 @@ function Lan(){var typ=navigator.language.substr(0,2)
 	if(location.hash)typ=location.hash.substr(1,2)
 	if(!language[typ])typ="en"
 	for(i in language[typ])Id(i).innerHTML=language[typ][i]
-	mc(0,0);resize()
+	resize();if(!ctr)mc(0,0)
 }
 </script>
 </head>
@@ -86,7 +85,7 @@ function Lan(){var typ=navigator.language.substr(0,2)
 <div id="mens"></div>
 <div id="content">
 <div id="Ctt">
-<div onClick="location='../Rpt/index.html#7.1.1'" id="Report"></div>
+<div onClick="location='../Rpt/index.html#7.1'" id="Report"></div>
 <div id="facebook" onClick="location='https://fb.me/SquareChessGame'">like us </div>
 <div id="twitter" onClick="location='https://twitter.com/SquareChessGame'">follow us</div>
 </div>

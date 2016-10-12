@@ -6,6 +6,6 @@ function Flw(c){var k=Lmt(c)
 function ExR(){var s=0;if(Tn<4)return
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){if(Qre(Chr(cd1)+cd2,"T")!="")continue
 		var f=Lmt(Chr(cd1)+cd2,Sbl[(Tn+1)%2])
-		if(Instr(Dft.Fcd,Hst.Crd[Tn-2])>-1)s++
-	}if(s==0)Cln(Sbl[Tn%2]+" Win:"+Sbl[(Tn+1)%2]+" can't set")
+		if(Instr(Dft.Fcd,Hst.Crd[Tn])>-1)s++;if(Dft.Fcd)console.log(Chr(cd1)+cd2+":"+Dft.Fcd+","+Hst.Crd[Tn-2])
+	}if(s==0)Cln(Sbl[Tn%2]+" Win:"+Sbl[(Tn+1)%2]+" can't set");else console.clear()
 }
