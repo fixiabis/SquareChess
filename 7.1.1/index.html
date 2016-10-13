@@ -6,7 +6,6 @@
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
 <meta name="mobile-web-app-capable" content="yes" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<style>@import "//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css";</style>
 <style>@import "Style.css";</style>
 <script src="language.js"></script>
 <script src="Simplify.js"></script>
@@ -32,7 +31,7 @@ function Send(){if(Id("Title").value==""){alert(lng[lg].NT);return}
 	   }
 	)
 }
-function resize(){var v=doc.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game").length;ctr=0
+function Rsz(){var v=doc.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game").length;ctr=0
 	Id("T").style.width="300px"
 	if(s==0){Id("T").style.width=doc.body.clientWidth;s=Math.floor(doc.body.clientWidth/160);ctr=1}
 	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160;Id("DIR").style.marginRight="0px"
@@ -40,10 +39,9 @@ function resize(){var v=doc.body.scrollWidth-300,s=Math.floor(v/160),p=Class("ga
 	if(ctr){
 		Id("DIR").style.marginRight=(doc.body.clientWidth-Id("DIR").clientWidth)/2
 		Id("RPP").parentNode.childNodes[3].style.width="100%"
-	}
-	Id("menu").style.width=doc.body.clientWidth+"px"
+	}Id("menu").style.width=doc.body.clientWidth+"px"
 }
-function menu(v){var h=Id("menu").scrollHeight+"px";resize()
+function menu(v){var h=Id("menu").scrollHeight+"px";Rsz()
 	if(v){
 		Id("menu").style.height=h
 		Id("Ctt").style.top=h
@@ -78,14 +76,18 @@ function mf(){
     }
 }
 function Lan(){var typ=navigator.language.substr(0,2)
+	for(i=0;i<Class("game").length;i++){
+		Class("game")[i].addEventListener("click",function(){d(this.innerHTML)})
+		Class("game")[i].addEventListener("mouseover",function(){c(this,0)})
+	}
 	if(location.hash)typ=location.hash.substr(1,2)
 	if(!language[typ])typ="en";lg=typ
 	for(i in language[typ])Id(i).innerHTML=language[typ][i]
-	resize();if(!ctr)mc(0,0)
+	Rsz();Id("T").style.transition="all 1s";if(!ctr)mc(0,0)
 }
 </script>
 </head>
-<body style="color:gray;overflow:auto" onLoad="Lan()" onResize="resize()" onscroll="mf()" oncontextmenu="event.preventDefault();c(-2,1);mc(1,0)">
+<body style="color:gray;overflow:auto" onLoad="Lan()" onResize="Rsz()" onscroll="mf()" oncontextmenu="event.preventDefault();c(-2,1);mc(1,0)">
 <div id="menu" onMouseOver="menu(1)" onMouseOut="menu(0)" onClick="if(this.clientHeight!=40){menu(0)}else{menu(1)}">
 <div id="T" style="font-size:25px;float:left;width:300px;line-height:40px" onMouseOver="mc(0,0)">Square Chess Game</div>
 <div id="DIR" onMouseOver="mc(1,0)">
@@ -134,11 +136,5 @@ function Lan(){var typ=navigator.language.substr(0,2)
 </div>
 </div>
 <div id="toTop" class="cover" style="border-radius:50px;width:50px;height:50px;text-align:center;line-height:50px;color:white;background:gray;bottom:5px;right:5px;position:fixed;opacity:0" onClick="doc.body.scrollTop=0">Top</div>
-<script>
-for(i in Class("game")){
-	Class("game")[i].addEventListener("click",function(){d(this.innerHTML)})
-	Class("game")[i].addEventListener("mouseover",function(){c(this,0)})
-}
-</script>
 </body>
 </html>
