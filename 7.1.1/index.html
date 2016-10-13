@@ -67,7 +67,7 @@ function mc(v,o){if(ctr)return
 	}
 }
 function mf(){
-    if(doc.body.scrollTop>Id("menu").clientHeight){
+    if(doc.body.scrollTop>0){
         Id("menu").style.opacity=0.8
         Id("toTop").style.opacity=0.8
     }else{
@@ -85,6 +85,7 @@ function Lan(){var typ=navigator.language.substr(0,2)
 	for(i in language[typ])Id(i).innerHTML=language[typ][i]
 	Rsz();Id("T").style.transition="all 1s";if(!ctr)mc(0,0)
 }
+function RPT(){mc(2,0);doc.body.scrollTop=doc.body.scrollHeight}
 </script>
 </head>
 <body style="color:gray;overflow:auto" onLoad="Lan()" onResize="Rsz()" onscroll="mf()" oncontextmenu="event.preventDefault();c(-2,1);mc(1,0)">
@@ -107,7 +108,7 @@ function Lan(){var typ=navigator.language.substr(0,2)
 <div id="mens"></div>
 <div id="content">
 <div id="Ctt">
-<div onClick="mc(2,0)" id="Report"></div>
+<div onClick="RPT()" id="Report"></div>
 <div id="facebook" onClick="location='https://fb.me/SquareChessGame'">like us </div>
 <div id="twitter" onClick="location='https://twitter.com/SquareChessGame'">follow us</div>
 </div>
