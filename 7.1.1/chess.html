@@ -8,9 +8,13 @@
 <style>@import "Style.css";</style>
 <script src="Simplify.js"></script>
 <script src="Core.js"></script>
+<script>var lst=0
+	function HM(){if(!history.back())location="index.html";else history.back()}
+	function LT(){lst=!lst;Mnu(lst)}
+</script>
 </head>
 <body onLoad="Ldr()" onResize="Rsz()" onBeforeUnload="if(Tn>2)return '棋局尚未結束'" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)" onmouseover="MsO(event)" onKeyUp="KUp(event)">
-<div id="UCT" onclick="if(Id('UCL').style.width=='0px')Mnu(1);else Mnu(0)"></div>
+<div id="UCT" onClick="if(Id('UCL').style.width=='0px')Mnu(1);else Mnu(0)"></div>
 <div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
 <div id='UCL'>
 <div onclick='Clr()' class='game'>Clean</div>
@@ -18,8 +22,12 @@
 <div onclick='Rdo()' class='game'>Redo</div>
 <div onclick='Gto()' class='game'>Goto</div>
 <div onclick='Adn()' class='game'>Addons</div>
-<div onclick='if(!history.back())location="index.html";else history.back()' class='game'>Home</div>
+<div onclick='HM()' class='game'>Home</div>
 </div>
 <audio autoplay loop><source src="music.mp3" type="audio/mpeg"></audio>
+<div id="UCM">
+<div onClick="LT()" class="list">List</div>
+<div onClick="HM()" class="list">Home</div>
+</div>
 </body>
 </html>

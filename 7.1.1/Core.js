@@ -13,8 +13,8 @@ function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' onconte
 }
 function Rsz(){
 	Id("Board").style.height="0px";Id("UC").style.display="none"
-	var sz=document.body.clientHeight,C=1
-	if(document.body.clientWidth<sz){sz=document.body.clientWidth;Id("UC").style.display="inline";C=0}
+	var sz=doc.body.clientHeight,C=1
+	if(doc.body.clientWidth<sz){sz=doc.body.clientWidth;Id("UC").style.display="inline";C=0}
 	sz=Math.floor(sz/9)
 	for(i=0;i<83;i++){
 		Class("bt")[i].style.width=sz+"px"
@@ -24,11 +24,15 @@ function Rsz(){
 	}
 	for(i=81;i<83;i++)Class("bt")[i].style.width=sz*4.5+"px"
 	Id("Board").style.height=sz*9+"px";Id("UC").style.width=sz*9+"px"
-	Id("Board").style.marginLeft=(document.body.clientWidth-(sz*9))/2+"px"
-	if(C)Id("Board").style.marginTop=(document.body.clientHeight-(sz*9))/2+"px"
-	Id("UC").style.marginLeft=(document.body.clientWidth-(sz*9))/2+"px"
-	if(Val(Split(Id("Board").style.marginLeft,"px")[0])<40)Id("UCT").style.display="none"
-	else Id("UCT").style.display="inline"
+	Id("Board").style.marginLeft=(doc.body.clientWidth-(sz*9))/2+"px"
+	if(C)Id("Board").style.marginTop=(doc.body.clientHeight-(sz*9))/2+"px"
+	Id("UC").style.marginLeft=(doc.body.clientWidth-(sz*9))/2+"px"
+	if(Val(Split(Id("Board").style.marginLeft,"px")[0])<40){
+		Id("UCT").style.display="none";Id("UCM").style.display="inline"
+		for(i=0;i<2;i++)Class("list")[i].style.width=doc.body.clientWidth/3+"px"
+	}else{
+		Id("UCT").style.display="inline";Id("UCM").style.display="none"
+	}
 }
 function Ldr(){
 	if(location.search&&location.search!="?"){var sr=location.search.replace("%3A",":")
