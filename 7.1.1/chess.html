@@ -9,12 +9,11 @@
 <script src="Simplify.js"></script>
 <script src="Core.js"></script>
 <script>var lst=0
-	function HM(){if(!history.back())location="index.html";else history.back()}
-	function LT(){lst=!lst;Mnu(lst)}
+function HM(){if(!history.back())location="index.html";else history.back()}
+function LT(v){Mnu(1,v)}
 </script>
 </head>
 <body onLoad="Ldr()" onResize="Rsz()" onBeforeUnload="if(Tn>2)return '棋局尚未結束'" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)" onmouseover="MsO(event)" onKeyUp="KUp(event)">
-<div id="UCT" onClick="if(Id('UCL').style.width=='0px')Mnu(1);else Mnu(0)"></div>
 <div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
 <div id='UCL'>
 <div onclick='Clr()' class='game'>Clean</div>
@@ -26,8 +25,9 @@
 </div>
 <audio autoplay loop><source src="music.mp3" type="audio/mpeg"></audio>
 <div id="UCM">
-<div onClick="LT()" class="list">List</div>
+<div onClick="LT(0)" class="list">List</div>
 <div onClick="HM()" class="list">Home</div>
+<div onClick="LT(1)" class="list">List</div>
 </div>
 </body>
 </html>

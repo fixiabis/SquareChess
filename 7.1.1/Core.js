@@ -8,7 +8,7 @@ function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' onconte
 		for(cd1=65;cd1<74;cd1++){
 			bd+="<td id='"+Chr(cd1)+cd2+"' onclick='Set(this.id)' ondblclick='ToS(this.id)' class='bt'></td>"
 		}bd+="</tr>"
-	}Id("Board").innerHTML=bd+"</table><div id='UC'><table><tr><td class='bt' onclick='Clr()' onContextMenu='Adn()'>Clean</td><td class='bt' onClick='Udo()' onContextMenu='Gto()'>Undo</td></tr></table></div>"
+	}Id("Board").innerHTML=bd+"</table><div id='UC'><table><tr><td class='bt' onClick='Udo()' onContextMenu='Gto()'>Undo</td><td class='bt' onclick='Clr()' onContextMenu='Adn()'>Clean</td></tr></table></div>"
 	Id("Board").style.animation="down 2s"
 }
 function Rsz(){
@@ -28,11 +28,9 @@ function Rsz(){
 	if(C)Id("Board").style.marginTop=(doc.body.clientHeight-(sz*9))/2+"px"
 	Id("UC").style.marginLeft=(doc.body.clientWidth-(sz*9))/2+"px"
 	if(Val(Split(Id("Board").style.marginLeft,"px")[0])<40){
-		Id("UCT").style.display="none";Id("UCM").style.display="inline"
-		for(i=0;i<2;i++)Class("list")[i].style.width=doc.body.clientWidth/3+"px"
-	}else{
-		Id("UCT").style.display="inline";Id("UCM").style.display="none"
-	}
+		Id("UCM").style.display="inline"
+		for(i=0;i<3;i++)Class("list")[i].style.width=doc.body.clientWidth/3+"px"
+	}else Id("UCM").style.display="none"
 }
 function Ldr(){
 	if(location.search&&location.search!="?"){var sr=location.search.replace("%3A",":")
@@ -54,8 +52,23 @@ function LMd(n){
 	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln();Rsz()}
 	doc.body.appendChild(s)
 }
-function MsO(e){Mnu(e.pageX<Split(Id("Board").style.marginLeft,"px")[0]&&Id("UCL").clientLeft==0)}
-function Mnu(c){var sz=0;if(!Id("Board"))return;if(c)sz=160;Id("UCL").style.width=sz+"px";Id("UCT").style.left=sz+4+"px"}
+function MsO(e){var c=1,p=0
+	if(e.pageX<Split(Id("Board").style.marginLeft,"px")[0])p=0
+	else if(e.pageX>Val(Id("Board").style.marginLeft.split("px")[0])+Id("Board").childNodes[0].clientWidth)p=1
+	else c=0
+	Mnu(c,p)
+}
+function Mnu(c,p){
+	if(c)if(p){
+		Id("UCL").style.left=""
+		Id("UCL").style.right="0px"
+	}else{
+		Id("UCL").style.right=""
+		Id("UCL").style.left="0px"
+	}
+	var sz=0;
+	if(!Id("Board"))return;if(c)sz=160;Id("UCL").style.width=sz+"px"
+}
 function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 	switch(k){
 		case  8:Udo();break
