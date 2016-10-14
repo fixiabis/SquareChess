@@ -32,7 +32,7 @@ function Rsz(){
 		for(i=0;i<3;i++)Class("list")[i].style.width=doc.body.clientWidth/3+"px"
 	}else Id("UCM").style.display="none"
 }
-function Ldr(){
+function Ldr(){Get()
 	if(location.search&&location.search!="?"){var sr=location.search.replace("%3A",":")
 		doc.title=sr.split("?mode=")[1]
 		var ld=doc.title.split(":");for(i in ld)LdM.push(ld[i]);LMd(0)
@@ -44,6 +44,17 @@ function Ldr(){
 			"Divider:Follow","Connect:Follow","Blocker:ByLine"
 		];Id("Board").childNodes[0].childNodes[0].innerHTML="Directing..."
 		setTimeout('location="chess.html?mode="+"'+Mod[Val(Rnd()*Mod.length)]+'"',2000)
+	}
+}
+function Sav(){
+	var d = new Date();d.setTime(d.getTime() + (1000 * 24 * 60 * 60 * 1000));
+	var dt="expires="+d.toGMTString()+';domain='+location.origin+';path='+location.pathname
+	doc.cookie=dt
+}
+function Get(){
+	if(doc.cookie){
+		var Spt=doc.cookie.split(";"),D=Spt[0],B=Spt[1]
+		
 	}
 }
 function LMd(n){
@@ -96,7 +107,7 @@ function Gto(){Rdr(prompt("前往指定回合:"))}
 function Clr(){if(Tn>2)Cln("清除棋盤?");else Cln()}
 function Adn(){bdB();ExA()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}
-function BfS(){
+function BfS(){Sav()
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Qre(Chr(cd1)+cd2,"F","");NxS()
 	if(!Dft.BfS)return;Qre(Hst.Crd[Tn-1],"F","blue");Qre(Hst.Crd[Tn],"F","blue")
 }
