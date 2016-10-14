@@ -1,4 +1,4 @@
-Sqr[1]=[" ","","palevioletred"];Sqr[2]=[" ","","lightsteelblue"]
+Sqr[1]=[" ","","palevioletred"];Sqr[2]=[" ","","lightsteelblue"];Dft.NxS=0
 function Lmt(c,s){if(!s)s=Sbl[Tn%2];ExL(c,s)
 	if("OX".search(Qre(c,"T"))>-1&&Qre(c,"T")!="")return 1
 	if(Qre(c,"B")==Sqr[1][2]&&s!="O")return 1
@@ -35,7 +35,7 @@ function Rul(){Scr={O:0,X:0,P:0}
 			if(bc==Sqr[1][2])Scr.O++
 			if(bc==Sqr[2][2])Scr.X++
 		}else if(Qre(Chr(cd1)+cd2,"T")=="")Scr.P++
-		;else if(Qre(Chr(cd1)+cd2,"B")!="dimgray"){var bc=""
+		;else if(Qre(Chr(cd1)+cd2,"B")!="dimgray"){var bc="white"
 			if((cd1+cd2)%2==0)bc="lightgray";Qre(Chr(cd1)+cd2,"B",bc)
 		}
 	}
