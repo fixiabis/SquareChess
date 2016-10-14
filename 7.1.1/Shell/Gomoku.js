@@ -20,8 +20,8 @@ function Rul(){var cd4=Split("B;R;BR;BL",";");Scr={O:0,X:0}
 	}
 	if(Tn%2==0)if(Scr.O!=0||Scr.X!=0){
 		if(Scr.O==Scr.X)Cln("Draw")
-		if(Scr.O>Scr.X)Cln("O Win:"+Scr.O+"/"+Scr.X)
-		if(Scr.O<Scr.X)Cln("X Win:"+Scr.X+"/"+Scr.O)
+		if(Scr.O>Scr.X)Cln("O Win")
+		if(Scr.O<Scr.X)Cln("X Win")
 	}
 }
 function bdP(){Dft.Pro=confirm("Use Gomoku-Pro Rule? Now is "+Dft.Pro);if(Tn==0)Cln()}
