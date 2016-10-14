@@ -24,15 +24,15 @@ function Rul(){var a=0;Scr={O:0,X:0,P:0}
 	}
 	if(Tn>2)if(Scr.P==0){
 		if(Tn%2==0){
-			if(Scr.O>Scr.X)Cln("O Win")
-			else if(Scr.O<Scr.X)Cln("X Win")
+			if(Scr.O>Scr.X)Cln("O獲勝")
+			else if(Scr.O<Scr.X)Cln("X獲勝")
 		}
-		if(Scr.O==0&&Scr.X==0)Cln("Draw")
-		else if(Scr.O==0)Cln("X Win")
-		else if(Scr.X==0)Cln("O Win")
+		if(Scr.O==0&&Scr.X==0)Cln("平手")
+		else if(Scr.O==0)Cln("X獲勝")
+		else if(Scr.X==0)Cln("O獲勝")
 	}ExR()
 }
-function bdR(){Dft.Rnd=confirm("First Set fixed? Now is "+Dft.Rnd);if(Tn==0)Cln()}
+function bdR(){Dft.Rnd=confirm("第一回合固定設置?");if(Tn==0)Cln()}
 function crR(){if(!Dft.Rnd)return
 	var R=[["E4","E6","D5","F5"],["D4","D6","F4","F6"]]
 	for(i in R){var p=Val(Rnd()*4);Set(R[i][p])}

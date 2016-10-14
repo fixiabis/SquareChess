@@ -5,9 +5,9 @@ function ExR(){
 	for(i in Ara[0]){var t=Qre(Ara[0][i],"T");if(t=="O")Of++;if(t=="X")Xs=1}
 	for(i in Ara[1]){var t=Qre(Ara[1][i],"T");if(t=="X")Xf++;if(t=="O")Os=1}
 	if(Tn%2==0&&Tn>2){
-		if(Os&&Xs&&Tn>4||Of==Ara[0].length&&Xf==Ara[1].length)Cln("Draw")
-		else if(Os||Xf==Ara[1].length)Cln("O Win")
-		else if(Xs||Of==Ara[0].length)Cln("X Win")
+		if(Os&&Xs&&Tn>4||Of==Ara[0].length&&Xf==Ara[1].length)Cln("平手")
+		else if(Os||Xf==Ara[1].length)Cln("O獲勝")
+		else if(Xs||Of==Ara[0].length)Cln("X獲勝")
 	}OgC(Hst.Crd[Tn])
 }
 function ExL(c){var t=Qre(c,"T"),k=0

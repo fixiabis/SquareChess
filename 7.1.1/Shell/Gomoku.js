@@ -19,9 +19,9 @@ function Rul(){var cd4=Split("B;R;BR;BL",";");Scr={O:0,X:0}
 		}
 	}
 	if(Tn%2==0)if(Scr.O!=0||Scr.X!=0){
-		if(Scr.O==Scr.X)Cln("Draw")
-		if(Scr.O>Scr.X)Cln("O Win")
-		if(Scr.O<Scr.X)Cln("X Win")
+		if(Scr.O==Scr.X)Cln("平手")
+		if(Scr.O>Scr.X)Cln("O獲勝")
+		if(Scr.O<Scr.X)Cln("X獲勝")
 	}
 }
-function bdP(){Dft.Pro=confirm("Use Gomoku-Pro Rule? Now is "+Dft.Pro);if(Tn==0)Cln()}
+function bdP(){Dft.Pro=confirm("使用Gomoku-Pro規則?"+Dft.Pro);if(Tn==0)Cln()}

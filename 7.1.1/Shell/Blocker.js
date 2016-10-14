@@ -39,7 +39,7 @@ function Rul(){Scr={O:0,X:0,P:0}
 			if((cd1+cd2)%2==0)bc="lightgray";Qre(Chr(cd1)+cd2,"B",bc)
 		}
 	}
-	if(Scr.O>Scr.X&&Scr.O>Scr.P/2)Cln("O Win")
-	if(Scr.O<Scr.X&&Scr.X>Scr.P/2)Cln("X Win")
-	if(Scr.P==0)Cln("Draw")
+	if(Scr.O>Scr.X&&Scr.O>Scr.P/2)Cln("O獲勝")
+	if(Scr.O<Scr.X&&Scr.X>Scr.P/2)Cln("X獲勝")
+	if(Scr.P==0)Cln("平手")
 }

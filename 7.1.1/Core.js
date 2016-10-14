@@ -83,7 +83,7 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 		case 89:if(c)Rdo();break
 		case 90:if(c)Udo();break
 		case 72:if(c){e.preventDefault();Gto();break}
-		default:if(k>64&&k<74){if(s)ToS(Chr(k)+prompt("Enter coordinate"));else if(!c)Set(Chr(k)+prompt("Enter coordinate"))}
+		default:if(k>64&&k<74){if(s)ToS(Chr(k)+prompt("輸入座標"));else if(!c)Set(Chr(k)+prompt("輸入座標"))}
 	}
 }
 function KUp(e){
@@ -92,8 +92,8 @@ function KUp(e){
 function Udo(){Rdr(Tn-1)}
 function Rdo(){Rdr(Tn+1)}
 function Lst(){Rdr(Hst.Brd.length-1)}
-function Gto(){Rdr(prompt("Go to turn:"))}
-function Clr(){if(Tn>2)Cln("Clean Board?");else Cln()}
+function Gto(){Rdr(prompt("前往指定回合:"))}
+function Clr(){if(Tn>2)Cln("清除棋盤?");else Cln()}
 function Adn(){bdB();ExA()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}
 function BfS(){
@@ -158,7 +158,7 @@ function Lmt(c){if(ExL())return 1;else if(Qre(c,"T")=="")return 0;else return 1}
 function Rul(){}
 function ToS(c){for(i in Hst.Crd){if(Hst.Crd[i]==c)Rdr(Val(i))}}
 function bdB(){
-	var Bk=Val(prompt("Add Block?(Max:27)",Dft.Blk))
+	var Bk=Val(prompt("增加障礙?(最大值:27)",Dft.Blk))
 	if(typeof Bk=="number"){
 		if(Bk<0)Bk=0;if(Bk>27)Bk=27;Dft.Blk=Bk
 	}if(Tn==0)Cln()
@@ -177,6 +177,6 @@ function ExR(){}
 function ExL(){return 0}
 function Ctn(r,s){var k=0;for(var i in r)if(Qre(r[i],"T")==s)k++;return k}
 function Tol(){
-	Dft.BfS=confirm("Show before symbol from your set? Now is "+Dft.BfS)
-	Dft.NxS=confirm("Show area from your can set? Now is "+Dft.NxS)
+	Dft.BfS=confirm("將上回合設置的符號標示出來?")
+	Dft.NxS=confirm("強調所有不能設置的區域")
 }
