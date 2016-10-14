@@ -3,7 +3,7 @@ var Tn=0,
 	Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],
 	cd8="F,B,R,L,FR,FL,BR,BL".split(","),
 	LdM=[]
-function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' oncontextmenu='Lst()' style='background-color:black'>"
+function Cre(){var bd="<table border='0' cellpadding='0' cellspacing='0' oncontextmenu='Lst()' style='background-color:dimgray'>"
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>"
 		for(cd1=65;cd1<74;cd1++){
 			bd+="<td id='"+Chr(cd1)+cd2+"' onclick='Set(this.id)' ondblclick='ToS(this.id)' class='bt'></td>"
@@ -97,12 +97,14 @@ function Clr(){if(Tn>2)Cln("Clean Board?");else Cln()}
 function Adn(){bdB();ExA()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}
 function BfS(){
-	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Qre(Chr(cd1)+cd2,"F","")
-	if(!Dft.BfS)return;Qre(Hst.Crd[Tn-1],"F","blue");Qre(Hst.Crd[Tn],"F","blue");NxS()
+	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Qre(Chr(cd1)+cd2,"F","");NxS()
+	if(!Dft.BfS)return;Qre(Hst.Crd[Tn-1],"F","blue");Qre(Hst.Crd[Tn],"F","blue")
 }
 function NxS(){
-	if(Dft.NxS)for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).style.opacity=0.6
-	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)if(!Lmt(Chr(cd1)+cd2))Id(Chr(cd1)+cd2).style.opacity=1
+	if(Dft.NxS)for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
+		Id(Chr(cd1)+cd2).style.opacity=0.2
+		if(!Lmt(Chr(cd1)+cd2))Id(Chr(cd1)+cd2).style.opacity=1
+	}
 }
 function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Tn]=b;BfS()}
 function Rdr(b){
