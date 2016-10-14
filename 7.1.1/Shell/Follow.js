@@ -11,7 +11,7 @@ function ExR(){var s=0;if(Tn<4)return
 }
 function NxS(){
 	if(Dft.NxS)for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
-		Id(Chr(cd1)+cd2).style.opacity=0.2 
+		Id(Chr(cd1)+cd2).style.opacity=0.2
 		if(!Lmt(Chr(cd1)+cd2))Id(Chr(cd1)+cd2).style.opacity=1
 	}
 }
