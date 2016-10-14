@@ -1,5 +1,5 @@
 var Tn=0,
-	Dft={Clr:1,Blk:0},Hst={},
+	Dft={Clr:1,Blk:0,NSt:1},Hst={},
 	Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],
 	cd8="F,B,R,L,FR,FL,BR,BL".split(","),
 	LdM=[]
@@ -96,9 +96,14 @@ function Gto(){Rdr(prompt("Go to turn:"))}
 function Clr(){if(Tn>2)Cln("Clean Board?");else Cln()}
 function Adn(){bdB();ExA()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}
-function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Tn]=b}
+function NSt(){if(!Dft.NSt)return
+	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Qre(Chr(cd1)+cd2,"F","")
+	Qre(Hst.Crd[Tn-1],"F","blue")
+	Qre(Hst.Crd[Tn],"F","blue")
+}
+function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Tn]=b;NSt()}
 function Rdr(b){
-	if(typeof b=="number")if(Hst.Brd[b]){Rdr(Hst.Brd[b]);Tn=b}if(!b.length)return
+	if(typeof b=="number")if(Hst.Brd[b]){Rdr(Hst.Brd[b]);Tn=b;NSt()}if(!b.length)return
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Sym(Chr(cd1)+cd2,Val(b[(cd1-65)*9+cd2-1]))
 }
 function Crd(c,r){var x=0,y=0
