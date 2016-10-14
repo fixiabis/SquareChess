@@ -49,12 +49,15 @@ function Ldr(){Get()
 function Sav(){
 	var d = new Date();d.setTime(d.getTime() + (1000 * 24 * 60 * 60 * 1000));
 	var dt="expires="+d.toGMTString()+';domain='+location.origin+';path='+location.pathname
-	doc.cookie=dt
+	doc.cookie="Dft="+Dft.BfS+":"+Dft.NxS+";"+"Brd="+Hst.Brd[Tn]+":"+Tn+";"+dt
 }
 function Get(){
 	if(doc.cookie){
-		var Spt=doc.cookie.split(";"),D=Spt[0],B=Spt[1]
-		
+		var Spt=doc.cookie.split(";"),
+			D=Spt[0].split("Dft=")[1].split(":"),
+			B=Spt[1].split("Brd=")[1].split(":")
+		Dft.BfS=Val(D[0]);Dft.NxS=Val(D[1])
+		Tn=B[1];Hst.Brd[Tn]=B[0];Rdr(Tn)
 	}
 }
 function LMd(n){
