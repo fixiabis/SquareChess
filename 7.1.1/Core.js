@@ -1,5 +1,5 @@
 var Tn=0,
-	Dft={Clr:1,Blk:0,BfS:1,NxS:1},Hst={},
+	Dft={Clr:1,Blk:0,BfS:false,NxS:false},Hst={},
 	Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],
 	cd8="F,B,R,L,FR,FL,BR,BL".split(","),
 	LdM=[]
@@ -174,3 +174,7 @@ function ExB(){}
 function ExR(){}
 function ExL(){return 0}
 function Ctn(r,s){var k=0;for(var i in r)if(Qre(r[i],"T")==s)k++;return k}
+function Tol(){
+	Dft.BfS=confirm("Show before symbol from your set? Now is "+Dft.BfS)
+	Dft.NxS=confirm("Show area from your can set? Now is "+Dft.NxS)
+}
