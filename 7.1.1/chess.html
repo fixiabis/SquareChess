@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Square Chess</title>
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
+<style>@import "Style.css";</style>
+<script src="Simplify.js"></script>
+<script src="Core.js"></script>
+<script>var lst=0
+function HM(){if(!history.back())location="index.html";else history.back()}
+function LT(v){Mnu(1,v)}
+</script>
+</head>
+<body onLoad="Ldr()" onResize="Rsz()" onBeforeUnload="if(Tn>2)return '棋局尚未結束'" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)" onmouseover="MsO(event)" onKeyUp="KUp(event)">
+<div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
+<div id='UCL'>
+<div onclick='Clr()' class='game'>Clean</div>
+<div onclick='Udo()' class='game'>Undo</div>
+<div onclick='Rdo()' class='game'>Redo</div>
+<div onclick='Gto()' class='game'>Goto</div>
+<div onclick='Adn()' class='game'>Addons</div>
+<div onclick='Tol()' class='game'>Tools</div>
+<div onclick='HM()' class='game'>Home</div>
+</div>
+<audio autoplay loop><source src="music.mp3" type="audio/mpeg"></audio>
+<div id="UCM">
+<div onClick="LT(0)" class="list">List</div>
+<div onClick="HM()" class="list">Home</div>
+<div onClick="LT(1)" class="list">List</div>
+</div>
+</body>
+</html>

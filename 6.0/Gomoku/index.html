@@ -1,0 +1,19 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gomoku</title>
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
+<style>@import "../Style.css";</style>
+<script src="../VB.js"></script>
+<script src="Shell.js"></script>
+<script src="../Core.js"></script>
+<script src="../Board.js"></script>
+<script src="../Ctrl.js"></script>
+</head>
+<body onLoad="create()" onResize="resize()" onBeforeUnload="if(Turn>2)return '棋局尚未結束'" onContextMenu="event.preventDefault()" onKeyDown="Command(event)" onmouseover="List(event)">
+<div id="Board"></div>
+<audio autoplay loop><source src="../music.mp3" type="audio/mpeg"></audio>
+</body>
+</html>

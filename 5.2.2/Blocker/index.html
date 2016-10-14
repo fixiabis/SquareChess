@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="Logo.PNG" rel="shortcut icon" type="image/x-icon">
+<title>Square.Blocker</title>
+<style>@import '../Style.css';</style>
+<script src="../VB.js"></script>
+<script src="Core.js"></script>
+<script src="../Board.js"></script>
+<script src="../KeyCode.js"></script>
+<script>function sv(){if(Controls("sv").style.display=="none"){Controls("sv").style.display="inline"}else{Controls("sv").style.display="none"}resize()}</script>
+</head>
+<body onload="create()" onresize="resize()" onscroll="resize()" onbeforeunload="if(Turn>0)return 'Game is not over'" onkeydown="cmd(event.which)" onkeyup="if(event.which==17)ctl=0" oncontextmenu="event.preventDefault();sv()">
+<div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
+<table border="0" cellspacing="0" cellpadding="0" id="UC" align="center"><tr><td><div class="bt45" id="Undo" onclick="Rdr(Val(Turn-1))" oncontextmenu="Rdr(Val(prompt('Go to turn:',Turn)))">Undo</div></td><td><div class="bt45" id="Clean" onclick="if(Turn&lt;3){Cln('','')}else if(confirm('Clean board?')==1){Cln('','')}">Clean</div></td></tr><tr><td colspan="2"><div id="sv"><table border="0" cellspacing="0" cellpadding="0" align="center" width="100%"><tr><td><div class="bt45" id="Block" onclick="if(RB==1){RB=0;Cln('',' ');this.style.backgroundColor='white'}else{RB=1;this.style.backgroundColor='dimgray';RdB()}Rul()" oncontextmenu="RBs=Val(prompt('Enter value.',RBs));RB=1;this.style.backgroundColor='dimgray';Cln('',' ');RdB()">Block</div></td><td><div class="bt45" style="color:white" id="Sound" onclick="if(this.style.backgroundColor!='white'){Controls('Music').pause()}else{Controls('Music').play()}" oncontextmenu="Controls('Music').controls='controls'">Sound</div></td></tr></table></div></td></tr>
+</table>
+<div><audio autoplay loop onplay="Controls('Sound').style.backgroundColor='dimgray';Controls('Music').controls=false" onpause="Controls('Sound').style.backgroundColor='white'" id="Music"><source src="../music.mp3" type="audio/mpeg"></audio>
+</div>
+</body>
+</html>

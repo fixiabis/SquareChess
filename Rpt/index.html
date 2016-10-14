@@ -1,0 +1,86 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Report</title>
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
+<style>
+body{background:gray;margin:0px}
+.s{background:lightgray;border:none}
+.u{background:lightgray;text-align:center;cursor:default;margin-top:5px;float:left}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+function Id(id){return document.getElementById(id)}
+function Send(){if(Id("Title").value==""){alert("No title!");return}var ver=location.hash.split("#")[1];if(!ver)ver="No"
+	Id("Submit").onclick=function (){};Id("Submit").style.backgroundColor="dimgray"
+	$.get("https://script.google.com/macros/s/AKfycbwz5OUuveX4rVcbrhizhfh3Hn7X1wG9P9VXPgCxCkbwJQCi54tH/exec",{
+		Type:Id("Type").childNodes[Id("Type").selectedIndex+1].innerHTML+":"+ver,
+		Title:Id("Title").value,
+		Content:Id("Content").value
+	 },function (data){
+		alert("Thanks your report!")
+		Id("Submit").onclick=function (){Send()}
+		Id("Submit").style.backgroundColor="lightgray"
+		Id("Title").value="";Id("Content").value=""
+	   }
+	)
+}
+function rf(){
+	switch(Id("Type").selectedIndex){
+		case 0:case 1:Id("Title").placeholder="Title";Id("Content").placeholder="Content";break
+		case 2:Id("Title").placeholder="Statements";Id("Content").placeholder="Best translate or provide new language"
+	}
+}
+function resize(){
+	if(document.body.clientWidth<500){
+		Id("Content").style.width="100%"
+		Id("Submit").style.width="49%"
+		Id("Reset").style.width="49%"
+		Id("Reset").style.marginLeft="2%"
+		Id("Title").style.width="50%"
+	}else{
+		Id("Content").style.width="500px"
+		Id("Submit").style.width="249px"
+		Id("Reset").style.width="249px"
+		Id("Reset").style.marginLeft="2px"
+		Id("Title").style.width="200px"
+	}
+}
+</script>
+</head>
+<body onResize="resize()" onLoad="resize()">
+<form>
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+  <td colspan="2" style="color:white;font-size:24px">Report your problem or suggest or best translate</td>
+  </tr>
+  <tr>
+    <td>Type</td>
+    <td>
+        <select id="Type" class="s" onChange="rf()">
+            <option>Problem</option>
+            <option>Suggest</option>
+            <option>Translate</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td>Title</td>
+    <td><input type="text" id="Title" placeholder="Title" class="s"/><br></td>
+  </tr>
+  <tr>
+    <td colspan="2">Content</td>
+  </tr>
+  <tr>
+    <td colspan="2"><textarea id="Content" placeholder="Content" rows="5" class="s"></textarea></td>
+  </tr>
+  <tr><td colspan="2">
+  <div id="Submit" class="u" onClick="Send()">Submit</div>
+  <div id="Reset" class="u" onClick="document.body.childNodes[1].reset()">Reset</div>
+  </td></tr>
+</table>
+</form>
+</body>
+</html>

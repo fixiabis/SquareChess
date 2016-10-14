@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Square Chess Game</title>
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<style>@import "Style.css";</style>
+<script src="VB.js"></script>
+<script src="language.js"></script>
+<script>
+var ctr=0,u=[
+	"Connect/index.html",
+	"Connect/Attack/index.html",
+	"Connect/Defend/index.html",
+	"Blocker/index.html",
+	"Divider/index.html",
+	"Divider/Zombie/index.html",
+	"Gomoku/index.html",
+	"Freedom/index.html"
+]
+function d(v){Controls("menu").style.transform="translateY(-100%)";Controls("content").style.display="none";setTimeout("location=u["+v+"]",500)}
+function resize(){var v=document.body.scrollWidth-300,s=Math.floor(v/160),p=document.getElementsByClassName("game").length;ctr=0
+	Controls("T").style.width="300px"
+	if(s==0){Controls("T").style.width=document.body.clientWidth;s=Math.floor(document.body.clientWidth/160);ctr=1}
+	if(s>p){s=p;ctr=0};Controls("DIR").style.width=s*160
+	Controls("DIR").style.marginRight="0px"
+	if(ctr)Controls("DIR").style.marginRight=(document.body.clientWidth-Controls("DIR").clientWidth)/2
+}
+function menu(v){var h=Controls("menu").scrollHeight+"px";resize()
+	if(v){
+		Controls("menu").style.height=h
+		Controls("Ctt").style.top=h
+		if(!ctr)Controls("T").style.lineHeight=h
+	}else{
+		Controls("menu").style.height="40px"
+		Controls("T").style.lineHeight="40px"
+		Controls("Ctt").style.top="40px"
+	}
+}
+function c(v,o){mc(1,0);var s=0
+	for(i=0;i<document.getElementsByClassName("cover").length;i++){var d=0,p=document.getElementsByClassName("cover")[i].scrollHeight
+		if(o||i==v||ctr)d=p;s+=d-p
+		document.getElementsByClassName("cover")[i].style.height=d+"px"
+	}
+	document.getElementsByClassName("mcover")[1].style.height=document.getElementsByClassName("mcover")[1].scrollHeight+s+"px"
+}
+function mc(v,o){
+	for(var i=0;i<document.getElementsByClassName("mcover").length;i++){var d=0
+		if(o||i==v)d=document.getElementsByClassName("mcover")[i].scrollHeight
+		document.getElementsByClassName("mcover")[i].style.height=d+"px"
+	}
+}
+function mf(){
+    if(document.body.scrollTop>Controls("menu").clientHeight){
+        Controls("menu").style.position="fixed"
+		Controls("menu").style.width=document.body.clientWidth+"px"
+        Controls("menu").style.opacity=0.8
+        Controls("toTop").style.opacity=0.8
+    }else{
+        Controls("menu").style.position=""
+		Controls("menu").style.width=""
+        Controls("menu").style.opacity=1
+        Controls("toTop").style.opacity=0
+    }
+}
+function L(){var typ=navigator.language.substr(0,2)
+	if(location.hash)typ=location.hash.substr(1,2)
+	if(!language[typ])typ="en"
+	for(i in language[typ]){
+		Controls(i).innerHTML=language[typ][i]
+	}mc(0,0)
+	resize()
+}
+</script>
+</head>
+<body style="color:gray;overflow:auto" onLoad="L()" onResize="resize()" onscroll="mf()" oncontextmenu="event.preventDefault();c(-2,1)">
+<div id="menu" onMouseOver="menu(1)" onMouseOut="menu(0)" onClick="if(this.clientHeight!=40){menu(0)}else{menu(1)}">
+<div id="T" style="font-size:25px;float:left;width:300px;line-height:40px" onMouseOver="mc(0,0)">Square Chess Game</div>
+<div id="DIR">
+<div id="C" class="game" onClick="d(0)" onMouseOver="c(0,0)">Square.Connect</div>
+<div id="CA"class="game" onClick="d(1)" onMouseOver="c(1,0)">Connect:Attack</div>
+<div id="CD"class="game" onClick="d(2)" onMouseOver="c(2,0)">Connect:Defend</div>
+<div id="B" class="game" onClick="d(3)" onMouseOver="c(3,0)">Square.Blocker</div>
+<div id="D" class="game" onClick="d(4)" onMouseOver="c(4,0)">Square.Divider</div>
+<div id="DZ"class="game" onClick="d(5)" onMouseOver="c(5,0)">Divider:Zombie</div>
+<div class="game" onClick="d(6)" onMouseOver="c(6,0)">Gomoku</div>
+<div class="game" onClick="d(7)" onMouseOver="c(7,0)">Freedom Mode</div>
+</div>
+</div>
+<div id="content">
+<div id="Ctt">
+<div onClick="location='../Rpt/index.html#7.1'" id="Report"></div>
+<div id="facebook" onClick="location='https://fb.me/SquareChessGame'">like us </div>
+<div id="twitter" onClick="location='https://twitter.com/SquareChessGame'">follow us</div>
+</div>
+<div class="mcover"><h1 id="Start"></h1><font id="operationT"></font><ul id="operation"></ul></div>
+<div class="mcover">
+<h1 id="Rule"></h1>
+<div class="cover">Square.Connect:<ul id="SCRule"></ul></div>
+<div class="cover">Connect:Attack:<ul id="SCARule"></ul></div>
+<div class="cover">Connect:Defend:<ul id="SCDRule"></ul></div>
+<div class="cover">Square.Blocker:<ul id="SBRule"></ul></div>
+<div class="cover">Square.Divider:<ul id="SDRule"></ul></div>
+<div class="cover">Divider:Zombie:<ul id="SDZRule"></ul></div>
+<div class="cover">Gomoku<ul id="CGRule"></ul></div>
+<div class="cover">Freedom Mode<ul id="FRule"></ul></div>
+</div>
+</div>
+<div id="toTop" class="cover" style="border-radius:50px;width:50px;height:50px;text-align:center;line-height:50px;color:white;background:gray;bottom:5px;right:5px;position:fixed;opacity:0" onClick="document.body.scrollTop=0">Top</div>
+</body>
+</html>

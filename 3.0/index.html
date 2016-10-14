@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no, minimum-scale=0.9, maximum-scale=0.9" /> <meta name="mobile-web-app-capable" content="yes" />
+<title>Square.Connect</title>
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon" type="image/x-icon" />
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="icon" type="image/x-icon" />
+<style>
+@import "Shell.css";
+</style>
+<script src="script/Menu.js"></script>
+<script>
+function coor(n){return document.getElementById(n)}
+function hvr(){
+	coor('title').style.backgroundColor="white"
+	coor('title').style.color="black"
+	coor('menu').style.background="url(images/listh.bmp)"
+}
+function nml(){
+	coor('title').style.backgroundColor="black"
+	coor('title').style.color="white"
+	coor('menu').style.background="url(images/list.bmp)"
+}
+</script>
+</head>
+<body leftmargin="0" topmargin="0" onload="nml()" oncontextmenu="return false" link="gray" vlink="red" alink="dimgray">
+<div class="title" id="title" align="center" onmouseover="hvr()" onmouseout="nml()">
+<div class="menu" id="menu" onclick="list('')"></div>
+<font color="blue">Square</font><font color="red">.</font>Connect
+</div>
+<div id="list" style="position:fixed;top:50px;width:200px;height:100%;background-color:#ddd;display:none;z-index:1;overflow:auto" align="center" onmouseover="list('i')" onmouseout="list('n')">
+<a class="list" href="content/1.html" target="content" title="Summary">基礎說明</a>
+<a class="list" href="content/2.html" target="content">區域規則</a>
+<a class="list" href="content/3.html" target="content">角色規則</a>
+<a class="list" href="content/4.html" target="content">武器系統</a>
+<a class="list" href="content/5.html" target="content">形狀規則</a>
+<a class="list" href="content/6.html" target="content">自訂模式</a>
+<a class="list" href="content/7.html" target="content">棋譜題庫</a>
+<a class="list" href="content/S.html" target="content">遊戲術語</a>
+<a class="list" href="content/A.html" target="content">關於我們</a>
+<a class="list" href="Edit.html" title="Edit">模式編輯</a>
+<a class="list" href="Square.Connect.html" title="Play">開始遊玩</a>
+</div><div style="height:50px"></div>
+<iframe id="content" width="100%" height="500" src="content/W.html" name="content" frameborder="0"></iframe>
+</body>
+</html>

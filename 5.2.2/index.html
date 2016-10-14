@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="Logo.PNG" rel="shortcut icon" type="image/x-icon">
+<title>Square系列</title>
+<style>
+.logo{width:30px;height:30px;background-size:30px 30px;-webkit-background-size:30px 30px;-moz-background-size:30px 30px}
+.game{height:30px;line-height:30px;cursor:default;transition:all 2s;overflow:hidden;line-hight:100%;position:relative}
+.game:hover{background:gray;color:lightgray}
+.play{color:silver;position:absolute;right:0px;bottom:0px;transition:all 2s}
+.play:hover{transform:rotateX(360deg)}
+</style>
+<script>
+var G=["Connect","Connect/Attack","Connect/Defend","Divider","Blocker"]
+function director(url){window.location=G[url]+"/index.html"}
+function fopen(s){s.style.height="210px"}
+function fclose(s){s.style.height='30px'}
+</script>
+</head>
+<body topmargin="0" leftmargin="0" style="background:dimgray;color:white;overflow:hidden" onresize="rsz()" onload="rsz()">
+<div>
+Square是quivarix的棋盤遊戲系列，過去為Square.Connect，當時發表過許多延伸玩法，但後來有些規則已經跳脫原生規則，故將Square.Connect重新定義為Square系列下的一項棋盤遊戲.Connect，其他延伸原生規則玩法也歸類於.Connect之下，在後來發表了其他棋盤遊戲。<br>
+Square系列如下：<br>
+<div class="game" onmouseover="fopen(this)" onmouseout="fclose(this)">
+<img class="logo" style="background-image:url(Connect/Logo.PNG)" onclick="director(0)"/>.Connect<br>
+.Connect是quivarix第一個作品，遊戲規則為：<br>
+首回合可隨意設置符號<br>
+設置的符號必須產生連線(場上我方任一符號作為九宮格正中央外的八格接為連線區域)<br>
+當對方無法設置符號時，我方獲勝<div onclick="director(0)" class="play">開始遊玩></div>
+</div>
+<div class="game" onmouseover="fopen(this)" onmouseout="fclose(this)">
+<img class="logo" style="background-image:url(Connect/Attack/Logo.PNG)" onclick="director(1)"/>.Connect:Attack<br>
+Attack是繼.Connect後的延伸項目，額外規則為：<br>
+首回合符號已經預設(O方為A1，X方為I9)<br>
+當我方到達對方禁區(對方首回合符號連線區域，即深色區域)時，我方獲勝<br>
+當對方將禁區或封限區(對方禁區外的連線區域，即淺色區域)填滿對方符號時，我方獲勝<div onclick="director(1)" class="play">開始遊玩></div>
+</div>
+<div class="game" onmouseover="fopen(this)" onmouseout="fclose(this)">
+<img class="logo" style="background-image:url(Connect/Defend/Logo.PNG)" onclick="director(2)"/>.Connect:Defend<br>
+Defend是繼Attack後第二個.Connect的延伸項目，額外規則為：<br>
+首回合符號隨機設置(座標有A1，E9，I3，F2，C5)<br>
+將同色區域設置滿符號時，該區域將完全清空<br>
+當對方沒有首都(隨機設置的作標)時，我方獲勝<div onclick="director(2)" class="play">開始遊玩></div>
+</div>
+<div class="game" onmouseover="fopen(this)" onmouseout="fclose(this)">
+<img class="logo" style="background-image:url(Divider/Logo.PNG)" onclick="director(3)"/>.Divider<br>
+.Divider是原本.Connect的延伸項目，但並未用到原生規則而決定獨立成一個棋盤遊戲，遊戲規則為：<br>
+符號皆隨意設置<br>
+當形成一條直線時，兩個端點中的符號將會死亡(變成藍色)<br>
+場上對方符號若死超過三分之一(含)場上總符號數時，我方獲勝<div onclick="director(3)" class="play">開始遊玩></div>
+</div>
+<div class="game" onmouseover="fopen(this)" onmouseout="fclose(this)">
+<img class="logo" style="background-image:url(Blocker/Logo.PNG)" onclick="director(4)"/>.Blocker<br>
+.Blocker是Square系列下的一個棋盤遊戲，遊戲規則為：<br>
+符號皆隨意設置<br>
+當四點可以成為一個方形時，方形內部會變成自己的區域<br>
+自己的區塊對方是無法設置的<br>
+當自己的區域超過場上一半時，我方獲勝<div onclick="director(4)" class="play">開始遊玩></div>
+</div>
+</div>
+</body>
+</html>
