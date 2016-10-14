@@ -22,8 +22,8 @@ function Rul(){var a=0;Scr={O:0,X:0,P:0}
 			}
 		}
 	}
-	if(Tn>2){
-		if(Scr.P==0&&Tn%2==0){
+	if(Tn>2)if(Scr.P==0){
+		if(Tn%2==0){
 			if(Scr.O>Scr.X)Cln("O Win")
 			else if(Scr.O<Scr.X)Cln("X Win")
 		}
