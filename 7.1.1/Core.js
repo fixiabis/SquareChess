@@ -96,7 +96,7 @@ function Gto(){Rdr(prompt("前往指定回合:"))}
 function Clr(){if(Tn>2)Cln("清除棋盤?");else Cln()}
 function Adn(){bdB();ExA()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}
-function BfS(){
+function BfS(){Upl()
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Qre(Chr(cd1)+cd2,"F","");NxS()
 	if(!Dft.BfS)return;Qre(Hst.Crd[Tn-1],"F","blue");Qre(Hst.Crd[Tn],"F","blue")
 }
@@ -174,6 +174,7 @@ function OgC(c){var bc="white";if(!c)return
 function ExA(){}
 function ExB(){}
 function ExR(){}
+function Upl(){}
 function ExL(){return 0}
 function Ctn(r,s){var k=0;for(var i in r)if(Qre(r[i],"T")==s)k++;return k}
 function Tol(){
