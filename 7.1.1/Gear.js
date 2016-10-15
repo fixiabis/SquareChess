@@ -1,5 +1,6 @@
+var olsvr="https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec"
 function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
-	$.get("https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec",
+	$.get(olsvr,
 		{Typ:typ,Act:Id("Act").value,Pwd:Id("Pwd").value,Jcd:Id("Jcd").value,Mod:location.search.split("?mode=")[1]},
 		function (r){
 			if(Instr(r,"/")<0&&Val(r)==NaN)alert(r)
@@ -15,7 +16,7 @@ function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
 }
 function Upl(){if(Tn==0)return
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=function(){}
-	$.get("https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec",
+	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:Hst.Brd[Tn]+":"+Tn},
 		function (r){
 			if(r=="設置完成")Get();else alert(r)
@@ -23,12 +24,12 @@ function Upl(){if(Tn==0)return
 	)
 }
 function Get(){
-	$.get("https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec",
+	$.get(olsvr,
 		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
 		function (r){var rtn=r.split(":")
 			if(rtn[1]!=Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);Rul()
 				for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=function(){Set(this.id)}
-			}else setTimeout("Get()",2000)
+			}else setTimeout("Get()",1000)
 		}
 	)
 }
