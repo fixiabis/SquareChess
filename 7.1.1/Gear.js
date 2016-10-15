@@ -7,7 +7,7 @@ function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
 			else{
 				if(typ=="L"){var rtn=r.split("/'")
 					Dft.Usr=Id("Act").value;Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd)
-				}else{alert(r)
+				}else{
 					Dft.Usr=Id("Act").value;Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Get()
 				}Ldr()
 			}
