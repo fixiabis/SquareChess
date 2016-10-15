@@ -3,7 +3,7 @@ function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
 	$.get(olsvr,
 		{Typ:typ,Act:Id("Act").value,Pwd:Id("Pwd").value,Jcd:Id("Jcd").value,Mod:location.search.split("?mode=")[1]},
 		function (r){
-			if(Instr(r,"/")<0&&Val(r)==NaN)alert(r)
+			if(Instr(r,"/")<0&&Val(r)>0)alert(r)
 			else{
 				if(typ=="L"){var rtn=r.split("/'")
 					Dft.Usr=Id("Act").value;Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd)
