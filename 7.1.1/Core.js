@@ -1,5 +1,5 @@
 var Tn=0,
-	Dft={Clr:1,Blk:0,BfS:false,NxS:false,Ctx:0},Hst={},
+	Dft={Clr:1,Blk:0,BfS:false,NxS:false},Hst={},
 	Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],
 	cd8="F,B,R,L,FR,FL,BR,BL".split(","),
 	LdM=[]
@@ -58,8 +58,7 @@ function MsO(e){var c=1,p=0
 	else c=0
 	Mnu(c,p)
 }
-function Mnu(c,p){if(Id("UCL").style.width=="160px"&&Dft.Ctx&&!c)return
-	Id("UCL").style.top="0px";Dft.Ctx=0
+function Mnu(c,p){
 	if(c)if(p){
 		Id("UCL").style.left=""
 		Id("UCL").style.right="0px"
@@ -69,11 +68,6 @@ function Mnu(c,p){if(Id("UCL").style.width=="160px"&&Dft.Ctx&&!c)return
 	}
 	var sz=0;
 	if(!Id("Board"))return;if(c)sz=160;Id("UCL").style.width=sz+"px"
-}
-function Mmn(e){if(Id("UCL").style.width=="160px"){Dft.Ctx=0;return Mnu(0,0)}Id("UCL").style.width="160px"
-	if(e.pageX>Split(Id("Board").style.marginLeft,"px")[0]||e.pageX<Val(Id("Board").style.marginLeft.split("px")[0])+Id("Board").childNodes[0].clientWidth){
-		Id("UCL").style.left=e.pageX;Id("UCL").style.top=e.pageY;Dft.Ctx=1
-	}
 }
 function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 	switch(k){
