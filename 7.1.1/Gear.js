@@ -25,8 +25,8 @@ function Upl(){if(Tn==0)return
 function Get(){
 	$.get("https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec",
 		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
-		function (r){var rtn=r.split(":");console.log(r)
-			if(rtn[1]!=Tn){Rdr(rtn[0]);Tn=Val(rtn[1])
+		function (r){var rtn=r.split(":")
+			if(rtn[1]!=Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);Rul()
 				for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=function(){Set(this.id)}
 			}else setTimeout("Get()",2000)
 		}
