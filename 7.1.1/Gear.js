@@ -33,16 +33,14 @@ function Get(){
 		function (r){
 			if(r!=""){
 				var rtn=r.split(":");console.log(r)
-				if(rtn[0]!=""){Rul()
-					if(rtn[1]>Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);EnS(1)
-					}else Get()
-				}
+				if(rtn[0]!=""&&rtn[1]>Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);EnS(1)Rul()}
+				else Get()
 			}else Get()
 		}
 	)
 }
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
-function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr()}}
+function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr();Rul()}}
 function Acn(){if(location.hash){Id("Act").value=location.hash.split("#")[1]}}
 function Udo(){}
 function Rdo(){}
