@@ -8,9 +8,11 @@ function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
 					Dft.Usr="Host";Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd);Ldr()
 				}else alert(r)
 			}else{
-				if(Val(r)!=NaN){EnS()
-					Dft.Usr="Join";Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Get();Ldr()
-				}else alert(r)
+				if(Val(r)==NaN){
+					alert(r)
+				}else{
+					Dft.Usr="Join";Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Get();Ldr();EnS()
+				}
 			}
 		}
 	)
@@ -39,7 +41,7 @@ function Get(){
 }
 function EnS(v){var r=function (){}
 	if(v)r=function (){Set(this.id)}
-	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=r
+	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=r()
 }
 function Udo(){}
 function Rdo(){}
