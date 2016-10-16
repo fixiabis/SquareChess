@@ -150,7 +150,7 @@ function Cln(m,t){var k=1;if(!m)m="";if(!t)t=""
 	if(k){Tn=0;Hst={Brd:[],Crd:[]}
 		for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue
 			Sym(Chr(cd1)+cd2,2)
-		}Brd();Wtr();Get()
+		}Brd();Wtr();Upl();Get()
 	}
 }
 function Brd(){ExB();crB()}
