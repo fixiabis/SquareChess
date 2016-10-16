@@ -1,4 +1,4 @@
-var olsvr="https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec";Dft.Set=1
+var olsvr="https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec"
 function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
 	$.get(olsvr,
 		{Typ:typ,Act:Id("Act").value,Pwd:Id("Pwd").value,Jcd:Id("Jcd").value,Mod:location.search.split("?mode=")[1]},
@@ -40,7 +40,6 @@ function Get(){
 	)
 }
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
-function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr();Rul()}}
 function Acn(){if(location.hash){Id("Act").value=location.hash.split("#")[1]}}
 function Udo(){}
 function Rdo(){}

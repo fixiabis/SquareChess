@@ -1,5 +1,5 @@
 var Tn=0,
-	Dft={Clr:1,Blk:0,BfS:false,NxS:false},Hst={},
+	Dft={Clr:1,Blk:0,BfS:false,NxS:false,Set=1},Hst={},
 	Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],
 	cd8="F,B,R,L,FR,FL,BR,BL".split(","),
 	LdM=[]
@@ -95,7 +95,7 @@ function Lst(){Rdr(Hst.Brd.length-1)}
 function Gto(){Rdr(prompt("前往指定回合:"))}
 function Clr(){if(Tn>2)Cln("清除棋盤?");else Cln()}
 function Adn(){bdB();ExA()}
-function Set(c){if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr();Rul()}}
+function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr();Rul()}}
 function BfS(){Upl()
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Qre(Chr(cd1)+cd2,"F","");NxS()
 	if(!Dft.BfS)return;Qre(Hst.Crd[Tn-1],"F","blue");Qre(Hst.Crd[Tn],"F","blue")
