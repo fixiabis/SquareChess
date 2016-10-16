@@ -18,7 +18,7 @@ function LT(v){Mnu(1,v)}
 function CK(){if(!Id("Board"))return 0}
 </script>
 </head>
-<body onResize="Rsz()" onContextMenu="event.preventDefault()">
+<body onResize="Rsz()" onmouseover="MsO(event)" onContextMenu="event.preventDefault()">
 <div id="Board">
     <table align="center">
     <th align="center" colspan="2">登入或進入房間</th>
@@ -30,10 +30,6 @@ function CK(){if(!Id("Board"))return 0}
 	<div align="center" style="margin-top:100px"><div id="run" style="display:none">Creating...</div></div>
 </div>
 <div id='UCL'>
-<div onclick='Clr()' class='game'>Clean</div>
-<div onclick='Udo()' class='game'>Undo</div>
-<div onclick='Rdo()' class='game'>Redo</div>
-<div onclick='Gto()' class='game'>Goto</div>
 <div onclick='Adn()' class='game'>Addons</div>
 <div onclick='Tol()' class='game'>Tools</div>
 <div onclick='HM()' class='game'>Home</div>
