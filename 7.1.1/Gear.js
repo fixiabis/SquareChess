@@ -30,7 +30,7 @@ function Get(){
 		function (r){
 			if(r!=""){
 				var rtn=r.split(":");console.log(r)
-				if(rtn[1]!=Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);Rul()
+				if(rtn[1]>Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);Rul()
 					for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=function(){Set(this.id)}
 				}else Get()
 			}else Get()
