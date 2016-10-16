@@ -1,5 +1,5 @@
 var Tn=0,
-	Dft={Clr:1,Blk:0,BfS:false,NxS:false,Set=1},Hst={},
+	Dft={Clr:1,Blk:0,BfS:false,NxS:false,Set:1},Hst={},
 	Sbl=["O","X",""],Sqr=[[" ","","dimgray"]],
 	cd8="F,B,R,L,FR,FL,BR,BL".split(","),
 	LdM=[]
