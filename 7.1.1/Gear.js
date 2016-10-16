@@ -11,7 +11,7 @@ function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
 				if(Val(r)!=NaN){
 					Dft.Usr=Id("Act").value;Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Get()
 				}else alert(r)
-			}Ldr()
+			}Ldr();Id("UC").opacity=0
 		}
 	)
 }
@@ -40,3 +40,4 @@ function Get(){
 function Udo(){}
 function Rdo(){}
 function Gto(){}
+function Clr(){}
