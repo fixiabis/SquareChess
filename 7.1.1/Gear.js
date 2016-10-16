@@ -19,7 +19,9 @@ function Upl(){if(Tn==0)return;EnS()
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:Hst.Brd[Tn]+":"+Tn},
 		function (r){
-			if(r=="設置完成")Get();else alert(r)
+			if(Dft.Hst[Tn]=="")EnS(1)
+			else if(r=="設置完成")Get()
+			else alert(r)
 		}
 	)
 }
