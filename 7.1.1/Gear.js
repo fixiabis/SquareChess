@@ -33,7 +33,7 @@ function Get(){
 		function (r){
 			if(r!=""){
 				var rtn=r.split(":");console.log(r)
-				if(rtn[0]!=""&&rtn[1]>Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);EnS(1)Rul()}
+				if(rtn[0]!=""&&rtn[1]>Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);EnS(1);Rul()}
 				else Get()
 			}else Get()
 		}
