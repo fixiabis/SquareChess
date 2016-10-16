@@ -11,7 +11,7 @@ function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
 				if(Val(r)!=NaN){
 					Dft.Usr=Id("Act").value;Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Get()
 				}else alert(r)
-			}Ldr();Id("UC").style.opacity=0
+			}Ldr()
 		}
 	)
 }
@@ -35,6 +35,12 @@ function Get(){
 				}else Get()
 			}else Get()
 		}
+	)
+}
+function Sgn(){
+	$.get(olsvr,
+		{Typ:"C",Act:prompt("帳號"),Pwd:prompt("密碼"),nPw:prompt("新密碼")},
+		function (r){alert(r)}
 	)
 }
 function Udo(){}
