@@ -39,10 +39,13 @@ function Get(){
 		}
 	)
 }
-function EnS(v){var r=function (){}
-	if(v)r=function (){Set(this.id)}
-	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=r()
+function EnS(v){
+	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
+		if(v)Id(Chr(cd1)+cd2).onclick=function (){Set(this.id)}
+		else Id(Chr(cd1)+cd2).onclick=function (){}
+	}
 }
+function Acn(){if(location.hash){Id("Act").value=laction.hash.split("#")[1]}}
 function Udo(){}
 function Rdo(){}
 function Gto(){}
