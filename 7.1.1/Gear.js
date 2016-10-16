@@ -21,7 +21,7 @@ function Upl(){if(Tn==0)return;EnS()
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:Hst.Brd[Tn]+":"+Tn},
 		function (r){
-			if(Dft.Hst[Tn]==""&&Dft.Usr=="Host")EnS(1)
+			if(Hst.Brd[Tn-1]==""&&Dft.Usr=="Host")EnS(1)
 			else if(r=="設置完成")Get()
 			else alert(r)
 		}
@@ -45,7 +45,7 @@ function EnS(v){
 		else Id(Chr(cd1)+cd2).onclick=function (){}
 	}
 }
-function Acn(){if(location.hash){Id("Act").value=laction.hash.split("#")[1]}}
+function Acn(){if(location.hash){Id("Act").value=location.hash.split("#")[1]}}
 function Udo(){}
 function Rdo(){}
 function Gto(){}
