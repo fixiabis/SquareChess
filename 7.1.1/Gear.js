@@ -5,18 +5,17 @@ function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
 		function (r){
 			if(typ=="L"){
 				if(Instr(r,"/'")>-1){var rtn=r.split("/'")
-					Dft.Usr=Id("Act").value;Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd)
+					Dft.Usr=Id("Act").value;Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd);Ldr()
 				}else alert(r)
 			}else{
-				if(Val(r)!=NaN){
-					Dft.Usr=Id("Act").value;Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Get()
+				if(Val(r)!=NaN){EnS()
+					Dft.Usr=Id("Act").value;Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Get();Ldr()
 				}else alert(r)
-			}Ldr()
+			}
 		}
 	)
 }
-function Upl(){if(Tn==0)return
-	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=function(){}
+function Upl(){if(Tn==0)return;EnS()
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:Hst.Brd[Tn]+":"+Tn},
 		function (r){
@@ -30,18 +29,15 @@ function Get(){
 		function (r){
 			if(r!=""){
 				var rtn=r.split(":");console.log(r)
-				if(rtn[1]>Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);Rul()
-					for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=function(){Set(this.id)}
+				if(rtn[1]>Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);Rul();EnS(1)
 				}else Get()
 			}else Get()
 		}
 	)
 }
-function Sgn(){
-	$.get(olsvr,
-		{Typ:"C",Act:prompt("帳號"),Pwd:prompt("密碼"),nPw:prompt("新密碼")},
-		function (r){alert(r)}
-	)
+function EnS(v){var r=function (){}
+	if(v)r=function (){Set(this.id)}
+	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Id(Chr(cd1)+cd2).onclick=r
 }
 function Udo(){}
 function Rdo(){}
