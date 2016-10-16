@@ -5,11 +5,11 @@ function Lgn(){var typ="J";if(Id("Jcd").value=="")typ="L"
 		function (r){
 			if(typ=="L"){
 				if(Instr(r,"/'")>-1){var rtn=r.split("/'")
-					Dft.Usr=Id("Act").value;Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd);Ldr()
+					Dft.Usr="Host";Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd);Ldr()
 				}else alert(r)
 			}else{
 				if(Val(r)!=NaN){EnS()
-					Dft.Usr=Id("Act").value;Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Get();Ldr()
+					Dft.Usr="Join";Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Get();Ldr()
 				}else alert(r)
 			}
 		}
@@ -19,7 +19,7 @@ function Upl(){if(Tn==0)return;EnS()
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:Hst.Brd[Tn]+":"+Tn},
 		function (r){
-			if(Dft.Hst[Tn]=="")EnS(1)
+			if(Dft.Hst[Tn]==""&&Dft.Usr=="Host")EnS(1)
 			else if(r=="設置完成")Get()
 			else alert(r)
 		}
