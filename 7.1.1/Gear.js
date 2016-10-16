@@ -21,7 +21,7 @@ function Upl(){if(Tn==0)return;EnS()
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:Hst.Brd[Tn]+":"+Tn},
 		function (r){
-			if(Hst.Brd[Tn-1]==""&&Dft.Usr=="Host")EnS(1)
+			if(Hst.Brd[Tn]==""&&Dft.Usr=="Host")EnS(1)
 			else if(r=="設置完成")Get()
 			else alert(r)
 		}
@@ -33,7 +33,7 @@ function Get(){
 		function (r){
 			if(r!=""){
 				var rtn=r.split(":");console.log(r)
-				if(rtn[1]>Tn){Rdr(rtn[0]);Tn=Val(rtn[1]);Rul();EnS(1)
+				if(rtn[1]>Tn&&rtn[0]!=""){Rdr(rtn[0]);Tn=Val(rtn[1]);Rul();EnS(1)
 				}else Get()
 			}else Get()
 		}
