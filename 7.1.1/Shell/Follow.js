@@ -1,4 +1,4 @@
-function Set(c){if(Dft.Set)return;if(!Flw(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}
+function Set(c){if(!Dft.Set)return;if(!Flw(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr();Rul()}}
 function Flw(c){var k=Lmt(c)
 	if(!Hst.Crd[Tn-1]&&!k)return 0
 	if(Instr(Dft.Fcd,Hst.Crd[Tn-1])<0)return 1;return 0
