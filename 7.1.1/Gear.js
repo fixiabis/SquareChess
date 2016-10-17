@@ -8,7 +8,7 @@ function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.
 					Dft.Usr="Host";Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd);Ldr()
 				}else{alert(r);Dft.Lgn=0}
 			}else{
-				if(Instr(r,"/")>-1){Dft.Usr="Join";Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Ldr()}
+				if(Instr(r,"/")>-1){Dft.Usr="Join";Dft.URw=r.split("/")[1];Dft.Jcd=Id("Jcd").value;alert("加入成功");Ldr()}
 				else{alert(r);Dft.Lgn=0}
 			}
 		}
