@@ -13,14 +13,15 @@ function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.
 		}
 	)
 }
-function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];if(v)bd=v
+function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
+	if(typeof v=="string")bd=v
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
 		function (r){
-			if(bd==""||bd=="End"){
+			if(bd=="Cfr"||bd=="End"){
 				if(bd=="End")Cln()
-				if(bd==""){Cln("玩家認輸");Dft.Gvp=1}
-				if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}
+				if(bd=="Cfr"){Cln("玩家認輸");Dft.Gvp=1}
+				if(Dft.Usr=="Host")EnS(1);else Get()
 			}else if(r=="設置完成")Get()
 			else alert(r)
 		}
@@ -31,7 +32,7 @@ function Get(){
 		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
 		function (r){console.log(r)
 			if(r=="End"){
-				if(!Dft.Gvp)Upl("")
+				if(!Dft.Gvp)Upl("Cfr");else Get()
 			}else if(r!=""){Dft.Gvp=0
 				var rtn=r.split(":")
 				if(rtn[0]!=""&&rtn[1]!=Tn){
@@ -51,7 +52,7 @@ function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Hst={Brd:[],Crd:[]};Tn=0;Dft.Upl=0
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
 		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
-	}Brd();Wtr();Dft.Upl=1
+	}Brd();Wtr();Dft.Upl=1;if(Dft.Usr=="Host")Upl("");else Get()
 }
 function KDw(e){if(e.which==13)Lgn()}
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
