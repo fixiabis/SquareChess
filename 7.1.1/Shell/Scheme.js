@@ -16,10 +16,11 @@ function ExL(c){var t=Qre(c,"T"),k=0
 		for(i in Lt)if(Instr("FBRL",Lt[i][1])>-1)Lt[i]=Crd(c,Lt[i]);k=1
 	}console.log(Ctn(Lt,"X"))
 	if(Lt.indexOf(c)<0&&Tn==1)k=1
-	if(Tn<2&&t==""&&t!=" "&&k){Ara[Tn]=[]
+	if(Tn<2&&t==""&&k){Ara[Tn]=[]
 		for(i in cd8){var d=Crd(c,cd8[i]),b=Qre(d,"B")
 			if(b==""||b=="lightgray"){Qre(d,"B",Sqr[Tn+1][2]);Ara[Tn].push(d)}
 		}
 	}if(k||Tn>1)return 0;else return 1
 }
 function Adn(){}
+function NxS(){}
