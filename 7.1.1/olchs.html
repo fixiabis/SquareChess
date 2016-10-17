@@ -18,14 +18,14 @@ function LT(v){Mnu(1,v)}
 function CK(){if(!Id("Board"))return 0}
 </script>
 </head>
-<body onload="Acn()" onResize="Rsz()" onmouseover="MsO(event)" onContextMenu="event.preventDefault()">
+<body onLoad="Acn()" onResize="Rsz()" onmouseover="MsO(event)" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)">
 <div id="Board">
     <table align="center">
     <th align="center" colspan="2">登入或進入房間</th>
     <tr><td>帳號</td><td><input id="Act" type="text"/></td></tr>
     <tr><td>密碼</td><td><input id="Pwd" type="password"/></td></tr>
     <tr><td>加入碼</td><td><input id="Jcd" type="text"/></td></tr>
-    <tr><td colspan="2"><input value="送出" type="button" style="width:100%" onclick="Lgn()"/></tr>
+    <tr><td colspan="2"><input value="執行" type="button" style="width:100%" onClick="Lgn()"/></tr>
     </table>
 	<div align="center" style="margin-top:100px"><div id="run" style="display:none">Creating...</div></div>
 </div>
