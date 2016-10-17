@@ -35,7 +35,7 @@ function Get(){
 				if(!Dft.Gvp)Upl("Cfr");else Get()
 			}else if(r!=""){Dft.Gvp=0
 				var rtn=r.split(":")
-				if(rtn[0]!=""&&rtn[1]!=Tn){
+				if(rtn[0]!=""&&rtn[1]!=Tn){Tn=rtn[1]
 					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);BfS();Rul()
 				}else Get()
 			}else Get()
