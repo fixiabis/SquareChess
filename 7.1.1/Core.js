@@ -96,7 +96,7 @@ function Gto(){Rdr(prompt("前往指定回合:"))}
 function Clr(){if(Tn>2)Cln("清除棋盤?");else Cln()}
 function Adn(){bdB();ExA()}
 function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr();Rul()}}
-function BfS(){Upl()
+function BfS(){
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Qre(Chr(cd1)+cd2,"F","");NxS()
 	if(!Dft.BfS)return;Qre(Hst.Crd[Tn-1],"F","blue");Qre(Hst.Crd[Tn],"F","blue")
 }
@@ -106,7 +106,7 @@ function NxS(){
 		if(!Lmt(Chr(cd1)+cd2)||!Dft.NxS)Id(Chr(cd1)+cd2).style.opacity=1
 	}
 }
-function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Tn]=b;BfS()}
+function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Tn]=b;Upl()}
 function Rdr(b){
 	if(typeof b=="number")if(Hst.Brd[b]){Rdr(Hst.Brd[b]);Tn=b;BfS()}if(!b.length)return
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Sym(Chr(cd1)+cd2,Val(b[(cd1-65)*9+cd2-1]))
@@ -174,7 +174,7 @@ function OgC(c){var bc="white";if(!c)return
 function ExA(){}
 function ExB(){}
 function ExR(){}
-function Upl(){}
+function Upl(){BfS()}
 function Get(){}
 function ExL(){return 0}
 function Ctn(r,s){var k=0;for(var i in r)if(Qre(r[i],"T")==s)k++;return k}
