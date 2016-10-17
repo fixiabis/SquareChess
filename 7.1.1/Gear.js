@@ -14,11 +14,12 @@ function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.
 		}
 	)
 }
-function Upl(){if(Tn==0||!Dft.Upl)return;EnS();BfS()
+function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn]
+	if(v)bd=v
 	$.get(olsvr,
-		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn]},
+		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
 		function (r){
-			if(Hst.Brd[Tn]==""&&Dft.Usr=="Host")EnS(1)
+			if(bd==""&&Dft.Usr=="Host")EnS(1)
 			else if(r=="設置完成")Get()
 			else alert(r)
 		}
@@ -28,13 +29,13 @@ function Get(){
 	$.get(olsvr,
 		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
 		function (r){
-			if(r!=""){
+			if(r=="End"){
+				Cln("玩家認輸");if(Dft.Usr=="Host")EnS(1)
+			}else if(r!=""){
 				var rtn=r.split(":");console.log(r)
 				if(rtn[0]!=""&&rtn[1]>Tn){
-					if(rtn[0]=="End")Cln("玩家認輸")
-					else{EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);BfS();Rul()}
-				}
-				else Get()
+					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);BfS();Rul()
+				}else Get()
 			}else Get()
 		}
 	)
@@ -48,7 +49,7 @@ function LMd(n){
 function KDw(e){if(e.which==13)Lgn()}
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
 function Acn(){if(location.hash){Id("Act").value=location.hash.split("#")[1]}}
-function Gvp(){if(confirm("確定認輸?")){Hst.Brd[Tn]="End";Upl()}}
+function Gvp(){if(!Dft.Set)return;if(confirm("確定認輸?")){Upl("End")}}
 function Udo(){}
 function Rdo(){}
 function Gto(){}
