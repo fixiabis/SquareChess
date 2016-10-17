@@ -1,4 +1,4 @@
-var olsvr="https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec"
+var olsvr="https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec";Dft.Upl=1
 function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.Lgn=1
 	$.get(olsvr,
 		{Typ:typ,Act:Id("Act").value,Pwd:Id("Pwd").value,Jcd:Id("Jcd").value,Mod:location.search.split("?mode=")[1]},
@@ -8,13 +8,13 @@ function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.
 					Dft.Usr="Host";Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd);Ldr()
 				}else{alert(r);Dft.Lgn=0}
 			}else{
-				if(Val(r)==NaN){alert(r);Dft.Lgn=0}
-				else{Dft.Usr="Join";Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Ldr()	}
+				if(Instr(r,"/")>-1){Dft.Usr="Join";Dft.URw=r;Dft.Jcd=Id("Jcd").value;alert("加入成功");Ldr()}
+				else{alert(r);Dft.Lgn=0}
 			}
 		}
 	)
 }
-function Upl(){if(Tn==0)return;EnS()
+function Upl(){if(Tn==0||!Dft.Upl)return;EnS()
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn]},
 		function (r){
@@ -30,9 +30,7 @@ function Get(){
 		function (r){
 			if(r!=""){
 				var rtn=r.split(":");console.log(r)
-				if(rtn[0]!=""&&rtn[1]>Tn){Tn=Val(rtn[1])
-					Rdr(rtn[0]);Set(rtn[2]);EnS(1);Rul()
-				}
+				if(rtn[0]!=""&&rtn[1]>Tn){EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);Rul()}
 				else Get()
 			}else Get()
 		}
