@@ -147,10 +147,10 @@ function Sym(c,v){
 }
 function Cln(m,t){var k=1;if(!m)m="";if(!t)t=""
 	if(m!="")k=confirm(m)
-	if(k){Hst={Brd:[],Crd:[]};Tn=0;Dft.Upl=0
+	if(k){Hst={Brd:[],Crd:[]};Tn=0
 		for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue
 			Sym(Chr(cd1)+cd2,2)
-		}Brd();Wtr();Dft.Upl=1
+		}Brd();Wtr()
 	}
 }
 function Brd(){ExB();crB()}
