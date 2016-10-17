@@ -18,7 +18,7 @@ function ExL(c){var t=Qre(c,"T"),k=0
 	if(Lt.indexOf(c)<0&&Tn==1)k=1
 	if(Tn<2&&t==""&&k){Ara[Tn]=[]
 		for(i in cd8){var d=Crd(c,cd8[i]),b=Qre(d,"B")
-			if(b==""||b=="lightgray"){Qre(d,"B",Sqr[Tn+1][2]);Ara[Tn].push(d)}
+			if(b=="white"||b=="lightgray"){Qre(d,"B",Sqr[Tn+1][2]);Ara[Tn].push(d)}
 		}
 	}if(k||Tn>1)return 0;else return 1
 }
