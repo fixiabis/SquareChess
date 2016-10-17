@@ -30,7 +30,10 @@ function Get(){
 		function (r){
 			if(r!=""){
 				var rtn=r.split(":");console.log(r)
-				if(rtn[0]!=""&&rtn[1]>Tn){EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);BfS();Rul()}
+				if(rtn[0]!=""&&rtn[1]>Tn){
+					if(rtn[0]=="End")Cln("對方玩家認輸")
+					else{EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);BfS();Rul()}
+				}
 				else Get()
 			}else Get()
 		}
@@ -45,6 +48,7 @@ function LMd(n){
 function KDw(e){if(e.which==13)Lgn()}
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
 function Acn(){if(location.hash){Id("Act").value=location.hash.split("#")[1]}}
+function Gvp(){if(confirm("確定認輸?")){Hst.Brd[Tn]="End";Upl();Cln("我方玩家認輸")}}
 function Udo(){}
 function Rdo(){}
 function Gto(){}
