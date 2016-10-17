@@ -13,8 +13,7 @@ function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.
 		}
 	)
 }
-function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn]
-	if(v)bd=v
+function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];if(v)bd=v
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
 		function (r){
@@ -28,8 +27,8 @@ function Get(){
 	$.get(olsvr,
 		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
 		function (r){
-			if(r=="End"){
-				Cln("玩家認輸");Upl("");if(Dft.Usr=="Host")EnS(1);else Get()
+			if(r=="End"){Upl("")
+				Cln("玩家認輸");if(Dft.Usr=="Host")EnS(1);else Get()
 			}else if(r!=""){
 				var rtn=r.split(":");console.log(r)
 				if(rtn[0]!=""&&rtn[1]>Tn){
