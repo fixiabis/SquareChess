@@ -30,7 +30,7 @@ function Get(){
 			if(r!=""){Dft.Gvp=0
 				var rtn=r.split(":")
 				if(rtn[0]!=""&&rtn[1]==Tn+1){Tn=rtn[1]-1
-					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);BfS();Rul()
+					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;BfS();Rdr(rtn[0]);Rul()
 				}else Get()
 			}else Get()
 		}
@@ -45,9 +45,10 @@ function LMd(n){
 function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Tn=0;Hst={Brd:[],Crd:[]}
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
-		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
+		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2);console.log(Chr(cd1)+cd2)
 	}Brd();Wtr()
 }
+function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr()}}
 function KDw(e){if(e.which==13)Lgn()}
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
 function Acn(){if(location.hash){Id("Act").value=location.hash.split("#")[1]}}
