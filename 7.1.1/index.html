@@ -9,23 +9,21 @@
 <style>@import "Style.css";</style>
 <script src="Simplify.js"></script>
 <script>
-var ctr=0,lg="",lng={en:{NT:"NO title",TK:"Thanks your report!"},zh:{NT:"無標題",TK:"感謝你的回報！"}}
+var ctr=0
 function d(v){
 	Id("menu").style.transform="translateY(-100%)";
 	Id("content").style.display="none";
 	if(Mid(v,0,6)=="Square")v=Mid(v,7,v.length-6)
 	setTimeout("location='chess.html?mode='+'"+v+"'",500)
 }
-function Send(){if(Id("Title").value==""){alert(lng[lg].NT);return}
-	Id("Submit").onclick=function (){};Id("Submit").style.backgroundColor="white"
+function Send(m){if(Id("Title").value==""){alert("無標題");return}
+	m.onclick=function (){};m.style.backgroundColor="white"
 	$.get("https://script.google.com/macros/s/AKfycbwz5OUuveX4rVcbrhizhfh3Hn7X1wG9P9VXPgCxCkbwJQCi54tH/exec",{
 		Type:"Problem:7.1.1",
 		Title:Id("Title").value,
 		Content:Id("Content").value
-	 },function (data){
-		alert(lng[lg].TK)
-		Id("Submit").onclick=function (){Send()}
-		Id("Submit").style.backgroundColor="lightgray"
+	 },function (data){alert("感謝你的回報！")
+		m.onclick=function (){Send()};m.style.backgroundColor="lightgray"
 		Id("Title").value="";Id("Content").value=""
 	   }
 	)
@@ -79,6 +77,15 @@ function Lan(){
 		Class("game")[i].addEventListener("click",function(){d(this.innerHTML)})
 		Class("game")[i].addEventListener("mouseover",function(){c(this,0)})
 	}Rsz();Id("T").style.transition="all 1s";if(!ctr)mc(0,0)
+}
+function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
+	$.get("https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec",
+		{Typ:"C",Act:Id("Act").value,Pwd:Id("Pwd").value,nPw:Id("nPw").value},
+		function (r){
+			alert(r);m.style.backgroundColor="lightgray"
+			Id("Act").value="";Id("Pwd").value="";Id("nPw").value=""
+		}
+	)
 }
 function RPT(){mc(2,0);doc.body.scrollTop=doc.body.scrollHeight}
 </script>
@@ -203,11 +210,21 @@ Freedom Mode:
 </div>
 <div class="mcover">
 <h1 id="RPP">回報問題</h1>
-<table align="center" style="border:none"><tr><td id="RPT"><form id='RForm'>
+<table align="center" style="border:none"><tr><td id="RPT">
 <input type='text' id='Title' placeholder='輸入標題' class='txt'/><br />
 <textarea rows='5' class='txt' id='Content' placeholder='簡短說明你遇到的問題'></textarea>
-<div class='btn' id='Submit' onClick='Send()'>確認</div>
-</form></td></tr></table>
+<div class='btn' onClick='Send(this)'>確認</div>
+</td></tr></table>
+</div>
+<div class="mcover">
+<h1 id="mgact">管理帳戶</h1>
+沒有帳號?輸入帳號及新密碼以建置帳號:
+<table align="center" style="border:none" width="100%"><tr><td id="MGT">
+帳號:<input id="Act" type="text" class='txt'/><br>
+密碼:<input id="Pwd" type="password" class='txt'/><br>
+新密碼:<input id="nPw" type="password" class='txt'/><br>
+<div class='btn' onClick='Chge(this)'>確認</div>
+</td></tr></table>
 </div>
 </div>
 <div id="toTop" class="cover" style="border-radius:50px;width:50px;height:50px;text-align:center;line-height:50px;color:white;background:gray;bottom:5px;right:5px;position:fixed;opacity:0" onClick="doc.body.scrollTop=0">Top</div>
