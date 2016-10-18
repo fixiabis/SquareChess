@@ -1,5 +1,5 @@
 var olsvr="https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec";Dft.Upl=1
-function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.Lgn=1;Id("Exc").style.backgroundColor="white"
+function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.Lgn=1;Id("Exc").style.backgroundColor="dimgray"
 	$.get(olsvr,
 		{Typ:typ,Act:Id("Act").value,Pwd:Id("Pwd").value,Jcd:Id("Jcd").value,Mod:location.search.split("?mode=")[1]},
 		function (r){
@@ -18,11 +18,7 @@ function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
 		function (r){
-			if(bd=="Cfr"||bd=="End"){
-				if(bd=="End")Cln()
-				if(bd=="Cfr"){Cln("玩家認輸");Dft.Gvp=1}
-				if(Dft.Usr=="Host")EnS(1);else Get()
-			}else if(r=="設置完成")Get()
+			if(r=="設置完成")Get()
 			else alert(r)
 		}
 	)
@@ -31,11 +27,9 @@ function Get(){
 	$.get(olsvr,
 		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
 		function (r){console.log(r)
-			if(r=="End"){
-				if(!Dft.Gvp)Upl("Cfr");else Get()
-			}else if(r!=""){Dft.Gvp=0
+			if(r!=""){Dft.Gvp=0
 				var rtn=r.split(":")
-				if(rtn[0]!=""&&rtn[1]!=Tn){Tn=rtn[1]
+				if(rtn[0]!=""&&rtn[1]!=Tn){Tn=rtn[1]-1
 					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);BfS();Rul()
 				}else Get()
 			}else Get()
@@ -52,12 +46,12 @@ function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Hst={Brd:[],Crd:[]};Tn=0;Dft.Upl=0
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
 		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
-	}Brd();Wtr();Dft.Upl=1;if(Dft.Usr=="Host")Upl("");else Get()
+	}Brd();Wtr();Dft.Upl=1
 }
 function KDw(e){if(e.which==13)Lgn()}
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
 function Acn(){if(location.hash){Id("Act").value=location.hash.split("#")[1]}}
-function Gvp(){if(!Dft.Set)return;if(confirm("確定認輸?")){Dft.Gvp=1;Upl("End")}}
+function Gvp(){if(!Dft.Set)return;if(confirm("確定認輸?")){Dft.Gvp=1}}
 function Udo(){}
 function Rdo(){}
 function Gto(){}
