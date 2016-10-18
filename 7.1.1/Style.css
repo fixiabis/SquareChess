@@ -16,9 +16,10 @@ a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 .cover,.mcover{overflow:hidden;transition:all 1s}
 body::-webkit-scrollbar{width:0px}
 #UCM{position:fixed;height:40px;background-color:gray;width:100%;bottom:0px;left:0px;display:none}
-#Report,#facebook,#twitter{float:right;font-size:20px;margin-left:10px}#Report:hover{color:red}
+#Report,#facebook,#twitter,#Manage{float:right;font-size:20px;margin-left:10px}#Report:hover{color:red}
 #Ctt{height:20px;overflow:hidden;line-height:20px;position:fixed;top:40px;right:0px}
 #facebook:hover{color:#3b5998}#twitter:hover{color:#1da1f2}
+#Manage:hover{color:orange}
 ul{transition:all 1s}.key{color:steelblue}.mus{color:indianred}.opt{color:darkslateblue}
 #run{width:100px;height:100px;background:gray;border-radius:10px;line-height:100px;text-align:center;transition:transform 2s;animation:core 3s infinite;color:white;font-size:15px}
 .txt,.btn{border-radius:5px;border:solid 1px lightgray;width:100%}
