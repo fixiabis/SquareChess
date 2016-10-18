@@ -27,7 +27,7 @@ function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+
 function Get(){
 	$.get(olsvr,
 		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
-		function (r){console.log(r)
+		function (r){
 			if(r=="gvp"){
 				if(!Dft.Gvp){Cln("對方認輸");Dft.Gvp=1}if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}
 			}else if(r!=""){Dft.Gvp=0
@@ -42,13 +42,25 @@ function Get(){
 function LMd(n){
 	var s=doc.createElement("script")
 	s.src="Shell/"+LdM[n]+".js"
-	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln();Rsz();if(Dft.Usr=="Join"){Get();EnS()}Oln()}
+	if(LdM[n+1])s.onload=function(){LMd(n+1)}
+	else s.onload=function(){Cre();Cln();Rsz();if(Dft.Usr=="Join"){Get();EnS()}Oln()}
 	doc.body.appendChild(s)
+}
+function Oln(){
+	$.get(olsvr,
+		{Typ:"O",Jcd:Dft.Jcd,Rw:Dft.URw,Usr:Dft.Usr},
+		function (r){console.log(r)
+			if(r=="對方在線"||r=="尚未有人加入"){Dft.Uln=0;Oln()}
+			else if(Dft.Uln>3){
+				if(confirm(r+",是否繼續等待?")){Dft.Uln=0;Oln()}else location.reload()
+			}else{Dft.Uln++;Oln()}
+		}
+	)
 }
 function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Tn=0;Hst={Brd:[],Crd:[]}
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
-		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2);console.log(Chr(cd1)+cd2)
+		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
 	}Brd();Wtr()
 }
 function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr()}}
