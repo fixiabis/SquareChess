@@ -29,7 +29,7 @@ function Get(){
 		function (r){console.log(r)
 			if(r!=""){Dft.Gvp=0
 				var rtn=r.split(":")
-				if(rtn[0]!=""&&rtn[1]!=Tn){Tn=rtn[1]-1
+				if(rtn[0]!=""&&rtn[1]==Tn+1){Tn=rtn[1]-1
 					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);BfS();Rul()
 				}else Get()
 			}else Get()
@@ -42,7 +42,7 @@ function LMd(n){
 	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln();Rsz();if(Dft.Usr=="Join"){Get();EnS()}}
 	doc.body.appendChild(s)
 }
-function Cln(m,t){if(!m)m="";if(!t)t=""
+function Cln(m,t){if(!m)m="";if(!t)t="";if(Dft.Usr=="Host")Upl("")
 	if(m!="")alert(m);Hst={Brd:[],Crd:[]};Tn=0;Dft.Upl=0
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
 		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
