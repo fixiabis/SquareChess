@@ -101,9 +101,11 @@ function BfS(){
 	if(!Dft.BfS)return;Qre(Hst.Crd[Tn-1],"F","blue");Qre(Hst.Crd[Tn],"F","blue")
 }
 function NxS(){
+	if(Dft.NxS)Id("A1").parentNode.parentNode.parentNode.style.backgroundColor="dimgray"
+	if(Dft.NNS)Id("A1").parentNode.parentNode.parentNode.style.backgroundColor="slateblue"
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
-		if(Dft.NxS)Id(Chr(cd1)+cd2).style.opacity=0.2
-		if(!Lmt(Chr(cd1)+cd2)||!Dft.NxS)Id(Chr(cd1)+cd2).style.opacity=1
+		if(Dft.NxS||Dft.NNS)Id(Chr(cd1)+cd2).style.opacity=0.2;var s=Lmt(Chr(cd1)+cd2)
+		if(Qre(Chr(cd1)+cd2,"T")!=""||!s&&Dft.NxS||s&&Dft.NNS||!Dft.NxS&&!Dft.NNS)Id(Chr(cd1)+cd2).style.opacity=1
 	}
 }
 function Wtr(){var b="";for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)b+=Sym(Chr(cd1)+cd2);Hst.Brd[Tn]=b;Upl()}
@@ -161,7 +163,7 @@ function bdB(){
 	var Bk=Val(prompt("增加障礙?(最大值:27)",Dft.Blk))
 	if(typeof Bk=="number"){
 		if(Bk<0)Bk=0;if(Bk>27)Bk=27;Dft.Blk=Bk
-	}if(Tn==0)Cln()
+	}if(Tn<2)Cln()
 }
 function crB(){var b=0
 	while(b!=Dft.Blk){var cd1=Val(Rnd()*9)+65,cd2=Val(Rnd()*9+1),clr=Qre(Chr(cd1)+cd2,"B")
@@ -180,5 +182,7 @@ function ExL(){return 0}
 function Ctn(r,s){var k=0;for(var i in r)if(Qre(r[i],"T")==s)k++;return k}
 function Tol(){
 	Dft.BfS=confirm("將上回合設置的符號標示出來?")
-	Dft.NxS=confirm("強調所有不能設置的區域")
+	Dft.NNS=confirm("強調所有能設置的區域")
+	if(!Dft.NNS)Dft.NxS=confirm("強調所有不能設置的區域")
+	else Dft.NxS=0
 }
