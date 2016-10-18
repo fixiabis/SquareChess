@@ -29,7 +29,7 @@ function Get(){
 		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
 		function (r){
 			if(r=="gvp"){
-				if(!Dft.Gvp){Cln("對方認輸");Dft.Gvp=1}if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}
+				if(!Dft.Gvp){Cln("對方認輸");Dft.Gvp=1;if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}}
 			}else if(r!=""){Dft.Gvp=0
 				var rtn=r.split(":")
 				if(rtn[0]!=""&&rtn[1]==Tn+1){Tn=rtn[1]-1
@@ -61,7 +61,7 @@ function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Tn=0;Hst={Brd:[],Crd:[]}
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
 		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
-	}Brd();Wtr()
+	}Brd();Wtr();if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}
 }
 function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr()}}
 function KDw(e){if(e.which==13)Lgn()}
