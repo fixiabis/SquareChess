@@ -33,9 +33,11 @@ function Rsz(){var v=doc.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game"
 	if(s==0){Id("T").style.width=doc.body.clientWidth;s=Math.floor(doc.body.clientWidth/160);ctr=1}
 	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160;Id("DIR").style.marginRight="0px"
 		Id("RPP").parentNode.childNodes[3].style.width="60%"
+		Id("MGT").parentNode.parentNode.parentNode.style.width="60%"
 	if(ctr){
 		Id("DIR").style.marginRight=(doc.body.clientWidth-Id("DIR").clientWidth)/2
 		Id("RPP").parentNode.childNodes[3].style.width="100%"
+		Id("MGT").parentNode.parentNode.parentNode.style.width="100%"
 	}Id("menu").style.width=doc.body.clientWidth+"px"
 }
 function menu(v){var h=Id("menu").scrollHeight+"px";Rsz()
