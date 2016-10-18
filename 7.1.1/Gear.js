@@ -42,7 +42,7 @@ function LMd(n){
 	if(LdM[n+1])s.onload=function(){LMd(n+1)};else s.onload=function(){Cre();Cln();Rsz();if(Dft.Usr=="Join"){Get();EnS()}}
 	doc.body.appendChild(s)
 }
-function Cln(m,t){if(!m)m="";if(!t)t="";if(Dft.Usr=="Host")Upl("")
+function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Hst={Brd:[],Crd:[]};Tn=0;Dft.Upl=0
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
 		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
