@@ -43,7 +43,7 @@ function LMd(n){
 	var s=doc.createElement("script")
 	s.src="Shell/"+LdM[n]+".js"
 	if(LdM[n+1])s.onload=function(){LMd(n+1)}
-	else s.onload=function(){Cre();Cln();Rsz();if(Dft.Usr=="Join"){Get();EnS()}Oln()}
+	else s.onload=function(){Cre();Id("UC").innerHTML="<div class='bt' onClick='Gvp()'>GiveUp</div>";Cln();Rsz();if(Dft.Usr=="Join"){Get();EnS()}Oln()}
 	doc.body.appendChild(s)
 }
 function Oln(){

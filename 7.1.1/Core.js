@@ -16,13 +16,13 @@ function Rsz(){
 	var sz=doc.body.clientHeight,C=1
 	if(doc.body.clientWidth<sz){sz=doc.body.clientWidth;Id("UC").style.display="inline";C=0}
 	sz=Math.floor(sz/9)
-	for(i=0;i<83;i++){
+	for(i=0;i<83;i++){if(!Class("bt")[i])break
 		Class("bt")[i].style.width=sz+"px"
 		Class("bt")[i].style.height=sz+"px"
 		Class("bt")[i].style.fontSize=sz-10+"px"
 		Class("bt")[i].style.lineHeight=sz+"px"
 	}
-	for(i=81;i<83;i++)Class("bt")[i].style.width=sz*4.5+"px"
+	for(i=81;i<83;i++)if(Class("bt")[i])Class("bt")[i].style.width=sz*4.5+"px"
 	Id("Board").style.height=sz*9+"px";Id("UC").style.width=sz*9+"px"
 	Id("Board").style.marginLeft=(doc.body.clientWidth-(sz*9))/2+"px"
 	if(C)Id("Board").style.marginTop=(doc.body.clientHeight-(sz*9))/2+"px"
