@@ -1,5 +1,5 @@
 ﻿var descv=0
-function desc(e,f){alert(e.which);if(e.which!=32)return
+function desc(e,f){if(e.which!=32)return
 	if(descript[f][descv]){alert(descript[f][descv]);descv++}return 1
 }
 var descript={
