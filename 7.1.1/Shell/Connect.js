@@ -1,4 +1,4 @@
-Dft.Rnd=false
+﻿Dft.Rnd=false
 function ExA(){bdR()}
 function Lmt(c,s){var k=0,r=1;Dft.Fcd="";if(!s){s=Sbl[Tn%2];k=ExL(c)}
 	if(!Id(c)||Qre(c,"T")!="")return 1;if(k)return k

@@ -1,4 +1,4 @@
-Dft.Pro=false
+﻿Dft.Pro=false
 function Adn(){bdB();bdP()}
 function Lmt(c){
 	if(Qre(c,"T")!="")return 1

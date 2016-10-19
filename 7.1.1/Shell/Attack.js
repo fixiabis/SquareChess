@@ -1,4 +1,4 @@
-var d=[["A2","B1","B2"],["H8","H9","I8"],["A3","B3","C1","C2","C3"],["G7","G8","G9","H7","I7"]]
+﻿var d=[["A2","B1","B2"],["H8","H9","I8"],["A3","B3","C1","C2","C3"],["G7","G8","G9","H7","I7"]]
 function ExR(){Scr={O:0,X:0}
 	for(i in d)if(Ctn(d[i],Sbl[i%2])==d[i].length)Cln(Sbl[(Val(i)+1)%2]+"獲勝")
 	for(i=0;i<2;i++)if(Ctn(d[i],Sbl[(i+1)%2])>0)Scr[Sbl[(i+1)%2]]=1

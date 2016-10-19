@@ -1,4 +1,4 @@
-var olsvr="https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec";Dft.Upl=1
+﻿var olsvr="https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec";Dft.Upl=1
 function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.Lgn=1;Id("Exc").style.backgroundColor="dimgray"
 	$.get(olsvr,
 		{Typ:typ,Act:Id("Act").value,Pwd:Id("Pwd").value,Jcd:Id("Jcd").value,Mod:location.search.split("?mode=")[1]},

@@ -1,4 +1,4 @@
-Sqr[1]=["","","crimson"];Sqr[2]=["","","royalblue"]
+﻿Sqr[1]=["","","crimson"];Sqr[2]=["","","royalblue"]
 var Ara=[[],[]],Lt=[];Dft.Blk=27
 function ExR(){
 	var Os=0,Xs=0,Of=0,Xf=0

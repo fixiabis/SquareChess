@@ -1,4 +1,4 @@
-function ExL(c,s){var ln=[]
+﻿function ExL(c,s){var ln=[]
 	for(i in cd8){var tx=cd8[i],l=[],k=0
 		while(1){
 			if(Id(Crd(c,tx))){var t=Qre(Crd(c,tx),"T")

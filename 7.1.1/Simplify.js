@@ -1,4 +1,4 @@
-var doc=document
+﻿var doc=document
 function Rnd(){return Math.random()}
 function Val(v){return Math.floor(v)}
 function Split(s,m){return s.split(m)}
