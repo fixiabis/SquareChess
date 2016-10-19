@@ -1,6 +1,6 @@
 ﻿var descv=0
-function desc(e,f){
-	if(e.which==191&&descript[f][descv]){alert(descript[f][descv]);descv++}
+function desc(e,f){alert(e.which);if(e.which!=32)return
+	if(descript[f][descv]){alert(descript[f][descv]);descv++}return 1
 }
 var descript={
 	index:[
@@ -11,6 +11,7 @@ var descript={
 	],
 	chess:[
 		"點按格子即可設置符號",
+		"連按格子到設置該符號前ㄧ回合",
 		"不同的規則將會有不同的玩法",
 		"滑鼠靠近空白處即可喚出快速選單",
 		"Clean可清除棋盤",
@@ -23,6 +24,7 @@ var descript={
 		"Home可回到首頁或上一頁"
 	],
 	btchs:[
+		"登入帳號取得加入碼",
 		"使用方法與一般大致相同",
 		"GiveUp可認輸"
 	],
