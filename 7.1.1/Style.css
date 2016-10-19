@@ -24,6 +24,7 @@ ul{transition:all 1s}.key{color:steelblue}.mus{color:indianred}.opt{color:darksl
 #run{width:100px;height:100px;background:gray;border-radius:10px;line-height:100px;text-align:center;transition:transform 2s;animation:core 3s infinite;color:white;font-size:15px}
 .txt,.btn{border-radius:5px;border:solid 1px lightgray;width:100%}
 .btn{text-align:center;font-szie:12px;color:dimgray;background:lightgray}
+#foot{position:fixed;bottom:0px;left:0px;height:40px;font-size:20px;background-color:lightgray;width:100%;text-align:center;line-height:40px}
 @keyframes core{
 	0%{transform:opacity:0}
 	50%{transform:rotate(720deg);opacity:1}
