@@ -19,12 +19,11 @@ var descript={
 		"Goto可到指定步",
 		"Addons會依照不同模式提供不同功能",
 		"Tools為輔助工具",
-		"Battle可用來線上對戰",
-		"Home可回到首頁或上一頁"
+		"Battle可用來線上對戰"
 	],
 	btchs:[
 		"登入帳號取得加入碼",
-		"使用方法與一般大致相同",
-		"GiveUp可認輸"
+		"GiveUp可認輸",
+		"Home可回到首頁或上一頁"
 	],
 }
