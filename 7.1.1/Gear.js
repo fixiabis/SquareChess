@@ -46,17 +46,7 @@ function LMd(n){
 	else s.onload=function(){Cre();Id("UC").innerHTML="<div class='bt' onClick='Gvp()'>GiveUp</div>";Cln();Rsz();if(Dft.Usr=="Join"){Get();EnS()}Oln()}
 	doc.body.appendChild(s)
 }
-function Oln(){
-	$.get(olsvr,
-		{Typ:"O",Jcd:Dft.Jcd,Rw:Dft.URw,Usr:Dft.Usr},
-		function (r){
-			if(r=="對方在線"||r=="尚未有人加入"){Dft.Uln=0;Oln()}
-			else if(Dft.Uln>3){
-				if(confirm(r+",是否繼續等待?")){Dft.Uln=0;Oln()}else location.reload()
-			}else{Dft.Uln++;Oln()}
-		}
-	)
-}
+function Oln(){}
 function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Tn=0;Hst={Brd:[],Crd:[]}
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){

@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Square Chess</title>
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>@import "Style.css";
+table tr td input{border:none;background-color:lightgray;height:30px}
+</style>
+<script src="Simplify.js"></script>
+<script src="Core.js"></script>
+<script src="Gear.js"></script>
+<script>var lst=0
+function HM(){if(!history.back())location="index.html";else history.back()}
+function LT(v){Mnu(1,v)}
+function CK(){if(!Id("Board"))return 0}
+</script>
+</head>
+<body onLoad="Acn()" onResize="Rsz()" onmouseover="MsO(event)" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)">
+<div id="Board">
+    <table align="center">
+    <th align="center" colspan="2">登入或進入房間</th>
+    <tr><td>帳號</td><td><input id="Act" type="text"/></td></tr>
+    <tr><td>密碼</td><td><input id="Pwd" type="password"/></td></tr>
+    <tr><td>加入碼</td><td><input id="Jcd" type="text"/></td></tr>
+    <tr><td colspan="2"><input value="執行" type="button" style="width:100%" onClick="Lgn()" id="Exc"/></tr>
+    </table>
+	<div align="center" style="margin-top:100px"><div id="run" style="display:none">Creating...</div></div>
+</div>
+<div id='UCL'>
+<div onclick='Adn()' class='game'>Addons</div>
+<div onclick='Tol()' class='game'>Tools</div>
+<div onclick='Gvp()' class='game'>GiveUp</div>
+<div onclick='HM()' class='game'>Home</div>
+</div>
+<audio autoplay loop><source src="music.mp3" type="audio/mpeg"></audio>
+<div id="UCM">
+<div onClick="LT(0)" class="list">List</div>
+<div onClick="HM()" class="list">Home</div>
+<div onClick="LT(1)" class="list">List</div>
+</div>
+</body>
+</html>
