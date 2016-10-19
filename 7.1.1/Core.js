@@ -22,7 +22,7 @@ function Rsz(){
 		Class("bt")[i].style.fontSize=sz-10+"px"
 		Class("bt")[i].style.lineHeight=sz+"px"
 	}
-	for(i=81;i<83;i++)if(Class("bt")[i])Class("bt")[i].style.width=sz*4.5+"px"
+	for(i=81;i<83;i++){if(Class("bt")[i])Class("bt")[i].style.width=sz*4.5+"px";else Class("bt")[i-1].style.width=sz*9+"px"}
 	Id("Board").style.height=sz*9+"px";Id("UC").style.width=sz*9+"px"
 	Id("Board").style.marginLeft=(doc.body.clientWidth-(sz*9))/2+"px"
 	if(C)Id("Board").style.marginTop=(doc.body.clientHeight-(sz*9))/2+"px"
