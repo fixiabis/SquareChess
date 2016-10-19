@@ -75,7 +75,7 @@ function KUp(e){
 function Udo(){Rdr(Tn-1)}
 function Rdo(){Rdr(Tn+1)}
 function Lst(){Rdr(Hst.Brd.length-1)}
-function Gto(){Rdr(prompt("Go to turn:"))}
+function Gto(){Rdr(Val(prompt("前往指定回合:")))}
 function Clr(){if(Tn>2)Cln("Clean Board?");else Cln()}
 function Adn(){bdB();ExA()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++}Rul();Wtr()}

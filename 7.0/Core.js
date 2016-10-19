@@ -63,7 +63,7 @@ function Cmd(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 function Udo(){Rdr(Turn-1)}
 function Rdo(){Rdr(Turn+1)}
 function Lst(){Rdr(Hst.Brd.length-1)}
-function Gto(){Rdr(prompt("Go to turn:"))}
+function Gto(){Rdr(Val(prompt("前往指定回合:")))}
 function Cli(){if(Turn>2)Cln("Clean Board?","");else Cln()}
 function Adn(){bdB()}
 function Set(c){if(!Lmt(c)){Hst.Crd[Turn+1]=c;Qre(c,"T",Sbl[Turn%2]);Turn++}Rul();Wtr()}

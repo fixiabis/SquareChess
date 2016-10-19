@@ -92,7 +92,7 @@ function KUp(e){
 function Udo(){Rdr(Tn-1)}
 function Rdo(){Rdr(Tn+1)}
 function Lst(){Rdr(Hst.Brd.length-1)}
-function Gto(){Rdr(prompt("前往指定回合:"))}
+function Gto(){Rdr(Val(prompt("前往指定回合:")))}
 function Clr(){if(Tn>2)Cln("清除棋盤?");else Cln()}
 function Adn(){bdB();ExA()}
 function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr();Rul()}}
