@@ -111,8 +111,8 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 <div id="mens"></div>
 <div id="content">
 <div id="Ctt">
-<div onClick="mc(2,0)" id="Report">回報問題</div>
-<div onClick="mc(3,0)" id="Manage">管理帳戶</div>
+<div onClick="mc(2,0);location.hash='report'" id="Report">回報問題</div>
+<div onClick="mc(3,0);location.hash='manage'" id="Manage">管理帳戶</div>
 <div id="facebook" onClick="location='https://fb.me/SquareChessGame'">給個讚吧</div>
 <div id="twitter" onClick="location='https://twitter.com/SquareChessGame'">跟隨我們</div>
 </div>
@@ -211,7 +211,7 @@ Freedom Mode:
 </div>
 </div>
 <div class="mcover">
-<h1 id="RPP">回報問題</h1>
+<h1 id="RPP"><a name="report"></a>回報問題</h1>
 <table align="center" style="border:none"><tr><td id="RPT">
 <input type='text' id='Title' placeholder='輸入標題' class='txt'/><br />
 <textarea rows='5' class='txt' id='Content' placeholder='簡短說明你遇到的問題'></textarea>
@@ -219,7 +219,7 @@ Freedom Mode:
 </td></tr></table>
 </div>
 <div class="mcover">
-<h1 id="mgact">管理帳戶</h1>
+<h1 id="mgact"><a name="manage"></a>管理帳戶</h1>
 沒有帳號?輸入帳號及新密碼以建置帳號:
 <table align="center" style="border:none" width="100%"><tr><td id="MGT">
 帳號:<input id="Act" type="text" class='txt'/><br>
