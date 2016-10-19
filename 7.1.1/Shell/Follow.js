@@ -9,9 +9,10 @@ function ExR(){var s=0;if(Tn<4)return
 		if(Instr(Dft.Fcd,Hst.Crd[Tn])>-1)s++
 	}if(s==0)Cln(Sbl[Tn%2]+"獲勝")
 }
-function NxS(){
+function NxS(){var c="dimgray";if(Dft.NNS)c="slateblue"
+	Id("A1").parentNode.parentNode.parentNode.style.backgroundColor=c
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
-		if(Dft.NxS)Id(Chr(cd1)+cd2).style.opacity=0.2
-		if(!Flw(Chr(cd1)+cd2)||!Dft.NxS)Id(Chr(cd1)+cd2).style.opacity=1
+		if(Dft.NxS||Dft.NNS)Id(Chr(cd1)+cd2).style.opacity=0.2;var s=Flw(Chr(cd1)+cd2)
+		if(Qre(Chr(cd1)+cd2,"T")!=""||!s&&Dft.NxS||s&&Dft.NNS||!Dft.NxS&&!Dft.NNS)Id(Chr(cd1)+cd2).style.opacity=1
 	}
 }

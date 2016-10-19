@@ -100,9 +100,8 @@ function BfS(){
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Qre(Chr(cd1)+cd2,"F","");NxS()
 	if(!Dft.BfS)return;Qre(Hst.Crd[Tn-1],"F","blue");Qre(Hst.Crd[Tn],"F","blue")
 }
-function NxS(){
-	if(Dft.NxS)Id("A1").parentNode.parentNode.parentNode.style.backgroundColor="dimgray"
-	if(Dft.NNS)Id("A1").parentNode.parentNode.parentNode.style.backgroundColor="slateblue"
+function NxS(){var c="dimgray";if(Dft.NNS)c="slateblue"
+	Id("A1").parentNode.parentNode.parentNode.style.backgroundColor=c
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
 		if(Dft.NxS||Dft.NNS)Id(Chr(cd1)+cd2).style.opacity=0.2;var s=Lmt(Chr(cd1)+cd2)
 		if(Qre(Chr(cd1)+cd2,"T")!=""||!s&&Dft.NxS||s&&Dft.NNS||!Dft.NxS&&!Dft.NNS)Id(Chr(cd1)+cd2).style.opacity=1
