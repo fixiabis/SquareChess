@@ -7,13 +7,14 @@
 <link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
 <style>@import "Style.css";</style>
 <script src="Simplify.js"></script>
-<script src="Core.js"></script>
+<script src="Core.js" charset="big5"></script>
+<script src="Descript.js" charset="big5"></script>
 <script>var lst=0
 function HM(){if(!history.back())location="index.html";else history.back()}
 function LT(v){Mnu(1,v)}
 </script>
 </head>
-<body onLoad="Ldr()" onResize="Rsz()" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)" onmouseover="MsO(event)" onKeyUp="KUp(event)">
+<body onLoad="Ldr()" onResize="Rsz()" onContextMenu="event.preventDefault()" onKeyDown="event.preventDefault();KDw(event);desc(event,'chess')" onmouseover="MsO(event)" onKeyUp="KUp(event)">
 <div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
 <div id='UCL'>
 <div onclick='Clr()' class='game'>Clean</div>

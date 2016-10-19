@@ -8,6 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <style>@import "Style.css";</style>
 <script src="Simplify.js"></script>
+<script src="Descript.js" charset="big5"></script>
 <script>
 var ctr=0
 function d(v){
@@ -91,7 +92,7 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 }
 </script>
 </head>
-<body style="color:gray;overflow:auto" onLoad="Lan()" onResize="Rsz()" onscroll="mf()" oncontextmenu="event.preventDefault();c(-2,1);mc(1,0)">
+<body style="color:gray;overflow:auto" onLoad="Lan()" onResize="Rsz()" onscroll="mf()" oncontextmenu="event.preventDefault();c(-2,1);mc(1,0)" onkeydown="event.preventDefault();desc(event,'index')">
 <div id="menu" onMouseOver="menu(1)" onMouseOut="menu(0)" onClick="if(this.clientHeight!=40){menu(0)}else{menu(1)}">
 <div id="T" style="font-size:25px;float:left;width:300px;line-height:40px" onMouseOver="mc(0,0)">Square Chess Game</div>
 <div id="DIR" onMouseOver="mc(1,0)">
@@ -127,6 +128,7 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
     <li><font class='opt'>使用更多功能</font>就從<font class='mus'>Clean</font>喚出清單或按<font class='key'>Alt鍵</font></li>
     <li><font class='opt'>到最後一步</font>就從<font class='mus'>棋盤</font>喚出清單</li>
     <li><font class='opt'>顯示快速選單</font>移動滑鼠到<font class='mus'>空白處</font></li>
+	<li><font class='opt'>瞭解功能的使用</font>按<font class='key'>?鍵</font></li>
 </ul>
 </div>
 <div class="mcover">

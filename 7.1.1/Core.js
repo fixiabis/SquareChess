@@ -157,7 +157,7 @@ function Cln(m,t){var k=1;if(!m)m="";if(!t)t=""
 function Brd(){ExB();crB()}
 function Lmt(c){if(ExL())return 1;else if(Qre(c,"T")=="")return 0;else return 1}
 function Rul(){}
-function ToS(c){for(i in Hst.Crd){if(Hst.Crd[i]==c)Rdr(Val(i))}}
+function ToS(c){for(i in Hst.Crd){if(Hst.Crd[i]==c)Rdr(Val(i)-1)}}
 function bdB(){
 	var Bk=Val(prompt("增加障礙?(最大值:27)",Dft.Blk))
 	if(typeof Bk=="number"){

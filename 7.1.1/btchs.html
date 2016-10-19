@@ -10,15 +10,16 @@
 table tr td input{border:none;background-color:lightgray;height:30px}
 </style>
 <script src="Simplify.js"></script>
-<script src="Core.js"></script>
-<script src="Gear.js"></script>
+<script src="Core.js" charset="big5"></script>
+<script src="Gear.js" charset="big5"></script>
+<script src="Descript.js" charset="big5"></script>
 <script>var lst=0
 function HM(){if(!history.back())location="index.html";else history.back()}
 function LT(v){Mnu(1,v)}
 function CK(){if(!Id("Board"))return 0}
 </script>
 </head>
-<body onLoad="Acn()" onResize="Rsz()" onmouseover="MsO(event)" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)">
+<body onLoad="Acn()" onResize="Rsz()" onmouseover="MsO(event)" onContextMenu="event.preventDefault()" onKeyDown="event.preventDefault();KDw(event);desc(event,'btchs')">
 <div id="Board">
     <table align="center">
     <th align="center" colspan="2">登入或進入房間</th>
