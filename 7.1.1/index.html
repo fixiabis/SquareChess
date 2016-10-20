@@ -80,6 +80,10 @@ function Lan(){
 		Class("game")[i].addEventListener("click",function(){d(this.innerHTML)})
 		Class("game")[i].addEventListener("mouseover",function(){c(this,0)})
 	}Rsz();Id("T").style.transition="all 1s";if(!ctr)mc(0,0)
+	if(location.hash)switch(location.hash){
+		case"#report":mc(2,0);break
+		case"#manage":mc(3,0);break
+	}
 }
 function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 	$.get("https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec",
