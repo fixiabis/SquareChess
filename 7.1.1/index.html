@@ -36,7 +36,7 @@ function Rsz(){var v=doc.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game"
 	if(s==0){Id("T").style.width=doc.body.clientWidth;s=Math.floor(doc.body.clientWidth/160);ctr=1}
 	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160;Id("DIR").style.marginRight="0px"
 		Id("RPP").parentNode.childNodes[4].style.width="60%"
-		Id("MGT").parentNode.parentNode.parentNode.style.width="60%"
+		Id("MGT").parentNode.parentNode.parentNode.style.width="300px"
 	if(ctr){
 		Id("DIR").style.marginRight=(doc.body.clientWidth-Id("DIR").clientWidth)/2
 		Id("RPP").parentNode.childNodes[4].style.width="100%"
@@ -232,7 +232,7 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 	<tr>
 		<td id="RPT">
 	<input type='text' id='Title' placeholder='輸入標題' class='txt'/><br />
-	<textarea rows='5' class='txt' id='Content' placeholder='簡短說明你遇到的問題或給予建議'></textarea>
+	<textarea style="height:100px" class='txt' id='Content' placeholder='簡短說明你遇到的問題或給予建議'></textarea>
 	<div class='btn' onClick='Send(this)'>確認</div>
 		</td>
 	</tr>
@@ -240,6 +240,9 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 </div>
 <div class="mcover">
 <a name="manage"></a><h1 id="mgact">管理帳戶</h1>
+<h3>如何線上對戰?</h3>
+於線上模式輸入您的帳戶與密碼，取得加入碼，將自己的帳戶與加入碼告訴朋友，即可開始對戰。<br>
+注意！不論勝負，都是由帳戶使用者優先設置符號。
 <h3>沒有帳號?輸入帳號及密碼以建置帳號:</h3>
 <table align="center" style="border:none" width="100%">
 	<tr>
@@ -251,9 +254,6 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 		</td>
 	</tr>
 </table>
-<h3>如何線上對戰?</h3>
-於線上模式輸入您的帳戶與密碼，取得加入碼，將自己的帳戶與加入碼告訴朋友，即可開始對戰。<br>
-注意！不論勝負，都是由帳戶使用者優先設置符號。
 </div>
 </div>
 <div style="height:120px"></div>
