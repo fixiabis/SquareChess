@@ -12,7 +12,7 @@ a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 #C:hover,#CA:hover,#CD:hover,#CS:hover{color:royalblue}
 #B:hover,#BB:hover{color:crimson}
 #D:hover,#DZ:hover,#DF:hover{color:seagreen}
-#A:hover{color:orange}
+#A:hover{color:darkorange}
 #DIR{float:right;transition:all 2s}
 .cover,.mcover{overflow:hidden;transition:all 1s}
 body::-webkit-scrollbar{width:0px}
