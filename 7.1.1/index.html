@@ -24,7 +24,7 @@ function Send(m){if(Id("Title").value==""){alert("無標題");return}
 		Title:Id("Title").value,
 		Content:Id("Content").value
 	 },function (data){alert("感謝你的回報！")
-		m.onclick=function (){Send()};m.style.backgroundColor="lightgray"
+		m.onclick=function (){Send(this)};m.style.backgroundColor="lightgray"
 		Id("Title").value="";Id("Content").value=""
 	   }
 	)
@@ -89,7 +89,7 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 	$.get("https://script.google.com/macros/s/AKfycbzvZ4sL8J0e4cjN4fH_AjWLZr17sqQggkCpS60FLQwoJMgaKw/exec",
 		{Typ:"C",Act:Id("Act").value,Pwd:Id("Pwd").value,nPw:Id("nPw").value},
 		function (r){
-			alert(r);m.style.backgroundColor="lightgray"
+			alert(r);m.style.backgroundColor="lightgray";m.onclick=function (){Chge(this)}
 			Id("Act").value="";Id("Pwd").value="";Id("nPw").value=""
 		}
 	)
