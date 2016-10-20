@@ -38,10 +38,12 @@ function Ldr(){
 		var ld=doc.title.split(":");for(i in ld)LdM.push(ld[i]);LMd(0)
 	}else{
 		var Mod=[
-			"Connect","Blocker","Divider",
-			"Connect:Attack","Connect:Defend","Connect:Scheme",
-			"Divider:Zombie","Divider:Scheme","Connect:Zombie",
-			"Divider:Follow","Connect:Follow","Blocker:ByLine"
+			"Connect","Blocker","Divider","Adapter",
+			"Connect:Attack","Adapter:Attack","Connect:Defend",
+			"Connect:Scheme","Divider:Scheme","Adapter:Scheme",
+			"Divider:Zombie","Connect:Zombie","Adapter:Zombie",
+			"Divider:Follow","Connect:Follow","Adapter:Follow",
+			"Blocker:ByLine"			
 		];Id("Board").childNodes[0].childNodes[0].innerHTML="Directing..."
 		setTimeout('location="chess.html?mode="+"'+Mod[Val(Rnd()*Mod.length)]+'"',2000)
 	}

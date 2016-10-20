@@ -105,6 +105,7 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 <div id="D" class="game">Square.Divider</div>
 <div id="DZ"class="game">Divider:Zombie</div>
 <div id="DF"class="game">Divider:Follow</div>
+<div id="A" class="game">Adapter</div>
 <div class="game">Gomoku</div>
 <div class="game">Freedom Mode</div>
 </div>
@@ -197,6 +198,13 @@ Divider:Follow:
 <ul id="SDFRule">
 	<li>延用Square.Divider的規則</li>
     <li>每一回合只能藉由上一回和我方符號所設置的符號連線</li>
+</ul>
+</div>
+<div class="cover">
+Adapter:
+<ul id="SARule">
+	<li>設置符號需產生連線(即設置在你之前所設置的符號八方附近，只要不被對方符號擋下皆可)</li>
+    <li>如果你無法設置符號，那你就輸了</li>
 </ul>
 </div>
 <div class="cover">
