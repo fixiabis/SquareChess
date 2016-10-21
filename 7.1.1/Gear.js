@@ -14,7 +14,7 @@ function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.
 		}
 	)
 }
-function Upl(v){if(!Dft.Upl)return;BfS();EnS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
+function Upl(v){if(!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
 	if(typeof v=="string")bd=v
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
@@ -34,7 +34,7 @@ function Get(){
 			}else if(r!=""){console.log(r)
 				var rtn=r.split(":")
 				if(rtn[0]!=""&&rtn[1]!=Dft.LTn){Tn=rtn[1]-1;Dft.LTn=rtn[1]
-					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;if(!Dft.Cln)Rdr(rtn[0]);BfS();Rul()
+					Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;if(!Dft.Cln)Rdr(rtn[0]);BfS();Rul();EnS(1)
 				}else Get()
 			}else Get()
 		}
