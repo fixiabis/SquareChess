@@ -14,13 +14,13 @@ function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.
 		}
 	)
 }
-function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
+function Upl(v){if(!Dft.Upl)return;BfS();EnS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
 	if(typeof v=="string")bd=v
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
 		function (r){
 			if(bd=="gvp"){Dft.Gvp=1;Cln();Itl()}
-			else if(r=="設置完成"){Rul();Dft.Gvp=0;Dft.Cln=0;Get()}
+			else if(r=="設置完成"){Dft.LTn=Tn;Dft.Cln=0;Rul();Dft.Gvp=0;Get()}
 			else alert(r)
 		}
 	)
@@ -28,13 +28,13 @@ function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+
 function Get(){
 	$.get(olsvr,
 		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
-		function (r){
+		function (r){console.log(r)
 			if(r=="gvp"){
 				if(!Dft.Gvp){Dft.Gvp=1;Cln("對方認輸")}Itl()
 			}else if(r!=""){
 				var rtn=r.split(":")
-				if(rtn[0]!=""&&rtn[1]!=Tn){Tn=rtn[1]-1
-					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;if(!Dft.Cln)Rdr(rtn[0]);BfS()
+				if(rtn[0]!=""&&rtn[1]!=Dft.LTn){Tn=rtn[1]-1;Dft.LTn=rtn[1]
+					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;if(!Dft.Cln)Rdr(rtn[0]);BfS();Rul()
 				}else Get()
 			}else Get()
 		}
@@ -44,10 +44,10 @@ function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Tn=0;Hst={Brd:[],Crd:[]}
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
 		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
-	}Brd();Wtr();Itl();Dft.Cln=1
+	}Dft.Upl=0;Brd();Wtr();Dft.Upl=1;Itl();Dft.Cln=1
 }
 function Itl(){if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}}
-function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr()}}
+function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Sym(c,Tn%2);Tn++;Wtr()}}
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
 function Gvp(){if(!Dft.Set)return;if(confirm("確定認輸?")){Upl("gvp")}}
 function LMd(n){
@@ -74,3 +74,4 @@ function Gto(){}
 function Clr(){}
 function ToS(){}
 function Lst(){}
+console.log("Gear has been loaded.")

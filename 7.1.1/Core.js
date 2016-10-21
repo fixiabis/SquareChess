@@ -97,7 +97,7 @@ function Lst(){Rdr(Hst.Brd.length-1)}
 function Gto(){Rdr(Val(prompt("前往指定回合:")))}
 function Clr(){if(Tn>2)Cln("清除棋盤?");else Cln()}
 function Adn(){bdB();ExA()}
-function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr();Rul()}}
+function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Sym(c,Tn%2);Tn++;Wtr();Rul()}}
 function BfS(){
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Qre(Chr(cd1)+cd2,"F","");NxS()
 	if(!Dft.BfS)return;Qre(Hst.Crd[Tn-1],"F","blue");Qre(Hst.Crd[Tn],"F","blue")
@@ -188,3 +188,4 @@ function Tol(){
 	else Dft.NxS=0
 	if(confirm("關閉音樂?")){Id("msc").pause()}else{Id("msc").play()}
 }
+console.log("Core has been loaded.")
