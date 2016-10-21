@@ -85,6 +85,7 @@ function Lan(){
 	if(location.hash)switch(location.hash){
 		case"#report":mc(2,0);break
 		case"#manage":mc(3,0);break
+		case"#about":mc(4,0);break
 	}
 }
 function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
@@ -119,10 +120,11 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 <div id="mens"></div>
 <div id="content">
 <div id="Ctt">
-<div onClick="mc(2,0);location.hash='report'" id="Report">回報問題</div>
-<div onClick="mc(3,0);location.hash='manage'" id="Manage">管理帳戶</div>
-<div id="facebook" onClick="location='https://fb.me/SquareChessGame'">給個讚吧</div>
-<div id="twitter" onClick="location='https://twitter.com/SquareChessGame'">跟隨我們</div>
+<div onClick="mc(2,0);location.hash='report'" id="Report" class="lst">回報問題</div>
+<div onClick="mc(3,0);location.hash='manage'" id="Manage" class="lst">管理帳戶</div>
+<div onClick="mc(4,0);location.hash='about'" id="About" class="lst">關於我們</div>
+<div id="facebook" class="lst" onClick="location='https://fb.me/SquareChessGame'">給個讚吧</div>
+<div id="twitter" class="lst" onClick="location='https://twitter.com/SquareChessGame'">跟隨我們</div>
 </div>
 <div class="mcover">
 <h1 id="Start">開始遊玩Square棋盤系列</h1>
@@ -253,6 +255,11 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 		</td>
 	</tr>
 </table>
+</div>
+<div class="mcover">
+<a name="about"></a><h1 id="abtus">關於我們</h1>
+<h3>Square Chess Game 的源起</h3>
+開發者在進行紙筆遊戲時，偶然創造了新玩法─Square.Connect，藉由9x9的棋盤依照遊戲規則限制來設置符號(O與X)，在此之後又衍生出許多玩法，最終集合成Square Chess Game，希望能夠藉此網頁給棋盤愛好者一個新的選擇。
 </div>
 </div>
 <div style="height:120px"></div>
