@@ -186,4 +186,5 @@ function Tol(){
 	Dft.NNS=confirm("強調所有能設置的區域")
 	if(!Dft.NNS)Dft.NxS=confirm("強調所有不能設置的區域")
 	else Dft.NxS=0
+	if(confirm("關閉音樂?")){Id("msc").pause()}else{Id("msc").play()}
 }
