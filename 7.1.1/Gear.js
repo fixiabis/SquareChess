@@ -46,7 +46,7 @@ function Cln(m,t){if(!m)m="";if(!t)t=""
 		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
 	}Dft.Upl=0;Brd();Wtr();Dft.Upl=1;Itl();Dft.Cln=1
 }
-function Itl(){if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}}
+function Itl(){console.log("Set is "+v);if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}}
 function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Sym(c,Tn%2);Tn++;Wtr()}}
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
 function Gvp(){if(!Dft.Set)return;if(confirm("確定認輸?")){Upl("gvp")}}
