@@ -54,7 +54,16 @@ function Cln(m,t){if(!m)m="";if(!t)t=""
 	}Brd();Wtr();if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}
 }
 function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr()}}
-function KDw(e){if(e.which==13)Lgn()}
+function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
+	switch(k){
+		case 13:Lgn();break
+		case 37:Hst.Dir+="L";break
+		case 38:Hst.Dir+="F";break
+		case 39:Hst.Dir+="R";break
+		case 40:Hst.Dir+="B";break
+		default:if(k>64&&k<74&&!c)Set(Chr(k)+prompt("輸入座標"))
+	}
+}
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
 function Acn(){if(location.hash){Id("Act").value=location.hash.split("#")[1]}}
 function Gvp(){if(!Dft.Set)return;if(confirm("確定認輸?")){Upl("gvp")}}
