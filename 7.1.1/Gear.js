@@ -20,7 +20,7 @@ function Upl(v){if(!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
 		function (r){
 			if(bd=="gvp"){Dft.Gvp=1;Cln();Itl()}
-			else if(r=="設置完成"){Rul();Get();Dft.Gvp=0}
+			else if(r=="設置完成"){Rul();Dft.Gvp=0;Get()}
 			else alert(r)
 		}
 	)
