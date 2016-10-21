@@ -7,7 +7,7 @@
 a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 #menu{color:white;background:gray;animation:listdw 1s;overflow:hidden;position:fixed}
 #mens,#menu,#Ctt{height:40px;transition:all 1s}
-#content{animation:show 2s;margin:20px}
+#content{animation:show 2s}
 #T{text-align:center}
 #C:hover,#CA:hover,#CD:hover,#CS:hover{color:royalblue}
 #B:hover,#BB:hover{color:crimson}
