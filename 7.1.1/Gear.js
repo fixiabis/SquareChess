@@ -13,7 +13,7 @@ function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.
 		}
 	)
 }
-function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
+function Upl(v){BfS();if(Tn==0||!Dft.Upl)return;EnS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
 	if(typeof v=="string")bd=v
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
@@ -33,7 +33,7 @@ function Get(){
 			}else if(r!=""){Dft.Gvp=0
 				var rtn=r.split(":")
 				if(rtn[0]!=""&&rtn[1]==Tn+1){Tn=rtn[1]-1
-					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);Rul();BfS()
+					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;Rdr(rtn[0]);BfS();Rul()
 				}else Get()
 			}else Get()
 		}
