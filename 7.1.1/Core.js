@@ -188,4 +188,3 @@ function Tol(){
 	else Dft.NxS=0
 	if(confirm("關閉音樂?")){Id("msc").pause()}else{Id("msc").play()}
 }
-console.log("Core has been loaded.")
