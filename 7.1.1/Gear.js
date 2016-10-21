@@ -61,7 +61,7 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
 		case 38:Hst.Dir+="F";break
 		case 39:Hst.Dir+="R";break
 		case 40:Hst.Dir+="B";break
-		default:if(k>64&&k<74&&!c)Set(Chr(k)+prompt("輸入座標"))
+		default:if(k>64&&k<74&&!c&&!Id("Act"))Set(Chr(k)+prompt("輸入座標"))
 	}
 }
 function EnS(v){if(v)Dft.Set=1;else Dft.Set=0}
