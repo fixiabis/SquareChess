@@ -13,7 +13,7 @@ function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.
 		}
 	)
 }
-function Upl(v){if(Tn==0||!Dft.Upl)return;EnS();BfS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
+function Upl(v){BfS();if(Tn==0||!Dft.Upl)return;EnS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
 	if(typeof v=="string")bd=v
 	$.get(olsvr,
 		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
@@ -51,7 +51,7 @@ function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Tn=0;Hst={Brd:[],Crd:[]}
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
 		if(Instr(Qre(Chr(cd1)+cd2,"T"),t)==-1)continue;Sym(Chr(cd1)+cd2,2)
-	}Brd();Wtr();if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}
+	}if(Dft.Usr=="Host")EnS(1);else{EnS();Get()}Brd();Wtr()
 }
 function Set(c){if(!Dft.Set)return;if(!Lmt(c)){Hst.Crd[Tn+1]=c;Qre(c,"T",Sbl[Tn%2]);Tn++;Wtr()}}
 function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey
