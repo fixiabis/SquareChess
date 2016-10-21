@@ -31,7 +31,7 @@ function Get(){
 		function (r){console.log(r)
 			if(r=="gvp"){
 				if(!Dft.Gvp){Dft.Gvp=1;Cln("對方認輸")}Itl()
-			}else if(r!=""){
+			}else if(r!=""){console.log(r)
 				var rtn=r.split(":")
 				if(rtn[0]!=""&&rtn[1]!=Dft.LTn){Tn=rtn[1]-1;Dft.LTn=rtn[1]
 					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;if(!Dft.Cln)Rdr(rtn[0]);BfS();Rul()
