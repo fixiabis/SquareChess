@@ -37,10 +37,12 @@ function Rsz(){var v=doc.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game"
 	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160;Id("DIR").style.marginRight="0px"
 		Id("RPP").parentNode.childNodes[4].style.width="60%"
 		Id("MGT").parentNode.parentNode.parentNode.style.width="300px"
+		Id("menu").style.overflow="hidden"
 	if(ctr){
 		Id("DIR").style.marginRight=(doc.body.clientWidth-Id("DIR").clientWidth)/2
 		Id("RPP").parentNode.childNodes[4].style.width="100%"
 		Id("MGT").parentNode.parentNode.parentNode.style.width="100%"
+		Id("menu").style.overflow="auto"
 	}Id("menu").style.width=doc.body.clientWidth+"px"
 }
 function menu(v){var h=Id("menu").scrollHeight+"px";Rsz()
@@ -97,9 +99,7 @@ function Chge(m){m.onclick=function (){};m.style.backgroundColor="white"
 		}
 	)
 }
-function Tgt(t){
-	location.hash=t;doc.body.scrollTop-=40
-}
+function Tgt(t){location.hash=t;doc.body.scrollTop-=40}
 </script>
 </head>
 <body style="color:gray;overflow:auto" onLoad="Lan()" onResize="Rsz()" onscroll="mf()" oncontextmenu="event.preventDefault();c(-2,1);mc(1,0)">
@@ -265,6 +265,7 @@ function Tgt(t){
 開發者在進行紙筆遊戲時，偶然創造了新玩法─Square.Connect，藉由9x9的棋盤依照遊戲規則限制來設置符號(O與X)，在此之後又衍生出許多玩法，最終集合成Square Chess Game，希望能夠藉此網頁給棋盤愛好者一個新的選擇。
 </div>
 </div>
+<div style="height:40px"></div>
 <div id="foot">Square Chess Game 7.1.1 由 fixiabis</div>
 <div id="toTop" class="cover" style="border-radius:50px;width:50px;height:50px;text-align:center;line-height:50px;color:white;background:gray;bottom:5px;right:5px;position:fixed;opacity:0" onClick="doc.body.scrollTop=0">Top</div>
 </body>
