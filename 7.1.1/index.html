@@ -37,12 +37,13 @@ function Rsz(){var v=doc.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game"
 	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160;Id("DIR").style.marginRight="0px"
 		Id("RPP").parentNode.childNodes[4].style.width="60%"
 		Id("MGT").parentNode.parentNode.parentNode.style.width="300px"
-		Id("menu").style.overflow="hidden"
+		Id("menu").style.overflow="hidden";Id("Ctt").style.width=""
 	if(ctr){
 		Id("DIR").style.marginRight=(doc.body.clientWidth-Id("DIR").clientWidth)/2
 		Id("RPP").parentNode.childNodes[4].style.width="100%"
 		Id("MGT").parentNode.parentNode.parentNode.style.width="100%"
 		Id("menu").style.overflow="auto"
+		Id("Ctt").style.width=Id("Ctt").childNodes.length*50+"px"
 	}Id("menu").style.width=doc.body.clientWidth+"px"
 }
 function menu(v){var h=Id("menu").scrollHeight+"px";Rsz()
@@ -122,12 +123,14 @@ function Tgt(t){location.hash=t;doc.body.scrollTop-=40}
 </div>
 <div id="mens"></div>
 <div id="content">
-<div id="Ctt">
-<div onClick="mc(2,0);Tgt('report')" id="Report" class="lst">回報問題</div>
-<div onClick="mc(3,0);Tgt('manage')" id="Manage" class="lst">管理帳戶</div>
-<div onClick="mc(4,0);Tgt('about')" id="About" class="lst">關於我們</div>
-<div id="facebook" class="lst" onClick="location='https://fb.me/SquareChessGame'">給個讚吧</div>
-<div id="twitter" class="lst" onClick="location='https://twitter.com/SquareChessGame'">跟隨我們</div>
+<div id="LT">
+	<div id="Ctt">
+	<div onClick="mc(2,0);Tgt('report')" id="Report" class="lst">回報問題</div>
+	<div onClick="mc(3,0);Tgt('manage')" id="Manage" class="lst">管理帳戶</div>
+	<div onClick="mc(4,0);Tgt('about')" id="About" class="lst">關於我們</div>
+	<div id="facebook" class="lst" onClick="location='https://fb.me/SquareChessGame'">給個讚吧</div>
+	<div id="twitter" class="lst" onClick="location='https://twitter.com/SquareChessGame'">跟隨我們</div>
+	</div>
 </div>
 <div class="mcover">
 <h1 id="Start">開始遊玩Square棋盤系列</h1>
