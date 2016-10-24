@@ -17,7 +17,7 @@ a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 .cover,.mcover{overflow:hidden;transition:all 1s}
 body::-webkit-scrollbar,#menu::-webkit-scrollbar,#Ctt::-webkit-scrollbar{width:0px}
 #UCM{position:fixed;height:40px;background-color:gray;width:100%;bottom:0px;left:0px;display:none}
-#Report:hover{color:red}#Ctt{float:right;height:25px;line-height:25px;font-size:20px}
+#Report:hover{color:red}#Ctt{height:25px;line-height:25px;font-size:20px}
 #LT{position:fixed;top:40px;right:0px;overflow:auto}
 #facebook:hover{color:#3b5998}#twitter:hover{color:#1da1f2}#about:hover{color:green}
 #Manage:hover{color:orange}
