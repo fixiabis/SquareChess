@@ -2,29 +2,33 @@
 Dft.Upl=1;Dft.LTn=0
 function Acn(){if(location.hash){Id("Act").value=location.hash.split("#")[1]}}
 function Lgn(){if(Dft.Lgn)return;var typ="J";if(Id("Jcd").value=="")typ="L";Dft.Lgn=1;Id("Exc").style.backgroundColor="dimgray"
-	$.get(olsvr,
-		{Typ:typ,Act:Id("Act").value,Pwd:Id("Pwd").value,Jcd:Id("Jcd").value,Mod:location.search.split("?mode=")[1]},
-		function (r){
-			if(Instr(r,"/")>-1){
-				if(typ=="L"){var rtn=r.split("/'")
-					Dft.Usr="Host";Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd)
-				}else{
-					Dft.Usr="Join";Dft.URw=r.split("/")[1];Dft.Jcd=Id("Jcd").value;alert("加入成功")
-				}Ldr()
-			}else{alert(r);Dft.Lgn=0;Id("Exc").style.backgroundColor="lightgray"}
-		}
-	)
+	try{
+		$.get(olsvr,
+			{Typ:typ,Act:Id("Act").value,Pwd:Id("Pwd").value,Jcd:Id("Jcd").value,Mod:location.search.split("?mode=")[1]},
+			function (r){
+				if(Instr(r,"/")>-1){
+					if(typ=="L"){var rtn=r.split("/'")
+						Dft.Usr="Host";Dft.URw=rtn[0];Dft.Jcd=rtn[1];alert("邀請代碼:"+Dft.Jcd)
+					}else{
+						Dft.Usr="Join";Dft.URw=r.split("/")[1];Dft.Jcd=Id("Jcd").value;alert("加入成功")
+					}Ldr()
+				}else{alert(r);Dft.Lgn=0;Id("Exc").style.backgroundColor="lightgray"}
+			}
+		)
+	}catch(e){alert("暫時無法登入，將繼續重試");Lgn()}
 }
 function Upl(v){BfS();if(!Dft.Upl)return;EnS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst.Crd[Tn];
 	if(typeof v=="string")bd=v
-	$.get(olsvr,
-		{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
-		function (r){
-			if(bd=="gvp"){Dft.Gvp=1;Cln();Itl()}
-			else if(r=="設置完成"){Dft.LTn=Tn;Dft.Cln=0;Rul();Dft.Gvp=0;Get()}
-			else alert(r)
-		}
-	)
+	try{
+		$.get(olsvr,
+			{Typ:"S",Jcd:Dft.Jcd,Rw:Dft.URw,Brd:bd},
+			function (r){
+				if(bd=="gvp"){Dft.Gvp=1;Cln();Itl()}
+				else if(r=="設置完成"){Dft.LTn=Tn;Dft.Cln=0;Rul();Dft.Gvp=0;Get()}
+				else alert(r)
+			}
+		)
+	}catch(e){alert("資料上傳失敗，將繼續重試");Upl()	}
 }
 function Get(){
 	try{
@@ -42,7 +46,7 @@ function Get(){
 				}else Get()
 			}
 		)
-	}catch(e){alert("暫時無法取得資料，將繼續重試");Get()}
+	}catch(e){alert("無法取得資料，將繼續重試");Get()}
 }
 function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Tn=0;Hst={Brd:[],Crd:[]}
