@@ -27,20 +27,24 @@ function Upl(v){BfS();if(!Dft.Upl)return;EnS();var bd=Hst.Brd[Tn]+":"+Tn+":"+Hst
 	)
 }
 function Get(){
-	$.get(olsvr,
-		{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
-		function (r){
-			if(r=="gvp"){
-				if(!Dft.Gvp){Dft.Gvp=1;Cln("對方認輸")}Itl()
-			}else if(r!=""){
-				var rtn=r.split(":")
-				if(rtn[0]!=""&&rtn[1]!=Dft.LTn){Tn=rtn[1]-1;Dft.LTn=rtn[1]
-					EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;
-					if(!Dft.Cln)Rdr(rtn[0]);BfS();Rul()
+	try{
+		$.get(olsvr,
+			{Typ:"R",Jcd:Dft.Jcd,Rw:Dft.URw},
+			function (r){
+				if(r=="gvp"){
+					if(!Dft.Gvp){Dft.Gvp=1;Cln("對方認輸")}Itl()
+				}else if(r!=""){
+					var rtn=r.split(":")
+					if(rtn[0]!=""&&rtn[1]!=Dft.LTn){Tn=rtn[1]-1;Dft.LTn=rtn[1]
+						EnS(1);Dft.Upl=0;Set(rtn[2]);Dft.Upl=1;
+						if(!Dft.Cln)Rdr(rtn[0]);BfS();Rul()
+					}else Get()
 				}else Get()
-			}else Get()
-		}
-	)
+			}
+		)
+	}catch(e){alert("暫時無法取得資料，將繼續重試")
+		Get()
+	}
 }
 function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Tn=0;Hst={Brd:[],Crd:[]}
