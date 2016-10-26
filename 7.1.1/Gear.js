@@ -42,9 +42,7 @@ function Get(){
 				}else Get()
 			}
 		)
-	}catch(e){alert("暫時無法取得資料，將繼續重試")
-		Get()
-	}
+	}catch(e){alert("暫時無法取得資料，將繼續重試");Get()}
 }
 function Cln(m,t){if(!m)m="";if(!t)t=""
 	if(m!="")alert(m);Tn=0;Hst={Brd:[],Crd:[]}
