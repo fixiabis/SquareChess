@@ -14,7 +14,8 @@ var Tn=0,Dft={},Hst={},MdQ=[],Sqr={Sym:["O","X",""],FtC:["","blue"],BgC:["white"
 //宣告回合值(Tn)，預設項目(Dft)，紀錄項目(Hst)，模式檔佇列(MdQ)，元件屬性(Sqr)，棋盤元件(Brd)，方向元件(Vct)
 function Ldr(){
 	if(location.search&&Mid(location.search,0,6)=="?mode="){//若有查詢值，且開頭為"?mode="時
-		var location.search=location.search.replace("%3A",":")//變更查詢值內容"%3A"為":"
+		location.search=Mid(location.search.replace("%3A",":"),1,location.search.length-1)
+		//變更查詢值內容"%3A"為":"
 		doc.title=sr.split("?mode=")[1];MdQ=doc.title.split(":");LMd(0)
 		//變更頁面標題，將模式名稱存入佇列(MdQ)，裝載第一個模式(MdL)
 	}else{//反之
@@ -50,32 +51,49 @@ function Crd(crd,vct){var x=0,y=0//宣告座標X軸(x)，Y軸(y)
 		case"L":x--;break//左方
 	}return Chr(Asc(c[0])+x)+Val(Val(c[1])+y)//傳回座標
 }//藉方向輸出座標
-Crd.Flt=function(crds,slf){
-	
+Crd.Flt=function(cds,ord){var res=[]//宣告輸出物件(res)
+	for(var i=0;i<cds.length;i++)if(!ord(cds[i]))res.push(cds[i]);return res//不符合條件(ord)時清空該項目
 }//篩選座標
 Crd.Vct=function(typ){
-	switch(typ[i]){//判別類別(typ)
-		case"O":return"F,B,R,L,FR,FL,BR,BL".split(",")
-		case"X":return"FR,FL,BR,BL".split(",")
-		case"4":return"F,B,R,L".split(",")
-		case"Q":return"FFR,FFL,FRR,FFL,BBR,BBL,BRR,BLL".split(",")
+	switch(typ[0]){//判別類別第一碼(typ[0])
+		case"O":return"F,B,R,L,FR,FL,BR,BL".split(",")//八方
+		case"X":return"FR,FL,BR,BL".split(",")//斜四方
+		case"4":return"F,B,R,L".split(",")//正四方
+		case"Q":return"FFR,FFL,FRR,FFL,BBR,BBL,BRR,BLL".split(",")//異八方
 		case"V":
+			return Crd.Flt(Crd.Vct("X"),function(ckr){if(Instr(ckr,typ[1])>-1)return 1;else return 0})//斜四方篩選
 		case"W":
+			return Crd.Flt(Crd.Vct("Q"),function(ckr){if(Instr(ckr,typ[1])>-1)return 1;else return 0})
+			//異八方篩選(四位)
 		case"Y":
-		case"H":return"R,L".split(",")
-		case"I":return"F,B".split(",")
+			return Crd.Flt(Crd.Vct("Q"),function(ckr){if(Instr(ckr,typ[1]+typ[1])>-1)return 1;else return 0})
+			//異八方篩選(兩位)
+		case"H":return"R,L".split(",")//左右方
+		case"I":return"F,B".split(",")//前後方
 	}
 }//藉代碼輸出方向
-
-Brd.Rec(tn|brd,[typ])讀取/紀錄棋盤代碼
-Brd.Cre()建立棋盤
+Brd.Rec=function(brd){var atr=["S","F","B"],rbd=""//宣告屬性(atr)，記錄棋盤(rbd)
+	if(typeof brd=="number"&&Hst.Brd[brd])Brd.Rec(Hst.Brd[brd])
+	//若棋盤值(brd)為數值且棋盤記錄存在，讀取棋盤紀錄(Hst.Brd)
+	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)for(i=0;i<4;i++){
+		if(brd)Brd.Sym(Chr(cd1)+cd2,atr[i],Val(brd[(cd1-65+cd2-1)*3+i]))
+		else rbd+=Brd.Sym(Chr(cd1)+cd2,atr[i])
+	}//若棋盤值存在，變更棋盤元件，反之記錄棋盤(rbd)
+}//讀取/紀錄棋盤代碼
+Brd.Cre=function(ele){
+	var brd="<table border='0' cellpadding='0' cellspacing='0' oncontextmenu='Lst()' style='background-color:dimgray' onclick='Dft.Ctx=0;Mnu(0,0)'>"
+	for(cd2=1;cd2<10;cd2++){brd+="<tr>"
+		for(cd1=65;cd1<74;cd1++){
+			brd+="<td id='"+Chr(cd1)+cd2+"' onclick='Set(this.id)' ondblclick='ToS(this.id)' class='bt'></td>"
+		}brd+="</tr>"
+	}ele.innerHTML=brd+"</table><div id='UC'><table><tr><td class='bt' onClick='Usr.Udo()' onContextMenu='Usr.Gto()'>Undo</td><td class='bt' onclick='Usr.Cln()' onContextMenu='Usr.Adn()'>Clean</td></tr></table></div>"
+	ele.style.animation="down 2s"
+}
+//建立棋盤
+/*
 Brd.Rsz()重設棋盤大小
 Brd.Sym(crd|crds|sym,[typ])符號代碼取得/變更
 Brd.Sel(typ|typs)輸出棋盤選擇行/列
-Brd.Gto([crd])前往指定回合/設置該座標的指定回合
-Brd.Udo([crd])前往上一回合/設置該座標的上一回合
-Brd.Rdo([crd])前往下一回合/設置該座標的下一回合
-Brd.Lst()目前的最後一回合
 Brd.Upl()更新棋盤代碼
 Brd.Get()取得棋盤代碼
 Brd.Cln(msg,tgt)清除棋盤指定項目
@@ -83,7 +101,12 @@ Brd.Adn()額外功能
 Brd.Qre(crd|crds,atr,[typ])棋盤元件屬性取得/變更
 Brd.Mrk()輔助標記
 
-Usr.Set(crd)使用者設置符號
+Usr.Set(crd)設置符號
+Usr.Gto([crd])前往指定回合/設置該座標的指定回合
+Usr.Udo([crd])前往上一回合/設置該座標的上一回合
+Usr.Rdo([crd])前往下一回合/設置該座標的下一回合
+Usr.Adn()額外功能
+Usr.Lst()目前的最後一回合
 Usr.Tol()使用者工具
 Usr.MsO()使用者滑鼠移動
 Usr.KDw()使用者鍵盤按下
@@ -109,3 +132,4 @@ Brd.Upl()更新棋盤代碼
 Brd.Get()取得棋盤代碼
 Usr.Lgn()使用者登入
 Usr.Gvp()使用者認輸
+*/
