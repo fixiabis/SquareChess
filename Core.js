@@ -1,4 +1,4 @@
-ï»¿//Simplify.js ¨ç¼ÆÂ²¤Æ
+//Simplify.js å‡½æ•¸ç°¡åŒ–
 var doc=document
 function Rnd(){return Math.random()}
 function Val(v){return v*1}
@@ -9,7 +9,7 @@ function Asc(s){return s.charCodeAt()}
 function Chr(v){return String.fromCharCode(v)}
 function Id(d){return document.getElementById(d)}
 function Class(c){return document.getElementsByClassName(c)}
-//Core.js ®Ö¤ß(°ò¥»¥\¯à»P³W«h±`¥Î¨ç¼Æ)
+//Core.js æ ¸å¿ƒ(åŸºæœ¬åŠŸèƒ½èˆ‡è¦å‰‡å¸¸ç”¨å‡½æ•¸)
 var Tn=0,Dft={},Hst={Brd:[],Crd:[],Sel:{}},MdQ=[],
 	Sqr={S:["O","X",""],F:["","blue"],B:["white","lightgray"]},Brd={}
 function Ldr(){
@@ -28,12 +28,12 @@ function Ldr(){
 		Id("Brd").childNodes[0].childNodes[0].innerHTML="Directing..."
 		setTimeout('location="chess.html?mode="+"'+Mod[Math.floor(Rnd()*Mod.length)]+'"',2000)
 	}
-}//¸ê®Æ¨ú±o
+}//è³‡æ–™å–å¾—
 function MdL(ord){
 	var s=doc.createElement("script");s.src="Shell/"+MdQ[ord]+".js"
 	if(MdQ[ord+1])s.onload=function(){MdL(ord+1)};else s.onload=function(){Brd.Cre();Brd.Cln();Brd.Rsz()}
 	doc.body.appendChild(s)
-}//¼Ò¦¡¸Ë¸ü
+}//æ¨¡å¼è£è¼‰
 function Crd(crd,vct){var x=0,y=0;vct=Crd.Vct(vct)
 	if(typeof vct=="object"){
 		for(var i=0;i<vct.length;i++)vct[i]=Crd(crd,vct[i]);return vct
@@ -45,10 +45,10 @@ function Crd(crd,vct){var x=0,y=0;vct=Crd.Vct(vct)
 		case"L":x--;break
 		case"C":x=0;y=0;break
 	}return Chr(Asc(crd[0])+x)+Val(Val(crd[1])+y)
-}//ÂÇ¤è¦V¿é¥X®y¼Ğ
+}//è—‰æ–¹å‘è¼¸å‡ºåº§æ¨™
 Crd.Flt=function(cds,ord){var res=[]
 	for(var i=0;i<cds.length;i++)if(ord(cds[i]))res.push(cds[i]);return res
-}//¿z¿ï®y¼Ğ
+}//ç¯©é¸åº§æ¨™
 Crd.Vct=function(typ){
 	if(Instr(typ,".")>-1)return Crd.Vct(typ.split("."))
 	if(typeof typ=="object"){var res=[]
@@ -74,14 +74,14 @@ Crd.Vct=function(typ){
 		case"H":return"R,L".split(",")
 		case"I":return"F,B".split(",")
 	}return typ
-}//ÂÇ¥N½X¿é¥X¤è¦V
+}//è—‰ä»£ç¢¼è¼¸å‡ºæ–¹å‘
 Brd.Rec=function(brd){var atr=["S","F","B"],rbd=""
 	if(typeof brd=="number"&&Hst.Brd[brd])return Brd.Rec(Hst.Brd[brd])
 	for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)for(var i=0;i<3;i++){
 		if(brd)Brd.Qre(Chr(cd1)+cd2,atr[i],Val(brd[(cd1-65+cd2-1)*3+i]))
 		else rbd+=Brd.Qre(Chr(cd1)+cd2,atr[i])
 	}return rbd
-}//Åª¨ú/¬ö¿ı´Ñ½L¥N½X
+}//è®€å–/ç´€éŒ„æ£‹ç›¤ä»£ç¢¼
 Brd.Cre=function(){
 	var brd="<table border='0' cellpadding='0' cellspacing='0' oncontextmenu='Usr.Lst()' style='background-color:dimgray'>"
 	for(cd2=1;cd2<10;cd2++){brd+="<tr>"
@@ -91,7 +91,7 @@ Brd.Cre=function(){
 		}brd+="</tr>"
 	}Id("Brd").innerHTML=brd+"</table><div id='UC'><table><tr><td class='bt' onClick='Usr.Udo()' onContextMenu='Usr.Gto()'>Undo</td><td class='bt' onclick='Usr.Cln()' onContextMenu='Usr.Adn()'>Clean</td></tr></table></div>"
 	Id("Brd").style.animation="down 2s"
-}//«Ø¥ß´Ñ½L
+}//å»ºç«‹æ£‹ç›¤
 Brd.Rsz=function(){
 	Id("Brd").style.height="0px";Id("UC").style.display="none"
 	var sz=doc.body.clientHeight,C=1
@@ -115,14 +115,14 @@ Brd.Rsz=function(){
 		Id("UCM").style.display="inline"
 		for(i=0;i<3;i++)Class("list")[i].style.width=doc.body.clientWidth/3+"px"
 	}else Id("UCM").style.display="none"
-}//­«³]´Ñ½L¤j¤p
+}//é‡è¨­æ£‹ç›¤å¤§å°
 Brd.Qre=function(crd,atr,typ){
 	if(typeof crd=="object")for(var i=0;i<crd.length;i++)Brd.Qre(crd[i],atr,typ)
 	else if(typeof atr=="object"&&typeof typ=="object"&&atr.length==typ.length)
 		for(var i=0;i<atr.length;i++)Brd.Qre(crd,atr[i],typ[i])
 	else if(typeof typ!="number")return Brd[crd][atr]
 	else Brd[crd][atr]=typ
-}//´Ñ½L¤¸¥óÄİ©Ê¨ú±o/ÅÜ§ó
+}//æ£‹ç›¤å…ƒä»¶å±¬æ€§å–å¾—/è®Šæ›´
 Brd.Sel=function(typ,ord){
 	if(typeof typ=="string"&&Hst.Sel[typ])return Hst.Sel[typ];Hst.Sel[typ]=[]
 	if(typeof typ=="object"){
@@ -158,14 +158,14 @@ Brd.Sel=function(typ,ord){
 	if(typ.length==1)Hst.Sel[typ]=Crd.Flt(Brd.Sel("All"),function(ckr){if(Instr(ckr,typ)>-1)return 1;else return 0});
 	if(typ.length==2&&typeof typ=="string")Hst.Sel[typ]=typ
 	return Hst.Sel[typ]
-}//¿é¥X´Ñ½L¿ï¾Ü¦æ/¦C
+}//è¼¸å‡ºæ£‹ç›¤é¸æ“‡è¡Œ/åˆ—
 Brd.Upl=function(){var cds=Brd.Sel("All")
 	for(i=0;i<cds.length;i++){
 		Id(cds[i]).style.backgroundColor=Sqr.B[Brd[cds[i]].B]
 		Id(cds[i]).innerHTML=Sqr.S[Brd[cds[i]].S]
 		Id(cds[i]).style.color=Sqr.F[Brd[cds[i]].F]
 	}
-}//§ó·s´Ñ½L¥N½X
+}//æ›´æ–°æ£‹ç›¤ä»£ç¢¼
 Brd.Cln=function(msg,sel,tgt){var clc=0;if(!msg)clc=1;else clc=confirm(msg)
 	if(clc){if(!sel)sel="All";sel=Brd.Sel(sel)
 		for(i=0;i<sel.length;i++){
@@ -174,48 +174,48 @@ Brd.Cln=function(msg,sel,tgt){var clc=0;if(!msg)clc=1;else clc=confirm(msg)
 			else Brd.Qre(sel[i],"B",1)
 		}
 	}
-}//²M°£´Ñ½L«ü©w¶µ¥Ø
+}//æ¸…é™¤æ£‹ç›¤æŒ‡å®šé …ç›®
 Brd.Adn=function(){
 	
-}//ÃB¥~¥\¯à
+}//é¡å¤–åŠŸèƒ½
 Brd.Mrk=function(){
 	
-}//»²§U¼Ğ°O
+}//è¼”åŠ©æ¨™è¨˜
 Brd.Hst=function(typ,tgt){
 	for(var i=0;i<=Tn;i++)if(Hst[typ][i]==tgt)return i;return 0
-}//¬ö¿ı¬d¸ß
+}//ç´€éŒ„æŸ¥è©¢
 Usr.Set=function(crd){
 	if(!Rul.Lmt(crd)){Brd.Qre(crd,"S",Tn%2);Tn++;Hst.Crd[Tn]=crd;Rul();Hst.Brd[Tn]=Brd.Rec()}
-}//³]¸m²Å¸¹
+}//è¨­ç½®ç¬¦è™Ÿ
 /*
-Usr.Gto([crd])«e©¹«ü©w¦^¦X/³]¸m¸Ó®y¼Ğªº«ü©w¦^¦X
-Usr.Udo([crd])«e©¹¤W¤@¦^¦X/³]¸m¸Ó®y¼Ğªº¤W¤@¦^¦X
-Usr.Rdo([crd])«e©¹¤U¤@¦^¦X/³]¸m¸Ó®y¼Ğªº¤U¤@¦^¦X
-Usr.Adn()ÃB¥~¥\¯à
-Usr.Lst()¥Ø«eªº³Ì«á¤@¦^¦X
-Usr.Tol()¨Ï¥ÎªÌ¤u¨ã
-Usr.MsO()¨Ï¥ÎªÌ·Æ¹«²¾°Ê
-Usr.KDw()¨Ï¥ÎªÌÁä½L«ö¤U
-Usr.KUp()¨Ï¥ÎªÌÁä½L©ñ¶}
-Usr.Mnu()¨Ï¥ÎªÌ¿ï³æ
-Usr.Cln()¨Ï¥ÎªÌ­n¨D²M°£´Ñ½L
+Usr.Gto([crd])å‰å¾€æŒ‡å®šå›åˆ/è¨­ç½®è©²åº§æ¨™çš„æŒ‡å®šå›åˆ
+Usr.Udo([crd])å‰å¾€ä¸Šä¸€å›åˆ/è¨­ç½®è©²åº§æ¨™çš„ä¸Šä¸€å›åˆ
+Usr.Rdo([crd])å‰å¾€ä¸‹ä¸€å›åˆ/è¨­ç½®è©²åº§æ¨™çš„ä¸‹ä¸€å›åˆ
+Usr.Adn()é¡å¤–åŠŸèƒ½
+Usr.Lst()ç›®å‰çš„æœ€å¾Œä¸€å›åˆ
+Usr.Tol()ä½¿ç”¨è€…å·¥å…·
+Usr.MsO()ä½¿ç”¨è€…æ»‘é¼ ç§»å‹•
+Usr.KDw()ä½¿ç”¨è€…éµç›¤æŒ‰ä¸‹
+Usr.KUp()ä½¿ç”¨è€…éµç›¤æ”¾é–‹
+Usr.Mnu()ä½¿ç”¨è€…é¸å–®
+Usr.Cln()ä½¿ç”¨è€…è¦æ±‚æ¸…é™¤æ£‹ç›¤
 
-Shell.js ´ß¼h(¹CÀ¸³W«h)
-Rul()¹CÀ¸³W«h
-Rul.Lmt(crd)³W«h­­¨î
-Ext.Brd()ÂX¥R´Ñ½L
-Ext.Adn()ÂX¥R¥\¯à
-Ext.Rul()ÂX¥R³W«h
-Ext.Tol()ÂX¥R¤u¨ã
-Ext.Lmt()ÂX¥R³W«h­­¨î
-Ext.Mrk()ÂX¥R¼Ğ°O
-Ext.Ext.???()¦AÂX¥R¶µ¥Ø
+Shell.js æ®¼å±¤(éŠæˆ²è¦å‰‡)
+Rul()éŠæˆ²è¦å‰‡
+Rul.Lmt(crd)è¦å‰‡é™åˆ¶
+Ext.Brd()æ“´å……æ£‹ç›¤
+Ext.Adn()æ“´å……åŠŸèƒ½
+Ext.Rul()æ“´å……è¦å‰‡
+Ext.Tol()æ“´å……å·¥å…·
+Ext.Lmt()æ“´å……è¦å‰‡é™åˆ¶
+Ext.Mrk()æ“´å……æ¨™è¨˜
+Ext.Ext.???()å†æ“´å……é …ç›®
 
-Gear.js ¾¦½ü(½u¤W¹ï¾Ô)
-Svr½u¤WªA°È¦ì§}(¦r¦ê)
+Gear.js é½’è¼ª(ç·šä¸Šå°æˆ°)
+Svrç·šä¸Šæœå‹™ä½å€(å­—ä¸²)
 
-Brd.Upl()§ó·s´Ñ½L¥N½X
-Brd.Get()¨ú±o´Ñ½L¥N½X
-Usr.Lgn()¨Ï¥ÎªÌµn¤J
-Usr.Gvp()¨Ï¥ÎªÌ»{¿é
+Brd.Upl()æ›´æ–°æ£‹ç›¤ä»£ç¢¼
+Brd.Get()å–å¾—æ£‹ç›¤ä»£ç¢¼
+Usr.Lgn()ä½¿ç”¨è€…ç™»å…¥
+Usr.Gvp()ä½¿ç”¨è€…èªè¼¸
 */
