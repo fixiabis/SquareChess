@@ -13,15 +13,15 @@ function HM(){if(!history.back())location="index.html";else history.back()}
 function LT(v){Mnu(1,v)}
 </script>
 </head>
-<body onLoad="Ldr()" onResize="Rsz()" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)" onmouseover="MsO(event)" onKeyUp="KUp(event)">
+<body onLoad="Ldr()" onResize="Usr.Itf.Rsz()" onContextMenu="event.preventDefault()" onKeyDown="Usr.KDw(event)" onmouseover="Usr.MsO(event)" onKeyUp="Usr.KUp(event)">
 <div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
 <div id='UCL'>
-<div onclick='Clr()' class='game'>Clean</div>
-<div onclick='Udo()' class='game'>Undo</div>
-<div onclick='Rdo()' class='game'>Redo</div>
-<div onclick='Gto()' class='game'>Goto</div>
-<div onclick='Adn()' class='game'>Addons</div>
-<div onclick='Tol()' class='game'>Tools</div>
+<div onclick='Usr.Cln()' class='game'>Clean</div>
+<div onclick='Brd.Udo()' class='game'>Undo</div>
+<div onclick='Brd.Rdo()' class='game'>Redo</div>
+<div onclick='Brd.Gto()' class='game'>Goto</div>
+<div onclick='Usr.Adn()' class='game'>Addons</div>
+<div onclick='Usr.Tol()' class='game'>Tools</div>
 <div onclick='location="btchs.html"+location.search' class='game'>Battle</div>
 <div onclick='HM()' class='game'>Home</div>
 </div>

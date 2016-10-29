@@ -41,7 +41,7 @@ Crd.Flt=function(cds,ord){var res=[]
 Crd.Vct=function(typ){
 	if(Instr(typ,".")>-1)return Crd.Vct(typ.split("."))
 	if(typeof typ=="object"){var res=[]
-		for(var i=0;i<typ.length;i++)res=res.concat(Crd.Vct(typ[i]));return res		
+		for(var i=0;i<typ.length;i++)res=res.concat(Crd.Vct(typ[i]));return res
 	}
 	if(Val(typ[0])&&typ[1]){tp=typ.replace(typ[0],"");var vct="",tp=Crd.Vct(tp)
 		if(typeof tp=="object"){
@@ -67,11 +67,8 @@ Crd.Vct=function(typ){
 Brd.Rec=function(brd){var atr=["S","F","B"],rbd="",cds=Brd.Sel("All")
 	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;return Brd.Rec(Hst.Brd[brd])}
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)for(var i=0;i<3;i++){
-		if(brd){
-			console.log(Tn+":"+Chr(cd1)+cd2+":"+atr[i]+Val(brd[Val(((cd1-65)*10+cd2-1)*3+Val(i))]))
-			Brd.Qre(Chr(cd1)+cd2,atr[i],Val(brd[Val(((cd1-65)*10+cd2-1)*3+Val(i))]))
-			console.log(Brd.Qre(Chr(cd1)+cd2,atr[i]))
-		}else rbd+=Brd.Qre(Chr(cd1)+cd2,atr[i])
+		if(brd)Brd.Qre(Chr(cd1)+cd2,atr[i],Val(brd[Val(((cd1-65)*9+cd2-1)*3+Val(i))]))
+		else rbd+=Brd.Qre(Chr(cd1)+cd2,atr[i])
 	}Usr.Itf.Brd();return rbd
 }//讀取/紀錄棋盤代碼
 Brd.Qre=function(crd,atr,typ){
@@ -118,13 +115,13 @@ Brd.Sel=function(typ,ord){
 	return Hst.Sel[typ]
 }//輸出棋盤選擇行/列
 Brd.Cln=function(msg,sel,tgt){var clc=0;if(!msg)clc=1;else clc=confirm(msg)
-	if(clc){if(!sel)sel="All";sel=Brd.Sel(sel);Tn=0
+	if(clc){if(!sel)sel="All";sel=Brd.Sel(sel);Tn=0;Hst.Brd=[];Hst.Crd=[]
 		for(i=0;i<sel.length;i++){
 			Brd.Qre(sel[i],["S","F"],[2,0])
 			if((Asc(sel[i][0])+Val(sel[i][1]))%2==1)Brd.Qre(sel[i],"B",0)
 			else Brd.Qre(sel[i],"B",1)
 		}
-	}Brd.Cln.Ext();Brd.Adn();Brd.Mrk();Brd.Rec();Usr.Itf.Brd()
+	}Brd.Cln.Ext();Brd.Adn();Brd.Mrk();Hst.Brd[Tn]=Brd.Rec();Usr.Itf.Brd()
 }//清除棋盤指定項目
 Brd.Adn=function(){var blk=0
 	while(blk!=Dft.Blk){var cd1=Val(Rnd()*9)+65,cd2=Val(Rnd()*9+1),clr=Brd.Qre(Chr(cd1)+cd2,"B")
@@ -143,7 +140,7 @@ Brd.Hst=function(typ,tgt){
 	for(var i=0;i<=Tn;i++)if(Hst[typ][i]==tgt)return i;return "N"
 }//紀錄查詢
 Brd.Gto=function(crd){var tn
-	if(!crd)tn=prompt("輸入欲前往的回合")
+	if(!crd)tn=Val(prompt("輸入欲前往的回合"))
 	else tn=Brd.Hst("Crd",crd);Brd.Rec(tn)
 }
 Brd.Rdo=function(crd){
@@ -248,7 +245,7 @@ Usr.Tol=function(){
 	if(!Dft.NxS)Dft.NnS=confirm("強調所有不能設置的區域");else Dft.NnS=0;Usr.Tol.Ext()
 }//使用者工具
 Usr.Cln=function(){
-	if(Tn>2)Brd.Cln("是否清除棋盤?");else Cln()
+	if(Tn>2)Brd.Cln("是否清除棋盤?");else Brd.Cln()
 }//使用者清除棋盤
 Brd.Cln.Ext=function(){}//擴充棋盤
 function Rul(){}//遊戲規則

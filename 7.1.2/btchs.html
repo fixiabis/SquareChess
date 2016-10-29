@@ -18,21 +18,21 @@ function LT(v){Mnu(1,v)}
 function CK(){if(!Id("Board"))return 0}
 </script>
 </head>
-<body onLoad="Acn()" onResize="Rsz()" onmouseover="MsO(event)" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)">
+<body onLoad="Usr.Acn()" onResize="Usr.Itf.Rsz()" onmouseover="Usr.MsO(event)" onContextMenu="event.preventDefault()" onKeyDown="Usr.KDw(event)">
 <div id="Board">
     <table align="center">
     <th align="center" colspan="2">登入或進入房間</th>
     <tr><td><input id="Act" type="text" placeholder="帳號"/></td></tr>
     <tr><td><input id="Pwd" type="password" placeholder="密碼"/></td></tr>
     <tr><td><input id="Jcd" type="text" placeholder="加入碼"/></td></tr>
-    <tr><td colspan="2"><input value="執行" type="button" onClick="Lgn()" id="Exc"/></tr>
+    <tr><td colspan="2"><input value="執行" type="button" onClick="Usr.Lgn()" id="Exc"/></tr>
     </table>
 	<div align="center" style="margin-top:100px"><div id="run" style="display:none">Creating...</div></div>
 </div>
 <div id='UCL'>
-<div onclick='Adn()' class='game'>Addons</div>
-<div onclick='Tol()' class='game'>Tools</div>
-<div onclick='Gvp()' class='game'>GiveUp</div>
+<div onclick='Usr.Adn()' class='game'>Addons</div>
+<div onclick='Usr.Tol()' class='game'>Tools</div>
+<div onclick='Usr.Gvp()' class='game'>GiveUp</div>
 <div onclick='HM()' class='game'>Home</div>
 </div>
 <audio autoplay loop id="msc"><source src="music.mp3" type="audio/mpeg"></audio>
