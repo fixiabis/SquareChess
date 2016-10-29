@@ -1,5 +1,5 @@
-﻿var Tn=0,Dft={Blk:0},Hst={Brd:[],Crd:[],Sel:{}},MdQ=[],Brd={},Usr={Dir:{}},
-	Sqr={S:["O","X",""," "],F:["","blue"],B:["white","lightgray"]}
+﻿var Tn=0,Dft={Blk:0,Tn:0},Hst={Brd:[],Crd:[],Sel:{}},MdQ=[],Brd={},Usr={Dir:{}},
+	Sqr={S:["O","X",""," "],F:["","blue"],B:["white","lightgray","dimgray"]}
 function Ldr(){
 	if(location.search&&Mid(location.search,0,6)=="?mode="){
 		var sr=Mid(location.search.replace("%3A",":"),1,location.search.length-1)
@@ -69,9 +69,9 @@ Brd.Rec=function(brd){var atr=["S","F","B"],rbd="",cds=Brd.Sel("All")
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)for(var i=0;i<3;i++){
 		if(brd)Brd.Qre(Chr(cd1)+cd2,atr[i],Val(brd[Val(((cd1-65)*9+cd2-1)*3+Val(i))]))
 		else rbd+=Brd.Qre(Chr(cd1)+cd2,atr[i])
-	}Usr.Itf.Brd();return rbd
+	}Brd.Mrk();Usr.Itf.Brd();return rbd
 }//讀取/紀錄棋盤代碼
-Brd.Qre=function(crd,atr,typ){
+Brd.Qre=function(crd,atr,typ){if(!crd)return
 	if(typeof crd=="object")for(var i=0;i<crd.length;i++)Brd.Qre(crd[i],atr,typ)
 	else if(typeof atr=="object"&&typeof typ=="object"&&atr.length==typ.length)
 		for(var i=0;i<atr.length;i++)Brd.Qre(crd,atr[i],typ[i])
@@ -125,10 +125,10 @@ Brd.Cln=function(msg,sel,tgt){var clc=0;if(!msg)clc=1;else clc=confirm(msg)
 }//清除棋盤指定項目
 Brd.Adn=function(){var blk=0
 	while(blk!=Dft.Blk){var cd1=Val(Rnd()*9)+65,cd2=Val(Rnd()*9+1),clr=Brd.Qre(Chr(cd1)+cd2,"B")
-		if(clr==1&&(cd1+cd2)%2==0&&Brd.Qre(Chr(cd1)+cd2,"S")==2){blk++;Brd.Qre(Chr(cd1)+cd2,"S",3)}
+		if(clr==1&&(cd1+cd2)%2==0&&Brd.Qre(Chr(cd1)+cd2,"S")==2){blk++;Brd.Qre(Chr(cd1)+cd2,["S","B"],[3,2])}
 	}
 }//額外功能
-Brd.Mrk=function(){var cds=Brd.Sel("All");Brd.Qre(cds,"F",0)
+Brd.Mrk=function(){var cds=Brd.Sel("All");Brd.Qre(cds,"O",0);;Brd.Qre(cds,"F",0)
 	var clr="dimgray";if(Dft.NxS)clr="slateblue"
 	Id("A1").parentNode.parentNode.parentNode.style.backgroundColor=clr
 	for(var i=0;i<cds.length;i++){
@@ -238,18 +238,18 @@ Usr.KUp=function(e){
 Usr.Adn=function(){
 	var blk=Val(prompt("增加障礙?(最大值:27)",Dft.Blk))
 	if(typeof blk=="number"){if(blk<0)blk=0;if(blk>27)blk=27;Dft.Blk=blk}
-	Usr.Adn.Ext();if(Tn==0)Brd.Cln()
+	Usr.Adn.Ext();if(Tn==Dft.Tn)Brd.Cln();else alert("所有功能會在下ㄧ場生效")
 }//額外功能
 Usr.Tol=function(){
 	Dft.BfS=confirm("將上回合設置的符號標示出來?");Dft.NxS=confirm("強調所有能設置的區域")
-	if(!Dft.NxS)Dft.NnS=confirm("強調所有不能設置的區域");else Dft.NnS=0;Usr.Tol.Ext()
+	if(!Dft.NxS)Dft.NnS=confirm("強調所有不能設置的區域");else Dft.NnS=0;Usr.Tol.Ext();Brd.Mrk()
 }//使用者工具
 Usr.Cln=function(){
 	if(Tn>2)Brd.Cln("是否清除棋盤?");else Brd.Cln()
 }//使用者清除棋盤
 Brd.Cln.Ext=function(){}//擴充棋盤
 function Rul(){}//遊戲規則
-Rul.Lmt=function(crd){}//規則限制
+Rul.Lmt=function(crd){if(Brd.Qre(crd,"S")!=2)return 1;return 0}//規則限制
 Usr.Adn.Ext=function(){}//擴充功能
 Brd.Adn.Ext=function(){}//擴充功能
 Rul.Ext=function(){}//擴充規則
