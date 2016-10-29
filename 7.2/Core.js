@@ -128,7 +128,7 @@ Brd.Adn=function(){var blk=0
 		if(clr==1&&(cd1+cd2)%2==0&&Brd.Qre(Chr(cd1)+cd2,"S")==2){blk++;Brd.Qre(Chr(cd1)+cd2,["S","B"],[3,2])}
 	}
 }//額外功能
-Brd.Mrk=function(){var cds=Brd.Sel("All");Brd.Qre(cds,"O",0);;Brd.Qre(cds,"F",0)
+Brd.Mrk=function(){var cds=Brd.Sel("All");Brd.Qre(cds,"O",0);;Brd.Qre(cds,"F",0);console.log("cl")
 	var clr="dimgray";if(Dft.NxS)clr="slateblue"
 	Id("A1").parentNode.parentNode.parentNode.style.backgroundColor=clr
 	for(var i=0;i<cds.length;i++){
@@ -242,7 +242,7 @@ Usr.Adn=function(){
 }//額外功能
 Usr.Tol=function(){
 	Dft.BfS=confirm("將上回合設置的符號標示出來?");Dft.NxS=confirm("強調所有能設置的區域")
-	if(!Dft.NxS)Dft.NnS=confirm("強調所有不能設置的區域");else Dft.NnS=0;Usr.Tol.Ext();Brd.Mrk()
+	if(!Dft.NxS)Dft.NnS=confirm("強調所有不能設置的區域");else Dft.NnS=0;Usr.Tol.Ext();Brd.Mrk();Usr.Itf.Brd()
 }//使用者工具
 Usr.Cln=function(){
 	if(Tn>2)Brd.Cln("是否清除棋盤?");else Brd.Cln()
