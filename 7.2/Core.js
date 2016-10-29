@@ -1,4 +1,4 @@
-﻿var Tn=0,Dft={Blk:0,Tn:0},Hst={Brd:[],Crd:[],Sel:{}},MdQ=[],Brd={},Usr={Dir:{}},
+﻿var Tn=0,Dft={Blk:0,Tn:0,Rul:{Lmt:0}},Hst={Brd:[],Crd:[],Sel:{},Scr:{O:0,X:0,P:0}},MdQ=[],Brd={},Usr={Dir:""},
 	Sqr={S:["O","X",""," "],F:["","blue"],B:["white","lightgray","dimgray"]}
 function Ldr(){
 	if(location.search&&Mid(location.search,0,6)=="?mode="){
@@ -128,9 +128,8 @@ Brd.Adn=function(){var blk=0
 		if(clr==1&&(cd1+cd2)%2==0&&Brd.Qre(Chr(cd1)+cd2,"S")==2){blk++;Brd.Qre(Chr(cd1)+cd2,["S","B"],[3,2])}
 	}
 }//額外功能
-Brd.Mrk=function(){var cds=Brd.Sel("All");Brd.Qre(cds,"O",0);;Brd.Qre(cds,"F",0);console.log("cl")
-	var clr="dimgray";if(Dft.NxS)clr="slateblue"
-	Id("A1").parentNode.parentNode.parentNode.style.backgroundColor=clr
+Brd.Mrk=function(){var cds=Brd.Sel("All");Brd.Qre(cds,"O",0);;Brd.Qre(cds,"F",0)
+	var clr="dimgray";if(Dft.NxS)clr="slateblue";Id("Brd").childNodes[0].style.backgroundColor=clr
 	for(var i=0;i<cds.length;i++){
 		if(Dft.NxS||Dft.NnS)Brd.Qre(cds[i],"O",0.2);var set=Rul.Lmt(cds[i])
 		if(Brd.Qre(cds[i],"S")!=2||!set&&Dft.NnS||set&&Dft.NxS||!Dft.NxS&&!Dft.NnS)Brd.Qre(cds[i],"O",1)
@@ -233,7 +232,7 @@ Usr.KDw=function(e){var ctl=e.ctrlKey,key=e.which,sft=e.shiftKey
 	}
 }//使用者鍵盤按下
 Usr.KUp=function(e){
-	if(e.which<41&&e.which>36&&Usr.Dir!=""){Set(Crd(Hst.Crd[Tn],Hst.Dir));Usr.Dir=""}
+	if(e.which<41&&e.which>36&&Usr.Dir!=""){Usr.Set(Crd(Hst.Crd[Tn],Usr.Dir));Usr.Dir=""}
 }//使用者鍵盤放開
 Usr.Adn=function(){
 	var blk=Val(prompt("增加障礙?(最大值:27)",Dft.Blk))
@@ -249,21 +248,11 @@ Usr.Cln=function(){
 }//使用者清除棋盤
 Brd.Cln.Ext=function(){}//擴充棋盤
 function Rul(){}//遊戲規則
-Rul.Lmt=function(crd){if(Brd.Qre(crd,"S")!=2)return 1;return 0}//規則限制
+Rul.Lmt=function(crd){if(Brd.Qre(crd,"S")!=2)return 1;return Rul.Lmt.Ext()}//規則限制
+Rul.Scr=function(){}//積分判斷
 Usr.Adn.Ext=function(){}//擴充功能
 Brd.Adn.Ext=function(){}//擴充功能
 Rul.Ext=function(){}//擴充規則
 Usr.Tol.Ext=function(){}//擴充工具
-Rul.Lmt.Ext=function(){}//擴充規則限制
+Rul.Lmt.Ext=function(){return Dft.Rul.Lmt}//擴充規則限制
 Brd.Mrk.Ext=function(){}//擴充標記
-/*
-Gear.js 齒輪(線上對戰)
-Svr線上服務位址(字串)
-
-Brd.Upl()更新棋盤代碼
-Brd.Get()取得棋盤代碼
-Usr.Lgn()使用者登入
-Usr.Gvp()使用者認輸
-Usr.Acn()使用者帳號取得
-
-*/
