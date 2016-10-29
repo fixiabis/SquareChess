@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Square Chess</title>
@@ -8,22 +8,27 @@
 <style>@import "Style.css";</style>
 <script src="Simplify.js"></script>
 <script src="Core.js"></script>
+<script>var lst=0
+function HM(){if(!history.back())location="index.html";else history.back()}
+function LT(v){Usr.Itf.Mnu(0,v)}
+</script>
 </head>
-<body onLoad="Ldr()" onResize="Rsz()" onBeforeUnload="if(Tn>2)return '棋局尚未結束'" onContextMenu="event.preventDefault()" onKeyDown="KDw(event)" onmouseover="MsO(event)" onKeyUp="KUp(event)">
-<div id="UCT" onclick="if(Id('UCL').style.width=='0px')Mnu(1);else Mnu(0)"></div>
-<div id="Board"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
+<body onLoad="Ldr()" onResize="Usr.Itf.Rsz()" onContextMenu="event.preventDefault()" onKeyDown="Usr.KDw(event)" onmouseover="Usr.MsO(event)" onKeyUp="Usr.KUp(event)">
+<div id="Brd"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
 <div id='UCL'>
-<div onclick='Clr()' class='game'>Clean</div>
-<div onclick='Udo()' class='game'>Undo</div>
-<div onclick='Rdo()' class='game'>Redo</div>
-<div onclick='Gto()' class='game'>Goto</div>
-<div onclick='Adn()' class='game'>Addons</div>
-<div onclick='if(!history.back())location="index.html";else history.back()' class='game'>Home</div>
-<div>
-<font id="NCd" style="text-align:left" class="game" onclick="Slt(prompt('Enter coordinate'))">O0</font><hr>
-<span id="Cdt" class="game" style="height:100px;line-height:1;font-size:18px;text-align:left"></span>
+<div onclick='Usr.Cln()' class='game'>Clean</div>
+<div onclick='Brd.Udo()' class='game'>Undo</div>
+<div onclick='Brd.Rdo()' class='game'>Redo</div>
+<div onclick='Brd.Gto()' class='game'>Goto</div>
+<div onclick='Usr.Adn()' class='game'>Addons</div>
+<div onclick='Usr.Tol()' class='game'>Tools</div>
+<div onclick='location="btchs.html"+location.search' class='game'>Battle</div>
+<div onclick='HM()' class='game'>Home</div>
 </div>
+<div id="UCM">
+<div onClick="LT(0)" class="list">List</div>
+<div onClick="HM()" class="list">Home</div>
+<div onClick="LT(1)" class="list">List</div>
 </div>
-<audio autoplay loop><source src="music.mp3" type="audio/mpeg"></audio>
 </body>
 </html>
