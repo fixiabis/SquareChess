@@ -36,7 +36,7 @@ Brd.Upl=function(v){Brd.Mrk();if(!Usr.Oln.Upl)return;Usr.Lmt(1);var brd=Hst.Brd[
 			{Typ:"S",Jcd:Usr.Oln.Jcd,Rw:Usr.Oln.Row,Brd:brd},
 			function (r){
 				if(brd=="gvp"){Usr.Oln.Gvp=1;Brd.Cln();Usr.Itl()}
-				else if(r=="設置完成"){Usr.Oln.LTn=Tn;Usr.Oln.Cln=0;Rul();Usr.Oln.Gvp=0;Brd.Get()}
+				else if(r=="設置完成"){Usr.Oln.LTn=Tn;Usr.Oln.Cln=0;Rul.Jdg();Usr.Oln.Gvp=0;Brd.Get()}
 				else alert(r)
 			}
 		)
@@ -91,8 +91,8 @@ Brd.Cln=function(msg,sel,tgt){var clc=0;if(!msg)clc=1;else clc=confirm(msg)
 	if(clc){if(!sel)sel="All";sel=Brd.Sel(sel);Tn=0;Hst.Brd=[];Hst.Crd=[]
 		for(i=0;i<sel.length;i++){
 			Brd.Qre(sel[i],["S","F"],[2,0])
-			if((Asc(sel[i][0])+Val(sel[i][1]))%2==1)Brd.Qre(sel[i],"B",0)
-			else Brd.Qre(sel[i],"B",1)
+			if((Asc(sel[i][0])+Val(sel[i][1]))%2==1)Brd[sel[i]].B=0
+			else Brd[sel[i]].B=1
 		}
 	}Usr.Oln.Upl=0;Brd.Cln.Ext();Brd.Adn();Brd.Mrk();Hst.Brd[Tn]=Brd.Rec();
 	Usr.Itf.Brd();Usr.Oln.Upl=1;Usr.Itl();Usr.Oln.Cln=1
@@ -105,13 +105,13 @@ Usr.Cln=function(){}
 Brd.Rec=function(brd){var atr=["S","F","B"],rbd="",cds=Brd.Sel("All")
 	if(typeof brd=="number")return
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)for(var i=0;i<3;i++){
-		if(brd)Brd.Qre(Chr(cd1)+cd2,atr[i],Val(brd[Val(((cd1-65)*9+cd2-1)*3+Val(i))]))
-		else rbd+=Brd.Qre(Chr(cd1)+cd2,atr[i])
+		if(brd)Brd[Chr(cd1)+cd2][atr[i]]=Val(brd[Val(((cd1-65)*9+cd2-1)*3+Val(i))])
+		else rbd+=Brd[Chr(cd1)+cd2][atr[i]]
 	}Brd.Mrk();Usr.Itf.Brd();return rbd
 }//讀取/紀錄棋盤代碼
 Usr.Set=function(crd){
 	if(!Rul.Lmt(crd)){
-		Brd.Qre(crd,"S",Tn%2);Tn++;Rul();
+		Brd[crd].S=Tn%2;Tn++;
 		Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Brd.Rec();
 		Brd.Mrk();Usr.Itf.Brd();Brd.Upl()
 	}
