@@ -89,17 +89,6 @@ function MdL(ord){
 		Brd.Cln();Usr.Itf.Rsz();Usr.Itf.Brd()
 	};doc.body.appendChild(s)
 }//模式裝載
-Brd.Cln=function(msg,sel,tgt){var clc=0;if(!msg)clc=1;else clc=confirm(msg)
-	if(clc){if(!sel)sel="All";sel=Brd.Sel(sel);Tn=0;Hst.Brd=[];Hst.Crd=[]
-		for(i=0;i<sel.length;i++){
-			Brd.Qre(sel[i],["S","F"],[2,0])
-			if((Asc(sel[i][0])+Val(sel[i][1]))%2==1)Brd[sel[i]].B=0
-			else Brd[sel[i]].B=1
-		}
-	}Usr.Oln.Upl=0;Brd.Cln.Ext();Brd.Adn();Brd.Mrk();Hst.Brd[Tn]=Brd.Rec();
-	Usr.Itf.Brd();Usr.Oln.Upl=1;Usr.Itl();Usr.Oln.Cln=1
-}//清除棋盤指定項目
-Brd.Cln.Ext=function(){}
 Brd.Udo=function(){}
 Brd.Rdo=function(){}
 Brd.Gto=function(){}
@@ -118,3 +107,18 @@ Usr.Set=function(crd){
 		Hst.Brd[Tn]=Brd.Rec();Brd.Upl()
 	}
 }//設置符號
+var Cln=Brd.Cln.Cnt
+Brd.Cln=function(msg,sel,tgt){var clc=0;if(!msg)clc=1;else clc=confirm(msg);if(!tgt)tgt=""
+	if(clc){if(!sel)sel="All";sel=Brd.Sel(sel);Tn=0;Hst.Brd=[];Hst.Crd=[]
+		Brd.Qre(sel,["F","B"],[0,0])
+		Brd.Qre(Crd.Flt(sel,function(crd){
+			if(Instr(Sqr.S[Brd[crd].S],tgt)>-1)return 1;return 0
+		}),"S",2)
+		Brd.Qre(Crd.Flt(sel,function(crd){
+			return !((Asc(crd[0])+Val(crd[1]))%2)
+		}),"B",1)
+	}Usr.Oln.Upl=0;Brd.Cln.Ext();Brd.Adn();Hst.Brd[Tn]=Brd.Rec()
+	Usr.Itf.Brd();Usr.Oln.Upl=1;Usr.Itl();Usr.Oln.Cln=1
+}//清除棋盤指定項目
+Brd.Cln.Ext=function(){}
+Brd.Cln.Cnt=Cln
