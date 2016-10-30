@@ -157,13 +157,13 @@ Usr.Set=function(crd){
 	if(!Rul.Lmt(crd)){Brd.Qre(crd,"S",Tn%2);Tn++;Rul();Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Brd.Rec();Brd.Mrk();Usr.Itf.Brd()}
 }//設置符號
 Usr.Itf=function(){
-	var brd="<table border='0' cellpadding='0' cellspacing='0' oncontextmenu='Usr.Lst()' style='background-color:dimgray'>"
+	var brd="<table border='0' cellpadding='0' cellspacing='0' style='background-color:dimgray'>"
 	for(cd2=1;cd2<10;cd2++){brd+="<tr>"
 		for(cd1=65;cd1<74;cd1++){
 			brd+="<td id='"+Chr(cd1)+cd2+"' onclick='Usr.Set(this.id)' ondblclick='Brd.Udo(this.id)' class='bt'></td>"
 			Brd[Chr(cd1)+cd2]={S:2,F:0,B:0,O:1}
 		}brd+="</tr>"
-	}Id("Brd").innerHTML=brd+"</table><div id='UC'><table><tr><td class='bt' onClick='Usr.Udo()' onContextMenu='Usr.Gto()'>Undo</td><td class='bt' onclick='Usr.Cln()' onContextMenu='Usr.Adn()'>Clean</td></tr></table></div>"
+	}Id("Brd").innerHTML=brd+"</table><div id='UC'><table><tr><td class='bt' onClick='Usr.Udo()' onContextMenu='Usr.Gto()' ondoubleclick='Brd.Rec(Brd.Lst())'>Undo</td><td class='bt' onclick='Usr.Cln()' onContextMenu='Usr.Adn()'>Clean</td></tr></table></div>"
 	Id("Brd").style.animation="down 2s"
 }//建立介面
 Usr.Itf.Brd=function(){var cds=Brd.Sel("All")
