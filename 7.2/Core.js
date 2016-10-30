@@ -1,5 +1,15 @@
-﻿var Tn=0,Dft={Blk:0,Tn:0,Rul:{Lmt:0}},Hst={Brd:[],Crd:[],Sel:{},Scr:{O:0,X:0,P:0,R:1},Rut:[]},MdQ=[],Brd={},Usr={Dir:""},
-	Sqr={S:["O","X",""," "],F:["","blue"],B:["white","lightgray","dimgray"]},Rul={}
+﻿var Tn=0,
+	Dft={Blk:0,Tn:0,Rul:{Lmt:0},Scr:1},
+	Hst={Brd:[],Crd:[],Sel:{},Scr:{O:0,X:0},Ara:{O:[],X:[],P:[]},Rut:[]},
+	MdQ=[],Brd={},Usr={Dir:""},
+	Sqr={
+		S:["O","X",""," "],F:["","blue"],
+		B:[
+			"white","lightgray","dimgray","orchid",
+			"darkorchid","mediumorchid"
+		]
+	},
+	Rul={}
 function Ldr(){
 	if(location.search&&Mid(location.search,0,6)=="?mode="){
 		var sr=Mid(location.search.replace("%3A",":"),1,location.search.length-1)
@@ -67,11 +77,11 @@ Crd.Vct=function(typ){
 Brd.Rec=function(brd){var atr=["S","F","B"],rbd="",cds=Brd.Sel("All")
 	if(typeof brd=="number"){
 		if(Hst.Brd[brd]){Tn=brd;return Brd.Rec(Hst.Brd[brd])}else return
-	}
+	}Brd.Mrk()
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)for(var i=0;i<3;i++){
 		if(brd)Brd[Chr(cd1)+cd2][atr[i]]=Val(brd[Val(((cd1-65)*9+cd2-1)*3+Val(i))])
 		else rbd+=Brd[Chr(cd1)+cd2][atr[i]]
-	}Brd.Mrk();Usr.Itf.Brd();return rbd
+	}Usr.Itf.Brd();return rbd
 }//讀取/紀錄棋盤代碼
 Brd.Qre=function(crd,atr,typ){if(!crd)return
 	if(typeof crd=="object")for(var i=0;i<crd.length;i++)Brd.Qre(crd[i],atr,typ)
@@ -116,13 +126,16 @@ Brd.Sel=function(typ,ord){
 	if(typ.length==2&&typeof typ=="string")Hst.Sel[typ]=typ
 	return Hst.Sel[typ]
 }//輸出棋盤選擇行/列
-Brd.Cln=function(msg,sel,tgt){var clc=0;if(!msg)clc=1;else clc=confirm(msg)
+Brd.Cln=function(msg,sel,tgt){var clc=0;if(!msg)clc=1;else clc=confirm(msg);if(!tgt)tgt=""
 	if(clc){if(!sel)sel="All";sel=Brd.Sel(sel);Tn=0;Hst.Brd=[];Hst.Crd=[]
-		for(i=0;i<sel.length;i++){
-			Brd.Qre(sel[i],["S","F"],[2,0])
-			if((Asc(sel[i][0])+Val(sel[i][1]))%2==1)Brd[sel[i]].B=0;else Brd[sel[i]].B=1
-		}
-	}Brd.Cln.Ext();Brd.Adn();Brd.Mrk();Hst.Brd[Tn]=Brd.Rec();Usr.Itf.Brd()
+		Brd.Qre(sel,["F","B"],[0,0])
+		Brd.Qre(Crd.Flt(sel,function(crd){
+			if(Instr(Sqr.S[Brd[crd].S],tgt)>-1)return 1;return 0
+		}),"S",2)
+		Brd.Qre(Crd.Flt(sel,function(crd){
+			return !((Asc(crd[0])+Val(crd[1]))%2)
+		}),"B",1)
+	}Brd.Cln.Ext();Brd.Adn();Hst.Brd[Tn]=Brd.Rec();Usr.Itf.Brd()
 }//清除棋盤指定項目
 Brd.Adn=function(){var blk=0
 	while(blk!=Dft.Blk){var cd1=Val(Rnd()*9)+65,cd2=Val(Rnd()*9+1),clr=Brd.Qre(Chr(cd1)+cd2,"B")
@@ -134,7 +147,7 @@ Brd.Mrk=function(){var cds=Brd.Sel("All");Brd.Qre(cds,"O",0);;Brd.Qre(cds,"F",0)
 	for(var i=0;i<cds.length;i++){
 		if(Dft.NxS||Dft.NnS)Brd[cds[i]].O=0.2;var set=Rul.Lmt(cds[i])
 		if(Brd[cds[i]].S!=2||!set&&Dft.NnS||set&&Dft.NxS||!Dft.NxS&&!Dft.NnS)Brd[cds[i]].O=1
-	}if(!Dft.BfS)return;Brd.Qre([Hst.Crd[Tn],Hst.Crd[Tn-1]],"F",1)
+	}Brd.Mrk.Ext();if(!Dft.BfS)return;Brd.Qre([Hst.Crd[Tn],Hst.Crd[Tn-1]],"F",1)
 }//輔助標記
 Brd.Hst=function(typ,tgt){
 	for(var i=0;i<=Tn;i++)if(Hst[typ][i]==tgt)return i;return "N"
@@ -155,10 +168,9 @@ Brd.Lst=function(){var tn=0
 	while(!Hst.Brd[Tn])tn+=1;return tn
 }//目前的最後一回合
 Usr.Set=function(crd){
-	if(!Rul.Lmt(crd)){
-		Brd[crd].S=Tn%2;Tn++;Rul.Jdg()
+	if(!Rul.Lmt(crd)){Brd[crd].S=Tn%2;Tn++
+		var win=Rul.Jdg();if(win)Brd.Cln(win)
 		Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Brd.Rec()
-		Brd.Mrk();Usr.Itf.Brd()
 	}
 }//設置符號
 Usr.Itf=function(){
@@ -254,21 +266,68 @@ Usr.Cln=function(){
 }//使用者清除棋盤
 Brd.Cln.Ext=function(){}//擴充棋盤
 Rul.Jdg=function(){}//規則判定
-Rul.Lmt=function(crd){if(Brd[crd].S!=2)return 1;return Rul.Lmt.Ext(crd,Tn%2)}//規則限制
-Rul.Scr=function(ord){
+Rul.Lmt=function(crd){if(Brd[crd]&&Brd[crd].S!=2)return 1;return Rul.Lmt.Ext(crd,Tn%2)}//規則限制
+Rul.Scr=function(ord){if(!ord)ord=">"
 	switch(ord){
 		case">":
-			if(Scr.O==Scr.X&&Scr.P==0)return"Draw"
-			if(Scr.O>Scr.X)return"O Win"
-			if(Scr.X>Scr.O)return"X Win"
+			if(Hst.Scr.O>Hst.Scr.X)return"O Win"
+			if(Hst.Scr.X>Hst.Scr.O)return"X Win"
 		break
 		case"=":
-			if(Scr.O==Scr.X&&Scr.O==0)return"Draw"
-			if(Scr.O==Scr.R)return"O Win"
-			if(Scr.X==Scr.R)return"X Win"
+			if(Hst.Scr.O==Dft.Scr)return"O Win"
+			if(Hst.Scr.X==Dft.Scr)return"X Win"
 		break
-	}return""
+	}return"Draw"
 }//積分計算
+Rul.Cnt=function(){var cds=Brd.Sel("All"),Ara={O:[],X:[],P:[]}
+	for(var i=0;i<2;i++){Ara[Sqr.S[i]].All=[]
+		Ara[Sqr.S[i]][0]=Crd.Flt(cds,function(crd){if(i==0)Brd[crd].M=2
+			if(!Rul.Lmt.Ext(crd,i)&&Brd[crd].S==2){
+				if(i==1&&Brd[crd].M==0)Brd[crd].M=3;else Brd[crd].M=i;return 1
+			}return 0
+		});Ara[Sqr.S[i]].All=Ara[Sqr.S[i]].All.concat(Ara[Sqr.S[i]][0])
+	}
+	Ara.P[0]=Crd.Flt(Ara.O[0],function(crd){if(Ara.X[0].indexOf(crd)>-1)return 1;return 0})
+	var rot=1
+	while(Ara.O[rot-1].length>0||Ara.X[rot-1].length>0){
+		for(var i=0;i<2;i++){
+			Ara[Sqr.S[i]][rot]=Crd.Flt(cds,function(crd){
+				if(Brd[crd].S==2){var cds=Crd(crd,"8")
+					for(j=0;j<cds.length;j++)
+						if(Ara[Sqr.S[i]][rot-1].indexOf(cds[j])>-1&&Ara[Sqr.S[i]].All.indexOf(crd)<0){
+							if(i==1&&Brd[crd].M==0)Brd[crd].M=3;else Brd[crd].M=i;return 1
+						}
+				}return 0
+			})
+			for(var j=0;j<Ara[Sqr.S[i]][rot].length;j++){
+				if(Ara[Sqr.S[i]].All.indexOf(Ara[Sqr.S[i]][rot][j])<0)Ara[Sqr.S[i]].All.push(Ara[Sqr.S[i]][rot][j])
+			}
+		}
+		Ara.P[rot]=Crd.Flt(Ara.O[rot],function(crd){if(Ara.X[rot].indexOf(crd)>-1)return 1;return 0});rot++
+	}Ara.P.All=Crd.Flt(Ara.O.All,function(crd){if(Ara.X.All.indexOf(crd)>-1)return 1;return 0})
+	for(var i=0;i<2;i++){
+		Ara[Sqr.S[i]].All=Crd.Flt(Ara[Sqr.S[i]].All,function(crd){if(Ara.P.All.indexOf(crd)>-1)return 0;return 1})
+	}Hst.Ara=Ara
+	if(Ara.P[0].length==Ara.P.All.length&&Tn>2){
+		Hst.Scr.O=Ara.O.All.length;Hst.Scr.X=Ara.X.All.length;return Rul.Scr()
+	}return ""
+}//區塊演算
+Usr.Tol.Cnt=function(){
+	Dft.Ara=confirm("顯示現在雙方區域")
+}//擴充工具
+Brd.Mrk.Cnt=function(){var cds=Brd.Sel("All")
+	Brd.Qre(cds,"B",0)
+	Brd.Qre(Crd.Flt(cds,function(crd){
+		return !((Asc(crd[0])+Val(crd[1]))%2)
+	}),"B",1)
+	if(Dft.Ara){
+		for(var i=0;i<2;i++)Brd.Qre(Hst.Ara[Sqr.S[i]].All,"B",3+i)
+		Brd.Qre(Hst.Ara.P.All,"B",5)
+	}
+}//擴充標記
+Brd.Cln.Cnt=function(){
+	Hst.Ara.P.All=Brd.Sel("All")
+}//擴充初始
 Usr.Adn.Ext=function(){}//擴充功能
 Brd.Adn.Ext=function(){}//擴充功能
 Rul.Ext=function(){}//擴充規則

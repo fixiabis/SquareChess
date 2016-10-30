@@ -35,9 +35,11 @@ Brd.Upl=function(v){Brd.Mrk();if(!Usr.Oln.Upl)return;Usr.Lmt(1);var brd=Hst.Brd[
 		$.get(Svr,
 			{Typ:"S",Jcd:Usr.Oln.Jcd,Rw:Usr.Oln.Row,Brd:brd},
 			function (r){
-				if(brd=="gvp"){Usr.Oln.Gvp=1;Brd.Cln();Usr.Itl()}
-				else if(r=="設置完成"){Usr.Oln.LTn=Tn;Usr.Oln.Cln=0;Rul.Jdg();Usr.Oln.Gvp=0;Brd.Get()}
-				else alert(r)
+				if(brd=="gvp"){Usr.Oln.Gvp=1;Brd.Cln();Usr.Itl()
+				}else if(r=="設置完成"){
+					Usr.Oln.LTn=Tn;Usr.Oln.Cln=0;var win=Rul.Jdg()
+					if(win)Brd.Cln(win);Usr.Oln.Gvp=0;Brd.Get()
+				}else alert(r)
 			}
 		)
 	}catch(e){alert("資料上傳失敗，將繼續重試");Brd.Upl()}
@@ -111,8 +113,8 @@ Brd.Rec=function(brd){var atr=["S","F","B"],rbd="",cds=Brd.Sel("All")
 }//讀取/紀錄棋盤代碼
 Usr.Set=function(crd){
 	if(!Rul.Lmt(crd)){
-		Brd[crd].S=Tn%2;Tn++;
-		Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Brd.Rec();
-		Brd.Mrk();Usr.Itf.Brd();Brd.Upl()
+		Brd[crd].S=Tn%2;Tn++;var win=Rul.Jdg()
+		if(win)Brd.Cln(win);Hst.Crd[Tn]=crd;
+		Hst.Brd[Tn]=Brd.Rec();Brd.Upl()
 	}
 }//設置符號
