@@ -1,5 +1,5 @@
 ﻿var Tn=0,
-	Dft={Blk:0,Tn:0,Rul:{Lmt:0},Scr:1},
+	Dft={Blk:0,Tn:0,Rul:{Lmt:0},Scr:1,QJd:1},
 	Hst={Brd:[],Crd:[],Sel:{},Scr:{O:0,X:0},Ara:{O:[],X:[],P:[]},Rut:[]},
 	MdQ=[],Brd={},Usr={Dir:""},
 	Sqr={
@@ -46,8 +46,7 @@ function Crd(crd,vct){var x=0,y=0;vct=Crd.Vct(vct)
 }//藉方向輸出座標
 Crd.Flt=function(cds,ord){var res=[]
 	for(var i=0;i<cds.length;i++){var odr=ord(cds[i])
-		if(odr==1)res.push(cds[i])
-		else if(odr==2)break
+		if(odr==1)res.push(cds[i]);else if(odr==2)break
 	}return res
 }//篩選座標
 Crd.Vct=function(typ){
@@ -289,7 +288,7 @@ Rul.Scr=function(ord){if(!ord)ord=">"
 		break
 	}return"Draw"
 }//積分計算
-Rul.Cnt=function(){var cds=Brd.Sel("All"),Ara={O:[],X:[],P:[]}
+Rul.Cnt=function(){var cds=Brd.Sel("All"),Ara={O:[],X:[],P:[]};if(Tn<2)return ""
 	for(var i=0;i<2;i++){Ara[Sqr.S[i]].All=[]
 		Ara[Sqr.S[i]][0]=Crd.Flt(cds,function(crd){if(i==0)Brd[crd].M=2
 			if(!Rul.Lmt.Ext(crd,i)&&Brd[crd].S==2){
@@ -317,13 +316,17 @@ Rul.Cnt=function(){var cds=Brd.Sel("All"),Ara={O:[],X:[],P:[]}
 	}Ara.P.All=Crd.Flt(Ara.O.All,function(crd){if(Ara.X.All.indexOf(crd)>-1)return 1;return 0})
 	for(var i=0;i<2;i++){
 		Ara[Sqr.S[i]].All=Crd.Flt(Ara[Sqr.S[i]].All,function(crd){if(Ara.P.All.indexOf(crd)>-1)return 0;return 1})
-	}Hst.Ara=Ara
-	if(Ara.P[0].length==Ara.P.All.length&&Tn>2){
-		Hst.Scr.O=Ara.O.All.length;Hst.Scr.X=Ara.X.All.length;return Rul.Scr()
-	}return ""
+	}Hst.Ara=Ara;Hst.Scr.O=Ara.O.All.length;Hst.Scr.X=Ara.X.All.length
+	if(Tn>2)if(Ara.P[0].length==Ara.P.All.length&&Dft.QJd){
+		return Rul.Scr()
+	}else{
+		if(Ara.P.All.length==0)return Rul.Scr()
+	}
+	return ""
 }//區塊演算
 Usr.Tol.Cnt=function(){
 	Dft.Ara=confirm("顯示現在雙方區域")
+	Dft.QJd=confirm("執行快速判定")
 }//擴充工具
 Brd.Mrk.Cnt=function(){var cds=Brd.Sel("All")
 	Brd.Qre(cds,"B",0)
