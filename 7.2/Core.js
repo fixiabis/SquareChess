@@ -80,7 +80,7 @@ Brd.Rec=function(brd){var atr=["S","F","B"],rbd="",cds=Brd.Sel("All")
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)for(var i=0;i<3;i++){
 		if(brd)Brd[Chr(cd1)+cd2][atr[i]]=Val(brd[Val(((cd1-65)*9+cd2-1)*3+Val(i))])
 		else rbd+=Brd[Chr(cd1)+cd2][atr[i]]
-	}Brd.Mrk();Usr.Itf.Brd();return rbd
+	}Rul.Jdg();Brd.Mrk();Usr.Itf.Brd();return rbd
 }//讀取/紀錄棋盤代碼
 Brd.Qre=function(crd,atr,typ){if(!crd)return
 	if(typeof crd=="object")for(var i=0;i<crd.length;i++)Brd.Qre(crd[i],atr,typ)
