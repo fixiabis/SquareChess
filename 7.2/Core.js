@@ -45,7 +45,10 @@ function Crd(crd,vct){var x=0,y=0;vct=Crd.Vct(vct)
 	}return Chr(Asc(crd[0])+x)+Val(Val(crd[1])+y)
 }//藉方向輸出座標
 Crd.Flt=function(cds,ord){var res=[]
-	for(var i=0;i<cds.length;i++)if(ord(cds[i]))res.push(cds[i]);return res
+	for(var i=0;i<cds.length;i++){var odr=ord(cds[i])
+		if(odr==1)res.push(cds[i])
+		else if(odr==2)break
+	}return res
 }//篩選座標
 Crd.Vct=function(typ){
 	if(Instr(typ,".")>-1)return Crd.Vct(typ.split("."))
