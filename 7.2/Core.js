@@ -70,7 +70,7 @@ Crd.Vct=function(typ){
 		case"8":return"F,B,R,L,FR,FL,BR,BL".split(",")
 		case"X":return"FR,FL,BR,BL".split(",")
 		case"4":return"F,B,R,L".split(",")
-		case"Q":return"FFR,FFL,FRR,FFL,BBR,BBL,BRR,BLL".split(",")
+		case"Q":return"FFR,FFL,RRF,LLF,BBR,BBL,RRB,LLB".split(",")
 		case"V":
 			return Crd.Flt(Crd.Vct("X"),function(ckr){if(Instr(ckr,typ[1])>-1)return 1;else return 0})
 		case"W":
