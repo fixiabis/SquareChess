@@ -1,8 +1,8 @@
 ﻿Rul.Jdg=function(){return Rul.Cnt()}
 Rul.Lmt.Ext=function(crd,sym){if(Dft.Rul.Lmt)return 1
-	var cd8=Crd(crd,"8");Hst.Rut=[];if(Tn<2)return 0
-	Hst.Rut=Crd.Flt(Crd(crd,"8"),function(crd){if(Brd[crd])if(Brd[crd].S==sym)return 1;return 0})
-	return !Hst.Rut.length>0
+	var cd8=Crd(crd,"8");Hst[Tn].Rut=[];if(Tn<2)return 0
+	Hst[Tn].Rut=Crd.Flt(Crd(crd,"8"),function(crd){if(Brd[crd])if(Brd[crd].S==sym)return 1;return 0})
+	return !Hst[Tn].Rut.length>0
 }
 Usr.Tol.Ext=function(){
 	Usr.Tol.Cnt()
