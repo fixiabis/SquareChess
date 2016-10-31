@@ -58,6 +58,14 @@ Crd.Vct=function(typ){
 		}
 		for(i=0;i<Val(typ[0]);i++)vct+=tp;return vct
 	}
+	if(Instr(typ,":")>-1){
+		var crd=typ.split(":"),
+		x=Val(Asc(crd[1][0]))-Val(Asc(crd[0][0]))
+		y=Val(Val(crd[1][1]))-Val(Val(crd[0][1]))
+		if(x<0)x=Crd.Vct(Math.abs(x)+"L");else if(x!=0)x=Crd.Vct(x+"R");else x="" 
+		if(y<0)y=Crd.Vct(Math.abs(y)+"F");else if(y!=0)y=Crd.Vct(y+"B");else y=""
+		return x+y
+	}
 	switch(typ[0]){
 		case"8":return"F,B,R,L,FR,FL,BR,BL".split(",")
 		case"X":return"FR,FL,BR,BL".split(",")
