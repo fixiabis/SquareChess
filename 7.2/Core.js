@@ -106,7 +106,7 @@ Brd.Sel=function(typ,ord){
 	if(typ=="All"){
 		for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Hst.Sel.All.push(Chr(cd1)+cd2)
 	}
-	if(Instr(typ,"-")>-1){var spt=typ.split("-")
+	if(Instr(typ,":")>-1){var spt=typ.split(":")
 		if(spt[0].length==1&&spt[1].length==1){
 			var sml=Asc(spt[0]),big=Asc(spt[1]);if(Asc(spt[0])>big){sml=Asc(spt[1]);big=Asc(spt[0])}
 			for(var i=sml;i<big+1;i++)Hst.Sel[typ].push(Chr(i));Hst.Sel[typ]=Brd.Sel(Hst.Sel[typ])
@@ -128,7 +128,7 @@ Brd.Sel=function(typ,ord){
 		}
 	}
 	if(Instr(typ,",")>-1){Hst.Sel[typ]=Hst.Sel[typ].concat(Brd.Sel(typ.split(",")))}
-	else if(Instr(typ,":")>-1){var spt=typ.split(":");Hst.Sel[typ]=Hst.Sel[typ].concat(Crd(spt[0],spt[1]))}
+	else if(Instr(typ,"/")>-1){var spt=typ.split("/");Hst.Sel[typ]=Hst.Sel[typ].concat(Crd(spt[0],spt[1]))}
 	if(typ.length==1)Hst.Sel[typ]=Crd.Flt(Brd.Sel("All"),function(ckr){if(Instr(ckr,typ)>-1)return 1;else return 0});
 	if(typ.length==2&&typeof typ=="string")Hst.Sel[typ]=typ
 	return Hst.Sel[typ]
