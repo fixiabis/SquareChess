@@ -12,4 +12,4 @@ Brd.Mrk.Ext=function(){
 }//擴充標記
 Brd.Cln.Ext=function(){
 	Brd.Cln.Cnt()
-}//
+}//擴充棋盤

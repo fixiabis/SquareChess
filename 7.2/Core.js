@@ -5,11 +5,10 @@
 	Sqr={
 		S:["O","X",""," "],F:["","blue"],
 		B:[
-			"white","lightgray","dimgray","orchid",
-			"darkorchid","mediumorchid"
+			"white","lightgray","dimgray",
+			"palevioletred","lightsteelblue"
 		]
-	},
-	Rul={}
+	},Rul={}
 function Ldr(){
 	if(location.search&&Mid(location.search,0,6)=="?mode="){
 		var sr=Mid(location.search.replace("%3A",":"),1,location.search.length-1)
@@ -77,11 +76,11 @@ Crd.Vct=function(typ){
 Brd.Rec=function(brd){var atr=["S","F","B"],rbd="",cds=Brd.Sel("All")
 	if(typeof brd=="number"){
 		if(Hst.Brd[brd]){Tn=brd;return Brd.Rec(Hst.Brd[brd])}else return
-	}Brd.Mrk()
+	}
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)for(var i=0;i<3;i++){
 		if(brd)Brd[Chr(cd1)+cd2][atr[i]]=Val(brd[Val(((cd1-65)*9+cd2-1)*3+Val(i))])
 		else rbd+=Brd[Chr(cd1)+cd2][atr[i]]
-	}Usr.Itf.Brd();return rbd
+	}Brd.Mrk();Usr.Itf.Brd();return rbd
 }//讀取/紀錄棋盤代碼
 Brd.Qre=function(crd,atr,typ){if(!crd)return
 	if(typeof crd=="object")for(var i=0;i<crd.length;i++)Brd.Qre(crd[i],atr,typ)
@@ -322,11 +321,11 @@ Brd.Mrk.Cnt=function(){var cds=Brd.Sel("All")
 	}),"B",1)
 	if(Dft.Ara){
 		for(var i=0;i<2;i++)Brd.Qre(Hst.Ara[Sqr.S[i]].All,"B",3+i)
-		Brd.Qre(Hst.Ara.P.All,"B",5)
 	}
 }//擴充標記
 Brd.Cln.Cnt=function(){
-	Hst.Ara.P.All=Brd.Sel("All")
+	Hst.Ara.O.All=[]
+	Hst.Ara.X.All=[]
 }//擴充初始
 Usr.Adn.Ext=function(){}//擴充功能
 Brd.Adn.Ext=function(){}//擴充功能
