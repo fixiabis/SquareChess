@@ -14,18 +14,18 @@ table tr td input{border:none;background-color:lightgray;height:30px;width:200px
 <script src="Gear.js"></script>
 <script>var lst=0
 function HM(){if(!history.back())location="index.html";else history.back()}
-function LT(v){Mnu(1,v)}
-function CK(){if(!Id("Board"))return 0}
+function LT(v){Usr.Itf.Mnu(0,v)}
+function CK(){if(!Id("Brd"))return 0}
 </script>
 </head>
 <body onLoad="Usr.Acn()" onResize="Usr.Itf.Rsz()" onmouseover="Usr.MsO(event)" onContextMenu="event.preventDefault()" onKeyDown="Usr.KDw(event)">
-<div id="Board">
+<div id="Brd">
     <table align="center">
     <th align="center" colspan="2">登入或進入房間</th>
     <tr><td><input id="Act" type="text" placeholder="帳號"/></td></tr>
     <tr><td><input id="Pwd" type="password" placeholder="密碼"/></td></tr>
     <tr><td><input id="Jcd" type="text" placeholder="加入碼"/></td></tr>
-    <tr><td colspan="2"><input value="執行" type="button" onClick="Usr.Lgn()" id="Exc"/></tr>
+    <tr><td colspan="2"><input value="執行" type="button" style="width:100%" onClick="Lgn()" id="Exc"/></tr>
     </table>
 	<div align="center" style="margin-top:100px"><div id="run" style="display:none">Creating...</div></div>
 </div>
@@ -35,7 +35,6 @@ function CK(){if(!Id("Board"))return 0}
 <div onclick='Usr.Gvp()' class='game'>GiveUp</div>
 <div onclick='HM()' class='game'>Home</div>
 </div>
-<audio autoplay loop id="msc"><source src="music.mp3" type="audio/mpeg"></audio>
 <div id="UCM">
 <div onClick="LT(0)" class="list">List</div>
 <div onClick="HM()" class="list">Home</div>
