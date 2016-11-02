@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+<style>
+.cove2{overflow:hidden;float:left;margin:10px;position:relative;height:220px}
+.txt{width:0px;border:none;transition:all 2s}
+</style>
+<script>
+function s(){
+	document.getElementById("Content").style.width=document.body.clientWidth*0.8+"px"
+	document.getElementById("Content").style.marginLeft=(document.body.clientWidth-document.getElementById("Content").clientWidth)/2+"px"
+	document.getElementById("Content").style.height=document.getElementById("Content").scrollHeight+"px"
+}
+</script>
+</head>
+
+<body onload="s()" onresize="s()">
+<div id="Content" style="overflow:hidden;width:80%">
+    <div class="cove2">
+        <h2>基本資料:</h2>
+            <div style="float:left;margin:5px">
+                <h4>性別:</h4>
+                    <label><input type="radio" value="男" checked name="q10"/>男</label>
+                    <label><input type="radio" value="女" name="q10"/>女</label>
+            </div>
+            <div style="float:left;margin:5px">
+                <h4>年齡:</h4>
+                    <select name="q11">
+                        <option>16歲以下</option>
+                        <option>16-20</option>
+                        <option>21-30</option>
+                        <option>31-40</option>
+                        <option>40歲以上</option>
+                    </select>
+            </div>
+    </div>
+    <div class="cove2">
+        <h2>Square.Connect</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q200"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q201" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q201"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q201"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q202" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q202"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q203"/>
+    </div>
+    <div class="cove2">
+        <h2>Connect:Attack</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q210"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q211" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q211"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q211"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q212" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q212"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q213"/>
+    </div>
+    <div class="cove2">
+        <h2>Connect:Defend</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q220"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q221" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q221"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q221"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q222" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q222"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q223"/>
+    </div>
+    <div class="cove2">
+        <h2>Connect:Scheme</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q230"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q231" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q231"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q231"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q232" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q232"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q233"/>
+    </div>
+    <div class="cove2">
+        <h2>Square.Blocker</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q240"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q241" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q241"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q241"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q242" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q242"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q243"/>
+    </div>
+    <div class="cove2">
+        <h2>Blocker:ByLine</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q250"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q251" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q251"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q251"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q252" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q252"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q253"/>
+    </div>
+    <div class="cove2">
+        <h2>Square.Divider</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q260"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q261" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q261"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q261"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q262" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q262"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q263"/>
+    </div>
+    <div class="cove2">
+        <h2>Divider:Zombie</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q270"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q271" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q271"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q271"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q272" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q272"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q273"/>
+    </div>
+    <div class="cove2">
+        <h2>Divider:Follow</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q280"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q281" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q281"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q281"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q282" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q282"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q283"/>
+    </div>
+    <div class="cove2">
+        <h2>Square.Adapter</h2>
+            <label><input type="checkbox" value="較喜歡的模式" name="q290"/>較喜歡的模式</label>
+            <h4>規則部分:</h4>
+                <label><input type="radio" value="普通" name="q291" checked/>普通</label>
+                <label><input type="radio" value="有趣" name="q291"/>有趣<input type="text" placeholder="原因" class="txt"/></label>
+                <label><input type="radio" value="無趣" name="q291"/>無趣<input type="text" placeholder="原因" class="txt"/></label><br>
+                <label><input type="radio" value="易懂" name="q292" checked/>易懂</label>
+                <label><input type="radio" value="難懂" name="q292"/>難懂</label><br>
+                <input type="text" placeholder="建議或改善" name="q293"/>
+    </div>
+    <div class="cove2">
+    	<h2>介面部分:</h2>
+            <div style="float:left;margin:5px">
+                <h4>操作部分:</h4>
+                    <label><input type="radio" value="方便" checked name="q30"/>方便</label><br>
+                    <label><input type="radio" value="麻煩" name="q30"/>麻煩</label>
+            </div>
+            <div style="float:left;margin:5px">
+            	<h4>外觀部分:</h4>
+				<label><input type="checkbox" value="色彩單調" name="q31"/>色彩單調</label><br>
+				<label><input type="checkbox" value="配色恰當" name="q32"/>配色恰當</label><br>
+				<label><input type="checkbox" value="符合裝置" name="q33"/>符合裝置</label><br>
+			</div>
+            <input type="text" placeholder="建議或改善" name="q34" style="position:absolute;bottom:0px;left:0px"/>
+    </div>
+</div>
+</body>
+</html>
