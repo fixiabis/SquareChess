@@ -172,8 +172,8 @@ Brd.Lst=function(){var tn=0
 }//目前的最後一回合
 Usr.Set=function(crd){
 	if(!Rul.Lmt(crd)){Brd[crd].S=Tn%2;Tn++;Hst[Tn]={}
-		var win=Rul.Jdg();if(win)Brd.Cln(win)
 		Hst[Tn].Crd=crd;Hst[Tn].Brd=Brd.Rec()
+		var win=Rul.Jdg();if(win)Brd.Cln(win)
 	}
 }//設置符號
 Usr.Itf=function(){
@@ -310,7 +310,7 @@ Rul.Cnt=function(){var cds=Brd.Sel("All");Ara={O:[],X:[],P:[]};if(Tn<2)return ""
 	}Ara.P.All=Crd.Flt(Ara.O.All,function(crd){if(Ara.X.All.indexOf(crd)>-1)return 1;return 0})
 	for(var i=0;i<2;i++){
 		Ara[Sqr.S[i]].All=Crd.Flt(Ara[Sqr.S[i]].All,function(crd){if(Ara.P.All.indexOf(crd)>-1)return 0;return 1})
-	}Hst[Tn].Ara=Ara;Scr.O=Ara.O.All.length;Scr.X=Ara.X.All.length
+	}Hst[Tn].Ara=Ara;Scr.O=Ara.O.All.length;Scr.X=Ara.X.All.length;console.log(Ara.P)
 	if(Tn>2)if(Ara.P[0].length==Ara.P.All.length&&Dft.QJd){
 		return Rul.Scr()
 	}else{
