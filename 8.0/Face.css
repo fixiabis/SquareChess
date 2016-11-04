@@ -1,0 +1,15 @@
+body{
+	margin:0px;-webkit-user-select:none;
+	cursor:default;-moz-user-select:none;
+	overflow:hidden;-ms-user-select:none;
+	user-select:none;font-family:Consolas
+}
+body::-webkit-scrollbar{width:0px;height:0px}
+header{background-color:gray;height:40px;transition:height 2s;overflow:hidden}
+#menu{float:right;height:40px;overflow:hidden;transition:all 2s}
+.list,#home{
+	float:left;height:40px;line-height:40px;width:160px;
+	text-align:center;background-color:gray;transition:background 1s;
+}
+.list:hover,#home:hover{background-color:lightgray;color:dimgray}
+#home{transition:all 2s;width:320px}
