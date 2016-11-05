@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
 <title>Square Chess Game</title>
 <script src="Prun.js"></script>
 <style>@import "Face.css";</style>
-<script>
+<script>var scn=0
 function Dir(v){location=v}
 function Shw(v){v.style.height=v.scrollHeight+"px"}
 function Hid(v){
@@ -17,11 +20,19 @@ function CPg(v){
 	Hid(Id('content'));Shw(Id(v));Shw(Id('content'))
 }
 function Ldr(){
-	for(var i=0;i<11;i++){
+	for(var i=0;i<12;i++){
 		Class("list")[i].addEventListener("click",function(){
 			Hid(Id("content"));Hid(Id("GameRule"))
 			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+5])
 			Shw(Id("GameRule"));Shw(Id("content"))
+		})
+		Class("list")[i].addEventListener("dblclick",function(){
+			Dir("chess.html?mode="+this.innerHTML)
+		})
+	}
+	for(i=0;i<Tag("a").length;i++){
+		Tag("a")[i].addEventListener("click",function(){
+			Stn(this.innerHTML)
 		})
 	}
 	Rsz();Hid(Id("content"));Shw(Id("MainPage"));Shw(Id("content"))
@@ -33,24 +44,34 @@ function Ich(f,v){
 }
 function Rsz(){
 	var sz=Math.floor((doc.body.clientWidth-320)/160)
-	Id("menu").style.width=sz*160+"px"
-	if(doc.body.clientWidth<476){
+	Id("home").style.width="320px";scn=0
+	Id("menu").style.width=sz*160+"px";
+	Id("menu").style.marginRight=""
+	if(doc.body.clientWidth<480){scn=1,w=Math.floor(doc.body.clientWidth/160)*160
 		Id("home").style.width=doc.body.clientWidth+"px"
+		Id("menu").style.width=w+"px"
+		Id("menu").style.marginRight=(doc.body.clientWidth-w)/2+"px"
 	}
 }
 function Mnu(v){
-	var h=Id("menu").scrollHeight;if(!v)h="40"
-	Tag("header")[0].style.height=h+"px";Id("menu").style.height=h+"px"
-	Id("home").style.height=h+"px";Id("home").style.lineHeight=h+"px"
+	var h=Tag("header")[0].scrollHeight;if(!v)h="40"
+	Tag("header")[0].style.height=h+"px"
+	if(!scn){Id("home").style.height=h+"px";Id("home").style.lineHeight=h+"px"}
 }
 function Stn(v){
-	Hid(Id("GameRule").childNodes[2])
-	switch(v){
-		case"Connect準則":Shw(Id("GameRule").childNodes[2].childNodes[2]);break
-		case"Blocker準則":Shw(Id("GameRule").childNodes[2].childNodes[4]);break
-		case"Divider準則":Shw(Id("GameRule").childNodes[2].childNodes[6]);break
-		case"Adapter準則":Shw(Id("GameRule").childNodes[2].childNodes[8]);break
-	}Shw(Id("GameRule").childNodes[2]);Shw(Id("GameRule"));Shw(Id("content"))
+	var stn=[
+		["Connect準則","Blocker準則","Divider準則","Adapter準則"],
+		["封限區","封區","殭屍","障礙"]
+	],ck=0
+	for(var i=0;i<stn.length;i++){
+		for(var j=0;j<stn[i].length;j++){
+			if(v==stn[i][j]){
+				Hid(Id("GameRule").childNodes[(i+1)*2])
+				Shw(Id("GameRule").childNodes[(i+1)*2].childNodes[(j+1)*2])
+				Shw(Id("GameRule").childNodes[(i+1)*2]);ck=1
+			}if(ck)break
+		}if(ck)break
+	}Shw(Id("GameRule"));Shw(Id("content"))
 }
 </script>
 </head>
@@ -70,15 +91,15 @@ function Stn(v){
         <div class="list" title="Divider系列">Divider:Follow</div>
         <div class="list" title="Adapter系列">Square.Adapter</div>
         <div class="list" title="五子棋">Gomoku</div>
-		<div class="list" title="facebook" onclick="location='http://fb.me/SquareChessGame'">給個讚吧</div>
-		<div class="list" title="twitter" onclick="location='http://twitter.com/SquareChessGame'">跟隨我們</div>
+		<div class="list" title="facebook" onclick="Dir('http://fb.me/SquareChessGame')">給個讚吧</div>
+		<div class="list" title="twitter" onclick="Dir('http://twitter.com/SquareChessGame')">跟隨我們</div>
 		<div class="list" title="回報問題" onclick="CPg('Problem')">回報問題</div>
 		<div class="list" title="給予意見" onclick="CPg('Suggest')">給予意見</div>
 		<div class="list" title="管理帳戶" onclick="CPg('Manage')">管理帳戶</div>
 		<div class="list" title="建立帳戶" onclick="CPg('Create')">建立帳戶</div>
     </div>
 </header>
-<article id="content"><font></font>
+<article id="content" style="color:dimgray"><font></font>
 	<section id="MainPage"><font class="title1">歡迎使用</font>
 		<section><font class="title2">試試這些基本操作</font>
 			<ol>
@@ -87,10 +108,10 @@ function Stn(v){
 	</section>
 	<section id="GameRule"><font class="title1">遊戲規則</font>
 		<section><font class="title2">準則說明</font>
-			<section>Connect準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為ㄧ格，其餘無法設置</section>
-			<section>Blocker準則:用四枚符號形成矩形，我方形成指定形狀時，其中對方是無法設置的</section>
-			<section>Divider準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為無限距離長，除非該方有非我方符號存在，其餘無法設置</section>
-			<section>Adapter準則:即己方所有符號的右前前，左前前，右右前，左左前，右後後，左後後，右右後，左左後方，單位為ㄧ格，其餘無法設置</section>
+			<section style="background:royalblue;color:white">Connect準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為一格，其餘無法設置</section>
+			<section style="background:crimson;color:white">Blocker準則:用四枚符號形成矩形，我方形成指定形狀時，其中對方是無法設置的</section>
+			<section style="background:seagreen;color:white">Divider準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為無限距離長，除非該方有非我方符號存在，其餘無法設置</section>
+			<section style="background:darkorange;color:white">Adapter準則:即己方所有符號的右前前，左前前，右右前，左左前，右後後，左後後，右右後，左左後方，單位為ㄧ格，其餘無法設置</section>
 		</section>
 		<section><font class="title2">名稱說明</font>
 			<section>封限區:<font color="crimsom">O為此色</font>，<font color="royalblue">X為此色</font>
@@ -111,16 +132,16 @@ function Stn(v){
 			<article>規則說明
 				<ol>
 					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Connect準則</a>設置</li>
+					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
 				</ol>
 			</article>
 		</section>
 		<section><font class="title2">Connect:Attack</font>
 			<article>規則說明
 				<ol>
-					<li>場上會有固定的封區與封限區</li>
+					<li>場上會有固定的<a>封區</a>與<a>封限區</a></li>
 					<li>雙方第一回合限定設置於指定區域</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Connect準則</a>設置</li>
+					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
 				</ol>
 			</article>
 		</section>
@@ -128,7 +149,7 @@ function Stn(v){
 			<article>規則說明
 				<ol>
 					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Connect準則</a>設置</li>
+					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
 					<li>在一區域佔下我方符號五枚，且無對方符號時，我方獲勝</li>
 				</ol>
 			</article>
@@ -136,10 +157,10 @@ function Stn(v){
 		<section><font class="title2">Connect:Scheme</font>
 			<article>規則說明
 				<ol>
-					<li>場上會有隨機的的障礙</li>
+					<li>場上會有隨機的的<a>障礙</a></li>
 					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
 					<li>第一回合設置後會自動於附近產生封限區</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Connect準則</a>設置</li>
+					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
 				</ol>
 			</article>
 		</section>
@@ -147,8 +168,7 @@ function Stn(v){
 			<article>規則說明
 				<ol>
 					<li>雙方皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Blocker準則</a>設置</li>
-					<li>用四枚符號形成矩形</li>
+					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
 				</ol>
 			</article>
 		</section>
@@ -156,7 +176,7 @@ function Stn(v){
 			<article>規則說明
 				<ol>
 					<li>雙方皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Blocker準則</a>設置</li>
+					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
 					<li>用四枚符號形成矩形</li>
 					<li>用兩枚符號形成直線</li>
 				</ol>
@@ -166,7 +186,7 @@ function Stn(v){
 			<article>規則說明
 				<ol>
 					<li>雙方皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Blocker準則</a>設置</li>
+					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
 					<li>對方不可設置的地方，我方也無法設置</li>
 				</ol>
 			</article>
@@ -175,7 +195,7 @@ function Stn(v){
 			<article>規則說明
 				<ol>
 					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Divider準則</a>設置</li>
+					<li>第二回合後設置符號需依照<a>Divider準則</a>設置</li>
 				</ol>
 			</article>
 		</section>
@@ -183,8 +203,8 @@ function Stn(v){
 			<article>規則說明
 				<ol>
 					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Divider準則</a>設置</li>
-					<li>不同的符號靠近時雙方皆會變成殭屍</li>
+					<li>第二回合後設置符號需依照<a>Divider準則</a>設置</li>
+					<li>不同的符號靠近時雙方皆會變成<a>殭屍</a></li>
 				</ol>
 			</article>
 		</section>
@@ -192,7 +212,7 @@ function Stn(v){
 			<article>規則說明
 				<ol>
 					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Divider準則</a>設置</li>
+					<li>第二回合後設置符號需依照<a>Divider準則</a>設置</li>
 					<li>變更原生準則，原依照己方所有符號，改為依照己方上回合符號</li>
 				</ol>
 			</article>
@@ -201,7 +221,7 @@ function Stn(v){
 			<article>規則說明
 				<ol>
 					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Adapter準則</a>設置</li>
+					<li>第二回合後設置符號需依照<a>Adapter準則</a>設置</li>
 				</ol>
 			</article>
 		</section>
