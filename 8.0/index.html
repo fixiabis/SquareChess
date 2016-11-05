@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -5,39 +6,213 @@
 <script src="Prun.js"></script>
 <style>@import "Face.css";</style>
 <script>
-function Shw(v){
-	
+function Dir(v){location=v}
+function Shw(v){v.style.height=v.scrollHeight+"px"}
+function Hid(v){
+	for(var i=2;i<v.childNodes.length;i+=2){
+		v.childNodes[i].style.height="0px"
+	}
+}
+function CPg(v){
+	Hid(Id('content'));Shw(Id(v));Shw(Id('content'))
 }
 function Ldr(){
-	Rsz()
+	for(var i=0;i<11;i++){
+		Class("list")[i].addEventListener("click",function(){
+			Hid(Id("content"));Hid(Id("GameRule"))
+			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+5])
+			Shw(Id("GameRule"));Shw(Id("content"))
+		})
+	}
+	Rsz();Hid(Id("content"));Shw(Id("MainPage"));Shw(Id("content"))
+}
+function Ich(f,v){
+	for(var i=0;i<f.childNodes.length;i++){
+		if(f.childNodes[i]==v)return i
+	}
 }
 function Rsz(){
 	var sz=Math.floor((doc.body.clientWidth-320)/160)
 	Id("menu").style.width=sz*160+"px"
+	if(doc.body.clientWidth<476){
+		Id("home").style.width=doc.body.clientWidth+"px"
+	}
 }
 function Mnu(v){
 	var h=Id("menu").scrollHeight;if(!v)h="40"
 	Tag("header")[0].style.height=h+"px";Id("menu").style.height=h+"px"
 	Id("home").style.height=h+"px";Id("home").style.lineHeight=h+"px"
 }
+function Stn(v){
+	Hid(Id("GameRule").childNodes[2])
+	switch(v){
+		case"Connect準則":Shw(Id("GameRule").childNodes[2].childNodes[2]);break
+		case"Blocker準則":Shw(Id("GameRule").childNodes[2].childNodes[4]);break
+		case"Divider準則":Shw(Id("GameRule").childNodes[2].childNodes[6]);break
+		case"Adapter準則":Shw(Id("GameRule").childNodes[2].childNodes[8]);break
+	}Shw(Id("GameRule").childNodes[2]);Shw(Id("GameRule"));Shw(Id("content"))
+}
 </script>
 </head>
-<body onload="Ldr()" onresize="Rsz()">
-<header onmouseover="Mnu(1)" onmouseout="Mnu()">
-    <div id="home">Square Chess Game</div>
+<body onLoad="Ldr()" onResize="Rsz()">
+<header onMouseOver="Mnu(1)" onMouseOut="Mnu()">
+    <div id="home" onclick="CPg('MainPage')">Square Chess Game</div>
     <div id="menu">
-        <div class="list">Square.Connect</div>
-        <div class="list">Connect:Attack</div>
-        <div class="list">Connect:Defend</div>
-        <div class="list">Connect:Scheme</div>
-        <div class="list">Square.Blocker</div>
-        <div class="list">Blocker:ByLine</div>
-        <div class="list">Blocker:Forbid</div>
-        <div class="list">Square.Divider</div>
-        <div class="list">Divider:Zombie</div>
-        <div class="list">Divider:Follow</div>
-        <div class="list">Square.Adapter</div>
+        <div class="list" title="Connect系列">Square.Connect</div>
+        <div class="list" title="Connect系列">Connect:Attack</div>
+        <div class="list" title="Connect系列">Connect:Defend</div>
+        <div class="list" title="Connect系列">Connect:Scheme</div>
+        <div class="list" title="Blocker系列">Square.Blocker</div>
+        <div class="list" title="Blocker系列">Blocker:ByLine</div>
+        <div class="list" title="Blocker系列">Blocker:Forbid</div>
+        <div class="list" title="Divider系列">Square.Divider</div>
+        <div class="list" title="Divider系列">Divider:Zombie</div>
+        <div class="list" title="Divider系列">Divider:Follow</div>
+        <div class="list" title="Adapter系列">Square.Adapter</div>
+        <div class="list" title="五子棋">Gomoku</div>
+		<div class="list" title="facebook" onclick="location='http://fb.me/SquareChessGame'">給個讚吧</div>
+		<div class="list" title="twitter" onclick="location='http://twitter.com/SquareChessGame'">跟隨我們</div>
+		<div class="list" title="回報問題" onclick="CPg('Problem')">回報問題</div>
+		<div class="list" title="給予意見" onclick="CPg('Suggest')">給予意見</div>
+		<div class="list" title="管理帳戶" onclick="CPg('Manage')">管理帳戶</div>
+		<div class="list" title="建立帳戶" onclick="CPg('Create')">建立帳戶</div>
     </div>
 </header>
+<article id="content"><font></font>
+	<section id="MainPage"><font class="title1">歡迎使用</font>
+		<section><font class="title2">試試這些基本操作</font>
+			<ol>
+			</ol>
+		</section>
+	</section>
+	<section id="GameRule"><font class="title1">遊戲規則</font>
+		<section><font class="title2">準則說明</font>
+			<section>Connect準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為ㄧ格，其餘無法設置</section>
+			<section>Blocker準則:用四枚符號形成矩形，我方形成指定形狀時，其中對方是無法設置的</section>
+			<section>Divider準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為無限距離長，除非該方有非我方符號存在，其餘無法設置</section>
+			<section>Adapter準則:即己方所有符號的右前前，左前前，右右前，左左前，右後後，左後後，右右後，左左後方，單位為ㄧ格，其餘無法設置</section>
+		</section>
+		<section><font class="title2">名稱說明</font>
+			<section>封限區:<font color="crimsom">O為此色</font>，<font color="royalblue">X為此色</font>
+					<ol>
+						<li>當對方封限區有一枚我方符號時，我方獲勝</li>
+						<li>當我方封限區皆為我方符號時，對方獲勝</li>
+					</ol>
+			</section>
+			<section>封區:<font color="palevioletred">O為此色</font>，<font color="lightsteelblue">X為此色</font>
+					<ol>
+						<li>當我方限區皆為我方符號時，對方獲勝</li>
+					</ol>
+			</section>
+			<section>殭屍:<font color="black">皆為此色</font>，字樣為"<font color="red">Z</font>"</section>
+			<section>障礙:<font color="dimgray">皆為此色</font>，字樣為" "</section>
+		</section>
+		<section><font class="title2">Square.Connect</font>
+			<article>規則說明
+				<ol>
+					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Connect準則</a>設置</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Connect:Attack</font>
+			<article>規則說明
+				<ol>
+					<li>場上會有固定的封區與封限區</li>
+					<li>雙方第一回合限定設置於指定區域</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Connect準則</a>設置</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Connect:Defend</font>
+			<article>規則說明
+				<ol>
+					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Connect準則</a>設置</li>
+					<li>在一區域佔下我方符號五枚，且無對方符號時，我方獲勝</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Connect:Scheme</font>
+			<article>規則說明
+				<ol>
+					<li>場上會有隨機的的障礙</li>
+					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
+					<li>第一回合設置後會自動於附近產生封限區</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Connect準則</a>設置</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Square.Blocker</font>
+			<article>規則說明
+				<ol>
+					<li>雙方皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Blocker準則</a>設置</li>
+					<li>用四枚符號形成矩形</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Blocker:ByLine</font>
+			<article>規則說明
+				<ol>
+					<li>雙方皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Blocker準則</a>設置</li>
+					<li>用四枚符號形成矩形</li>
+					<li>用兩枚符號形成直線</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Blocker:Forbid</font>
+			<article>規則說明
+				<ol>
+					<li>雙方皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Blocker準則</a>設置</li>
+					<li>對方不可設置的地方，我方也無法設置</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Square.Divider</font>
+			<article>規則說明
+				<ol>
+					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Divider準則</a>設置</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Divider:Zombie</font>
+			<article>規則說明
+				<ol>
+					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Divider準則</a>設置</li>
+					<li>不同的符號靠近時雙方皆會變成殭屍</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Divider:Follow</font>
+			<article>規則說明
+				<ol>
+					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Divider準則</a>設置</li>
+					<li>變更原生準則，原依照己方所有符號，改為依照己方上回合符號</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Square.Adapter</font>
+			<article>規則說明
+				<ol>
+					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a onclick="Stn(this.innerHTML)">Adapter準則</a>設置</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Gomoku</font>
+			<article><a href="https://zh.wikipedia.org/wiki/Gomoku">五子棋規則</a></article>
+		</section>
+	</section>
+	<section id="Problem"><font class="title1">回報問題</font></section>
+	<section id="Suggest"><font class="title1">給予意見</font></section>
+	<section id="Create"><font class="title1">建立帳戶</font></section>
+	<section id="Manage"><font class="title1">管理帳戶</font></section>
+</article>
 </body>
 </html>

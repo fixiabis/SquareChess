@@ -1,15 +1,23 @@
 body{
-	margin:0px;-webkit-user-select:none;
-	cursor:default;-moz-user-select:none;
-	overflow:hidden;-ms-user-select:none;
-	user-select:none;font-family:Consolas
+	margin:0px;cursor:default;user-select:none;
+	-ms-user-select:none;font-family:Consolas;
+	-moz-user-select:none;-webkit-user-select:none;
 }
-body::-webkit-scrollbar{width:0px;height:0px}
+body::-webkit-scrollbar{width:0px}
 header{background-color:gray;height:40px;transition:height 2s;overflow:hidden}
 #menu{float:right;height:40px;overflow:hidden;transition:all 2s}
 .list,#home{
-	float:left;height:40px;line-height:40px;width:160px;
+	float:left;height:40px;line-height:40px;width:160px;font-size:18px;
 	text-align:center;background-color:gray;transition:background 1s;
 }
+a{color:gray}
+.list[title="Connect系列"]:hover{color:royalblue}
+.list[title="Blocker系列"]:hover{color:crimson}
+.list[title="Divider系列"]:hover{color:seagreen}
+.list[title="Adapter系列"]:hover{color:darkorange}
 .list:hover,#home:hover{background-color:lightgray;color:dimgray}
-#home{transition:all 2s;width:320px}
+#content{margin:10px}
+#home{transition:all 2s;width:320px;font-size:28px}
+section,article{overflow:hidden}
+.title1{font-size:30px;line-height:60px;font-weight:bold}
+.title2{font-size:20px;line-height:40px;font-weight:bold}
