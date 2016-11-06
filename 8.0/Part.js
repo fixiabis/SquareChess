@@ -1,4 +1,3 @@
-Hst.Sel=[]
 function Crd(crd,vct){var x=0,y=0;vct=Vct(vct)
 	if(typeof vct=="object"){
 		for(var i=0;i<vct.length;i++)vct[i]=Crd(crd,vct[i]);return vct
@@ -12,7 +11,7 @@ function Crd(crd,vct){var x=0,y=0;vct=Vct(vct)
 	}return Chr(Asc(crd[0])+x)+Val(Val(crd[1])+y)
 }
 function Vct(typ){
-	if(Instr(typ,".")>-1)return Vct(typ.split("."))
+	if(Instr(typ,"&")>-1)return Vct(typ.split("&"))
 	if(typeof typ=="object"){var res=[]
 		for(var i=0;i<typ.length;i++)res=res.concat(Vct(typ[i]));return res
 	}

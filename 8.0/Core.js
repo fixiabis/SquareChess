@@ -2,7 +2,9 @@
 	Sqr={
 		Sym:["O","X",""," "],FtC:["","blue"],
 		BgC:["white","lightgray"],
-	},Hst=[]
+	},
+	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
+	Dft={Set:0},Shl={Rul:{},Lmt:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -36,12 +38,19 @@ function Itf(){var bd=""
 	}Id("Board").innerHTML=bd
 }
 function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(msg)
-	if(ckr)Qre(Sel("All"),["Sym","Ftc","BgC"],[2,0,0])
-	var ord=function(crd){
-		var cd1=Asc(crd[0]),cd2=Val(crd[1]);if((cd1+cd2)%2==0)return 1
-	};Qre(Flt(Sel("All"),ord),"BgC",1)
+	if(ckr){
+		Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]};Qre(Sel("All"),["Sym","FtC","BgC"],[2,0,0])
+		var ord=function(crd){
+			var cd1=Asc(crd[0]),cd2=Val(crd[1]);if((cd1+cd2)%2==0)return 1
+		};Qre(Flt(Sel("All"),ord),"BgC",1);Hst.Brd[Tn]=Rec()
+	}
 }
-function Set(crd){alert(crd)}
+function Mnu(v){var h=0;if(v)h=160;
+	Id("menu").style.width=h+"px"
+}
+function Set(crd){
+	if(!Lmt(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul()}
+}
 function Qre(crd,atr,typ){var res=[],ckr=0
 	if(typeof crd=="object"){
 		for(var i=0;i<crd.length;i++)res=res.concat(Qre(crd[i],atr,typ));return res
@@ -58,9 +67,34 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 			res=res.concat(Sqr.Sym.indexOf(Id(crd).innerHTML));break
 		case"FtC":
 			if(ckr)Id(crd).style.color=Sqr.FtC[typ];
-			res=res.concat(Sqr.Ftc.indexOf(Id(crd).style.color));break
+			res=res.concat(Sqr.FtC.indexOf(Id(crd).style.color));break
 		case"BgC":
 			if(ckr)Id(crd).style.backgroundColor=Sqr.BgC[typ];
 			res=res.concat(Sqr.BgC.indexOf(Id(crd).style.backgroundColor))
+	}return res
+}
+function Rul(){
+	for(i=MdQ.length-1;i>-1;i--){
+		var res=Shl.Rul[MdQ[i]]();
+	}
+}
+function Lmt(crd){
+	if(Qre(crd,"Sym")[0]!=2)return 1
+	for(i=MdQ.length-1;i>-1;i--){
+		if(Shl.Lmt[MdQ[i]](crd,Tn%2))return 1
+	}return 0
+}
+function Rec(brd){var res="",atr=["Sym","FtC","BgC"]
+	if(typeof brd=="number")return Rec(Hst.Brd[brd])
+	for(var cd1=65;cd1<74;cd1++){
+		for(var cd2=1;cd2<10;cd2++){
+			for(var i=0;i<3;i++){
+				if(brd){
+					Qre(Chr(cd1)+cd2,atr[i],brd[((cd1-65)*9+cd2-1)*3+i])
+				}else{
+					res+=Qre(Chr(cd1)+cd2,atr[i])
+				}
+			}
+		}
 	}return res
 }
