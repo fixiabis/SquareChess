@@ -4,7 +4,7 @@
 		BgC:["white","lightgray"],
 	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0},Shl={Rul:{},Lmt:{}}
+	Dft={Set:0},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -73,17 +73,6 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 			res=res.concat(Sqr.BgC.indexOf(Id(crd).style.backgroundColor))
 	}return res
 }
-function Rul(){
-	for(i=MdQ.length-1;i>-1;i--){
-		var res=Shl.Rul[MdQ[i]]();
-	}
-}
-function Lmt(crd){
-	if(Qre(crd,"Sym")[0]!=2)return 1
-	for(i=MdQ.length-1;i>-1;i--){
-		if(Shl.Lmt[MdQ[i]](crd,Tn%2))return 1
-	}return 0
-}
 function Rec(brd){var res="",atr=["Sym","FtC","BgC"]
 	if(typeof brd=="number")return Rec(Hst.Brd[brd])
 	for(var cd1=65;cd1<74;cd1++){
@@ -98,3 +87,20 @@ function Rec(brd){var res="",atr=["Sym","FtC","BgC"]
 		}
 	}return res
 }
+function Lmt(crd){if(Qre(crd,"Sym")[0]!=2)return 1
+	for(i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,Tn%2))return 1;return 0
+}//設置限制
+function Mrk(){
+	for(i=0;i<MdQ.length;i--)Shl.Mrk[MdQ[i]]()
+}//棋盤標記
+function Brd(){
+	for(i=0;i<MdQ.length;i--)Shl.Brd[MdQ[i]]()
+}//棋盤外觀
+function Adn(){
+	for(i=0;i<MdQ.length;i--)Shl.Adn[MdQ[i]]()
+}//模式功能
+function Rul(){
+	for(i=MdQ.length-1;i>-1;i--){
+		var res=Shl.Rul[MdQ[i]]();
+	}
+}//規則判定
