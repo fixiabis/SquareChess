@@ -9,7 +9,7 @@ function Crd(crd,vct){var x=0,y=0;vct=Vct(vct)
 		case"L":x--;break
 		case"C":x=0;y=0;break
 	}return Chr(Asc(crd[0])+x)+Val(Val(crd[1])+y)
-}
+}//座標元素
 function Vct(typ){
 	if(Instr(typ,"&")>-1)return Vct(typ.split("&"))
 	if(typeof typ=="object"){var res=[]
@@ -42,7 +42,7 @@ function Vct(typ){
 		case"H":return"R,L".split(",")
 		case"I":return"F,B".split(",")
 	}return typ
-}
+}//方向元素
 function Sel(typ,ord){
 	if(typeof typ=="string"&&Hst.Sel[typ])return Hst.Sel[typ];Hst.Sel[typ]=[]
 	if(typeof typ=="object"){
@@ -78,9 +78,18 @@ function Sel(typ,ord){
 	if(typ.length==1)Hst.Sel[typ]=Flt(Sel("All"),function(ckr){if(Instr(ckr,typ)>-1)return 1;else return 0});
 	if(typ.length==2&&typeof typ=="string")Hst.Sel[typ]=typ
 	return Hst.Sel[typ]
-}
+}//選擇元素
 function Flt(grp,ord){var res=[]
 	for(var i=0;i<grp.length;i++){var odr=ord(grp[i])
 		if(odr==1)res.push(grp[i]);else if(odr==2)return res
 	}return res
+}//元素篩選
+function Cnt(){var Ara={O:[],X:[],P:[],V:[]}
+	while(){
+		for(var cd1=65;cd1<74;cd1++){
+			for(var cd2=1;cd2<10;cd2++){
+				
+			}
+		}
+	}
 }
