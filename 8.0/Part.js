@@ -110,9 +110,14 @@ function Cnt(){var Ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
 		Ara.X.All=Ara.X.All.concat(Flt(Ara.X[ser],function(crd){
 			if(Ara.X.All.indexOf(crd)<0)return 1;return 0
 		}))
-		Ara.P.All=Ara.P.All.concat(Flt(Ara.P[ser],function(crd){
-			if(Ara.P.All.indexOf(crd)<0)return 1;return 0
-		}))
 		if(Ara.O[ser].length==0&&Ara.X[ser].length==0)break;ser++
-	}return Ara
+	}
+	Ara.P.All=Flt(Ara.O.All,function(crd){
+		if(Ara.X.All.indexOf(crd)>-1)return 1;return 0
+	});return Ara
+}
+function Scr(opt,xpt){
+	if(opt>xpt)return "O獲勝"
+	if(xpt>opt)return "X獲勝"
+	return "平手"
 }

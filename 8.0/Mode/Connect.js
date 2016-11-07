@@ -1,5 +1,5 @@
-Shl.Rul.Connect=function(){
-	
+Shl.Rul.Connect=function(){var Ara=Cnt()
+	if(Ara.P[0].length==Ara.P.All.length&&Tn>2)return Scr(Ara.O.All.length,Ara.X.All.length)
 }
 Shl.Lmt.Connect=function(crd,sym){if(Dft.Set)return 1
 	var cd8=Crd(crd,"8");Hst.Rut[Tn]=[];if(Tn<2)return 0

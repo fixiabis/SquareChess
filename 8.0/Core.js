@@ -99,5 +99,6 @@ function Adn(){
 function Rul(){
 	for(i=MdQ.length-1;i>-1;i--){
 		var res=Shl.Rul[MdQ[i]]();
+		if(res)Cln(res)
 	}
 }//規則判定
