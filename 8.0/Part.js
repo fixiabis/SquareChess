@@ -11,10 +11,10 @@ function Crd(crd,vct){var x=0,y=0;vct=Vct(vct)
 	}return Chr(Asc(crd[0])+x)+Val(Val(crd[1])+y)
 }//座標元素
 function Vct(typ){
-	if(Instr(typ,"&")>-1)return Vct(typ.split("&"))
 	if(typeof typ=="object"){var res=[]
 		for(var i=0;i<typ.length;i++)res=res.concat(Vct(typ[i]));return res
 	}
+	if(Instr(typ,"&")>-1)return Vct(typ.split("&"))
 	if(Val(typ[0])&&typ[1]){tp=typ.replace(typ[0],"");var vct="",tp=Vct(tp)
 		if(typeof tp=="object"){
 			for(var i=0;i<tp.length;i++)tp[i]=Vct(typ[0]+tp[i]);return tp
@@ -84,12 +84,35 @@ function Flt(grp,ord){var res=[]
 		if(odr==1)res.push(grp[i]);else if(odr==2)return res
 	}return res
 }//元素篩選
-function Cnt(){var Ara={O:[],X:[],P:[],V:[]}
-	while(){
-		for(var cd1=65;cd1<74;cd1++){
-			for(var cd2=1;cd2<10;cd2++){
-				
+function Cnt(){var Ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
+	while(1){Ara.O[ser]=[];Ara.X[ser]=[];Ara.P[ser]=[]
+		for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
+			var crd=Chr(cd1)+cd2;if(Qre(crd,"Sym")!=2)continue
+			if(ser==0){var Os=!Lmt(crd,0),Xs=!Lmt(crd,1)
+				if(Os)Ara.O[ser].push(crd);if(Xs)Ara.X[ser].push(crd)
+			}else{var cds=Crd(crd,"8"),cks=0
+				for(var i=0;i<cds.length;i++){
+					if(Ara.O.All.indexOf(cds[i])>-1&&Ara.O[ser].indexOf(crd)<0){
+						if(Ara.O.All.indexOf(crd)<0)Ara.O[ser].push(crd);cks++
+					}
+					if(Ara.X.All.indexOf(cds[i])>-1&&Ara.X[ser].indexOf(crd)<0){
+						if(Ara.X.All.indexOf(crd)<0)Ara.X[ser].push(crd);cks++
+					}
+				}
 			}
 		}
-	}
+		Ara.P[ser]=Flt(Ara.O[ser],function(crd){
+			if(Ara.X[ser].indexOf(crd)>-1)return 1;return 0
+		})
+		Ara.O.All=Ara.O.All.concat(Flt(Ara.O[ser],function(crd){
+			if(Ara.O.All.indexOf(crd)<0)return 1;return 0
+		}))
+		Ara.X.All=Ara.X.All.concat(Flt(Ara.X[ser],function(crd){
+			if(Ara.X.All.indexOf(crd)<0)return 1;return 0
+		}))
+		Ara.P.All=Ara.P.All.concat(Flt(Ara.P[ser],function(crd){
+			if(Ara.P.All.indexOf(crd)<0)return 1;return 0
+		}))
+		if(Ara.O[ser].length==0&&Ara.X[ser].length==0)break;ser++
+	}return Ara
 }
