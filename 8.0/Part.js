@@ -81,7 +81,7 @@ function Sel(typ,ord){
 }//選擇元素
 function Flt(grp,ord){var res=[]
 	for(var i=0;i<grp.length;i++){var odr=ord(grp[i])
-		if(odr==1)res.push(grp[i]);else if(odr==2)return res
+		if(odr==2)return res;else if(odr)res.push(grp[i])
 	}return res
 }//元素篩選
 function Cnt(){var Ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
@@ -102,22 +102,27 @@ function Cnt(){var Ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
 			}
 		}
 		Ara.P[ser]=Flt(Ara.O[ser],function(crd){
-			if(Ara.X[ser].indexOf(crd)>-1)return 1;return 0
+			return Ara.X[ser].indexOf(crd)>-1
 		})
 		Ara.O.All=Ara.O.All.concat(Flt(Ara.O[ser],function(crd){
-			if(Ara.O.All.indexOf(crd)<0)return 1;return 0
+			return Ara.O.All.indexOf(crd)<0
 		}))
 		Ara.X.All=Ara.X.All.concat(Flt(Ara.X[ser],function(crd){
-			if(Ara.X.All.indexOf(crd)<0)return 1;return 0
+			return Ara.X.All.indexOf(crd)<0
 		}))
 		if(Ara.O[ser].length==0&&Ara.X[ser].length==0)break;ser++
 	}
 	Ara.P.All=Flt(Ara.O.All,function(crd){
-		if(Ara.X.All.indexOf(crd)>-1)return 1;return 0
-	});return Ara
+		if(Ara.X.All.indexOf(crd)<0)return 0;return 1
+	})
+	Ara.O.All=Flt(Ara.O.All,function(crd){
+		if(Ara.P.All.indexOf(crd)<0)return 1;return 0
+	})
+	Ara.X.All=Flt(Ara.X.All,function(crd){
+		if(Ara.X.All.indexOf(crd)<0)return 1;return 0
+	})
+	return Ara
 }
 function Scr(opt,xpt){
-	if(opt>xpt)return "O獲勝"
-	if(xpt>opt)return "X獲勝"
-	return "平手"
+	if(opt>xpt)return "O獲勝";if(xpt>opt)return "X獲勝";return "平手"
 }

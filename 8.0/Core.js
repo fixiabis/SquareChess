@@ -1,10 +1,6 @@
-﻿var Tn=0,MdQ=[],
-	Sqr={
-		Sym:["O","X",""," "],FtC:["","blue"],
-		BgC:["white","lightgray"],
-	},
-	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{}}
+﻿var Tn=0,MdQ=[],Sqr={Sym:["O","X",""," "],FtC:["","blue"],
+	BgC:["white","lightgray"],},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
+	Dft={Set:0},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -46,7 +42,7 @@ function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(ms
 	}
 }//清除棋盤
 function Set(crd){
-	if(!Lmt(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul()}
+	if(!Lmt(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul();Mrk()}
 }//設置符號
 function Qre(crd,atr,typ){var res=[],ckr=0
 	if(typeof crd=="object"){
@@ -84,17 +80,17 @@ function Rec(brd){var res="",atr=["Sym","FtC","BgC"]
 		}
 	}return res
 }//棋盤紀錄
-function Lmt(crd,sym){if(Qre(crd,"Sym")[0]!=2)return 1;if(!sym)sym=Tn%2
+function Lmt(crd,sym){if(Qre(crd,"Sym")[0]!=2)return 1;if(typeof sym=="undefined")sym=Tn%2
 	for(i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,sym))return 1;return 0
 }//設置限制
 function Mrk(){
-	for(i=0;i<MdQ.length;i--)Shl.Mrk[MdQ[i]]()
+	for(i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
 }//棋盤標記
 function Brd(){
-	for(i=0;i<MdQ.length;i--)Shl.Brd[MdQ[i]]()
+	for(i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]()
 }//棋盤外觀
 function Adn(){
-	for(i=0;i<MdQ.length;i--)Shl.Adn[MdQ[i]]()
+	for(i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()
 }//模式功能
 function Rul(){
 	for(i=MdQ.length-1;i>-1;i--){

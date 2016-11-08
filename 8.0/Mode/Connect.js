@@ -1,4 +1,5 @@
-Shl.Rul.Connect=function(){var Ara=Cnt()
+Shl.Ara.Connect=[]
+Shl.Rul.Connect=function(){var Ara=Cnt();Shl.Ara.Connect=Ara;console.log(Ara)
 	if(Ara.P[0].length==Ara.P.All.length&&Tn>2)return Scr(Ara.O.All.length,Ara.X.All.length)
 }
 Shl.Lmt.Connect=function(crd,sym){if(Dft.Set)return 1
