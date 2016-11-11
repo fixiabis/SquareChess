@@ -15,7 +15,7 @@ a{color:gray}a:visited{color:dimgray}a:hover{color:lightgray}
 #A:hover{color:darkorange}
 #DIR{float:right;transition:all 2s}
 .cover,.mcover,.cove2{overflow:hidden;transition:all 1s}
-body::-webkit-scrollbar,#menu::-webkit-scrollbar,#Ctt::-webkit-scrollbar{width:0px}
+body::-webkit-scrollbar,#menu::-webkit-scrollbar,#Ctt::-webkit-scrollbar,#UCL::-webkit-scrollbar{width:0px;height:0px}
 #UCM{position:fixed;height:40px;background-color:gray;width:100%;bottom:0px;left:0px;display:none}
 .lst{float:right;font-size:20px;margin-left:10px}#Report:hover{color:red}
 #Ctt{height:20px;overflow:auto;line-height:20px;position:fixed;top:40px;right:0px}
