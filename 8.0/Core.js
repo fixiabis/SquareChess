@@ -1,6 +1,6 @@
 ﻿var Tn=0,MdQ=[],Sqr={Sym:["O","X",""," "],FtC:["","blue"],
 	BgC:["white","lightgray"],},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{}}
+	Dft={Set:0},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -38,11 +38,11 @@ function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(ms
 		Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]};Qre(Sel("All"),["Sym","FtC","BgC"],[2,0,0])
 		var ord=function(crd){
 			var cd1=Asc(crd[0]),cd2=Val(crd[1]);if((cd1+cd2)%2==0)return 1
-		};Qre(Flt(Sel("All"),ord),"BgC",1);Hst.Brd[Tn]=Rec()
+		};Qre(Flt(Sel("All"),ord),"BgC",1);Hst.Brd[Tn]=Rec();Rul()
 	}
 }//清除棋盤
-function Set(crd){
-	if(!Lmt(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul();Mrk()}
+function Set(crd){if(Dft.Set)return
+	if(Ckr(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul();Mrk()}
 }//設置符號
 function Qre(crd,atr,typ){var res=[],ckr=0
 	if(typeof crd=="object"){
@@ -83,6 +83,9 @@ function Rec(brd){var res="",atr=["Sym","FtC","BgC"]
 function Lmt(crd,sym){if(Qre(crd,"Sym")[0]!=2)return 1;if(typeof sym=="undefined")sym=Tn%2
 	for(i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,sym))return 1;return 0
 }//設置限制
+function Ckr(crd){
+	for(i=MdQ.length-1;i>-1;i--)if(Shl.Ckr[MdQ[i]](crd))return 1;return 0
+}//設置確認
 function Mrk(){
 	for(i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
 }//棋盤標記
@@ -93,8 +96,5 @@ function Adn(){
 	for(i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()
 }//模式功能
 function Rul(){
-	for(i=MdQ.length-1;i>-1;i--){
-		var res=Shl.Rul[MdQ[i]]();
-		if(res)Cln(res)
-	}
+	for(i=MdQ.length-1;i>-1;i--){var res=Shl.Rul[MdQ[i]]();if(res)Cln(res)}
 }//規則判定
