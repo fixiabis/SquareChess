@@ -37,12 +37,12 @@ function Rsz(){var v=doc.body.scrollWidth-300,s=Math.floor(v/160),p=Class("game"
 	Id("T").style.width="300px"
 	if(s==0){Id("T").style.width=doc.body.clientWidth;s=Math.floor(doc.body.clientWidth/160);ctr=1}
 	if(s>p){s=p;ctr=0}Id("DIR").style.width=s*160;Id("DIR").style.marginRight="0px"
-		Id("RPP").parentNode.childNodes[8].style.width="60%"
+		Id("RPP").parentNode.childNodes[6].style.width="60%"
 		Id("MGT").parentNode.parentNode.parentNode.style.width="300px"
 		Id("menu").style.overflow="hidden"
 	if(ctr){
 		Id("DIR").style.marginRight=(doc.body.clientWidth-Id("DIR").clientWidth)/2
-		Id("RPP").parentNode.childNodes[8].style.width="100%"
+		Id("RPP").parentNode.childNodes[6].style.width="100%"
 		Id("MGT").parentNode.parentNode.parentNode.style.width="100%"
 		Id("menu").style.overflow="auto"
 	}Id("menu").style.width=doc.body.clientWidth+"px"
@@ -244,121 +244,6 @@ function Sgst(m){
 </div>
 <div class="mcover">
 <h1 id="SGT">意見回饋</h1>
-<div>
-<h3>您的性別?</h3>
-	<label><input type="radio" name="q1" checked="true" value="男性">男性</label>
-	<label><input type="radio" name="q1" value="女性">女性</label><br>
-<h3>遊戲部分:</h3>
-	<div class="cove2">
-		<h4>Square.Connect</h4>
-		<label><input type="radio" name="q211" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q211" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q211" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q212" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q212" value="規則複雜">規則複雜</label><br>
-		<input type="button" value="下一個模式" onclick="c2(1)">
-	</div>
-	<div class="cove2">
-		<h4>Connect:Attack<input type="button" value="同主模式" onclick="s2(0)"></h4>
-		<input type="button" value="上一個模式" onclick="c2(0)"><br>
-		<label><input type="radio" name="q221" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q221" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q221" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q222" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q222" value="規則複雜">規則複雜</label><br>
-		<input type="button" value="下一個模式" onclick="c2(2)">
-	</div>
-	<div class="cove2">
-		<h4>Connect:Defend<input type="button" value="同主模式" onclick="s2(0)"></h4>
-		<input type="button" value="上一個模式" onclick="c2(1)"><br>
-		<label><input type="radio" name="q231" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q231" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q231" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q232" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q232" value="規則複雜">規則複雜</label><br>
-		<input type="button" value="下一個模式" onclick="c2(3)">
-	</div>
-	<div class="cove2">
-		<h4>Connect:Scheme<input type="button" value="同主模式" onclick="s2(0)"></h4>
-		<input type="button" value="上一個模式" onclick="c2(2)"><br>
-		<label><input type="radio" name="q241" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q241" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q241" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q242" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q242" value="規則複雜">規則複雜</label><br>
-		<input type="button" value="下一個模式" onclick="c2(4)">
-	</div>
-	<div class="cove2">
-		<h4>Square.Blocker<input type="button" value="同上個模式" onclick="s2(0)"></h4>
-		<input type="button" value="上一個模式" onclick="c2(3)"><br>
-		<label><input type="radio" name="q251" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q251" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q251" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q252" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q252" value="規則複雜">規則複雜</label><br>
-		<input type="button" value="下一個模式" onclick="c2(5)">
-	</div>
-	<div class="cove2">
-		<h4>Blocker:ByLine<input type="button" value="同主模式" onclick="s2(4)"></h4>
-		<input type="button" value="上一個模式" onclick="c2(4)"><br>
-		<label><input type="radio" name="q261" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q261" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q261" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q262" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q262" value="規則複雜">規則複雜</label><br>
-		<input type="button" value="下一個模式" onclick="c2(6)">
-	</div>
-	<div class="cove2">
-		<h4>Square.Divider<input type="button" value="同上個模式" onclick="s2(4)"></h4>
-		<input type="button" value="上一個模式" onclick="c2(5)"><br>
-		<label><input type="radio" name="q271" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q271" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q271" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q272" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q272" value="規則複雜">規則複雜</label><br>
-		<input type="button" value="下一個模式" onclick="c2(7)">
-	</div>
-	<div class="cove2">
-		<h4>Divider:Zombie<input type="button" value="同主模式" onclick="s2(6)"></h4>
-		<input type="button" value="上一個模式" onclick="c2(6)"><br>
-		<label><input type="radio" name="q281" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q281" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q281" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q282" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q282" value="規則複雜">規則複雜</label><br>
-		<input type="button" value="下一個模式" onclick="c2(8)">
-	</div>
-	<div class="cove2">
-		<h4>Divider:Follow<input type="button" value="同主模式" onclick="s2(6)"></h4>
-		<input type="button" value="上一個模式" onclick="c2(7)"><br>
-		<label><input type="radio" name="q291" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q291" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q291" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q292" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q292" value="規則複雜">規則複雜</label><br>
-		<input type="button" value="下一個模式" onclick="c2(9)">
-	</div>
-	<div class="cove2">
-		<h4>Square.Adapter<input type="button" value="同上個模式" onclick="s2(6)"></h4>
-		<input type="button" value="上一個模式" onclick="c2(8)"><br>
-		<label><input type="radio" name="q2101" value="規則無趣">規則無趣</label><br>
-		<label><input type="radio" name="q2101" value="規則平平" checked="true">規則平平</label><br>
-		<label><input type="radio" name="q2101" value="規則有趣">規則有趣</label><br>
-		<label><input type="radio" name="q2102" value="規則易懂" checked="true">規則易懂</label><br>
-		<label><input type="radio" name="q2102" value="規則複雜">規則複雜</label>
-	</div>
-<h3>介面部分:</h3>
-	<label><input type="checkbox" name="q31" value="顏色單調">顏色單調</label><br>
-	<label><input type="checkbox" name="q32" value="配色恰當">配色恰當</label><br>
-	<label><input type="checkbox" name="q33" value="棋盤符合裝置">棋盤符合裝置</label><br>
-	<label><input type="radio" name="q34" value="操作方便">操作方便</label><br>
-	<label><input type="radio" name="q34" value="操作麻煩">操作麻煩</label>
-<h3>功能部分:</h3>
-	<label><input type="checkbox" name="q41" value="回合查詢不錯">回合查詢不錯(List中的Undo，Redo，Goto)</label><br>
-	<label><input type="checkbox" name="q42" value="輔助工具不錯">輔助工具不錯(List中的Tools)</label><br>
-	<label><input type="checkbox" name="q43" value="額外功能不錯">額外功能不錯(List中的Addons)</label><br>
-	<label><input type="checkbox" name="q44" value="線上對戰不錯">線上對戰不錯(List中的Battle)</label>
-</div>
 <a name="report"></a><h1 id="RPP">回報問題</h1>
 <table align="center" style="border:none">
 	<tr>
