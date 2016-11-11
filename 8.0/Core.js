@@ -19,7 +19,7 @@ function Rsz(){var scn=1;Id("Board").style.display="none"
 	for(i=0;i<83;i++){
 		Class("bt")[i].style.width=sz+"px"
 		Class("bt")[i].style.height=sz+"px"
-		Class("bt")[i].style.fontSize=sz-10+"px"
+		Class("bt")[i].style.fontSize=sz-15+"px"
 		if(i>80)Class("bt")[i].style.width=sz*4.5+"px"
 	}
 	Id("UI").style.marginLeft=(doc.body.scrollWidth-sz*9)/2+"px"
@@ -67,7 +67,7 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 	}return res
 }//元素操作
 function Rec(brd){var res="",atr=["Sym","FtC","BgC"]
-	if(typeof brd=="number")return Rec(Hst.Brd[brd])
+	if(typeof brd=="number"){Tn=brd;Rec(Hst.Brd[brd]);Rul();return}
 	for(var cd1=65;cd1<74;cd1++){
 		for(var cd2=1;cd2<10;cd2++){
 			for(var i=0;i<3;i++){
