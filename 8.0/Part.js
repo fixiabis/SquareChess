@@ -119,7 +119,7 @@ function Cnt(){var Ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
 		if(Ara.P.All.indexOf(crd)<0)return 1;return 0
 	})
 	Ara.X.All=Flt(Ara.X.All,function(crd){
-		if(Ara.X.All.indexOf(crd)<0)return 1;return 0
+		if(Ara.P.All.indexOf(crd)<0)return 1;return 0
 	})
 	return Ara
 }
