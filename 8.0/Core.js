@@ -96,7 +96,7 @@ function Adn(){
 function Rul(){
 	for(i=MdQ.length-1;i>-1;i--){var res=Shl.Rul[MdQ[i]]();if(res)Cln(res)}Mrk()
 }//規則判定
-function Opt(){Id("OptionMenu").innerHTML="";OpS("System-Blk","t","障礙數量",Dft.System.Blk)
+function Opt(){Id("OptionMenu").innerHTML="系統內建:<br>";OpS("System-Blk","t","障礙數量",Dft.System.Blk)
 	for(i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="400px"
 }//功能設定
 function OpK(){
