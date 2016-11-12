@@ -116,7 +116,7 @@ function OpK(){
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 	switch(typ){
 		case"t":input=til+"<input type='text' id='"+id+"' value='"+dft+"' class='Opt' style='width:40px;text-align:right'/>";break
-		case"r":var tid=id.split("/");input="<input type='radio' "+ck+" id='"+tid[0]+"' class='Opt' name='"+tid[1]+"' style='zoom:2'/>"+til;break
-		case"k":input="<input type='checkbox' "+ck+" id='"+id+"' class='Opt' style='zoom:2'/>"+til;break
+		case"r":var tid=id.split("/");input="<input type='radio' "+ck+" id='"+tid[0]+"' class='Opt' name='"+tid[1]+"' style='zoom:1.5'/>"+til;break
+		case"k":input="<input type='checkbox' "+ck+" id='"+id+"' class='Opt' style='zoom:1.5'/>"+til;break
 	}Id("OptionMenu").innerHTML+="<label>"+input+"</label><br>"
 }
