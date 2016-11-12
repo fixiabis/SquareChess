@@ -15,7 +15,7 @@ a{color:gray;text-decoration:underline}
 .list[title="Blocker系列"]:hover{color:crimson}
 .list[title="Divider系列"]:hover{color:seagreen}
 .list[title="Adapter系列"]:hover{color:darkorange}
-input{font-size:inherit;line-height:inherit}
+.Opt{font-size:inherit}
 .list:hover,#home:hover{background-color:lightgray;color:dimgray}
 #content{margin:10px}
 #home{transition:all 2s;width:320px;font-size:28px}
