@@ -30,7 +30,7 @@ function Rsz(){var scn=1;Id("Board").style.display="none"
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>"
 		for(cd1=65;cd1<74;cd1++){
-			bd+="<td id='"+Chr(cd1)+cd2+"' onclick='Set(this.id)' class='bt' ondblclick='Ctl('Rdo',this.id)' oncontextmenu='Ctl('Udo',this.id)'></td>"
+			bd+="<td id='"+Chr(cd1)+cd2+"' onclick='Set(this.id)' class='bt' ondblclick='Ctl("+'"Udo"'+",this.id)' oncontextmenu='Ctl("+'"Rdo"'+",this.id)'></td>"
 		}bd+="</tr>"
 	}Id("Board").innerHTML=bd
 }//棋盤介面
