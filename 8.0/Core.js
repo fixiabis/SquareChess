@@ -1,5 +1,5 @@
 ﻿var Tn=0,MdQ=[],Sqr={Sym:["O","X",""," "],FtC:["","blue"],
-	BgC:["white","lightgray","indianred","lightskyblue"],},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
+	BgC:["white","lightgray","dimgray","indianred","lightskyblue"],},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
 	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0}},
 	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()
@@ -36,7 +36,7 @@ function Itf(){var bd=""
 }//棋盤介面
 function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(msg)
 	if(ckr){Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]}
-		Qre(Sel("All"),["FtC","BgC"],[0,0]);Brd()
+		Qre(Sel("All"),"Sym",2);Brd()
 		Hst.Brd[Tn]=Rec();Rul();Adn();Dft.Tn=Tn
 	}
 }//清除棋盤
@@ -75,33 +75,42 @@ function Rec(brd){var res="",atr=["Sym","FtC","BgC"]
 	}return res
 }//棋盤紀錄
 function Lmt(crd,sym){if(Qre(crd,"Sym")[0]!=2)return 1;if(typeof sym=="undefined")sym=Tn%2
-	for(i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,sym))return 1;return 0
+	for(var i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,sym))return 1;return 0
 }//設置限制
 function Ckr(crd){
-	for(i=MdQ.length-1;i>-1;i--)if(Shl.Ckr[MdQ[i]](crd))return 1;return 0
+	for(var i=MdQ.length-1;i>-1;i--)if(Shl.Ckr[MdQ[i]](crd))return 1;return 0
 }//設置確認
 function Mrk(){Brd()
 	if(Dft.System.Nxt)for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)if(!Ckr(Chr(cd1)+cd2)&&Qre(Chr(cd1)+cd2,"Sym")==2)Qre(Chr(cd1)+cd2,"Opa",0.2)
-	for(i=MdQ.length-1;i>-1;i--)Shl.Mrk[MdQ[i]]()
+	for(var i=MdQ.length-1;i>-1;i--)Shl.Mrk[MdQ[i]]()
 }//棋盤標記
 function Brd(){Qre(Sel("All"),["FtC","BgC"],[0,0]);Qre(Sel("All"),"Opa",1)
 	var ord=function(crd){
 			var cd1=Asc(crd[0]),cd2=Val(crd[1]);if((cd1+cd2)%2==0)return 1
 		};Qre(Flt(Sel("All"),ord),"BgC",1)
-	for(i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]()
+		ord=function(crd){if(Qre(crd,"Sym")==3)return 1};Qre(Flt(Sel("All"),ord),"BgC",2)
+	for(var i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]()
 }//棋盤外觀
 function Adn(){
-	for(i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()
+	for(var i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()
+	if(Dft.System.Blk){var s=Dft.System.Blk
+		while(s){var cd1=Math.floor(Rnd()*9)+65,cd2=Math.floor(Rnd()*9)+1
+			if((cd1+cd2)%2==0&&Qre(Chr(cd1)+cd2,"Sym")==2){Qre(Chr(cd1)+cd2,["Sym","BgC"],[3,2]);s--}
+		}
+	}
 }//功能執行
 function Rul(){
-	for(i=MdQ.length-1;i>-1;i--){var res=Shl.Rul[MdQ[i]]();if(res)Cln(res)}Mrk()
+	for(var i=MdQ.length-1;i>-1;i--){var res=Shl.Rul[MdQ[i]]();if(res)Cln(res)}Mrk()
 }//規則判定
 function Opt(){
-	Id("OptionMenu").innerHTML="系統內建:<br>";OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
-	for(i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="400px"
+	Id("OptionMenu").innerHTML="系統內建:<br>"
+	OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
+	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
+	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="400px"
 }//功能設定
 function OpK(){
 	if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
+	Dft.System.Nxt=Id("System-Nxt").checked
 	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]();Id("Setting").style.height="0px";Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
