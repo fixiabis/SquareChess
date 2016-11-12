@@ -22,6 +22,7 @@ function Ctl(t){
 		case"Cln":if(Tn!=Dft.Tn)Cln("確認清除棋盤?");else Cln();break
 		case"Udo":if(Tn>Dft.Tn)Rec(Tn-1);break
 		case"Rdo":Rec(Tn+1);break
-		case"Gto":var tn=prompt("輸入要前往的回合");if(tn>Dft.Tn)Rec(tn)
+		case"Gto":var tn=prompt("輸入要前往的回合");if(tn>Dft.Tn)Rec(Val(tn));break
+		case"Adn":;break
 	}
 }

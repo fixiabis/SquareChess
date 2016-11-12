@@ -1,6 +1,6 @@
 ﻿var Tn=0,MdQ=[],Sqr={Sym:["O","X",""," "],FtC:["","blue"],
 	BgC:["white","lightgray"],},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0,Tn:0},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{}}
+	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0}},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -87,7 +87,7 @@ function Ckr(crd){
 	for(i=MdQ.length-1;i>-1;i--)if(Shl.Ckr[MdQ[i]](crd))return 1;return 0
 }//設置確認
 function Mrk(){
-	for(i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
+	for(i=MdQ.length-1;i>-1;i--)Shl.Mrk[MdQ[i]]()
 }//棋盤標記
 function Brd(){
 	for(i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]();Dft.Tn=Tn
