@@ -3,7 +3,7 @@ body{
 	-ms-user-select:none;font-family:Consolas;
 	-moz-user-select:none;-webkit-user-select:none;
 }
-body::-webkit-scrollbar{width:0px}
+body::-webkit-scrollbar,#menu::-webkit-scrollbar,#OptionMenu::-webkit-scrollbar{width:0px;height:0px}
 header{background-color:gray;height:40px;transition:height 2s;overflow:hidden}
 #menu{float:right;height:40px;transition:all 2s}
 .list,#home{

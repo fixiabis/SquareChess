@@ -1,6 +1,7 @@
 ﻿var Tn=0,MdQ=[],Sqr={Sym:["O","X",""," "],FtC:["","blue"],
 	BgC:["white","lightgray","indianred","lightskyblue"],},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0}},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{}}
+	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0}},
+	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -14,8 +15,7 @@ function MdL(v){
 }//模式裝載
 function Rsz(){var scn=1;Id("Board").style.display="none"
 	var sz=doc.body.scrollWidth;Id("QCtrl").style.display="none"
-	if(doc.body.scrollHeight<sz){sz=doc.body.scrollHeight;scn=0}
-	sz=Math.floor(sz/9)
+	if(doc.body.scrollHeight<sz){sz=doc.body.scrollHeight;scn=0}sz=Math.floor(sz/9)
 	for(i=0;i<83;i++){
 		Class("bt")[i].style.width=sz+"px"
 		Class("bt")[i].style.height=sz+"px"
@@ -25,6 +25,7 @@ function Rsz(){var scn=1;Id("Board").style.display="none"
 	Id("UI").style.marginLeft=(doc.body.scrollWidth-sz*9)/2+"px"
 	Id("UI").style.marginTop=(doc.body.scrollHeight-sz*9)/2+"px"
 	if(scn)Id("QCtrl").style.display="";Id("Board").style.display=""
+	Id("Setting").style.marginTop=(doc.body.clientHeight-400)/2+"px"
 }//大小變更
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>"
@@ -90,11 +91,14 @@ function Brd(){Qre(Sel("All"),"Opa",1)
 	for(i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]()
 }//棋盤外觀
 function Adn(){
-	for(i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()
+	for(i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]();Id("Setting").style.height="400px"
 }//功能設定
 function Rul(){
 	for(i=MdQ.length-1;i>-1;i--){var res=Shl.Rul[MdQ[i]]();if(res)Cln(res)}Mrk()
 }//規則判定
 function Opt(){
-	for(i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()
+	for(i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能執行
+function OpK(){
+	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
+}
