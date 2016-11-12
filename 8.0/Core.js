@@ -35,9 +35,9 @@ function Itf(){var bd=""
 	}Id("Board").innerHTML=bd
 }//棋盤介面
 function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(msg)
-	if(ckr){
-		Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]};Qre(Sel("All"),["Sym","FtC","BgC"],[2,0,0])
-		Brd();Hst.Brd[Tn]=Rec();Adn();Rul();Dft.Tn=Tn
+	if(ckr){Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]}
+		Qre(Sel("All"),["FtC","BgC"],[0,0]);Brd()
+		Hst.Brd[Tn]=Rec();Rul();Adn();Dft.Tn=Tn
 	}
 }//清除棋盤
 function Set(crd){if(Dft.Set)return
@@ -84,7 +84,7 @@ function Mrk(){Brd()
 	if(Dft.System.Nxt)for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)if(!Ckr(Chr(cd1)+cd2)&&Qre(Chr(cd1)+cd2,"Sym")==2)Qre(Chr(cd1)+cd2,"Opa",0.2)
 	for(i=MdQ.length-1;i>-1;i--)Shl.Mrk[MdQ[i]]()
 }//棋盤標記
-function Brd(){Qre(Sel("All"),"Opa",1)
+function Brd(){Qre(Sel("All"),["FtC","BgC"],[0,0]);Qre(Sel("All"),"Opa",1)
 	var ord=function(crd){
 			var cd1=Asc(crd[0]),cd2=Val(crd[1]);if((cd1+cd2)%2==0)return 1
 		};Qre(Flt(Sel("All"),ord),"BgC",1)
@@ -96,11 +96,13 @@ function Adn(){
 function Rul(){
 	for(i=MdQ.length-1;i>-1;i--){var res=Shl.Rul[MdQ[i]]();if(res)Cln(res)}Mrk()
 }//規則判定
-function Opt(){Id("OptionMenu").innerHTML="系統內建:<br>";OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
+function Opt(){
+	Id("OptionMenu").innerHTML="系統內建:<br>";OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
 	for(i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="400px"
 }//功能設定
 function OpK(){
-	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]();Id("Setting").style.height="0px"
+	if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
+	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]();Id("Setting").style.height="0px";Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 	switch(typ){
