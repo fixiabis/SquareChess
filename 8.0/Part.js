@@ -85,7 +85,7 @@ function Flt(grp,ord){var res=[]
 	}return res
 }//元素篩選
 function Ser(crd){
-	for(var i=0;i<Tn;i++)if(Hst.Crd[i]==crd)return i
+	for(var i=0;i<Tn;i++)if(Hst.Crd[i]==crd)return i;return -1
 }
 function Cnt(){var Ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
 	while(1){Ara.O[ser]=[];Ara.X[ser]=[];Ara.P[ser]=[]
