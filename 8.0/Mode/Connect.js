@@ -18,3 +18,4 @@ Shl.Ckr.Connect=function(crd){
 	return Shl.Ara.Connect[Sqr.Sym[Tn%2]][0].indexOf(crd)>-1
 }
 Shl.Opt.Connect=function(){}
+Shl.OpK.Connect=function(){}

@@ -91,14 +91,14 @@ function Brd(){Qre(Sel("All"),"Opa",1)
 	for(i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]()
 }//棋盤外觀
 function Adn(){
-	for(i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]();Id("Setting").style.height="400px"
-}//功能設定
+	for(i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()
+}//功能執行
 function Rul(){
 	for(i=MdQ.length-1;i>-1;i--){var res=Shl.Rul[MdQ[i]]();if(res)Cln(res)}Mrk()
 }//規則判定
 function Opt(){
-	for(i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
-}//功能執行
+	for(i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="400px"
+}//功能設定
 function OpK(){
-	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
-}
+	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]();Id("Setting").style.height="0px"
+}//功能確認
