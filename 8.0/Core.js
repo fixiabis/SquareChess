@@ -1,6 +1,6 @@
 ﻿var Tn=0,MdQ=[],Sqr={Sym:["O","X",""," "],FtC:["","blue"],
 	BgC:["white","lightgray"],},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{}}
+	Dft={Set:0,Tn:0},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -67,7 +67,7 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 	}return res
 }//元素操作
 function Rec(brd){var res="",atr=["Sym","FtC","BgC"]
-	if(typeof brd=="number"){Tn=brd;Rec(Hst.Brd[brd]);Rul();return}
+	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);Rul();return}
 	for(var cd1=65;cd1<74;cd1++){
 		for(var cd2=1;cd2<10;cd2++){
 			for(var i=0;i<3;i++){
@@ -90,7 +90,7 @@ function Mrk(){
 	for(i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
 }//棋盤標記
 function Brd(){
-	for(i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]()
+	for(i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]();Dft.Tn=Tn
 }//棋盤外觀
 function Adn(){
 	for(i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()

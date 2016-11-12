@@ -84,6 +84,9 @@ function Flt(grp,ord){var res=[]
 		if(odr==2)return res;else if(odr)res.push(grp[i])
 	}return res
 }//元素篩選
+function Ser(crd){
+	for(var i=0;i<Tn;i++)if(Hst.Crd[i]==crd)return i
+}
 function Cnt(){var Ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
 	while(1){Ara.O[ser]=[];Ara.X[ser]=[];Ara.P[ser]=[]
 		for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
