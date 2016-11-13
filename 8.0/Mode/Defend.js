@@ -10,7 +10,9 @@ Shl.Ara.Defend=[
 	["B3","B4","C2","C3","C4","D2","D3","D4","E2"]
 ];Dft.Defend={Ara:1}
 Shl.Rul.Defend=function(){
-	
+	for(var i=0;i<9;i++)for(var s=0;s<2;s++){
+		if(!Ara(Shl.Ara.Defend[i],Sqr.Sym[(s+1)%2]+"L")&&Ara(Shl.Ara.Defend[i],Sqr.Sym[s]+">4"))return Sqr.Sym[s]+" Win"
+	}
 }
 Shl.Lmt.Defend=function(){return 0}
 Shl.Mrk.Defend=function(){var clr=[5,10,6,11,9]
