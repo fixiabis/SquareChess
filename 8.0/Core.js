@@ -93,12 +93,12 @@ function Mrk(){Brd()
 	if(Dft.System.Nxt)for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)if(!Ckr(Chr(cd1)+cd2)&&Qre(Chr(cd1)+cd2,"Sym")==2)Qre(Chr(cd1)+cd2,"Opa",0.2)
 	if(Dft.System.iTn){Qre(Hst.Crd[Tn],"FtC",1);Qre(Hst.Crd[Tn-1],"FtC",1)}
 	for(var i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
+	Qre(Flt(Sel("All"),function(crd){if(Qre(crd,"Sym")==3)return 1;return 0}),"BgC",2)
 }//棋盤標記
 function Brd(){Qre(Sel("All"),["FtC","BgC"],[0,0]);Qre(Sel("All"),"Opa",1)
 	var ord=function(crd){
 			var cd1=Asc(crd[0]),cd2=Val(crd[1]);if((cd1+cd2)%2==0)return 1
 		};Qre(Flt(Sel("All"),ord),"BgC",1)
-		ord=function(crd){if(Qre(crd,"Sym")==3)return 1};Qre(Flt(Sel("All"),ord),"BgC",2)
 	for(var i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]()
 }//棋盤外觀
 function Adn(){
