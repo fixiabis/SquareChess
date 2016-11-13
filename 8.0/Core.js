@@ -8,7 +8,7 @@
 		]
 	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:""}},
+	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0}},
 	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
@@ -90,6 +90,7 @@ function Ckr(crd){
 }//設置確認
 function Mrk(){Brd()
 	if(Dft.System.Nxt)for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)if(!Ckr(Chr(cd1)+cd2)&&Qre(Chr(cd1)+cd2,"Sym")==2)Qre(Chr(cd1)+cd2,"Opa",0.2)
+	if(Dft.System.iTn){Qre(Hst.Crd[Tn],"FtC",1);Qre(Hst.Crd[Tn-1],"FtC",1)}
 	for(var i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
 }//棋盤標記
 function Brd(){Qre(Sel("All"),["FtC","BgC"],[0,0]);Qre(Sel("All"),"Opa",1)
@@ -114,11 +115,13 @@ function Opt(){
 	Id("OptionMenu").innerHTML="系統內建:<br>"
 	OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
+	OpS("System-iTn","k","上回設置",Dft.System.iTn)
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="300px"
 }//功能設定
 function OpK(){
 	if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 	Dft.System.Nxt=Id("System-Nxt").checked
+	Dft.System.iTn=Id("System-iTn").checked
 	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]();Id("Setting").style.height="0px";Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"

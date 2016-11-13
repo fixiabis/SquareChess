@@ -47,10 +47,14 @@ function Rsz(){
 	Id("home").style.width="320px";scn=0
 	Id("menu").style.width=sz*160+"px";
 	Id("menu").style.marginRight=""
+	Id("Computer").style.height=Id("Computer").scrollHeight+"px"
+	Id("Mobile").style.height="0px"
 	if(doc.body.clientWidth<480){scn=1,w=Math.floor(doc.body.clientWidth/160)*160
 		Id("home").style.width=doc.body.clientWidth+"px"
 		Id("menu").style.width=w+"px"
 		Id("menu").style.marginRight=(doc.body.clientWidth-w)/2+"px"
+		Id("Computer").style.height="0px"
+		Id("Mobile").style.height=Id("Mobile").scrollHeight+"px"
 	}
 }
 function Mnu(v){
@@ -73,10 +77,13 @@ function Stn(v){
 		}if(ck)break
 	}Shw(Id("GameRule"));Shw(Id("content"))
 }
+function Lst(){
+	if(Tag("header")[0].style.height=="40px")Mnu(1);else Mnu()
+}
 </script>
 </head>
 <body onLoad="Ldr()" onResize="Rsz()" oncontextmenu="event.preventDefault()">
-<header onMouseOver="Mnu(1)" onMouseOut="Mnu()" onclick="Mnu()">
+<header onMouseOver="Mnu(1)" onMouseOut="Mnu()" onclick="Lst()">
     <div id="home" onclick="CPg('MainPage')">Square Chess Game</div>
     <div id="menu">
         <div class="list" title="Connect系列">Square.Connect</div>
@@ -102,13 +109,26 @@ function Stn(v){
 <article id="content" style="color:dimgray"><font></font>
 	<section id="MainPage"><font class="title1">歡迎使用</font>
 		<section><font class="title2">試試這些基本操作</font>
-			<ol>
-				<li>滑鼠點按格子，即可設置符號。</li>
-				<li>鍵盤按下座標碼即可設置符號，例：按下E 5即可設置符號於座標E5。</li>
-				<li>滑鼠靠近棋盤左側或右側空白處可喚出選單。</li>
-				<li>按下Clean即可清除棋盤。</li>
-				<li>按下Undo即可回上一步。</li>
-			</ol>
+			<article id="Mobile" style="height:0px">
+				<ol>
+					<li>點選格子來設置符號</li>
+					<li>點選Clean清除棋盤</li>
+					<li>點選Undo到上一步</li>
+					<li>按住Clean做功能設定</li>
+					<li>按住Undo到指定步</li>
+				</ol>
+			</article>
+			<article id="Computer" style="height:0px">
+				<ol>
+					<li>點選格子來設置符號</li>
+					<li>滑鼠靠近空白處喚出選單</li>
+					<li>點選Clean清除棋盤</li>
+					<li>點選Undo到上一步</li>
+					<li>點選Redo到下一步</li>
+					<li>點選Goto到指定步</li>
+					<li>點選Addons做功能設定</li>
+				</ol>
+			</article>
 		</section>
 	</section>
 	<section id="GameRule"><font class="title1">遊戲規則</font>
