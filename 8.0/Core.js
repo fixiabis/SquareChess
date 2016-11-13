@@ -4,7 +4,8 @@
 			"white","lightgray","dimgray",
 			"indianred","lightskyblue",
 			"palevioletred","lightsteelblue",
-			"crimson","royalblue"
+			"crimson","royalblue",
+			"khaki","lightcoral","lightseagreen"
 		]
 	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},

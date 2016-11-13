@@ -132,7 +132,10 @@ function Scr(opt,xpt){
 function Ara(grp,typ){
 	var sym=Sqr.Sym.indexOf(typ[0]),ara=Flt(grp,function(crd){if(Qre(crd,"Sym")==sym)return 1;return 0})
 	switch(typ[1]){
-		case"L":if(ara.length>0)return 1;return 0;break
+		case"L":if(ara.length>0)return 1;return 0
 		case"B":if(ara.length==grp.length)return 1;return 0
+		case"=":if(ara.length==Val(typ[2]))return 1;return 0
+		case"<":if(ara.length<Val(typ[2]))return 1;return 0
+		case">":if(ara.length>Val(typ[2]))return 1;return 0
 	}
 }
