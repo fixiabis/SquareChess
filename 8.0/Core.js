@@ -1,6 +1,7 @@
 ﻿var Tn=0,MdQ=[],Sqr={Sym:["O","X",""," "],FtC:["","blue"],
-	BgC:["white","lightgray","dimgray","indianred","lightskyblue"],},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0}},
+	BgC:["white","lightgray","dimgray","indianred","lightskyblue"],},
+	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
+	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:""}},
 	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
@@ -106,7 +107,7 @@ function Opt(){
 	Id("OptionMenu").innerHTML="系統內建:<br>"
 	OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
-	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="400px"
+	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="300px"
 }//功能設定
 function OpK(){
 	if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
