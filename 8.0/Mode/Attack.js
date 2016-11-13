@@ -6,7 +6,10 @@ Shl.Ara.Attack=[
 ]
 Dft.Attack={Ara:1}
 Shl.Rul.Attack=function(){
-	
+	for(var i=0;i<2;i++){
+		if(Ara(Shl.Ara.Attack[i],Sqr.Sym[i]+"B")||Ara(Shl.Ara.Attack[i+2],Sqr.Sym[i]+"B")||
+		Ara(Shl.Ara.Attack[i+2],Sqr.Sym[(i+1)%2]+"L"))return Sqr.Sym[(i+1)%2]+" Win"
+	}
 }
 Shl.Lmt.Attack=function(){return 0}
 Shl.Mrk.Attack=function(){
