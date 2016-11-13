@@ -129,3 +129,17 @@ function Cnt(){var Ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
 function Scr(opt,xpt){
 	if(opt>xpt)return "O獲勝";if(xpt>opt)return "X獲勝";return "平手"
 }
+function Ara(grp,typ){
+	var Ara={
+		O:Flt(grp,function(crd){if(Qre(crd,"sym")==0)return 1;return 0}),
+		X:Flt(grp,function(crd){if(Qre(crd,"sym")==1)return 1;return 0})
+	}
+	switch(typ){
+		case"D":if(Ara.X.length>0||Ara.O.length==grp.length)return 1;return 0;break//O封限
+		case"K":if(Ara.O.length>0||Ara.X.length==grp.length)return 1;return 0;break//X封限
+		case"Q":if(Ara.O.length==grp.length)return 1;return 0;break//O封
+		case"H":if(Ara.X.length==grp.length)return 1;return 0;break//X封
+		case"U":if(Ara.X.length>0)return 1;return 0;break//O限
+		case"Y":if(Ara.O.length>0)return 1;return 0;break//X限
+	}
+}

@@ -1,5 +1,12 @@
-﻿var Tn=0,MdQ=[],Sqr={Sym:["O","X",""," "],FtC:["","blue"],
-	BgC:["white","lightgray","dimgray","indianred","lightskyblue"],},
+﻿var Tn=0,MdQ=[],Sqr={
+		Sym:["O","X",""," "],FtC:["","blue"],
+		BgC:[
+			"white","lightgray","dimgray",
+			"indianred","lightskyblue",
+			"palevioletred","lightsteelblue",
+			"crimson","royalblue"
+		]
+	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
 	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:""}},
 	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
@@ -9,7 +16,7 @@ function Ldr(){if(!location.search)history.back()
 }//取得參數
 function MdL(v){
 	var md=doc.createElement("script");md.src="Mode/"+MdQ[v]+".js"
-	if(MdQ[v+1])md.onload=function(){MdL(n+1)}
+	if(MdQ[v+1])md.onload=function(){MdL(v+1)}
 	else md.onload=function(){Itf();Rsz();Cln()}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
@@ -44,7 +51,7 @@ function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(ms
 function Set(crd){if(Dft.Set)return
 	if(Ckr(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul()}
 }//設置符號
-function Qre(crd,atr,typ){var res=[],ckr=0
+function Qre(crd,atr,typ){var res=[],ckr=0;
 	if(typeof crd=="object"){
 		for(var i=0;i<crd.length;i++)res=res.concat(Qre(crd[i],atr,typ));return res
 	}else if(typeof atr=="object"){
@@ -79,7 +86,7 @@ function Lmt(crd,sym){if(Qre(crd,"Sym")[0]!=2)return 1;if(typeof sym=="undefined
 	for(var i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,sym))return 1;return 0
 }//設置限制
 function Ckr(crd){
-	for(var i=MdQ.length-1;i>-1;i--)if(Shl.Ckr[MdQ[i]](crd))return 1;return 0
+	for(var i=MdQ.length-1;i>-1;i--)if(!Shl.Ckr[MdQ[i]](crd))return 0;return 1
 }//設置確認
 function Mrk(){Brd()
 	if(Dft.System.Nxt)for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)if(!Ckr(Chr(cd1)+cd2)&&Qre(Chr(cd1)+cd2,"Sym")==2)Qre(Chr(cd1)+cd2,"Opa",0.2)
