@@ -90,7 +90,7 @@ function Ckr(crd){
 }//設置確認
 function Mrk(){Brd()
 	if(Dft.System.Nxt)for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)if(!Ckr(Chr(cd1)+cd2)&&Qre(Chr(cd1)+cd2,"Sym")==2)Qre(Chr(cd1)+cd2,"Opa",0.2)
-	for(var i=MdQ.length-1;i>-1;i--)Shl.Mrk[MdQ[i]]()
+	for(var i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
 }//棋盤標記
 function Brd(){Qre(Sel("All"),["FtC","BgC"],[0,0]);Qre(Sel("All"),"Opa",1)
 	var ord=function(crd){
