@@ -76,11 +76,11 @@ function Qre(crd,atr,typ){var res=[],ckr=0;
 			res=res.concat(Sqr.BgC.indexOf(Id(crd).style.backgroundColor))
 	}return res
 }//元素操作
-function Rec(brd){var res="",atr=["Sym","FtC","BgC"]
+function Rec(brd){var res=""
 	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);Rul();return}
-	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)for(var i=0;i<3;i++){
-		if(brd)Qre(Chr(cd1)+cd2,atr[i],brd[((cd1-65)*9+cd2-1)*3+i])
-		else res+=Qre(Chr(cd1)+cd2,atr[i])
+	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
+		if(brd)Qre(Chr(cd1)+cd2,"Sym",brd[((cd1-65)*9+cd2-1)])
+		else res+=Qre(Chr(cd1)+cd2,"Sym")
 	}return res
 }//棋盤紀錄
 function Lmt(crd,sym){if(Qre(crd,"Sym")[0]!=2)return 1;if(typeof sym=="undefined")sym=Tn%2

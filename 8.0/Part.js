@@ -130,7 +130,7 @@ function Scr(opt,xpt){
 	if(opt>xpt)return "O獲勝";if(xpt>opt)return "X獲勝";return "平手"
 }
 function Ara(grp,typ){
-	var sym=Sqr.Sym.indexOf(typ[0]),ara=Flt(grp,function(crd){if(Qre(crd,"Sym")==sym)return 1;return 0})
+	var ara=Flt(grp,function(crd){if(Qre(crd,"Sym")==Sqr.Sym.indexOf(typ[0]))return 1;return 0})
 	switch(typ[1]){
 		case"L":if(ara.length>0)return 1;return 0
 		case"B":if(ara.length==grp.length)return 1;return 0
