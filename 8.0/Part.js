@@ -92,7 +92,7 @@ function Cnt(){var ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
 		for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){var sym=[0,0]
 			var crd=Chr(cd1)+cd2;if(Qre(crd,"Sym")!=2)continue
 			if(ser==0){
-				if(Qre(crd,"Sym")==2){for(var i=0;i<2;i++)if(!Lmt(crd,i))sym[i]=1}
+				for(var i=0;i<2;i++)if(!Lmt(crd,i))sym[i]=1
 			}else{var cds=Crd(crd,"8")
 				for(var i=0;i<cds.length;i++)for(var j=0;j<2;j++){
 					if(ara[Sqr.Sym[j]].All.indexOf(cds[i])>-1)sym[j]=1
@@ -104,12 +104,10 @@ function Cnt(){var ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
 			if(sym[0]&&sym[1])if(ara.P.All.indexOf(crd)<0){
 				ara.P.All.push(crd);ara.P[ser].push(crd)
 			}
-		}
-		if(ara.O[ser].length==0&&ara.X[ser].length==0)break;ser++
+		}if(ara.O[ser].length==0&&ara.X[ser].length==0)break;ser++
 	}
 	ara.P.All.concat(Flt(ara.O.All,function(crd){if(ara.X.All.indexOf(crd)<0)return 0;return 1}))
-	ara.O.All=Flt(ara.O.All,function(crd){if(ara.P.All.indexOf(crd)<0)return 1;return 0})
-	ara.X.All=Flt(ara.X.All,function(crd){if(ara.P.All.indexOf(crd)<0)return 1;return 0})
+	for(var i=0;i<2;i++)ara[Sqr.Sym[i]].All=Flt(ara[Sqr.Sym[i]].All,function(crd){if(ara.P.All.indexOf(crd)<0)return 1;return 0})
 	return ara
 }
 function Scr(opt,xpt){
