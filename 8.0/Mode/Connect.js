@@ -19,7 +19,7 @@ Shl.Adn.Connect=function(){
 	}
 }
 Shl.Ckr.Connect=function(crd){
-	return Shl.Ara.Connect[Sqr.Sym[Tn%2]][0].indexOf(crd)>-1
+	return Shl.Ara.Connect[Sqr.Sym[Tn%2]][0].indexOf(crd)>-1||Shl.Ara.Connect.P[0].indexOf(crd)>-1
 }
 Shl.Opt.Connect=function(){
 	Id("OptionMenu").innerHTML+="Connect設定:<br>"

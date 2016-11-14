@@ -87,44 +87,30 @@ function Flt(grp,ord){var res=[]
 function Ser(crd){
 	for(var i=0;i<Tn;i++)if(Hst.Crd[i]==crd)return i;return -1
 }
-function Cnt(){var Ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
-	while(1){Ara.O[ser]=[];Ara.X[ser]=[];Ara.P[ser]=[]
-		for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
+function Cnt(){var ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
+	while(1){ara.O[ser]=[];ara.X[ser]=[];ara.P[ser]=[]
+		for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){var sym=[0,0]
 			var crd=Chr(cd1)+cd2;if(Qre(crd,"Sym")!=2)continue
-			if(ser==0){var Os=!Lmt(crd,0),Xs=!Lmt(crd,1)
-				if(Os)Ara.O[ser].push(crd);if(Xs)Ara.X[ser].push(crd)
-			}else{var cds=Crd(crd,"8"),cks=0
-				for(var i=0;i<cds.length;i++){
-					if(Ara.O.All.indexOf(cds[i])>-1&&Ara.O[ser].indexOf(crd)<0){
-						if(Ara.O.All.indexOf(crd)<0)Ara.O[ser].push(crd);cks++
-					}
-					if(Ara.X.All.indexOf(cds[i])>-1&&Ara.X[ser].indexOf(crd)<0){
-						if(Ara.X.All.indexOf(crd)<0)Ara.X[ser].push(crd);cks++
-					}
+			if(ser==0){
+				if(Qre(crd,"Sym")==2){for(var i=0;i<2;i++)if(!Lmt(crd,i))sym[i]=1}
+			}else{var cds=Crd(crd,"8")
+				for(var i=0;i<cds.length;i++)for(var j=0;j<2;j++){
+					if(ara[Sqr.Sym[j]].All.indexOf(cds[i])>-1)sym[j]=1
 				}
 			}
+			for(var i=0;i<2;i++)if(sym[i])if(ara[Sqr.Sym[i]].All.indexOf(crd)<0){
+				ara[Sqr.Sym[i]].All.push(crd);ara[Sqr.Sym[i]][ser].push(crd)
+			}
+			if(sym[0]&&sym[1])if(ara.P.All.indexOf(crd)<0){
+				ara.P.All.push(crd);ara.P[ser].push(crd)
+			}
 		}
-		Ara.P[ser]=Flt(Ara.O[ser],function(crd){
-			return Ara.X[ser].indexOf(crd)>-1
-		})
-		Ara.O.All=Ara.O.All.concat(Flt(Ara.O[ser],function(crd){
-			return Ara.O.All.indexOf(crd)<0
-		}))
-		Ara.X.All=Ara.X.All.concat(Flt(Ara.X[ser],function(crd){
-			return Ara.X.All.indexOf(crd)<0
-		}))
-		if(Ara.O[ser].length==0&&Ara.X[ser].length==0)break;ser++
+		if(ara.O[ser].length==0&&ara.X[ser].length==0)break;ser++
 	}
-	Ara.P.All=Flt(Ara.O.All,function(crd){
-		if(Ara.X.All.indexOf(crd)<0)return 0;return 1
-	})
-	Ara.O.All=Flt(Ara.O.All,function(crd){
-		if(Ara.P.All.indexOf(crd)<0)return 1;return 0
-	})
-	Ara.X.All=Flt(Ara.X.All,function(crd){
-		if(Ara.P.All.indexOf(crd)<0)return 1;return 0
-	})
-	return Ara
+	ara.P.All.concat(Flt(ara.O.All,function(crd){if(ara.X.All.indexOf(crd)<0)return 0;return 1}))
+	ara.O.All=Flt(ara.O.All,function(crd){if(ara.P.All.indexOf(crd)<0)return 1;return 0})
+	ara.X.All=Flt(ara.X.All,function(crd){if(ara.P.All.indexOf(crd)<0)return 1;return 0})
+	return ara
 }
 function Scr(opt,xpt){
 	if(opt>xpt)return "O獲勝";if(xpt>opt)return "X獲勝";return "平手"
