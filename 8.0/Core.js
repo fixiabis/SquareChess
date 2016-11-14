@@ -46,13 +46,13 @@ function Itf(){var bd=""
 function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(msg)
 	if(ckr){Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]}
 		Qre(Sel("All"),"Sym",2);Brd()
-		Hst.Brd[Tn]=Rec();Rul();Adn();Dft.Tn=Tn
+		Rul();Adn();Hst.Brd[Tn]=Rec();Dft.Tn=Tn
 	}
 }//清除棋盤
 function Set(crd){if(Dft.Set)return
 	if(Ckr(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul()}
 }//設置符號
-function Qre(crd,atr,typ){var res=[],ckr=0;
+function Qre(crd,atr,typ){var res=[],ckr=0
 	if(typeof crd=="object"){
 		for(var i=0;i<crd.length;i++)res=res.concat(Qre(crd[i],atr,typ));return res
 	}else if(typeof atr=="object"){
@@ -62,7 +62,7 @@ function Qre(crd,atr,typ){var res=[],ckr=0;
 		}return res
 	}
 	if(typeof typ!="undefined")ckr=1
-	switch(atr){
+	if(Id(crd))switch(atr){
 		case"Opa":
 			if(ckr)Id(crd).style.opacity=typ;break
 		case"Sym":
@@ -86,7 +86,7 @@ function Rec(brd){var res=""
 function Lmt(crd,sym){if(Qre(crd,"Sym")[0]!=2)return 1;if(typeof sym=="undefined")sym=Tn%2
 	for(var i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,sym))return 1;return 0
 }//設置限制
-function Ckr(crd){
+function Ckr(crd){if(Qre(crd,"Sym")[0]!=2)return 0
 	for(var i=MdQ.length-1;i>-1;i--)if(!Shl.Ckr[MdQ[i]](crd))return 0;return 1
 }//設置確認
 function Mrk(){Brd()

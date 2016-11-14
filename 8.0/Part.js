@@ -80,7 +80,7 @@ function Sel(typ,ord){
 	return Hst.Sel[typ]
 }//選擇元素
 function Flt(grp,ord){var res=[]
-	for(var i=0;i<grp.length;i++){var odr=ord(grp[i])
+	for(var i=0;i<grp.length;i++){var odr=ord(grp[i]);if(!Id(grp[i]))continue
 		if(odr==2)return res;else if(odr)res.push(grp[i])
 	}return res
 }//元素篩選
@@ -132,8 +132,7 @@ function Scr(opt,xpt){
 function Ara(grp,typ){
 	var ara=Flt(grp,function(crd){if(Qre(crd,"Sym")==Sqr.Sym.indexOf(typ[0]))return 1;return 0})
 	switch(typ[1]){
-		case"L":if(ara.length>0)return 1;return 0
-		case"B":if(ara.length==grp.length)return 1;return 0
+		case"F":if(ara.length==grp.length)return 1;return 0
 		case"=":if(ara.length==Val(typ[2]))return 1;return 0
 		case"<":if(ara.length<Val(typ[2]))return 1;return 0
 		case">":if(ara.length>Val(typ[2]))return 1;return 0
