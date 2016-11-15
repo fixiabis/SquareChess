@@ -27,6 +27,8 @@ function Vct(typ){
 		if(x<0)x=Vct(Math.abs(x)+"L");else if(x!=0)x=Vct(x+"R");else x="" 
 		if(y<0)y=Vct(Math.abs(y)+"F");else if(y!=0)y=Vct(y+"B");else y=""
 		if(x.length==y.length)return y.length+y[0]+x[0]
+		if(x.length==0)return y.length+y[0]
+		if(y.length==0)return x.length+x[0]
 		else return y+x
 	}
 	if(Instr(typ,"~")>-1){
@@ -50,14 +52,15 @@ function Vct(typ){
 }//方向元素
 function Sel(typ,ord){
 	if(typeof typ=="string"&&Hst.Sel[typ])return Hst.Sel[typ];Hst.Sel[typ]=[]
-	if(typeof typ=="object"){
-		for(var i=0;i<typ.length;i++)Hst.Sel[typ]=Hst.Sel[typ].concat(Sel(typ[i]))
-	}
 	if(ord)return Flt(Sel(typ),ord)
-	if(typ=="All"){
-		for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Hst.Sel.All.push(Chr(cd1)+cd2)
-	}
-	if(Instr(typ,":")>-1){var spt=typ.split(":")
+	if(typ=="All")for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)Hst.Sel.All.push(Chr(cd1)+cd2)
+	if(typeof typ=="object")for(var i=0;i<typ.length;i++)Hst.Sel[typ]=Hst.Sel[typ].concat(Sel(typ[i]))
+	else if(Instr(typ,",")>-1){Hst.Sel[typ]=Hst.Sel[typ].concat(Sel(typ.split(",")))}
+	else if(Instr(typ,"/")>-1){var spt=typ.split("/");Hst.Sel[typ]=Hst.Sel[typ].concat(Crd(spt[0],spt[1]))}
+	else if(Instr(typ,"~")>-1){var spt=typ.split("~"),cds=Vct(typ)
+		for(var i=0;i<cds.length;i++)cds[i]=Crd(spt[0],cds[i])
+		Hst.Sel[typ]=Hst.Sel[typ].concat(cds)
+	}else if(Instr(typ,":")>-1){var spt=typ.split(":")
 		if(spt[0].length==1&&spt[1].length==1){
 			var sml=Asc(spt[0]),big=Asc(spt[1]);if(Asc(spt[0])>big){sml=Asc(spt[1]);big=Asc(spt[0])}
 			for(var i=sml;i<big+1;i++)Hst.Sel[typ].push(Chr(i));Hst.Sel[typ]=Sel(Hst.Sel[typ])
@@ -78,8 +81,6 @@ function Sel(typ,ord){
 			)
 		}
 	}
-	if(Instr(typ,",")>-1){Hst.Sel[typ]=Hst.Sel[typ].concat(Sel(typ.split(",")))}
-	else if(Instr(typ,"/")>-1){var spt=typ.split("/");Hst.Sel[typ]=Hst.Sel[typ].concat(Crd(spt[0],spt[1]))}
 	if(typ.length==1)Hst.Sel[typ]=Flt(Sel("All"),function(ckr){if(Instr(ckr,typ)>-1)return 1;else return 0})
 	if(typ.length==2&&typeof typ=="string")Hst.Sel[typ]=typ
 	return Hst.Sel[typ]
