@@ -122,7 +122,7 @@ function Ara(grp,typ){
 		case">":if(ara.length>Val(typ[2]))return 1;return 0
 	}
 }
-Ara.Rul=function(shl,ara){Shl.Ara[shl]=ara;console.log(ara)
+Ara.Rul=function(shl,ara){Shl.Ara[shl]=ara
 	for(var i=0;i<2;i++)if(ara[Sqr.Sym[i]][0].length==0&&ara.P[0].length==0)ck=1
 	if(Tn>2&&Tn%2==0){var ck=0
 		switch(Dft[shl].QJd){
