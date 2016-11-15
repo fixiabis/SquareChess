@@ -23,6 +23,12 @@ Shl.OpK.ByLine=function(){
 }
 function Lin(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]
 	for(var cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){var key=Qre(Chr(cd1)+cd2,"Sym");if(key==2||cd1==72&&cd2==9)continue
+		for(var i=1;i<10;i++){var cds=["B","R","BR"]
+			for(var j=0;j<3;j++){
+				cds[j]=Crd(Chr(cd1)+cd2,i+cds[j])
+				if(Qre(cds[j],"Sym")!=key)
+			}
+		}
 		for(var c1=cd1+1;c1<74;c1++){if(Qre(Chr(c1)+cd2,"Sym")!=key)continue
 			var a=Sel(Chr(cd1)+":"+Chr(c1)+cd2),age=[Chr(cd1)+cd2,Chr(c1)+cd2]
 			for(var i=0;i<2;i++)age[i]=Hst.Crd.indexOf(age[i])

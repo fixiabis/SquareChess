@@ -26,7 +26,8 @@ function Vct(typ){
 		y=Val(Val(crd[1][1]))-Val(Val(crd[0][1]))
 		if(x<0)x=Vct(Math.abs(x)+"L");else if(x!=0)x=Vct(x+"R");else x="" 
 		if(y<0)y=Vct(Math.abs(y)+"F");else if(y!=0)y=Vct(y+"B");else y=""
-		return x+y
+		if(x.length==y.length)return y.length+y[0]+x[0]
+		else return y+x
 	}
 	switch(typ[0]){
 		case"8":return"F,B,R,L,FR,FL,BR,BL".split(",")
@@ -75,7 +76,7 @@ function Sel(typ,ord){
 	}
 	if(Instr(typ,",")>-1){Hst.Sel[typ]=Hst.Sel[typ].concat(Sel(typ.split(",")))}
 	else if(Instr(typ,"/")>-1){var spt=typ.split("/");Hst.Sel[typ]=Hst.Sel[typ].concat(Crd(spt[0],spt[1]))}
-	if(typ.length==1)Hst.Sel[typ]=Flt(Sel("All"),function(ckr){if(Instr(ckr,typ)>-1)return 1;else return 0});
+	if(typ.length==1)Hst.Sel[typ]=Flt(Sel("All"),function(ckr){if(Instr(ckr,typ)>-1)return 1;else return 0})
 	if(typ.length==2&&typeof typ=="string")Hst.Sel[typ]=typ
 	return Hst.Sel[typ]
 }//選擇元素
