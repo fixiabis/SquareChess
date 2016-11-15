@@ -1,4 +1,4 @@
-Shl.Ara.Blocker=[];Dft.Blocker={Ara:0,QJd:1,AJd:0}
+Shl.Ara.Blocker=[];Dft.Blocker={Ara:1,QJd:1,AJd:0}
 Shl.Rul.Blocker=function(){
 	return Ara.Rul("Blocker",Blk())
 }
@@ -24,19 +24,18 @@ Shl.OpK.Blocker=function(){
 function Blk(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]
 	for(var cd1=65;cd1<73;cd1++)for(cd2=1;cd2<9;cd2++){var key=Qre(Chr(cd1)+cd2,"Sym");if(key==2||cd1==72&&cd2==9)continue
 		for(var c1=cd1+1;c1<74;c1++){if(Qre(Chr(c1)+cd2,"Sym")!=key)continue
-			for(var c2=cd2+1;c2<10;c2++){if(Qre(Chr(cd1)+c2,"Sym")!=key||c1==cd1&&c2==cd2)continue
-				if(Qre(Chr(c1)+c2,"Sym")==key){var a=Sel(Chr(cd1)+cd2+":"+Chr(c1)+c2)
-					var age=[Chr(cd1)+cd2,Chr(c1)+cd2,Chr(cd1)+c2,Chr(c1)+c2]
-					for(var i=0;i<4;i++)age[i]=Hst.Crd.indexOf(age[i])
-					var yng=Math.max(age[0],age[1],age[2],age[3]),old=Math.min(age[0],age[1],age[2],age[3])
-					for(var i=0;i<a.length-1;i++){
-						if(Qre(a[i],"Sym")==2){var p=ara[Sqr.Sym[key]].indexOf(a[i])
-							if(p<0){
-								ara[Sqr.Sym[key]].push(a[i]);ara[Sqr.Sym[key]].age.push([old,yng])
-							}else{
-								if(ara[Sqr.Sym[key]].age[p][0]>old)ara[Sqr.Sym[key]].age[p][0]=old
-								if(ara[Sqr.Sym[key]].age[p][1]>yng)ara[Sqr.Sym[key]].age[p][1]=yng
-							}
+			for(var c2=cd2+1;c2<10;c2++){
+				if(Qre(Chr(cd1)+c2,"Sym")!=key||c1==cd1&&c2==cd2||Qre(Chr(c1)+c2,"Sym")!=key)continue
+				var a=Sel(Chr(cd1)+cd2+":"+Chr(c1)+c2),age=[Chr(cd1)+cd2,Chr(c1)+cd2,Chr(cd1)+c2,Chr(c1)+c2]
+				for(var i=0;i<4;i++)age[i]=Hst.Crd.indexOf(age[i])
+				var yng=Math.max(age[0],age[1],age[2],age[3]),old=Math.min(age[0],age[1],age[2],age[3])
+				for(var i=0;i<a.length-1;i++){
+					if(Qre(a[i],"Sym")==2){var p=ara[Sqr.Sym[key]].indexOf(a[i])
+						if(p<0){
+							ara[Sqr.Sym[key]].push(a[i]);ara[Sqr.Sym[key]].age.push([old,yng])
+						}else{
+							if(ara[Sqr.Sym[key]].age[p][0]>old)ara[Sqr.Sym[key]].age[p][0]=old
+							if(ara[Sqr.Sym[key]].age[p][1]>yng)ara[Sqr.Sym[key]].age[p][1]=yng
 						}
 					}
 				}
