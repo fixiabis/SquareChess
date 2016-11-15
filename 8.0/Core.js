@@ -74,7 +74,7 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 		case"BgC":
 			if(ckr)Id(crd).style.backgroundColor=Sqr.BgC[typ];
 			res=res.concat(Sqr.BgC.indexOf(Id(crd).style.backgroundColor))
-	}return res
+	}if(res.length>1)return res;return res[0]
 }//元素操作
 function Rec(brd){var res=""
 	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);Rul();return}
@@ -83,10 +83,10 @@ function Rec(brd){var res=""
 		else res+=Qre(Chr(cd1)+cd2,"Sym")
 	}return res
 }//棋盤紀錄
-function Lmt(crd,sym){if(Qre(crd,"Sym")[0]!=2)return 1;if(typeof sym=="undefined")sym=Tn%2
+function Lmt(crd,sym){if(Qre(crd,"Sym")!=2)return 1;if(typeof sym=="undefined")sym=Tn%2
 	for(var i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,sym))return 1;return 0
 }//設置限制
-function Ckr(crd){if(Qre(crd,"Sym")[0]!=2)return 0
+function Ckr(crd){if(Qre(crd,"Sym")!=2)return 0
 	for(var i=MdQ.length-1;i>-1;i--)if(!Shl.Ckr[MdQ[i]](crd))return 0;return 1
 }//設置確認
 function Mrk(){Brd()
