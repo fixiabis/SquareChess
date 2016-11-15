@@ -1,6 +1,6 @@
 Shl.Ara.Adapter=[];Dft.Adapter={Ara:0,QJd:1}
-Shl.Rul.Adapter=function(){return Ara.Rul("Adapter")}
-Shl.Lmt.Adapter=function(crd,sym){console.log(crd)
+Shl.Rul.Adapter=function(){return Ara.Rul("Adapter",Cnt())}
+Shl.Lmt.Adapter=function(crd,sym){
 	var vtQ=Vct("Q"),vt28=Vct("28");Hst.Rut[Tn]=[];if(Tn<2)return 0
 	for(var i=0;i<8;i++){
 		if(Qre(Crd(crd,vtQ[i]),"Sym")==sym){
@@ -9,10 +9,10 @@ Shl.Lmt.Adapter=function(crd,sym){console.log(crd)
 				Crd(crd,vtQ[i][0]+vtQ[i][0]),
 				Crd(crd,vtQ[i][0]+vtQ[i][2]),
 				Crd(crd,vtQ[i][2]),
-			];console.log(vts)
+			]
 			for(var j=0;j<vts.length;j++){var s=Qre(vts[j],"Sym")
 				vts[j]=s==2||s==sym&&s.length>0
-			}console.log(vts)
+			}
 			if(vts[0]&&vts[1]||vts[0]&&vts[2]||vts[3]&&vts[2])Hst.Rut[Tn]=Hst.Rut[Tn].concat(crd)
 		}
 		if(Qre(Crd(crd,vt28[i]),"Sym")==sym){
@@ -30,6 +30,5 @@ Shl.Opt.Adapter=function(){
 	Ara.Opt("Adapter")
 }
 Shl.OpK.Adapter=function(){
-	Dft.Adapter.Ara=Id("Adapter-Ara").checked
 	Ara.OpK("Adapter")
 }

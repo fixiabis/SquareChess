@@ -1,5 +1,5 @@
 Shl.Ara.Connect=[];Dft.Connect={Ara:0,QJd:1,Rnd:0}
-Shl.Rul.Connect=function(){return Ara.Rul("Connect")}
+Shl.Rul.Connect=function(){return Ara.Rul("Connect",Cnt())}
 Shl.Lmt.Connect=function(crd,sym){
 	var cd8=Crd(crd,"8");Hst.Rut[Tn]=[];if(Tn<2)return 0
 	Hst.Rut[Tn]=Flt(Crd(crd,"8"),function(crd){if(Id(crd))if(Qre(crd,"Sym")==sym)return 1;return 0})
@@ -19,7 +19,6 @@ Shl.Opt.Connect=function(){
 	Ara.Opt("Connect")
 }
 Shl.OpK.Connect=function(){
-	Dft.Connect.Ara=Id("Connect-Ara").checked
 	Dft.Connect.Rnd=Id("Connect-Rnd").checked
 	Ara.OpK("Connect")
 }

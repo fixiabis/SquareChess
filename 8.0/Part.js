@@ -122,7 +122,7 @@ function Ara(grp,typ){
 		case">":if(ara.length>Val(typ[2]))return 1;return 0
 	}
 }
-Ara.Rul=function(shl){var ara=Cnt();Shl.Ara[shl]=ara
+Ara.Rul=function(shl,ara){Shl.Ara[shl]=ara
 	for(var i=0;i<2;i++)if(ara[Sqr.Sym[i]][0].length==0&&ara.P[0].length==0)ck=1
 	if(Tn>2&&Tn%2==0){var ck=0
 		switch(Dft[shl].QJd){
@@ -133,13 +133,16 @@ Ara.Rul=function(shl){var ara=Cnt();Shl.Ara[shl]=ara
 	}if(ck)return Scr(ara.O.All.length,ara.X.All.length)
 }
 Ara.Opt=function(shl){
+	Id("OptionMenu").innerHTML+="輔助標記:<br>"
 	OpS(shl+"-Ara","k","雙方區域",Dft[shl].Ara)
+	Id("OptionMenu").innerHTML+="判定方式:<br>"
 	OpS(shl+"-QJd-0/"+shl+"-QJd","r","不進行快速判定",Dft[shl].QJd==0)
 	OpS(shl+"-QJd-1/"+shl+"-QJd","r","快速判定初級",Dft[shl].QJd==1)
 	OpS(shl+"-QJd-2/"+shl+"-QJd","r","快速判定中級",Dft[shl].QJd==2)
 	OpS(shl+"-QJd-3/"+shl+"-QJd","r","快速判定高級",Dft[shl].QJd==3)
 }
 Ara.OpK=function(shl){
+	Dft[shl].Ara=Id(shl+"-Ara").checked
 	for(var i=0;i<4;i++)if(Id(shl+"-QJd-"+i).checked)Dft[shl].QJd=i
 }
 Ara.Mrk=function(shl){

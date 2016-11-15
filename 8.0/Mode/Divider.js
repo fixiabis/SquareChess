@@ -1,5 +1,5 @@
 Shl.Ara.Divider=[];Dft.Divider={Ara:0,QJd:1}
-Shl.Rul.Divider=function(){return Ara.Rul("Divider")}
+Shl.Rul.Divider=function(){return Ara.Rul("Divider",Cnt())}
 Shl.Lmt.Divider=function(crd,sym){
 	var vt8=Vct("8");Hst.Rut[Tn]=[];if(Tn<2)return 0
 	for(i=0;i<8;i++){
@@ -19,6 +19,5 @@ Shl.Opt.Divider=function(){
 	Ara.Opt("Divider")
 }
 Shl.OpK.Divider=function(){
-	Dft.Divider.Ara=Id("Divider-Ara").checked
 	Ara.OpK("Divider")
 }
