@@ -51,7 +51,7 @@ function Blk(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]
 				else if(sym[i]>-1&&sym[(i+1)%2]>-1)switch(Dft.Blocker.AJd){
 					case 0:if(ara[Sqr.Sym[i]].age[sym[i]][0]<ara[Sqr.Sym[(i+1)%2]].age[sym[(i+1)%2]][0])ck=1;break
 					case 1:if(ara[Sqr.Sym[i]].age[sym[i]][1]>ara[Sqr.Sym[(i+1)%2]].age[sym[(i+1)%2]][1])ck=1;break
-					case 2:ck=1
+					case 2:ck=0
 				}if(ck)sot[Sqr.Sym[i]].All.push(Chr(cd1)+cd2)
 			}
 		}
