@@ -29,6 +29,10 @@ function Vct(typ){
 		if(x.length==y.length)return y.length+y[0]+x[0]
 		else return y+x
 	}
+	if(Instr(typ,"~")>-1){
+		var crd=typ.split("~"),vct=Vct(crd[0]+":"+crd[1]),s=Val(vct[0]),v=vct.replace(vct[0],""),res=[]
+		for(var i=0;i<s;i++)res.push(Vct((i+1)+v));return res
+	}
 	switch(typ[0]){
 		case"8":return"F,B,R,L,FR,FL,BR,BL".split(",")
 		case"X":return"FR,FL,BR,BL".split(",")
