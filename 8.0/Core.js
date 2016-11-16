@@ -10,7 +10,7 @@
 		]
 	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0}},
+	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Rul:1}},
 	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
@@ -81,7 +81,7 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 	if(res.length>1)return res;return res[0]
 }//元素操作
 function Rec(brd){var res=""
-	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);Rul();return}
+	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);if(Dft.System.Rul)Rul();return}
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
 		if(brd)Qre(Chr(cd1)+cd2,"Sym",brd[((cd1-65)*9+cd2-1)])
 		else res+=Qre(Chr(cd1)+cd2,"Sym")
@@ -93,8 +93,12 @@ function Lmt(crd,sym){if(Qre(crd,"Sym")!=2)return 1;if(typeof sym=="undefined")s
 function Ckr(crd){if(Qre(crd,"Sym")!=2)return 0
 	for(var i=MdQ.length-1;i>-1;i--)if(!Shl.Ckr[MdQ[i]](crd))return 0;return 1
 }//設置確認
-function Mrk(){Brd()
-	if(Dft.System.Nxt)for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++)if(!Ckr(Chr(cd1)+cd2)&&Qre(Chr(cd1)+cd2,"Sym")==2)Qre(Chr(cd1)+cd2,"Opa",0.2)
+function Mrk(){Brd();var nxt=[],nxn=[]
+	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
+		if(!Ckr(Chr(cd1)+cd2)){if(Qre(Chr(cd1)+cd2,"Sym")==2)nxn.push(Chr(cd1)+cd2)}
+		else nxt.push(Chr(cd1)+cd2)
+	}if(nxt.length==0&&Tn>2)Cln(Sqr.Sym[Tn%2]+" Win");
+	if(Dft.System.Nxt)Qre(nxn,"Opa",0.2)
 	if(Dft.System.iTn){Qre(Hst.Crd[Tn],"FtC",1);Qre(Hst.Crd[Tn-1],"FtC",1)}
 	for(var i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
 	Qre(Flt(Sel("All"),function(crd){if(Qre(crd,"Sym")==3)return 1;return 0}),"BgC",2)
@@ -121,12 +125,14 @@ function Opt(){
 	OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
+	OpS("System-Rul","k","加速查詢",Dft.System.Rul)
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="300px"
 }//功能設定
 function OpK(){
 	if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 	Dft.System.Nxt=Id("System-Nxt").checked
 	Dft.System.iTn=Id("System-iTn").checked
+	Dft.System.Rul=Id("System-Rul").checked
 	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]();Id("Setting").style.height="0px";Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
