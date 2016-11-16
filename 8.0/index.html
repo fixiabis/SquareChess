@@ -23,7 +23,7 @@ function Ldr(){
 	for(var i=0;i<12;i++){
 		Class("list")[i].addEventListener("click",function(){
 			Hid(Id("content"));Hid(Id("GameRule"))
-			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+5])
+			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+11])
 			Shw(Id("GameRule"));Shw(Id("content"))
 		})
 		Class("list")[i].addEventListener("dblclick",function(){
@@ -64,15 +64,15 @@ function Mnu(v){
 }
 function Stn(v){
 	var stn=[
-		["Connect準則","Blocker準則","Divider準則","Adapter準則"],
-		["封限區","封區","殭屍","障礙"]
+		["基本準則","Connect準則","Blocker準則","Divider準則","Adapter準則"],
+		["封限區","封區","禁區","殭屍","障礙"]
 	],ck=0
 	for(var i=0;i<stn.length;i++){
 		for(var j=0;j<stn[i].length;j++){
 			if(v==stn[i][j]){
-				Hid(Id("GameRule").childNodes[(i+1)*2])
-				Shw(Id("GameRule").childNodes[(i+1)*2].childNodes[(j+1)*2])
-				Shw(Id("GameRule").childNodes[(i+1)*2]);ck=1
+				Hid(Id("GameRule").childNodes[(i+3)*2])
+				Shw(Id("GameRule").childNodes[(i+3)*2].childNodes[(j+1)*2])
+				Shw(Id("GameRule").childNodes[(i+3)*2]);ck=1
 			}if(ck)break
 		}if(ck)break
 	}Shw(Id("GameRule"));Shw(Id("content"))
@@ -132,7 +132,9 @@ function Lst(){
 		</section>
 	</section>
 	<section id="GameRule"><font class="title1">遊戲規則</font>
+		<br>遊戲的<a>基本準則</a>
 		<section><font class="title2">準則說明</font>
+			<section style="background:lightgray;color:white">基本準則:當符合條件將形成<a>禁區</a>，當無法設置符號時對方獲勝</section>
 			<section style="background:royalblue;color:white">Connect準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為一格，其餘無法設置</section>
 			<section style="background:crimson;color:white">Blocker準則:用四枚符號形成矩形，我方形成指定形狀時，其中對方是無法設置的</section>
 			<section style="background:seagreen;color:white">Divider準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為無限距離長，除非該方有非我方符號存在，其餘無法設置</section>
@@ -148,6 +150,11 @@ function Lst(){
 			<section>封區:<font color="palevioletred">O為此色</font>，<font color="lightsteelblue">X為此色</font>
 					<ol>
 						<li>當我方限區皆為我方符號時，對方獲勝</li>
+					</ol>
+			</section>
+			<section>禁區:<font color="indianred">O為此色</font>，<font color="lightskyblue">X為此色</font>
+					<ol>
+						<li>對方無法設置符號於此</li>
 					</ol>
 			</section>
 			<section>殭屍:<font color="black">皆為此色</font>，字樣為"<font color="red">Z</font>"</section>
