@@ -129,6 +129,7 @@ function Ara(grp,typ){
 	}
 }
 Ara.Rul=function(shl,ara){Shl.Ara[shl]=ara
+	for(var i=0;i<2;i++)if(ara[Sqr.Sym[i]][0].length==0&&ara.P[0].length==0)ck=1
 	if(Tn>2&&Tn%2==0){var ck=0
 		switch(Dft[shl].QJd){
 			case 1:if(ara.P.All.length==0)ck=1;break
