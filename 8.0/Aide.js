@@ -3,7 +3,7 @@ function MsO(e){var v=1,p=0
 	else if(e.pageX>Id("Board").offsetLeft+Id("Board").offsetWidth)p=1
 	else v=0;Mnu(v,p)
 }//滑鼠移動
-function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey;e.preventDefault();console.log(k)
+function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey;e.preventDefault()
 	switch(k){
 		case  8:Ctl("Udo");break
 		case 13:Ctl("Rdo");break
