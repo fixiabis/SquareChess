@@ -1,11 +1,12 @@
 ﻿var Tn=0,MdQ=[],Sqr={
-		Sym:["O","X",""," "],FtC:["","blue"],
+		Sym:["O","X",""," ","Z"],FtC:["","blue","red"],
 		BgC:[
 			"white","lightgray","dimgray",
 			"indianred","lightskyblue",
 			"palevioletred","lightsteelblue",
 			"crimson","royalblue",
-			"khaki","lightcoral","lightseagreen"
+			"khaki","lightcoral","lightseagreen",
+			"black"
 		]
 	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
@@ -53,6 +54,7 @@ function Set(crd){if(Dft.Set)return
 	if(Ckr(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul()}
 }//設置符號
 function Qre(crd,atr,typ){var res=[],ckr=0
+	if(typ&&typeof typ!="object"&&Asc(typ+"")>64)typ=Asc(typ+"")-55
 	if(typeof crd=="object"){
 		for(var i=0;i<crd.length;i++)res=res.concat(Qre(crd[i],atr,typ));return res
 	}else if(typeof atr=="object"){
@@ -74,7 +76,9 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 		case"BgC":
 			if(ckr)Id(crd).style.backgroundColor=Sqr.BgC[typ];
 			res=res.concat(Sqr.BgC.indexOf(Id(crd).style.backgroundColor))
-	}if(res.length>1)return res;return res[0]
+	}
+	for(var i=0;i<res.length;i++)if(res[i]>9)res[i]=Chr(res[i]+55)
+	if(res.length>1)return res;return res[0]
 }//元素操作
 function Rec(brd){var res=""
 	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);Rul();return}
