@@ -97,7 +97,7 @@ function Mrk(){Brd();var nxt=[],nxn=[]
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
 		if(!Ckr(Chr(cd1)+cd2)){if(Qre(Chr(cd1)+cd2,"Sym")==2)nxn.push(Chr(cd1)+cd2)}
 		else nxt.push(Chr(cd1)+cd2)
-	}if(nxt.length==0&&Tn>2)Cln(Sqr.Sym[Tn%2]+" Win");
+	}if(nxt.length==0&&Tn>2)Cln(Sqr.Sym[Tn%2]+"獲勝");
 	if(Dft.System.Nxt)Qre(nxn,"Opa",0.2)
 	if(Dft.System.iTn){Qre(Hst.Crd[Tn],"FtC",1);Qre(Hst.Crd[Tn-1],"FtC",1)}
 	for(var i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
