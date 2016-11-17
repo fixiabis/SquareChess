@@ -81,7 +81,7 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 	if(res.length>1)return res;return res[0]
 }//元素操作
 function Rec(brd){var res=""
-	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);if(Dft.System.Rul)Rul();return}
+	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);if(!Dft.System.Rul)Rul();return}
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
 		if(brd)Qre(Chr(cd1)+cd2,"Sym",brd[((cd1-65)*9+cd2-1)])
 		else res+=Qre(Chr(cd1)+cd2,"Sym")
