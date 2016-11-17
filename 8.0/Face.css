@@ -23,3 +23,8 @@ a{color:gray;text-decoration:underline}
 section,article{overflow:hidden}
 .title1{font-size:30px;line-height:60px;font-weight:bold}
 .title2{font-size:20px;line-height:40px;font-weight:bold}
+@keyframes cyc{
+	0%{transform:opacity:0}
+	50%{transform:rotate(720deg);opacity:1}
+	100%{transform:rotate(1440deg);opacity:0}
+}
