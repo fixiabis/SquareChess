@@ -23,7 +23,7 @@ function Ldr(){
 	for(var i=0;i<12;i++){
 		Class("list")[i].addEventListener("click",function(){
 			Hid(Id("content"));Hid(Id("GameRule"))
-			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+11])
+			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
 			Shw(Id("GameRule"));Shw(Id("content"))
 		})
 		Class("list")[i].addEventListener("dblclick",function(){
