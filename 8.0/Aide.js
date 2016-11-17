@@ -5,8 +5,8 @@ function MsO(e){var v=1,p=0
 }//滑鼠移動
 function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey;if(Id("Setting").clientHeight==0)e.preventDefault()
 	switch(k){
-		case  8:Ctl("Udo");break
-		case 13:Ctl("Rdo");break
+		case  8:if(Id("Setting").clientHeight==0)Ctl("Udo");break
+		case 13:if(Id("Setting").clientHeight!=0)OpK();else Ctl("Rdo");break
 		case 18:Opt();break
 		case 35:Rec(Hst.Crd.length-1);break
 		case 37:if(c)Ctl("Udo");else Dft.System.Dir+="L";break

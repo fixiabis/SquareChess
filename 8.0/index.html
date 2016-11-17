@@ -25,6 +25,7 @@ function Ldr(){
 			Hid(Id("content"));Hid(Id("GameRule"))
 			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
 			Shw(Id("GameRule"));Shw(Id("content"))
+			if(doc.body.clientWidth<480)Dir("chess.html?mode="+this.innerHTML)
 		})
 		Class("list")[i].addEventListener("dblclick",function(){
 			Dir("chess.html?mode="+this.innerHTML)

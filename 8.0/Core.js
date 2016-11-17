@@ -35,7 +35,7 @@ function Rsz(){var scn=1;Id("Board").style.display="none"
 	Id("UI").style.marginLeft=(doc.body.scrollWidth-sz*9)/2+"px"
 	Id("UI").style.marginTop=(doc.body.scrollHeight-sz*9)/2+"px"
 	if(scn)Id("QCtrl").style.display="";Id("Board").style.display=""
-	Id("Setting").style.marginTop=(doc.body.clientHeight-400)/2+"px"
+	Id("Setting").style.marginTop=(doc.body.scrollHeight-400)/2+"px"
 }//大小變更
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>"
