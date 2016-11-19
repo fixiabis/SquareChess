@@ -9,6 +9,7 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
 		case   8:if(Id("Setting").clientHeight==0)Ctl("Udo");break
 		case  13:if(Id("Setting").clientHeight!=0)OpK();else Ctl("Rdo");break
 		case  18:Opt();break
+		case  27:OpK();break
 		case  35:Rec(Hst.Crd.length-1);break
 		case  37:if(c)Ctl("Udo");else Dft.System.Dir+="L";break
 		case  38:if(c)Ctl("Cln");else Dft.System.Dir+="F";break
@@ -21,15 +22,25 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
 		case 219:
 			if(m.style.left=="0px"){
 				if(m.style.width=="0px")Mnu(1,1);else Mnu(0,0)
-			}break
+			}else Mnu(1,1);break
 		case 221:
 			if(m.style.right=="0px"){
 				if(m.style.width=="0px")Mnu(1,0);else Mnu(0,1)
-			}break
+			}else Mnu(1,0);break
 		default:if(k>64&&k<74)Dft.System.Crd=Chr(k)
-				else if(k>48&&k<58||k>96&&k<106){var num=Chr(k),crd=Dft.System.Crd
-					if(k>96)num=Chr(k-48);crd+=num
-					if(s)Ctl("Rdo",crd);else if(!c)Set(crd)
+				else if(k>48&&k<58||k>96&&k<106){var num=Chr(k);if(k>96)num=Chr(k-48)
+					if(m.style.width!="0px"){
+						switch(Val(num)){
+							case 1:Ctl("Cln");break
+							case 2:Ctl("Udo");break
+							case 3:Ctl("Rdo");break
+							case 4:Ctl("Gto");break
+							case 5:Opt();break
+						}
+					}else{
+						var crd=Dft.System.Crd;crd+=num
+						if(s)Ctl("Rdo",crd);else if(!c)Set(crd)
+					}
 				}
 	}
 }//按鍵按下
