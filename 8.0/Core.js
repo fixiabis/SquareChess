@@ -51,7 +51,7 @@ function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(ms
 	}
 }//清除棋盤
 function Set(crd){if(Dft.Set)return
-	if(Ckr(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul()}
+	if(Ckr(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul();Alg()}
 }//設置符號
 function Qre(crd,atr,typ){var res=[],ckr=0
 	if(typ&&typeof typ!="object"&&Asc(typ+"")>64)typ=Asc(typ+"")-55
@@ -141,4 +141,7 @@ function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 		case"r":var tid=id.split("/");input="<input type='radio' "+ck+" id='"+tid[0]+"' class='Opt' name='"+tid[1]+"' style='zoom:1.5'/>"+til;break
 		case"k":input="<input type='checkbox' "+ck+" id='"+id+"' class='Opt' style='zoom:1.5'/>"+til;break
 	}Id("OptionMenu").innerHTML+="<label>"+input+"</label><br>"
+}
+function Alg(){var tn=Tn
+	for(i=0;i<MdQ.length;i++)if(Shl.Alg[MdQ[i]]){Shl.Alg[MdQ[i]]();if(tn!=Tn)break}
 }
