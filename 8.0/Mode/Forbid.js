@@ -10,4 +10,4 @@ Shl.Ckr.Forbid=function(crd){var sym=Tn%2
 	}return 1
 }
 Shl.Opt.Forbid=function(){}
-Shl.OpK.Forbid=function(){}
+Shl.OpK.Forbid=function(){Dft.System.Qsr=0}

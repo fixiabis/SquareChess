@@ -10,8 +10,8 @@
 		]
 	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Rul:0}},
-	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{},Alg:{}}
+	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0}},
+	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -50,8 +50,8 @@ function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(ms
 		Rul();Adn();Hst.Brd[Tn]=Rec();Dft.Tn=Tn
 	}
 }//清除棋盤
-function Set(crd){if(Dft.Set)return
-	if(Ckr(crd)){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul();Alg()}
+function Set(crd){if(Dft.Set)return;var ckr=Ckr(crd);if(!Dft.System.Qsr)ckr=!Lmt(crd)
+	if(ckr){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul()}
 }//設置符號
 function Qre(crd,atr,typ){var res=[],ckr=0
 	if(typ&&typeof typ!="object"&&Asc(typ+"")>64)typ=Asc(typ+"")-55
@@ -81,7 +81,7 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 	if(res.length>1)return res;return res[0]
 }//元素操作
 function Rec(brd){var res=""
-	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);if(!Dft.System.Rul)Rul();return}
+	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);if(!Dft.System.Qsr)Rul();return}
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
 		if(brd)Qre(Chr(cd1)+cd2,"Sym",brd[((cd1-65)*9+cd2-1)])
 		else res+=Qre(Chr(cd1)+cd2,"Sym")
@@ -125,14 +125,14 @@ function Opt(){
 	OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
-	OpS("System-Rul","k","加速查詢",Dft.System.Rul)
+	OpS("System-Qsr","k","加速查詢",Dft.System.Qsr)
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="300px"
 }//功能設定
 function OpK(){
 	if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 	Dft.System.Nxt=Id("System-Nxt").checked
 	Dft.System.iTn=Id("System-iTn").checked
-	Dft.System.Rul=Id("System-Rul").checked
+	Dft.System.Qsr=Id("System-Qsr").checked
 	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]();Id("Setting").style.height="0px";Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
@@ -141,7 +141,4 @@ function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 		case"r":var tid=id.split("/");input="<input type='radio' "+ck+" id='"+tid[0]+"' class='Opt' name='"+tid[1]+"' style='zoom:1.5'/>"+til;break
 		case"k":input="<input type='checkbox' "+ck+" id='"+id+"' class='Opt' style='zoom:1.5'/>"+til;break
 	}Id("OptionMenu").innerHTML+="<label>"+input+"</label><br>"
-}
-function Alg(){var tn=Tn
-	for(i=0;i<MdQ.length;i++)if(Shl.Alg[MdQ[i]]){Shl.Alg[MdQ[i]]();if(tn!=Tn)break}
 }
