@@ -22,3 +22,15 @@ Shl.OpK.Connect=function(){
 	Dft.Connect.Rnd=Id("Connect-Rnd").checked
 	Ara.OpK("Connect")
 }
+Shl.Alg.Connect=function(){
+	var sym=Tn%2,log=[],cds=Flt(Sel("All"),function(crd){return !Lmt(crd)}),scr=[]
+	for(var i=0;i<cds.length;i++){
+		Qre(cds[i],"Sym",sym);Rul();Qre(cds[i],"Sym",2);var ara=Shl.Ara.Connect
+		var enm=ara[Sqr.Sym[(sym+1)%2]],own=ara[Sqr.Sym[sym]]
+		ara={
+			E:{nxt:enm[0].length,rut:enm.length-1},
+			O:{nxt:own[0].length,rut:own.length-1}
+		}
+		scr.push(ara)
+	}console.log(scr);console.log(cds)
+}

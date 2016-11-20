@@ -10,7 +10,7 @@
 		]
 	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Rul:1}},
+	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Rul:0}},
 	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{},Alg:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")

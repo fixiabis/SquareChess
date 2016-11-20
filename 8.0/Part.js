@@ -93,7 +93,7 @@ function Flt(grp,ord){var res=[]
 function Ser(crd){
 	for(var i=0;i<Tn;i++)if(Hst.Crd[i]==crd)return i;return -1
 }
-function Cnt(){var ara={O:{All:[]},X:{All:[]},P:{All:[]}},ser=0
+function Cnt(){var ara={O:[],X:[],P:[]},ser=0;ara.O.All=[];ara.X.All=[];ara.P.All=[]
 	while(1){ara.O[ser]=[];ara.X[ser]=[];ara.P[ser]=[]
 		for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){var sym=[0,0]
 			var crd=Chr(cd1)+cd2;if(Qre(crd,"Sym")!=2)continue
@@ -159,7 +159,7 @@ Ara.Mrk=function(shl){
 Ara.Ckr=function(shl,crd){
 	return Shl.Ara[shl][Sqr.Sym[Tn%2]][0].indexOf(crd)>-1||Shl.Ara[shl].P[0].indexOf(crd)>-1
 }
-Ara.AJd=function(shl,ara){var sot={O:{All:[]},X:{All:[]},P:{All:[]}}
+Ara.AJd=function(shl,ara){var sot={O:[],X:[],P:[]};sot.O.All=[];sot.X.All=[];sot.P.All=[]
 	for(var cd1=65;cd1<74;cd1++){
 		for(var cd2=1;cd2<10;cd2++){if(Qre(Chr(cd1)+cd2,"Sym")!=2)continue
 			var crd=Chr(cd1)+cd2,sym=[ara.O.indexOf(crd),ara.X.indexOf(crd)]
