@@ -1,4 +1,8 @@
-﻿var olsvr="https://script.google.com/macros/s/AKfycbzTiFNUJlqZEchqdAb0pJu8R2KfqDq77iOIeS08pT1bEl6v0YXk/exec"
+﻿var svr=[
+	"https://script.google.com/macros/s/AKfycbzTiFNUJlqZEchqdAb0pJu8R2KfqDq77iOIeS08pT1bEl6v0YXk/exec",
+	"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec"
+]
+var olsvr=svr[1]
 function Req(Typ){var id="";if(Typ=="J"){id=prompt("輸入id");Dft.Oln.Typ="X"}else Dft.Oln.Typ="O"
 	try{
 		$.get(olsvr,
@@ -7,7 +11,7 @@ function Req(Typ){var id="";if(Typ=="J"){id=prompt("輸入id");Dft.Oln.Typ="X"}e
 				if(Typ=="R")t+="id:"+q[2].split(":")[1];alert(t)
 				if(q.length>1){Dft.Oln.Row=q[1].split(":")[1]
 					if(q.length>2)Dft.Oln.Id=q[2].split(":")[1]
-					else Dft.Oln.Id=id;Ini()
+					else Dft.Oln.Id=id;Ini();if(Typ=="J")olsvr=svr[0]
 				}
 			}
 		)

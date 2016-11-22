@@ -2,13 +2,14 @@
 <html>
 <head>
 <link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
 <meta name="mobile-web-app-capable" content="yes" />
 <title>Square Chess Game</title>
 <script src="Prun.js"></script>
 <style>@import "Face.css";</style>
-<script>var scn=0
+<script>var scn=0,Mod=""
 function Dir(v){location=v}
 function Shw(v){v.style.height=v.scrollHeight+"px"}
 function Hid(v){
@@ -25,10 +26,8 @@ function Ldr(){
 			Hid(Id("content"));Hid(Id("GameRule"))
 			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
 			Shw(Id("GameRule"));Shw(Id("content"))
-			if(doc.body.clientWidth<480)Dir("chess.html?mode="+this.innerHTML)
-		})
-		Class("list")[i].addEventListener("dblclick",function(){
-			Dir("chess.html?mode="+this.innerHTML)
+			if(doc.body.clientWidth<480||Mod==this.innerHTML)Dir("chess.html?mode="+this.innerHTML)
+			Mod=this.innerHTML
 		})
 	}
 	for(i=0;i<Tag("a").length;i++){
@@ -48,14 +47,20 @@ function Rsz(){
 	Id("home").style.width="320px";scn=0
 	Id("menu").style.width=sz*160+"px";
 	Id("menu").style.marginRight=""
+	Id("Report").style.width="460px"
 	for(var i=0;i<Class("Mobile").length;i++){
 		Class("Computer")[i].style.height=Class("Computer")[i].scrollHeight+"px"
 		Class("Mobile")[i].style.height="0px"
 	}
+	Class("txt")[0].style.width=Id("Report").clientWidth+"px"
+	Class("txt")[1].style.width=Id("Report").clientWidth-4+"px"
 	if(doc.body.clientWidth<480){scn=1,w=Math.floor(doc.body.clientWidth/160)*160
 		Id("home").style.width=doc.body.clientWidth+"px"
 		Id("menu").style.width=w+"px"
 		Id("menu").style.marginRight=(doc.body.clientWidth-w)/2+"px"
+		Id("Report").style.width="100%"
+		Class("txt")[0].style.width=Id("Report").clientWidth-Id("Report").offsetLeft+"px"
+		Class("txt")[1].style.width=Id("Report").clientWidth-Id("Report").offsetLeft-4+"px"
 		for(var i=0;i<Class("Mobile").length;i++){
 			Class("Computer")[i].style.height="0px"
 			Class("Mobile")[i].style.height=Class("Mobile")[i].scrollHeight+"px"
@@ -83,11 +88,22 @@ function Stn(v){
 	}Shw(Id("GameRule"));Shw(Id("content"))
 }
 function Lst(){
-	if(Tag("header")[0].style.height=="40px")Mnu(1);else Mnu()
+	if(Tag("header")[0].style.height=="40px")Mnu(1);else Mnu();Mod=""
+}
+function Rpt(){var v=[];if(Class("txt")[0].value.length<4)return alert("標題不足四字")
+	for(var i=0;i<2;i++)v[i]=Class("txt")[i].value
+	try{$.get(
+		"https://script.google.com/macros/s/AKfycbzTiFNUJlqZEchqdAb0pJu8R2KfqDq77iOIeS08pT1bEl6v0YXk/exec",
+		{Typ:"P",title:v[0],content:v[1]},
+		function(r){alert(r);for(var i=0;i<2;i++)Class("txt")[i].value=""}
+	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
+}
+function KDw(e){var k=e.which
+	switch(k){case 13:if(e.shiftKey)Rpt();break}
 }
 </script>
 </head>
-<body onLoad="Ldr()" onResize="Rsz()" oncontextmenu="event.preventDefault()">
+<body onLoad="Ldr()" onResize="Rsz()" oncontextmenu="event.preventDefault()" onkeydown="KDw(event)">
 <header onMouseOver="Lst()" onMouseOut="Mnu()" onclick="Lst()">
     <div id="home" onclick="CPg('MainPage')">Square Chess Game</div>
     <div id="menu">
@@ -123,13 +139,13 @@ function Lst(){
 			</article>
 			<article class="Computer" style="height:0px">
 				<ol>
-					<li>點選格子來設置符號</li>
-					<li>滑鼠靠近空白處喚出選單</li>
-					<li>點選Clean清除棋盤</li>
-					<li>點選Undo到上一步</li>
-					<li>點選Redo到下一步</li>
-					<li>點選Goto到指定步</li>
-					<li>點選Addons做功能設定</li>
+					<li>點選格子或以鍵盤輸入座標(E5即按下E+5)來設置符號</li>
+					<li>滑鼠靠近空白處或按下]或[喚出選單</li>
+					<li>點選Clean或按下delete清除棋盤</li>
+					<li>點選Undo或按下Ctrl+Z到上一步</li>
+					<li>點選Redo或按下Ctrl+Y到下一步</li>
+					<li>點選Goto或按下Ctrl+H到指定步</li>
+					<li>點選Addons或按下Alt做功能設定</li>
 				</ol>
 			</article>
 		</section>
@@ -264,8 +280,16 @@ function Lst(){
 			<article><a href="https://zh.wikipedia.org/wiki/Gomoku">五子棋規則</a></article>
 		</section>
 	</section>
-	<section id="Problem"><font class="title1">回報問題</font></section>
-	<section id="Online"><font class="title1">線上對戰</font>
+	<section id="Problem"><font class="title1">回報問題</font><br>
+		按下Shift+Enter傳送
+		<div align="center"><div style="position:relative;height:150px" id="Report">
+			<input type="text" class="txt" value="" placeholder="輸入遇到的問題"/><br>
+			<textarea rows="5" class="txt" placeholder="詳述該狀況"></textarea>
+			<div onclick="Rpt()" id="ck">送出</div>
+		</div></div>
+	</section>
+	<section id="Online"><font class="title1">線上對戰</font><br>
+		啟動線上對戰只需將Addons中的線上對戰選項打勾，並按下OK即進入線上對戰。
 		<section><font class="title2">試試這些基本操作</font>
 			<article class="Mobile" style="height:0px">
 				<ol>
