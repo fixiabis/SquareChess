@@ -8,10 +8,8 @@
 			"khaki","lightcoral","lightseagreen",
 			"black"
 		]
-	},
-	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
-	Dft={Set:0,Tn:0,System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0}},
-	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
+	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}},
+	Dft={Set:1,Tn:0,Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1},System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -21,16 +19,17 @@ function MdL(v){
 	if(MdQ[v+1])md.onload=function(){MdL(v+1)}
 	else md.onload=function(){Itf();Rsz();Cln()}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
-	doc.body.appendChild(md)
+	doc.body.appendChild(md);if(Dft.System.Oln)Opt()
 }//模式裝載
 function Rsz(){var scn=1;Id("Board").style.display="none"
 	var sz=doc.body.scrollWidth;Id("QCtrl").style.display="none"
 	if(doc.body.scrollHeight<sz){sz=doc.body.scrollHeight;scn=0}sz=Math.floor(sz/9)
-	for(i=0;i<83;i++){
+	for(i=0;i<83;i++){if(!Class("bt")[i])break
 		Class("bt")[i].style.width=sz+"px"
 		Class("bt")[i].style.height=sz+"px"
 		Class("bt")[i].style.fontSize=sz-15+"px"
 		if(i>80)Class("bt")[i].style.width=sz*4.5+"px"
+		if(!Class("bt")[i+1])Class("bt")[i].style.width=sz*9+"px"
 	}
 	Id("UI").style.marginLeft=(doc.body.scrollWidth-sz*9)/2+"px"
 	Id("UI").style.marginTop=(doc.body.scrollHeight-sz*9)/2+"px"
@@ -50,8 +49,8 @@ function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(ms
 		Rul();Adn();Hst.Brd[Tn]=Rec();Dft.Tn=Tn
 	}
 }//清除棋盤
-function Set(crd){if(Dft.Set)return;var ckr=Ckr(crd);if(!Dft.System.Qsr)ckr=!Lmt(crd)
-	if(ckr){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Hst.Brd[Tn]=Rec();Rul()}
+function Set(crd){if(!Dft.Set)return;var ckr=Ckr(crd);if(!Dft.System.Qsr)ckr=!Lmt(crd)
+	if(ckr){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Rul();Hst.Brd[Tn]=Rec();if(Dft.System.Oln)Upl(Hst.Brd[Tn]+"/"+Tn)}
 }//設置符號
 function Qre(crd,atr,typ){var res=[],ckr=0
 	if(typ&&typeof typ!="object"&&Asc(typ+"")>64)typ=Asc(typ+"")-55
@@ -118,22 +117,34 @@ function Adn(){
 	}
 }//功能執行
 function Rul(){
-	for(var i=MdQ.length-1;i>-1;i--){var res=Shl.Rul[MdQ[i]]();if(res)Cln(res)}Mrk()
+	for(var i=MdQ.length-1;i>-1;i--){
+		var res=Shl.Rul[MdQ[i]]();
+		if(res){
+			if(Dft.System.Oln)Upl(res);else Cln(res)
+		}
+	}Mrk()
 }//規則判定
-function Opt(){
+function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
+	if(id)id="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/>"
 	Id("OptionMenu").innerHTML="系統內建:<br>"
-	OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
+	if(!Dft.System.Oln){
+		OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
+		OpS("System-Qsr","k","加速查詢",Dft.System.Qsr)
+		OpS("System-Oln","k","線上對戰",Dft.System.Oln)
+	}else{OpS("Dft-ORg-0/Dft.ORg","r","註冊房間"+id,Dft.Oln.Rgt==0);OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)}
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
-	OpS("System-Qsr","k","加速查詢",Dft.System.Qsr)
-	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]();Id("Setting").style.height="300px"
+	if(!Dft.System.Oln)for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
-function OpK(){
-	if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
+function OpK(){Id("Setting").style.height="0px";Mrk()
+	if(!Dft.System.Oln){
+		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
+		if(Id("System-Oln").checked)location="btchs.html"+location.search
+		Dft.System.Qsr=Id("System-Qsr").checked
+		for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
+	}else if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
 	Dft.System.Nxt=Id("System-Nxt").checked
 	Dft.System.iTn=Id("System-iTn").checked
-	Dft.System.Qsr=Id("System-Qsr").checked
-	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]();Id("Setting").style.height="0px";Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 	switch(typ){

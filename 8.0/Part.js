@@ -174,3 +174,6 @@ Ara.AJd=function(shl,ara){var sot={O:[],X:[],P:[]};sot.O.All=[];sot.X.All=[];sot
 		}
 	}sot.O[0]=sot.O.All;sot.X[0]=sot.X.All;sot.P[0]=sot.P.All;return sot
 }
+function Enm(sym){
+	if(sym=="O")return "X";else return "O"
+}
