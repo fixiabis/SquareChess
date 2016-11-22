@@ -127,7 +127,7 @@ function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
 	if(!Dft.System.Oln)for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
-function OpK(){Id("Setting").style.height="0px";Mrk()
+function OpK(){Id("Setting").style.height="0px"
 	if(!Dft.System.Oln){
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 		if(Id("System-Oln").checked)location="btchs.html"+location.search
@@ -135,7 +135,7 @@ function OpK(){Id("Setting").style.height="0px";Mrk()
 		for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	}else if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
 	Dft.System.Nxt=Id("System-Nxt").checked
-	Dft.System.iTn=Id("System-iTn").checked
+	Dft.System.iTn=Id("System-iTn").checked;Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 	switch(typ){
