@@ -48,14 +48,18 @@ function Rsz(){
 	Id("home").style.width="320px";scn=0
 	Id("menu").style.width=sz*160+"px";
 	Id("menu").style.marginRight=""
-	Id("Computer").style.height=Id("Computer").scrollHeight+"px"
-	Id("Mobile").style.height="0px"
+	for(var i=0;i<Class("Mobile").length;i++){
+		Class("Computer")[i].style.height=Class("Computer")[i].scrollHeight+"px"
+		Class("Mobile")[i].style.height="0px"
+	}
 	if(doc.body.clientWidth<480){scn=1,w=Math.floor(doc.body.clientWidth/160)*160
 		Id("home").style.width=doc.body.clientWidth+"px"
 		Id("menu").style.width=w+"px"
 		Id("menu").style.marginRight=(doc.body.clientWidth-w)/2+"px"
-		Id("Computer").style.height="0px"
-		Id("Mobile").style.height=Id("Mobile").scrollHeight+"px"
+		for(var i=0;i<Class("Mobile").length;i++){
+			Class("Computer")[i].style.height="0px"
+			Class("Mobile")[i].style.height=Class("Mobile")[i].scrollHeight+"px"
+		}
 	}
 }
 function Mnu(v){
@@ -84,7 +88,7 @@ function Lst(){
 </script>
 </head>
 <body onLoad="Ldr()" onResize="Rsz()" oncontextmenu="event.preventDefault()">
-<header onMouseOver="Mnu(1)" onMouseOut="Mnu()" onclick="Lst()">
+<header onMouseOver="Lst()" onMouseOut="Mnu()" onclick="Lst()">
     <div id="home" onclick="CPg('MainPage')">Square Chess Game</div>
     <div id="menu">
         <div class="list" title="Connect系列">Square.Connect</div>
@@ -102,13 +106,13 @@ function Lst(){
 		<div class="list" title="facebook" onclick="Dir('http://fb.me/SquareChessGame')">給個讚吧</div>
 		<div class="list" title="twitter" onclick="Dir('http://twitter.com/SquareChessGame')">跟隨我們</div>
 		<div class="list" title="回報問題" onclick="CPg('Problem')">回報問題</div>
-		<div class="list" title="給予意見" onclick="CPg('Suggest')">給予意見</div>
+		<div class="list" title="線上對戰" onclick="CPg('Online')">線上對戰</div>
     </div>
 </header>
 <article id="content" style="color:dimgray"><font></font>
 	<section id="MainPage"><font class="title1">歡迎使用</font>
 		<section><font class="title2">試試這些基本操作</font>
-			<article id="Mobile" style="height:0px">
+			<article class="Mobile" style="height:0px">
 				<ol>
 					<li>點選格子來設置符號</li>
 					<li>點選Clean清除棋盤</li>
@@ -117,7 +121,7 @@ function Lst(){
 					<li>按住Undo到指定步</li>
 				</ol>
 			</article>
-			<article id="Computer" style="height:0px">
+			<article class="Computer" style="height:0px">
 				<ol>
 					<li>點選格子來設置符號</li>
 					<li>滑鼠靠近空白處喚出選單</li>
@@ -261,7 +265,22 @@ function Lst(){
 		</section>
 	</section>
 	<section id="Problem"><font class="title1">回報問題</font></section>
-	<section id="Suggest"><font class="title1">給予意見</font></section>
+	<section id="Online"><font class="title1">線上對戰</font>
+		<section><font class="title2">試試這些基本操作</font>
+			<article class="Mobile" style="height:0px">
+				<ol>
+					<li>點選GiveUp認輸</li>
+					<li>按住GiveUp做功能設定</li>
+				</ol>
+			</article>
+			<article class="Computer" style="height:0px">
+				<ol>
+					<li>點選GiveUp認輸</li>
+					<li>點選Addons做功能設定</li>
+				</ol>
+			</article>
+		</section>
+	</section>
 </article>
 </body>
 </html>
