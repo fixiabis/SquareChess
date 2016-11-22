@@ -34,7 +34,7 @@ function Get(){
 					if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini()}
 					else if(!brd[1]||Val(brd[1])==Tn)Get()
 					else{
-						Hst.Brd[brd[1]]=brd[0];Rec(brd[0]);Tn=brd[1];Rul();Dft.Set=1
+						Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=brd[1];Rul();Dft.Set=1
 					}
 				}
 			}

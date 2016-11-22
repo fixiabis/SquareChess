@@ -50,7 +50,7 @@ function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(ms
 	}
 }//清除棋盤
 function Set(crd){if(!Dft.Set)return;var ckr=Ckr(crd);if(!Dft.System.Qsr)ckr=!Lmt(crd)
-	if(ckr){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Rul();Hst.Brd[Tn]=Rec();if(Dft.System.Oln)Upl(Hst.Brd[Tn]+"/"+Tn)}
+	if(ckr){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Rul();Hst.Brd[Tn]=Rec();if(Dft.System.Oln)Upl(Hst.Brd[Tn]+"/"+Tn+"/"+Hst.Crd[Tn])}
 }//設置符號
 function Qre(crd,atr,typ){var res=[],ckr=0
 	if(typ&&typeof typ!="object"&&Asc(typ+"")>64)typ=Asc(typ+"")-55
