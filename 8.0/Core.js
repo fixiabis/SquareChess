@@ -49,7 +49,7 @@ function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(ms
 		Rul();Adn();Hst.Brd[Tn]=Rec();Dft.Tn=Tn
 	}
 }//清除棋盤
-function Set(crd){if(!Dft.Set)return;var ckr=Ckr(crd);if(!Dft.System.Qsr)ckr=!Lmt(crd)
+function Set(crd){if(!Dft.Set)return;var ckr=Ckr(crd);if(Dft.System.Qsr)ckr=!Lmt(crd)
 	if(ckr){Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Rul();Hst.Brd[Tn]=Rec();if(Dft.System.Oln)Upl(Hst.Brd[Tn]+"/"+Tn+"/"+Hst.Crd[Tn])}
 }//設置符號
 function Qre(crd,atr,typ){var res=[],ckr=0
@@ -92,12 +92,8 @@ function Lmt(crd,sym){if(Qre(crd,"Sym")!=2)return 1;if(typeof sym=="undefined")s
 function Ckr(crd){if(Qre(crd,"Sym")!=2)return 0
 	for(var i=MdQ.length-1;i>-1;i--)if(!Shl.Ckr[MdQ[i]](crd))return 0;return 1
 }//設置確認
-function Mrk(){Brd();var nxt=[],nxn=[]
-	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
-		if(!Ckr(Chr(cd1)+cd2)){if(Qre(Chr(cd1)+cd2,"Sym")==2)nxn.push(Chr(cd1)+cd2)}
-		else nxt.push(Chr(cd1)+cd2)
-	}if(nxt.length==0&&Tn>2)Cln(Sqr.Sym[Tn%2]+"獲勝");
-	if(Dft.System.Nxt)Qre(nxn,"Opa",0.2)
+function Mrk(){Brd();BJd()
+	if(Dft.System.Nxt)Qre(BJd(),"Opa",0.2)
 	if(Dft.System.iTn){Qre(Hst.Crd[Tn],"FtC",1);Qre(Hst.Crd[Tn-1],"FtC",1)}
 	for(var i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
 	Qre(Flt(Sel("All"),function(crd){if(Qre(crd,"Sym")==3)return 1;return 0}),"BgC",2)
@@ -117,12 +113,7 @@ function Adn(){
 	}
 }//功能執行
 function Rul(){
-	for(var i=MdQ.length-1;i>-1;i--){
-		var res=Shl.Rul[MdQ[i]]();
-		if(res){
-			if(Dft.System.Oln)Upl(res);else Cln(res)
-		}
-	}Mrk()
+	for(var i=MdQ.length-1;i>-1;i--)Jdg(Shl.Rul[MdQ[i]]());Mrk()
 }//規則判定
 function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
 	if(id)id="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/>"
@@ -152,4 +143,7 @@ function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 		case"r":var tid=id.split("/");input="<input type='radio' "+ck+" id='"+tid[0]+"' class='Opt' name='"+tid[1]+"' style='zoom:1.5'/>"+til;break
 		case"k":input="<input type='checkbox' "+ck+" id='"+id+"' class='Opt' style='zoom:1.5'/>"+til;break
 	}Id("OptionMenu").innerHTML+="<label>"+input+"</label><br>"
+}
+function Jdg(msg){
+	if(msg){if(Dft.System.Oln)Upl(msg);else Cln(msg)}
 }
