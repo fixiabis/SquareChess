@@ -1,5 +1,4 @@
 ﻿var olsvr="https://script.google.com/macros/s/AKfycbzTiFNUJlqZEchqdAb0pJu8R2KfqDq77iOIeS08pT1bEl6v0YXk/exec"
-Dft.System.Oln=1
 function Req(Typ){var id="";if(Typ=="J"){id=prompt("輸入id");Dft.Oln.Typ="X"}else Dft.Oln.Typ="O"
 	try{
 		$.get(olsvr,
@@ -41,6 +40,6 @@ function Get(){
 		)
 	}catch(e){if(confirm("暫時無法取得，將繼續重試"))Get()}
 }
-function Ini(){Cln();Dft.Oln.Cln=0
+function Ini(){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"){Dft.Set=0;Get()}else{Dft.Set=1}
 }

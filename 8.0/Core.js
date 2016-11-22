@@ -17,9 +17,9 @@ function Ldr(){if(!location.search)history.back()
 function MdL(v){
 	var md=doc.createElement("script");md.src="Mode/"+MdQ[v]+".js"
 	if(MdQ[v+1])md.onload=function(){MdL(v+1)}
-	else md.onload=function(){Itf();Rsz();Cln()}
+	else md.onload=function(){Itf();Rsz();if(typeof Ini=="undefined")Cln();else{Ini();Opt()}}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
-	doc.body.appendChild(md);if(Dft.System.Oln)Opt()
+	doc.body.appendChild(md)
 }//模式裝載
 function Rsz(){var scn=1;Id("Board").style.display="none"
 	var sz=doc.body.scrollWidth;Id("QCtrl").style.display="none"
@@ -29,7 +29,7 @@ function Rsz(){var scn=1;Id("Board").style.display="none"
 		Class("bt")[i].style.height=sz+"px"
 		Class("bt")[i].style.fontSize=sz-15+"px"
 		if(i>80)Class("bt")[i].style.width=sz*4.5+"px"
-		if(!Class("bt")[i+1])Class("bt")[i].style.width=sz*9+"px"
+		if(!Class("bt")[i+1]&&i==81)Class("bt")[i].style.width=sz*9+"px"
 	}
 	Id("UI").style.marginLeft=(doc.body.scrollWidth-sz*9)/2+"px"
 	Id("UI").style.marginTop=(doc.body.scrollHeight-sz*9)/2+"px"
