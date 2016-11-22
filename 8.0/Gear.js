@@ -8,7 +8,7 @@ function Req(Typ){var id="";if(Typ=="J"){id=prompt("輸入id");Dft.Oln.Typ="X"}e
 				if(Typ=="R")t+="id:"+q[2].split(":")[1];alert(t)
 				if(q.length>1){Dft.Oln.Row=q[1].split(":")[1]
 					if(q.length>2)Dft.Oln.Id=q[2].split(":")[1]
-					else Dft.Oln.Id=id
+					else Dft.Oln.Id=id;Ini()
 				}
 			}
 		)
@@ -31,13 +31,16 @@ function Get(){
 			function(r){var q=r.split(",")
 				if(q.length>1){Dft.Oln.Row=q[1].split(":")[1]
 					var brd=q[2].split("/");brd[0]=brd[0].split(":")[1]
-					if(brd[0].length<81&&Dft.Oln.Cln){
-						alert(brd[0]);Cln();Dft.Oln.Cln=0
-					}else{
+					if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini()}
+					else if(!brd[1]||Val(brd[1])==Tn)Get()
+					else{
 						Hst.Brd[brd[1]]=brd[0];Rec(brd[0]);Tn=brd[1];Rul();Dft.Set=1
 					}
 				}
 			}
 		)
 	}catch(e){if(confirm("暫時無法取得，將繼續重試"))Get()}
+}
+function Ini(){Cln();Dft.Oln.Cln=0
+	if(Dft.Oln.Typ=="X"){Dft.Set=0;Get()}else{Dft.Set=1}
 }
