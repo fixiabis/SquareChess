@@ -31,3 +31,5 @@ section,article{overflow:hidden}
 	line-height:40px;background-color:lightgray;opacity:0.5
 }
 #ck:hover{opacity:1}
+.mouse{color:steelblue}
+.keyboard{color:indianred}

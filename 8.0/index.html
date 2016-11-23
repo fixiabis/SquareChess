@@ -29,6 +29,9 @@ function Ldr(){
 			if(doc.body.clientWidth<480||Mod==this.innerHTML)Dir("chess.html?mode="+this.innerHTML)
 			Mod=this.innerHTML
 		})
+		Class("list")[i].addEventListener("contextmenu",function(){
+			Dir("chess.html?mode="+this.innerHTML)
+		})
 	}
 	for(i=0;i<Tag("a").length;i++){
 		Tag("a")[i].addEventListener("click",function(){
@@ -88,12 +91,12 @@ function Stn(v){
 	}Shw(Id("GameRule"));Shw(Id("content"))
 }
 function Lst(){
-	if(Tag("header")[0].style.height=="40px")Mnu(1);else Mnu();Mod=""
+	if(Tag("header")[0].style.height=="40px")Mnu(1);else Mnu()
 }
 function Rpt(){var v=[];if(Class("txt")[0].value.length<4)return alert("標題不足四字")
 	for(var i=0;i<2;i++)v[i]=Class("txt")[i].value
 	try{$.get(
-		"https://script.google.com/macros/s/AKfycbzTiFNUJlqZEchqdAb0pJu8R2KfqDq77iOIeS08pT1bEl6v0YXk/exec",
+		"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec",
 		{Typ:"P",title:v[0],content:v[1]},
 		function(r){alert(r);for(var i=0;i<2;i++)Class("txt")[i].value=""}
 	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
@@ -130,22 +133,22 @@ function KDw(e){var k=e.which
 		<section><font class="title2">試試這些基本操作</font>
 			<article class="Mobile" style="height:0px">
 				<ol>
-					<li>點選格子來設置符號</li>
-					<li>點選Clean清除棋盤</li>
-					<li>點選Undo到上一步</li>
-					<li>按住Clean做功能設定</li>
-					<li>按住Undo到指定步</li>
+					<li>點選<font class="mouse">格子</font>來設置符號</li>
+					<li>點選<font class="mouse">Clean</font>清除棋盤</li>
+					<li>點選<font class="mouse">Undo</font>到上一步</li>
+					<li>按住<font class="mouse">Clean</font>做功能設定</li>
+					<li>按住<font class="mouse">Undo</font>到指定步</li>
 				</ol>
 			</article>
 			<article class="Computer" style="height:0px">
 				<ol>
-					<li>點選格子或以鍵盤輸入座標(E5即按下E+5)來設置符號</li>
-					<li>滑鼠靠近空白處或按下]或[喚出選單</li>
-					<li>點選Clean或按下delete清除棋盤</li>
-					<li>點選Undo或按下Ctrl+Z到上一步</li>
-					<li>點選Redo或按下Ctrl+Y到下一步</li>
-					<li>點選Goto或按下Ctrl+H到指定步</li>
-					<li>點選Addons或按下Alt做功能設定</li>
+					<li>點選<font class="mouse">格子</font>或以鍵盤輸入座標(E5即按下<font class="keyboard">E+5</font>)來設置符號</li>
+					<li>滑鼠靠近<font class="mouse">空白處</font>或按下<font class="keyboard">]</font>或<font class="keyboard">[</font>喚出選單</li>
+					<li>點選<font class="mouse">Clean</font>或按下<font class="keyboard">Delete</font>清除棋盤</li>
+					<li>點選<font class="mouse">Undo</font>或按下<font class="keyboard">Ctrl+Z</font>到上一步</li>
+					<li>點選<font class="mouse">Redo</font>或按下<font class="keyboard">Ctrl+Y</font>到下一步</li>
+					<li>點選<font class="mouse">Goto</font>或按下<font class="keyboard">Ctrl+H</font>到指定步</li>
+					<li>點選<font class="mouse">Addons</font>或按下<font class="keyboard">Alt</font>做功能設定</li>
 				</ol>
 			</article>
 		</section>
