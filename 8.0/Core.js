@@ -116,7 +116,9 @@ function Rul(){
 	for(var i=MdQ.length-1;i>-1;i--)if(Jdg(Shl.Rul[MdQ[i]]()))break;Mrk()
 }//規則判定
 function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
-	if(id)id="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/>"
+	if(id){
+		id="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/><div class='fb-send' data-href='id' data-layout='button_count'></div>"
+	}
 	Id("OptionMenu").innerHTML="系統內建:<br>"
 	if(!Dft.System.Oln){
 		OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
