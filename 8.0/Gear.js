@@ -8,9 +8,9 @@ function Req(Typ,Jcd){var id="";if(Typ=="J"){if(Jcd)id=Jcd;else id=prompt("輸�
 		$.get(olsvr,
 			{Typ:Typ,mode:location.search.split("?mode=")[1],id:id},
 			function (r){var q=r.split(","),t=q[0];console.log(q)
-				if(Typ=="R"){
-					t+=",貼給朋友即可開始對戰";+prompt(t,location.href+"#"+q[2].split(":")[1])
-					Id("msgr").childNodes[1].setAttribute("data-href",location.href+"#"+Dft.Oln.Id)
+				if(Typ=="R"){var url=location.href+"#"+q[2].split(":")[1]
+					t+=",貼給朋友即可開始對戰";+prompt(t,url)
+					Id("msgr").childNodes[1].setAttribute("data-href",url)
 					Oln.Ffb()
 				}
 				else alert(t)
