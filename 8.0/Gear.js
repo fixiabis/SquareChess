@@ -57,7 +57,7 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 		OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)
 	}else{if(Tn<2)Id("msgr").style.opacity=1
 		Id("msgr").childNodes[1].setAttribute("data-href",location.href+"#"+Dft.Oln.Id)
-		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
+		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
 	}
 }
 Oln.OpK=function(){
