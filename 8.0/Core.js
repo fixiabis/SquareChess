@@ -116,15 +116,18 @@ function Rul(){
 	for(var i=MdQ.length-1;i>-1;i--)if(Jdg(Shl.Rul[MdQ[i]]()))break;Mrk()
 }//規則判定
 function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
-	if(id){
-		id="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/><div class='fb-send' data-href='"+id+"' data-layout='button_count'></div>"
-	}
+	if(id)id="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/>"
 	Id("OptionMenu").innerHTML="系統內建:<br>"
 	if(!Dft.System.Oln){
 		OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
 		OpS("System-Qsr","k","加速查詢",Dft.System.Qsr)
 		OpS("System-Oln","k","線上對戰",Dft.System.Oln)
-	}else{OpS("Dft-ORg-0/Dft.ORg","r","註冊房間"+id,Dft.Oln.Rgt==0);OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)}
+	}else if(!Dft.Oln.Id){
+		OpS("Dft-ORg-0/Dft.ORg","r","註冊房間",Dft.Oln.Rgt==0)
+		OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)
+	}else{Id("OptionMenu").innerHTML=id
+		Id("OptionMenu").innerHTML="<div class='fb-send' data-href='"+id+"' data-layout='button_count'></div>"
+	}
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
