@@ -56,6 +56,10 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 		OpS("Dft-ORg-0/Dft.ORg","r","註冊房間",Dft.Oln.Rgt==0)
 		OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)
 	}else{if(Tn<2)Id("msgr").style.opacity=1
+		Id("msgr").childNodes[1].setAttribute("data-href",location.href+"#"+Dft.Oln.Id)
 		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
 	}
+}
+Oln.OpK=function(){
+	if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
 }

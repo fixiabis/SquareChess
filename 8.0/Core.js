@@ -131,7 +131,7 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 		if(Id("System-Oln").checked)location="btchs.html"+location.search
 		Dft.System.Qsr=Id("System-Qsr").checked
-	}else if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
+	}else Oln.OpK()
 	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	Dft.System.Nxt=Id("System-Nxt").checked
 	Dft.System.iTn=Id("System-iTn").checked;Mrk()
