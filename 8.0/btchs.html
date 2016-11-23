@@ -6,7 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
 <meta property="og:url" content="http://fixiabis.github.io/SquareChess" />
-<meta name="mobile-web-app-capable" content="yes" />
+<meta property="og:type" content="website" /><meta property="og:title" content="Square Chess Game" />
+<meta property="og:description" content="棋盤遊戲" /><meta name="mobile-web-app-capable" content="yes" />
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" />
 <title>Square Chess Game</title><script src="Prun.js"></script>
 <script src="Core.js"></script><script src="Part.js"></script>
 <script src="Aide.js"></script><script src="Gear.js"></script>
@@ -26,6 +28,17 @@
 	<div id="Setting" style="position:fixed;height:0px;width:100%;top:0px;left:0px;background-color:dimgray;overflow:hidden;transition:all 1s;font-size:20px">
 		<div id="OptionMenu" style="width:99%;height:280px;top:10px;left:0.5%;position:absolute;background-color:lightgray;overflow:auto"></div>
 		<div style="right:0.5%;position:absolute;bottom:10px;width:210px;height:40px"><div class="Opbt" onclick="OpK()">OK</div><div class="Opbt" onclick="OpK(1)">Cancel</div></div>
-	</div>
+		<div id="msgr" style="position:absolute;top:10px;top:0.5%;height:30px;width:60px">
+		<div class='fb-send' data-href='http://fixiabis.github.io/SquareChess/' data-layout='button_count'></div>
+		</div>
+	</div><div id="fb-root"></div>
 </body>
+<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+</script>
 </html>
