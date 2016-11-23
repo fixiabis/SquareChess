@@ -27,7 +27,7 @@ section,article{overflow:hidden}
 .title2{font-size:20px;line-height:40px;font-weight:bold}
 .txt{font-size:20px;border:solid 1px}
 #ck{
-	position:absolute;bottom:0px;right:0px;width:80px;height:40px;
+	position:absolute;bottom:1px;right:1px;width:80px;height:40px;
 	line-height:40px;background-color:lightgray;opacity:0.5
 }
 #ck:hover{opacity:1}

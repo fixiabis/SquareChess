@@ -36,8 +36,8 @@ function Ldr(){
 		Tag("a")[i].addEventListener("click",function(){
 			Stn(this.innerHTML)
 		})
-	}
-	Rsz();Hid(Id("content"));Shw(Id("MainPage"));Shw(Id("content"))
+	}Rsz();var shw="MainPage";if(location.hash.length>1){var pg=Mid(location.hash,1,location.hash.length-1);if(Id(pg))shw=pg}
+	Hid(Id("content"));Shw(Id(shw));Shw(Id("content"))
 }
 function Ich(f,v){
 	for(var i=0;i<f.childNodes.length;i++){
@@ -287,8 +287,10 @@ function KDw(e){var k=e.which
 		按下Shift+Enter傳送
 		<div align="center"><div style="height:150px" id="Report">
 			<input type="text" class="txt" value="" placeholder="輸入遇到的問題"/><br>
-			<div id="txc" style="position:relative;height:120px;width:462px"><textarea rows="5" class="txt" placeholder="詳述該狀況" style="border-top:none"></textarea>
-			<div onclick="Rpt()" id="ck">送出</div></div
+			<div id="txc" style="position:relative;height:120px;width:462px">
+				<textarea rows="5" class="txt" placeholder="詳述該狀況" style="border-top:none"></textarea>
+				<div onclick="Rpt()" id="ck">送出</div>
+			</div>
 		</div></div>
 	</section>
 	<section id="Online"><font class="title1">線上對戰</font><br>
