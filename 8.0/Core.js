@@ -124,6 +124,8 @@ function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
 	}else Oln.Opt()
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
+	var fsc=doc.webkitIsFullScreen
+	OpS("System-Fsc","k","進入全螢幕",fsc)
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
 function OpK(k){Id("Setting").style.height="0px";if(k)return
@@ -131,8 +133,12 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 		if(Id("System-Oln").checked)location="btchs.html"+location.search
 		Dft.System.Qsr=Id("System-Qsr").checked
-	}else Oln.OpK()
-	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
+	}else Oln.OpK();for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]();var el=doc.body
+	if(Id("System-Fsc").checked){
+		if(doc.body.webkitRequestFullScreen)doc.body.webkitRequestFullScreen()
+	}else{
+		if(doc.webkitExitFullscreen)doc.webkitExitFullscreen()
+	}
 	Dft.System.Nxt=Id("System-Nxt").checked
 	Dft.System.iTn=Id("System-iTn").checked;Mrk()
 }//功能確認
