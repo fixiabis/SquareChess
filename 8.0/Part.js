@@ -32,7 +32,7 @@ function Vct(typ){
 		else return y+x
 	}
 	if(Instr(typ,"~")>-1){
-		var crd=typ.split("~"),vct=Vct(crd[0]+":"+crd[1]),s=Val(vct[0]),v=vct.replace(vct[0],""),res=[]
+		var crd=typ.split("~"),vct=Vct(crd[0]+":"+crd[1]),s=Val(vct[0]),v=vct.replace(vct[0],""),res=["C"]
 		for(var i=0;i<s;i++)res.push(Vct((i+1)+v));return res
 	}
 	switch(typ[0]){
@@ -86,7 +86,7 @@ function Sel(typ,ord){
 	return Hst.Sel[typ]
 }//選擇元素
 function Flt(grp,ord){var res=[]
-	for(var i=0;i<grp.length;i++){var odr=ord(grp[i]);if(!Id(grp[i]))continue
+	for(var i=0;i<grp.length;i++){var odr=ord(grp[i])
 		if(odr==2)return res;else if(odr)res.push(grp[i])
 	}return res
 }//元素篩選

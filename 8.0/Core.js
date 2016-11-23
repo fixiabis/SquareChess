@@ -113,7 +113,7 @@ function Adn(){
 	}
 }//功能執行
 function Rul(){
-	for(var i=MdQ.length-1;i>-1;i--)Jdg(Shl.Rul[MdQ[i]]());Mrk()
+	for(var i=MdQ.length-1;i>-1;i--)if(Jdg(Shl.Rul[MdQ[i]]()))break;Mrk()
 }//規則判定
 function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
 	if(id)id="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/>"
@@ -145,5 +145,5 @@ function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 	}Id("OptionMenu").innerHTML+="<label>"+input+"</label><br>"
 }
 function Jdg(msg){
-	if(msg){if(Dft.System.Oln)Upl(msg);else Cln(msg)}
+	if(msg){if(Dft.System.Oln)Upl(msg);else Cln(msg);return 1}
 }
