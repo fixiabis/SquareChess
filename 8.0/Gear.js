@@ -8,7 +8,11 @@ function Req(Typ,Jcd){var id="";if(Typ=="J"){if(Jcd)id=Jcd;else id=prompt("輸�
 		$.get(olsvr,
 			{Typ:Typ,mode:location.search.split("?mode=")[1],id:id},
 			function (r){var q=r.split(","),t=q[0];console.log(q)
-				if(Typ=="R"){t+=",貼給朋友即可開始對戰";+prompt(t,location.href+"#"+q[2].split(":")[1])}
+				if(Typ=="R"){
+					t+=",貼給朋友即可開始對戰";+prompt(t,location.href+"#"+q[2].split(":")[1])
+					Id("msgr").childNodes[1].setAttribute("data-href",location.href+"#"+Dft.Oln.Id)
+					Oln.Ffb()
+				}
 				else alert(t)
 				if(q.length>1){Dft.Oln.Row=q[1].split(":")[1]
 					if(q.length>2)Dft.Oln.Id=q[2].split(":")[1]
@@ -56,10 +60,18 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 		OpS("Dft-ORg-0/Dft.ORg","r","註冊房間",Dft.Oln.Rgt==0)
 		OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)
 	}else{if(Tn<2)Id("msgr").style.opacity=1
-		Id("msgr").childNodes[1].setAttribute("data-href",location.href+"#"+Dft.Oln.Id)
 		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
 	}
 }
 Oln.OpK=function(){
 	if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
+}
+Oln.Ffb=function(){
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
 }
