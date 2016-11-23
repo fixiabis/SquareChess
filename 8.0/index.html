@@ -22,14 +22,13 @@ function CPg(v){
 }
 function Ldr(){
 	for(var i=0;i<12;i++){
-		Class("list")[i].addEventListener("click",function(){
+		Class("list")[i].addEventListener("mouseover",function(){
 			Hid(Id("content"));Hid(Id("GameRule"))
 			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
 			Shw(Id("GameRule"));Shw(Id("content"))
-			if(doc.body.clientWidth<480||Mod==this.innerHTML)Dir("chess.html?mode="+this.innerHTML)
-			Mod=this.innerHTML
+			if(doc.body.clientWidth<480)Dir("chess.html?mode="+this.innerHTML)
 		})
-		Class("list")[i].addEventListener("contextmenu",function(){
+		Class("list")[i].addEventListener("click",function(){
 			Dir("chess.html?mode="+this.innerHTML)
 		})
 	}
@@ -68,7 +67,8 @@ function Rsz(){
 			Class("Computer")[i].style.height="0px"
 			Class("Mobile")[i].style.height=Class("Mobile")[i].scrollHeight+"px"
 		}
-	}
+	}Id("txc").style.width=Class("txt")[1].clientWidth+2+"px"
+	Id("txc").style.height=Class("txt")[1].clientHeight+1+"px"
 }
 function Mnu(v){
 	var h=Tag("header")[0].scrollHeight;if(!v)h="40"
@@ -285,10 +285,10 @@ function KDw(e){var k=e.which
 	</section>
 	<section id="Problem"><font class="title1">回報問題</font><br>
 		按下Shift+Enter傳送
-		<div align="center"><div style="position:relative;height:150px" id="Report">
+		<div align="center"><div style="height:150px" id="Report">
 			<input type="text" class="txt" value="" placeholder="輸入遇到的問題"/><br>
-			<textarea rows="5" class="txt" placeholder="詳述該狀況"></textarea>
-			<div onclick="Rpt()" id="ck">送出</div>
+			<div id="txc" style="position:relative;height:120px;width:462px"><textarea rows="5" class="txt" placeholder="詳述該狀況" style="border-top:none"></textarea>
+			<div onclick="Rpt()" id="ck">送出</div></div
 		</div></div>
 	</section>
 	<section id="Online"><font class="title1">線上對戰</font><br>
