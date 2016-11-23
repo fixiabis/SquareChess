@@ -57,5 +57,5 @@ function Ctl(t,v){
 		case"Udo":if(v)Rec(Ser(v)-1);else if(Tn>Dft.Tn)Rec(Tn-1);break
 		case"Rdo":if(v)Rec(Ser(v));else Rec(Tn+1);break
 		case"Gto":var tn=prompt("輸入要前往的回合");if(tn>Dft.Tn)Rec(Val(tn));break
-	}if(t=="Gvp"&&Dft.Set)Upl(Enm(Dft.Oln.Typ)+"獲勝")
+	}if(t=="Gvp"&&Dft.Set&&confirm("確定認輸?"))Upl(Enm(Dft.Oln.Typ)+"獲勝")
 }
