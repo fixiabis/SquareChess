@@ -151,7 +151,7 @@ Ara.Opt=function(shl){
 }
 Ara.OpK=function(shl){
 	Dft[shl].Ara=Id(shl+"-Ara").checked
-	for(var i=0;i<4;i++)if(Id(shl+"-QJd-"+i).checked)Dft[shl].QJd=i
+	if(!Dft.System.Oln)for(var i=0;i<4;i++)if(Id(shl+"-QJd-"+i).checked)Dft[shl].QJd=i
 }
 Ara.Mrk=function(shl){
 	if(Dft[shl].Ara)for(cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++)for(sym=0;sym<2;sym++){
