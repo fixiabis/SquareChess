@@ -3,12 +3,13 @@
 	"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec"
 ]
 var olsvr=svr[0]
-function Req(Typ){var id="";if(Typ=="J"){id=prompt("輸入id");Dft.Oln.Typ="X"}else Dft.Oln.Typ="O"
+function Req(Typ,Jcd){var id="";if(Typ=="J"){if(Jcd)id=Jcd;else id=prompt("輸入id");Dft.Oln.Typ="X"}else Dft.Oln.Typ="O"
 	try{
 		$.get(olsvr,
 			{Typ:Typ,mode:location.search.split("?mode=")[1],id:id},
 			function (r){var q=r.split(","),t=q[0];console.log(q)
-				if(Typ=="R")t+="id:"+q[2].split(":")[1];alert(t)
+				if(Typ=="R"){t+=",貼給朋友即可開始對戰";+prompt(t,location.href+"#"+q[2].split(":")[1])}
+				else alert(t)
 				if(q.length>1){Dft.Oln.Row=q[1].split(":")[1]
 					if(q.length>2)Dft.Oln.Id=q[2].split(":")[1]
 					else Dft.Oln.Id=id;Ini();if(Typ=="J")olsvr=svr[1]
@@ -46,4 +47,7 @@ function Get(){
 }
 function Ini(){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"){Dft.Set=0;Get()}else{Dft.Set=1}
+}
+function Joi(){
+	if(location.hash.length!=9)Opt();else Req("J",Mid(location.hash,1,location.hash.length-1))
 }

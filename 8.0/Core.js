@@ -17,7 +17,7 @@ function Ldr(){if(!location.search)history.back()
 function MdL(v){
 	var md=doc.createElement("script");md.src="Mode/"+MdQ[v]+".js"
 	if(MdQ[v+1])md.onload=function(){MdL(v+1)}
-	else md.onload=function(){Itf();Rsz();if(typeof Ini=="undefined")Cln();else{Ini();Opt()}}
+	else md.onload=function(){Itf();Rsz();if(typeof Ini=="undefined")Cln();else{Ini();Joi()}}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
 }//模式裝載
@@ -116,7 +116,7 @@ function Rul(){
 	for(var i=MdQ.length-1;i>-1;i--)if(Jdg(Shl.Rul[MdQ[i]]()))break;Mrk()
 }//規則判定
 function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
-	if(id)id="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/>"
+	if(id)id="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px'/>"
 	Id("OptionMenu").innerHTML="系統內建:<br>"
 	if(!Dft.System.Oln){
 		OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
