@@ -2,7 +2,7 @@
 	"https://script.google.com/macros/s/AKfycbzTiFNUJlqZEchqdAb0pJu8R2KfqDq77iOIeS08pT1bEl6v0YXk/exec",
 	"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec"
 ]
-var olsvr=svr[0]
+var olsvr=svr[0],Oln={}
 function Req(Typ,Jcd){var id="";if(Typ=="J"){if(Jcd)id=Jcd;else id=prompt("輸入id");Dft.Oln.Typ="X"}else Dft.Oln.Typ="O"
 	try{
 		$.get(olsvr,
@@ -50,4 +50,12 @@ function Ini(){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 }
 function Joi(){
 	if(location.hash.length!=9)Opt();else Req("J",Mid(location.hash,1,location.hash.length-1))
+}
+Oln.Opt=function(){Id("msgr").style.opacity=0
+	if(!Dft.Oln.Id){
+		OpS("Dft-ORg-0/Dft.ORg","r","註冊房間",Dft.Oln.Rgt==0)
+		OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)
+	}else{if(Tn<2)Id("msgr").style.opacity=1
+		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
+	}
 }
