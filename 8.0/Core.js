@@ -127,7 +127,7 @@ function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
-function OpK(){Id("Setting").style.height="0px"
+function OpK(k){Id("Setting").style.height="0px";if(k)return
 	if(!Dft.System.Oln){
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 		if(Id("System-Oln").checked)location="btchs.html"+location.search

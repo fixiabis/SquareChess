@@ -9,7 +9,7 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
 		case   8:if(Id("Setting").clientHeight==0)Ctl("Udo");break
 		case  13:if(Id("Setting").clientHeight!=0)OpK();else Ctl("Rdo");break
 		case  18:Opt();break
-		case  27:OpK();break
+		case  27:OpK(1);break
 		case  35:Rec(Hst.Crd.length-1);break
 		case  37:if(c)Ctl("Udo");else Dft.System.Dir+="L";break
 		case  38:if(c)Ctl("Cln");else Dft.System.Dir+="F";break
@@ -57,5 +57,5 @@ function Ctl(t,v){
 		case"Udo":if(v)Rec(Ser(v)-1);else if(Tn>Dft.Tn)Rec(Tn-1);break
 		case"Rdo":if(v)Rec(Ser(v));else Rec(Tn+1);break
 		case"Gto":var tn=prompt("輸入要前往的回合");if(tn>Dft.Tn)Rec(Val(tn));break
-	}if(t=="Gvp"&&Dft.Set&&confirm("確定認輸?"))Upl(Enm(Dft.Oln.Typ)+"獲勝")
+	}if(t=="Gvp"&&Dft.Set&&confirm("確定認輸?"))Upl(Dft.Oln.Typ+"認輸,"+Enm(Dft.Oln.Typ)+"獲勝")
 }

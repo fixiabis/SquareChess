@@ -33,3 +33,4 @@ section,article{overflow:hidden}
 #ck:hover{opacity:1}
 .mouse{color:steelblue}
 .keyboard{color:indianred}
+.Opbt{position:absolute;bottom:10px;width:100px;height:40px;line-height:40px;text-align:center;background-color:gray}
