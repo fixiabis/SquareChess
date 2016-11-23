@@ -141,11 +141,13 @@ Ara.Rul=function(shl,ara){Shl.Ara[shl]=ara
 Ara.Opt=function(shl){
 	Id("OptionMenu").innerHTML+="輔助標記:<br>"
 	OpS(shl+"-Ara","k","雙方區域",Dft[shl].Ara)
-	Id("OptionMenu").innerHTML+="判定方式:<br>"
-	OpS(shl+"-QJd-0/"+shl+"-QJd","r","不進行快速判定",Dft[shl].QJd==0)
-	OpS(shl+"-QJd-1/"+shl+"-QJd","r","快速判定初級",Dft[shl].QJd==1)
-	OpS(shl+"-QJd-2/"+shl+"-QJd","r","快速判定中級",Dft[shl].QJd==2)
-	OpS(shl+"-QJd-3/"+shl+"-QJd","r","快速判定高級",Dft[shl].QJd==3)
+	if(!Dft.System.Oln){
+		Id("OptionMenu").innerHTML+="判定方式:<br>"
+		OpS(shl+"-QJd-0/"+shl+"-QJd","r","不進行快速判定",Dft[shl].QJd==0)
+		OpS(shl+"-QJd-1/"+shl+"-QJd","r","快速判定初級",Dft[shl].QJd==1)
+		OpS(shl+"-QJd-2/"+shl+"-QJd","r","快速判定中級",Dft[shl].QJd==2)
+		OpS(shl+"-QJd-3/"+shl+"-QJd","r","快速判定高級",Dft[shl].QJd==3)
+	}
 }
 Ara.OpK=function(shl){
 	Dft[shl].Ara=Id(shl+"-Ara").checked

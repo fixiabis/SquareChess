@@ -14,9 +14,9 @@ Shl.Adn.Zombie=function(){}
 Shl.Ckr.Zombie=function(crd){return 1}
 Shl.Opt.Zombie=function(){
 	Id("OptionMenu").innerHTML+="Zombie設定:<br>"
-	OpS("Zombie-ToZ","t","感染回合:",Dft.Zombie.ToZ)
+	if(!Dft.System.Oln)OpS("Zombie-ToZ","t","感染回合:",Dft.Zombie.ToZ)
 }
 Shl.OpK.Zombie=function(){
-	Dft.Zombie.ToZ=Val(Id("Zombie-ToZ").value)
+	if(!Dft.System.Oln)Dft.Zombie.ToZ=Val(Id("Zombie-ToZ").value)
 	if(Dft.Zombie.ToZ<10)Dft.Zombie.ToZ=10
 }

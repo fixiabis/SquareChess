@@ -125,15 +125,15 @@ function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
 	}else{OpS("Dft-ORg-0/Dft.ORg","r","註冊房間"+id,Dft.Oln.Rgt==0);OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)}
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
-	if(!Dft.System.Oln)for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
+	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
 function OpK(){Id("Setting").style.height="0px"
 	if(!Dft.System.Oln){
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 		if(Id("System-Oln").checked)location="btchs.html"+location.search
 		Dft.System.Qsr=Id("System-Qsr").checked
-		for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	}else if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
+	for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	Dft.System.Nxt=Id("System-Nxt").checked
 	Dft.System.iTn=Id("System-iTn").checked;Mrk()
 }//功能確認

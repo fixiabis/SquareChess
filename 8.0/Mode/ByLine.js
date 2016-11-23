@@ -11,14 +11,15 @@ Shl.Ckr.ByLine=function(crd){
 }
 Shl.Opt.ByLine=function(){
 	Id("OptionMenu").innerHTML+="ByLine設定:<br>"
-	Id("OptionMenu").innerHTML+="區域判定:<br>"
-	OpS("ByLine-AJd-0/ByLine-AJd","r","優先",Dft.ByLine.AJd==0)
-	OpS("ByLine-AJd-1/ByLine-AJd","r","占據",Dft.ByLine.AJd==1)
-	OpS("ByLine-AJd-2/ByLine-AJd","r","共有",Dft.ByLine.AJd==2)
-	Ara.Opt("ByLine")
+	if(!Dft.System.Oln){
+		Id("OptionMenu").innerHTML+="區域判定:<br>"
+		OpS("ByLine-AJd-0/ByLine-AJd","r","優先",Dft.ByLine.AJd==0)
+		OpS("ByLine-AJd-1/ByLine-AJd","r","占據",Dft.ByLine.AJd==1)
+		OpS("ByLine-AJd-2/ByLine-AJd","r","共有",Dft.ByLine.AJd==2)
+	}Ara.Opt("ByLine")
 }
 Shl.OpK.ByLine=function(){
-	for(var i=0;i<3;i++)if(Id("ByLine-AJd-"+i).checked)Dft.ByLine.AJd=i
+	if(!Dft.System.Oln)for(var i=0;i<3;i++)if(Id("ByLine-AJd-"+i).checked)Dft.ByLine.AJd=i
 	Ara.OpK("ByLine")
 }
 function Lin(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]

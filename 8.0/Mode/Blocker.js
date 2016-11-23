@@ -11,14 +11,15 @@ Shl.Ckr.Blocker=function(crd){
 }
 Shl.Opt.Blocker=function(){
 	Id("OptionMenu").innerHTML+="Blocker設定:<br>"
-	Id("OptionMenu").innerHTML+="區域判定:<br>"
-	OpS("Blocker-AJd-0/Blocker-AJd","r","優先",Dft.Blocker.AJd==0)
-	OpS("Blocker-AJd-1/Blocker-AJd","r","占據",Dft.Blocker.AJd==1)
-	OpS("Blocker-AJd-2/Blocker-AJd","r","共有",Dft.Blocker.AJd==2)
-	Ara.Opt("Blocker")
+	if(!Dft.System.Oln){
+		Id("OptionMenu").innerHTML+="區域判定:<br>"
+		OpS("Blocker-AJd-0/Blocker-AJd","r","優先",Dft.Blocker.AJd==0)
+		OpS("Blocker-AJd-1/Blocker-AJd","r","占據",Dft.Blocker.AJd==1)
+		OpS("Blocker-AJd-2/Blocker-AJd","r","共有",Dft.Blocker.AJd==2)
+	}Ara.Opt("Blocker")
 }
 Shl.OpK.Blocker=function(){
-	for(var i=0;i<3;i++)if(Id("Blocker-AJd-"+i).checked)Dft.Blocker.AJd=i
+	if(!Dft.System.Oln)for(var i=0;i<3;i++)if(Id("Blocker-AJd-"+i).checked)Dft.Blocker.AJd=i
 	Ara.OpK("Blocker")
 }
 function Blk(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]

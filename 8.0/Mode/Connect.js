@@ -15,10 +15,9 @@ Shl.Adn.Connect=function(){
 Shl.Ckr.Connect=function(crd){return Ara.Ckr("Connect",crd)}
 Shl.Opt.Connect=function(){
 	Id("OptionMenu").innerHTML+="Connect設定:<br>"
-	OpS("Connect-Rnd","k","固定設置",Dft.Connect.Rnd)
+	if(!Dft.System.Oln)OpS("Connect-Rnd","k","固定設置",Dft.Connect.Rnd)
 	Ara.Opt("Connect")
 }
 Shl.OpK.Connect=function(){
-	Dft.Connect.Rnd=Id("Connect-Rnd").checked
-	Ara.OpK("Connect")
+	if(!Dft.System.Oln)Dft.Connect.Rnd=Id("Connect-Rnd").checked;Ara.OpK("Connect")
 }
