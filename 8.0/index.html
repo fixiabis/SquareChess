@@ -31,6 +31,7 @@ function Ldr(){
 		Class("list")[i].addEventListener("click",function(){
 			Dir("chess.html?mode="+this.innerHTML)
 		})
+		Class("list")[i].addEventListener("contextmenu",function(){Lst()})
 	}
 	for(i=0;i<Tag("a").length;i++){
 		Tag("a")[i].addEventListener("click",function(){
