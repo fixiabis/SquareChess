@@ -13,7 +13,7 @@ function Req(Typ,Jcd){var id="";if(Typ=="J"){if(Jcd)id=Jcd;else id=prompt("輸�
 					Id("msgr").childNodes[1].setAttribute("data-href",url)
 					Oln.Ffb()
 				}
-				else if(t=="進入觀賞模式")Oln.Viw=1
+				else if(t=="進入觀賞模式"){Oln.Viw=1;alert(t)}
 				else alert(t)
 				if(q.length>1){Dft.Oln.Row=q[1].split(":")[1]
 					if(q.length>2)Dft.Oln.Id=q[2].split(":")[1]
