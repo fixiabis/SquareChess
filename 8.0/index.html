@@ -51,10 +51,8 @@ function Rsz(){
 	Id("menu").style.width=sz*160+"px";
 	Id("menu").style.marginRight=""
 	Id("Report").style.width="460px"
-	for(var i=0;i<Class("Mobile").length;i++){
-		Class("Computer")[i].style.height=Class("Computer")[i].scrollHeight+"px"
-		Class("Mobile")[i].style.height="0px"
-	}
+	for(var i=0;i<Class("Mobile").length;i++)Class("Mobile")[i].style.height="0px"
+	for(var i=0;i<Class("Computer").length;i++)Class("Computer")[i].style.height=Class("Computer")[i].scrollHeight+"px"
 	Class("txt")[0].style.width=Id("Report").clientWidth+"px"
 	Class("txt")[1].style.width=Id("Report").clientWidth-4+"px"
 	if(doc.body.clientWidth<480){scn=1,w=Math.floor(doc.body.clientWidth/160)*160
@@ -64,10 +62,8 @@ function Rsz(){
 		Id("Report").style.width="100%"
 		Class("txt")[0].style.width=Id("Report").clientWidth-Id("Report").offsetLeft+"px"
 		Class("txt")[1].style.width=Id("Report").clientWidth-Id("Report").offsetLeft-4+"px"
-		for(var i=0;i<Class("Mobile").length;i++){
-			Class("Computer")[i].style.height="0px"
-			Class("Mobile")[i].style.height=Class("Mobile")[i].scrollHeight+"px"
-		}
+		for(var i=0;i<Class("Mobile").length;i++)Class("Mobile")[i].style.height=Class("Mobile")[i].scrollHeight+"px"
+		for(var i=0;i<Class("Computer").length;i++)Class("Computer")[i].style.height="0px"
 	}Id("txc").style.width=Class("txt")[1].clientWidth+2+"px"
 	Id("txc").style.height=Class("txt")[1].clientHeight+1+"px"
 }
@@ -285,7 +281,7 @@ function KDw(e){var k=e.which
 		</section>
 	</section>
 	<section id="Problem"><font class="title1">回報問題</font><br>
-		按下Shift+Enter傳送
+		<div class="Computer">按下Shift+Enter傳送</div>
 		<div align="center"><div style="height:150px" id="Report">
 			<input type="text" class="txt" value="" placeholder="輸入遇到的問題"/><br>
 			<div id="txc" style="position:relative;height:120px;width:462px">

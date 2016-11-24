@@ -4,7 +4,7 @@ function MsO(e){var v=1,p=0
 	else v=0;Mnu(v,p)
 }//滑鼠移動
 function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
-	if(Id("Setting").clientHeight==0)e.preventDefault();else return
+	if(Id("Setting").clientHeight==0)e.preventDefault();else if(k!=27||k!=13)return
 	switch(k){
 		case   8:if(Id("Setting").clientHeight==0)Ctl("Udo");break
 		case  13:if(Id("Setting").clientHeight!=0)OpK();else Ctl("Rdo");break
@@ -30,12 +30,15 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
 		default:if(k>64&&k<74)Dft.System.Crd=Chr(k)
 				else if(k>48&&k<58||k>96&&k<106){var num=Chr(k);if(k>96)num=Chr(k-48)
 					if(m.style.width!="0px"){
-						switch(Val(num)){
+						if(!Dft.System.Oln)switch(Val(num)){
 							case 1:Ctl("Cln");break
 							case 2:Ctl("Udo");break
 							case 3:Ctl("Rdo");break
 							case 4:Ctl("Gto");break
 							case 5:Opt();break
+						}else switch(Val(num)){
+							case 1:Ctl("Gvp");break
+							case 2:Opt();break
 						}
 					}else{
 						var crd=Dft.System.Crd;crd+=num
