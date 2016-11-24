@@ -13,7 +13,7 @@ function Req(Typ,Jcd){var id="";if(Typ=="J"){if(Jcd)id=Jcd;else id=prompt("輸�
 					Id("msgr").childNodes[1].setAttribute("data-href",url)
 					Oln.Ffb()
 				}
-				else if(t=="進入觀賞模式"){Oln.Viw=1;alert(t)}
+				else if(t=="進入觀賞模式"){Dft.Oln.Typ="V";alert(t);Get()}
 				else alert(t)
 				if(q.length>1){Dft.Oln.Row=q[1].split(":")[1]
 					if(q.length>2)Dft.Oln.Id=q[2].split(":")[1]
@@ -23,7 +23,7 @@ function Req(Typ,Jcd){var id="";if(Typ=="J"){if(Jcd)id=Jcd;else id=prompt("輸�
 		)
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req()}
 }
-function Upl(cnt){if(Oln.Viw)return;Dft.Set=0
+function Upl(cnt){if(Dft.Oln.Typ=="V")return;Dft.Set=0
 	try{
 		$.get(olsvr,
 			{Typ:"U",brd:cnt,id:Dft.Oln.Id,row:Dft.Oln.Row},
@@ -43,7 +43,8 @@ function Get(){
 					if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini()}
 					else if(!brd[1]||Val(brd[1])==Tn)Get()
 					else{
-						Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=brd[1];Rul();if(!Oln.Viw)Dft.Set=1
+						Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=brd[1];Rul()
+						if(Dft.Oln.Typ!="V")Dft.Set=1;else Get()
 					}
 				}
 			}
@@ -51,7 +52,7 @@ function Get(){
 	}catch(e){if(confirm("暫時無法取得，將繼續重試"))Get()}
 }
 function Ini(){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
-	if(Dft.Oln.Typ=="X"){Dft.Set=0;Get()}else{Dft.Set=1}
+	if(Dft.Oln.Typ=="X"||Dft.Oln.Typ=="V"){Dft.Set=0;Get()}else Dft.Set=1
 }
 function Joi(){
 	if(location.hash.length!=9)Opt();else Req("J",Mid(location.hash,1,location.hash.length-1))
