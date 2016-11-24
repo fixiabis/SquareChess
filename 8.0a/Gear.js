@@ -2,7 +2,7 @@
 	"https://script.google.com/macros/s/AKfycbzTiFNUJlqZEchqdAb0pJu8R2KfqDq77iOIeS08pT1bEl6v0YXk/exec",
 	"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec"
 ]
-var olsvr=svr[0],Oln={}
+var olsvr=svr[0],Oln={Tit:doc.title}
 function Req(Typ,Jcd){var id="";if(Typ=="J"){if(Jcd)id=Jcd;else id=prompt("輸入id");Dft.Oln.Typ="X"}else Dft.Oln.Typ="O"
 	try{
 		$.get(olsvr,
@@ -23,7 +23,7 @@ function Req(Typ,Jcd){var id="";if(Typ=="J"){if(Jcd)id=Jcd;else id=prompt("輸�
 		)
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req()}
 }
-function Upl(cnt){if(Dft.Oln.Typ=="V")return;Dft.Set=0
+function Upl(cnt){if(Dft.Oln.Typ=="V")return;Dft.Set=0;doc.title=Oln.Tit
 	try{
 		$.get(olsvr,
 			{Typ:"U",brd:cnt,id:Dft.Oln.Id,row:Dft.Oln.Row},
@@ -44,7 +44,7 @@ function Get(){
 					else if(!brd[1]||Val(brd[1])==Tn)Get()
 					else{
 						Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=brd[1];Rul()
-						if(Dft.Oln.Typ!="V")Dft.Set=1;else Get()
+						if(Dft.Oln.Typ!="V")Dft.Set=1;else Get();doc.title="輪到你下了"
 					}
 				}
 			}
