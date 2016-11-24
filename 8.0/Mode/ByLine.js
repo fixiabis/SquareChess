@@ -37,6 +37,6 @@ function Lin(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]
 					}else if(ara[Sqr.Sym[key]].age[p]>yng)ara[Sqr.Sym[key]].age[p]=yng
 				}
 			}
-		}console.log(ara)
+		}
 	}return Ara.AJd("ByLine",ara)
 }
