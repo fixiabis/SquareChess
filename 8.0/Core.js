@@ -9,7 +9,7 @@
 			"black"
 		]
 	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}},
-	Dft={Set:1,Tn:0,Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1},System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}}
+	Dft={Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1},System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
@@ -108,7 +108,7 @@ function Adn(){
 	for(var i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()
 	if(Dft.System.Blk){var s=Dft.System.Blk
 		while(s){var cd1=Math.floor(Rnd()*9)+65,cd2=Math.floor(Rnd()*9)+1
-			if((cd1+cd2)%2==0&&Qre(Chr(cd1)+cd2,"Sym")==2){Qre(Chr(cd1)+cd2,["Sym","BgC"],[3,2]);s--}
+			if((cd1+cd2)%2==0&&Qre(Chr(cd1)+cd2,"Sym")==2&&Dft.Blk.indexOf(Chr(cd1)+cd2)<0){Qre(Chr(cd1)+cd2,["Sym","BgC"],[3,2]);s--}
 		}
 	}
 }//功能執行
@@ -133,11 +133,11 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 		Dft.System.Qsr=Id("System-Qsr").checked
 	}else Oln.OpK();for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	Dft.System.Nxt=Id("System-Nxt").checked
-	Dft.System.iTn=Id("System-iTn").checked;Mrk()
+	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 	switch(typ){
-		case"t":input=til+"<input type='text' id='"+id+"' value='"+dft+"' class='Opt' style='width:40px;text-align:right'/>";break
+		case"t":input=til+"<input type='text' id='"+id+"' placeholder='"+dft+"' class='Opt' style='width:40px;text-align:right'/>";break
 		case"r":var tid=id.split("/");input="<input type='radio' "+ck+" id='"+tid[0]+"' class='Opt' name='"+tid[1]+"' style='zoom:1.5'/>"+til;break
 		case"k":input="<input type='checkbox' "+ck+" id='"+id+"' class='Opt' style='zoom:1.5'/>"+til;break
 	}Id("OptionMenu").innerHTML+="<label>"+input+"</label><br>"

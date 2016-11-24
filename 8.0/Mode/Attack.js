@@ -4,6 +4,7 @@ Shl.Ara.Attack=[
 	["A2","B1","B2"],
 	["H8","H9","I8"]
 ]
+for(var i=0;i<4;i++)Dft.Blk=Dft.Blk.concat(Shl.Ara.Attack[i])
 Dft.Attack={Ara:1}
 Shl.Rul.Attack=function(){
 	for(var i=0;i<2;i++){
