@@ -1,34 +1,37 @@
-﻿<html>
+<!DOCTYPE html>
+<html>
 <head>
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Square Chess</title>
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
 <meta name="mobile-web-app-capable" content="yes" />
-<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
-<style>@import "Style.css";</style>
-<script src="Simplify.js"></script>
+<title>Square Chess Game</title>
+<script src="Prun.js"></script>
 <script src="Core.js"></script>
-<script>var lst=0
-function HM(){if(!history.back())location="index.html";else history.back()}
-function LT(v){Usr.Itf.Mnu(0,v)}
-</script>
+<script src="Part.js"></script>
+<script src="Aide.js"></script>
+<style>@import "Face.css";#menu{position:fixed;}</style>
 </head>
-<body onLoad="Ldr()" onResize="Usr.Itf.Rsz()" onContextMenu="event.preventDefault()" onKeyDown="Usr.KDw(event)" onmouseover="Usr.MsO(event)" onKeyUp="Usr.KUp(event)">
-<div id="Brd"><div align="center" style="margin-top:100px"><div id="run">Creating...</div></div></div>
-<div id='UCL'>
-<div onclick='Usr.Cln()' class='game'>Clean</div>
-<div onclick='Brd.Udo()' class='game'>Undo</div>
-<div onclick='Brd.Rdo()' class='game'>Redo</div>
-<div onclick='Brd.Gto()' class='game'>Goto</div>
-<div onclick='Usr.Adn()' class='game'>Addons</div>
-<div onclick='Usr.Tol()' class='game'>Tools</div>
-<div onclick='location="btchs.html"+location.search' class='game'>Battle</div>
-<div onclick='HM()' class='game'>Home</div>
-</div>
-<div id="UCM">
-<div onClick="LT(0)" class="list">List</div>
-<div onClick="HM()" class="list">Home</div>
-<div onClick="LT(1)" class="list">List</div>
-</div>
+<body onLoad="Ldr()" onResize="Rsz()" onmouseover="MsO(event)" onkeydown="KDw(event)" onkeyup="KUp(event)" oncontextmenu="event.preventDefault()">
+	<div id="UI">
+		<table id="Board" style="background:gray;border:none" cellpadding="0" cellspacing="0"></table>
+		<table id="QCtrl" style="border:none;display:none" cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="bt" onclick="Ctl('Udo')" oncontextmenu="Ctl('Gto')">Undo</td>
+				<td class="bt" onclick="Ctl('Cln')" oncontextmenu="Opt()">Clean</td>
+			</tr>
+		</table>
+	</div>
+	<div id="menu" style="left:0px;top:0px;width:0px;height:280px;overflow:hidden">
+		<div class="list" onclick="Ctl('Cln')">Clean</div>
+		<div class="list" onclick="Ctl('Udo')">Undo</div>
+		<div class="list" onclick="Ctl('Rdo')">Redo</div>
+		<div class="list" onclick="Ctl('Gto')">Goto</div>
+		<div class="list" onclick="Opt()">Addons</div>
+	</div>
+	<div id="Setting" style="position:fixed;height:0px;width:100%;top:0px;left:0px;background-color:dimgray;overflow:hidden;transition:all 1s;font-size:20px">
+		<div id="OptionMenu" style="width:99%;height:280px;top:10px;left:0.5%;position:absolute;background-color:lightgray;overflow:auto"></div>
+		<div style="right:0.5%;position:absolute;bottom:10px;width:210px;height:40px"><div class="Opbt" onclick="OpK()">OK</div><div class="Opbt" onclick="OpK(1)">Cancel</div></div>
+	</div>
 </body>
 </html>

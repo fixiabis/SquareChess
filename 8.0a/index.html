@@ -94,7 +94,7 @@ function Rpt(){var v=[];if(Class("txt")[0].value.length<4)return alert("標題�
 	for(var i=0;i<2;i++)v[i]=Class("txt")[i].value
 	try{$.get(
 		"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec",
-		{Typ:"P",title:"BY8.1:"+v[0],content:v[1]},
+		{Typ:"P",title:v[0],content:v[1]},
 		function(r){alert(r);for(var i=0;i<2;i++)Class("txt")[i].value=""}
 	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
 }
