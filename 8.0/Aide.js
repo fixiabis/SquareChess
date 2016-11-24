@@ -4,7 +4,7 @@ function MsO(e){var v=1,p=0
 	else v=0;Mnu(v,p)
 }//滑鼠移動
 function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
-	if(Id("Setting").clientHeight==0)e.preventDefault();else if(k!=27||k!=13)return
+	if(Id("Setting").clientHeight==0)e.preventDefault();else if(k!=27&&k!=13)return
 	switch(k){
 		case   8:if(Id("Setting").clientHeight==0)Ctl("Udo");break
 		case  13:if(Id("Setting").clientHeight!=0)OpK();else Ctl("Rdo");break
