@@ -44,7 +44,7 @@ function Get(){
 					else if(!brd[1]||Val(brd[1])==Tn)Get()
 					else{
 						Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=brd[1];Rul()
-						if(Dft.Oln.Typ!="V")Dft.Set=1;else Get();doc.title="輪到你下了"
+						if(Dft.Oln.Typ!="V"){Dft.Set=1;doc.title="輪到你下了"}else Get()
 					}
 				}
 			}
