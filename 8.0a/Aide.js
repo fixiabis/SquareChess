@@ -8,7 +8,7 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
 	switch(k){
 		case   8:if(Id("Setting").clientHeight==0)Ctl("Udo");break
 		case  13:if(Id("Setting").clientHeight!=0)OpK();else Ctl("Rdo");break
-		case  18:Opt();break
+		case  18:if(c)Opt();break
 		case  27:OpK(1);break
 		case  35:Rec(Hst.Crd.length-1);break
 		case  37:if(c)Ctl("Udo");else Dft.System.Dir+="L";break
