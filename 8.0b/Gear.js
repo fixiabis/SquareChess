@@ -17,7 +17,7 @@ function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1]
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req()}
 }
 function Upl(cnt){Dft.Set=0;var req={ModeName:location.search.split("?mode=")[1],LastActive:new Date().getTime()}
-	req.BoardContent=cnt
+	req.BoardContent=cnt;doc.title=location.search.split("?mode=")[1]
 	try{
 		firebase.database().ref("Battle/"+Dft.Oln.Id).update(req);Dft.Oln.Cln=1
 		firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){Get()})
@@ -30,7 +30,7 @@ function Get(){
 			if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini()}
 			else if(!brd[1]||Val(brd[1])==Tn)Get()
 			else{
-				Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=brd[1];Rul();Dft.Set=1
+				Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=brd[1];Rul();Dft.Set=1;doc.title="輪到你下了"
 			}
 		})
 	}catch(e){if(confirm("暫時無法取得，將繼續重試"))Get()}
