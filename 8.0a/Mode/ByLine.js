@@ -20,7 +20,7 @@ Shl.Opt.ByLine=function(){
 }
 Shl.OpK.ByLine=function(){
 	if(!Dft.System.Oln)for(var i=0;i<3;i++)if(Id("ByLine-AJd-"+i).checked)Dft.ByLine.AJd=i
-	Ara.OpK("ByLine")
+	Ara.OpK("ByLine");if(Shl.Ara.ByLine.QJd==2)Shl.Ara.ByLine.QJd=3
 }
 function Lin(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]
 	for(var cd1=65;cd1<74;cd1++)for(cd2=1;cd2<10;cd2++){
