@@ -73,7 +73,7 @@ function Ctl(t,v){
 }
 function Msg(msg){console.log(msg)
 	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){var msgo=r.val().Message
-		if(!msgo)msgo="";else msgo="<pre>"+msgo+"</pre><br>"
+		if(!msgo)msgo="";else msgo=msgo+"<br>"
 		firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+Dft.Oln.Typ+":"+msg})
 	})
 }
