@@ -59,14 +59,14 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 		OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)
 	}else{if(Tn<2)Id("msgr").style.opacity=1
 		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
-		OpS("Dft-Oln-CkS","t","更新秒數",Dft.Oln.CkS)
+		if(Dft.Oln.CkK)OpS("Dft-Oln-CkS","t","更新秒數",Dft.Oln.CkS)
 	}
 	Id("OptionMenu").innerHTML+="效能不佳建議關閉此選項:<br>"
 	OpS("Dft-Oln-CkK","k","判斷在線",Dft.Oln.CkK)
 }
 Oln.OpK=function(){
 	if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
-	if(Id("Dft-Oln-CkS")){
+	if(Id("Dft-Oln-CkS")&&Dft.Oln.CkK){
 		if(Id("Dft-Oln-CkS").value<5)Dft.Oln.CkS=5;else Dft.Oln.CkS=Id("Dft-Oln-CkS").value
 	}Dft.Oln.CkK=Id("Dft-Oln-CkK").checked
 }
