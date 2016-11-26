@@ -25,9 +25,9 @@ function Upl(cnt){if(Dft.Oln.Typ=="V")return
 }
 function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"||Dft.Oln.Typ=="V")Dft.Set=0;else Dft.Set=1
-	if(!v)firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){
+	if(!v)firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){var d=new Date().getTime()
 		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){Id("msgc").innerHTML=r.val().Message;Ctl("MSw",1)}
-		if(Dft.Oln.Typ!="V"){var d=new Date().getTime()
+		if(Dft.Oln.Typ!="V"){
 			firebase.database().ref("Battle/"+Dft.Oln.Id).update({LastActive:d});if(Dft.Oln.CkK)Oln.Ckr(d,1)
 		}
 		var brd=r.val().BoardContent.split("/")
@@ -60,16 +60,15 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 	}else{if(Tn<2)Id("msgr").style.opacity=1
 		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
 		OpS("Dft-Oln-CkS","t","更新秒數",Dft.Oln.CkS)
-		Id("OptionMenu").innerHTML+="效能不佳建議關閉此選項:<br>"
-		OpS("Dft-Oln-CkK","k","判斷在線",Dft.Oln.CkK)
 	}
+	Id("OptionMenu").innerHTML+="效能不佳建議關閉此選項:<br>"
+	OpS("Dft-Oln-CkK","k","判斷在線",Dft.Oln.CkK)
 }
 Oln.OpK=function(){
 	if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
 	if(Id("Dft-Oln-CkS")){
 		if(Id("Dft-Oln-CkS").value<5)Dft.Oln.CkS=5;else Dft.Oln.CkS=Id("Dft-Oln-CkS").value
-		Dft.Oln.CkK=Id("Dft-Oln-CkK").checked
-	}
+	}Dft.Oln.CkK=Id("Dft-Oln-CkK").checked
 }
 Oln.Ffb=function(){
 	(function(d, s, id) {
