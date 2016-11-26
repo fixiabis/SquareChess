@@ -8,8 +8,8 @@ for(var i=0;i<4;i++)Dft.Blk=Dft.Blk.concat(Shl.Ara.Attack[i])
 Dft.Attack={Ara:1}
 Shl.Rul.Attack=function(){
 	for(var i=0;i<2;i++){
-		if(Ara(Shl.Ara.Attack[i],Sqr.Sym[i]+"A")||Ara(Shl.Ara.Attack[i+2],Sqr.Sym[i]+"A")||
-		Ara(Shl.Ara.Attack[i+2],Sqr.Sym[(i+1)%2]+">0"))return Sqr.Sym[(i+1)%2]+" Win"
+		if(Ara(Shl.Ara.Attack[i],Sqr.Sym[i]+"F")||Ara(Shl.Ara.Attack[i+2],Sqr.Sym[i]+"F")||
+		Ara(Shl.Ara.Attack[i+2],Sqr.Sym[(i+1)%2]+">0"))return Sqr.Sym[(i+1)%2]+"獲勝"
 	}
 }
 Shl.Lmt.Attack=function(){return 0}
@@ -23,7 +23,7 @@ Shl.Mrk.Attack=function(){
 	}
 }
 Shl.Brd.Attack=function(){}
-Shl.Adn.Attack=function(){Set("A1");Set("I9")}
+Shl.Adn.Attack=function(){Qre("A1","Sym",0);Qre("I9","Sym",1);Tn=2}
 Shl.Ckr.Attack=function(crd){return 1}
 Shl.Opt.Attack=function(){
 	Id("OptionMenu").innerHTML+="Attack設定:<br>"
