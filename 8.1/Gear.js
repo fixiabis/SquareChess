@@ -1,4 +1,4 @@
-﻿var Oln={}
+﻿var Oln={CkS:1}
 function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1],LastActive:new Date().getTime(),BoardContent:""}
 	if(Jcd)id=Jcd
 	if(Typ=="J"){if(!Jcd)while(id.length==8)id=prompt("輸入id");Dft.Oln.Typ="X"}
@@ -28,7 +28,7 @@ function Ini(){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){
 		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){Id("msgc").innerHTML=r.val().Message;Ctl("MSw",1)}
 		if(Dft.Oln.Typ!="V"){var d=new Date().getTime()
-			firebase.database().ref("Battle/"+Dft.Oln.Id).update({LastActive:d});Oln.Ckr(d,1)
+			firebase.database().ref("Battle/"+Dft.Oln.Id).update({LastActive:d});Oln.Ckr(d,1);Oln.CkS=1
 		}
 		var brd=r.val().BoardContent.split("/")
 		if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini()}
@@ -38,8 +38,8 @@ function Ini(){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 		}
 	})
 }
-Oln.Ckr=function(d,s){if(s)return setTimeout("Oln.Ckr("+d+")",Dft.Oln.CkS*1000)
-	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){
+Oln.Ckr=function(d,s){if(s||Oln.CkS)return setTimeout("Oln.Ckr("+d+")",Dft.Oln.CkS*1000)
+	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){Oln.CkS=0
 		if(r.val().LastActive==d&&r.val().PlayerX){
 			if(Dft.Oln.Typ=="O"){
 				if(confirm("對方已不在線,是否要更新房間?"))
