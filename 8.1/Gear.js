@@ -1,5 +1,5 @@
-﻿var Oln={},ckt=0
-function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1],LastActive:new Date().getTime(),BoardContent:""}
+﻿var Oln={}
+function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1],BoardContent:""}
 	if(Jcd)id=Jcd
 	if(Typ=="J"){if(!Jcd)while(!id)id=prompt("輸入id");Dft.Oln.Typ="X"}
 	else{Dft.Oln.Typ="O";if(!Jcd)id=RJC()}Dft.Oln.Id=id
@@ -18,35 +18,21 @@ function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1]
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req(Typ,Jcd)}
 }
 function Upl(cnt){if(Dft.Oln.Typ=="V")return
-	Dft.Set=0;var req={ModeName:location.search.split("?mode=")[1],LastActive:new Date().getTime()}
+	Dft.Set=0;var req={ModeName:location.search.split("?mode=")[1]}
 	req.BoardContent=cnt;doc.title=location.search.split("?mode=")[1]
 	try{firebase.database().ref("Battle/"+Dft.Oln.Id).update(req);Dft.Oln.Cln=1}
 	catch(e){if(confirm("暫時無法上傳，將繼續重試"))Upl(cnt)}
 }
 function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"||Dft.Oln.Typ=="V")Dft.Set=0;else Dft.Set=1
-	if(!v)firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){var d=new Date().getTime()
-		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){Id("msgc").innerHTML=r.val().Message;Ctl("MSw",1)}
-		if(Dft.Oln.Typ!="V"){
-			firebase.database().ref("Battle/"+Dft.Oln.Id).update({LastActive:d});if(Dft.Oln.CkK)Oln.Ckr(d,1)
-		}
-		var brd=r.val().BoardContent.split("/")
+	if(!v)firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){
+		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){
+			Id("msgc").innerHTML=r.val().Message;Ctl("MSw",1)
+		}var brd=r.val().BoardContent.split("/")
 		if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini(1)}
 		else if(brd[1]&&Sqr.Sym[(Val(brd[1])%2)]==Dft.Oln.Typ||Dft.Oln.Typ=="V"){
 			Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=brd[1];Rul()
 			if(Dft.Oln.Typ!="V"){Dft.Set=1;doc.title="輪到你下了"}
-		}
-	})
-}
-Oln.Ckr=function(d,s){console.log(ckt);if(s){setTimeout("Oln.Ckr("+d+")",Dft.Oln.CkS*1000);ckt++;return}
-	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){ckt--
-		if(r.val().LastActive==d&&r.val().PlayerX){
-			if(Dft.Oln.Typ=="O"){
-				if(confirm("對方已不在線,是否要更新房間?"))
-					firebase.database().ref("Battle/"+Dft.Oln.Id).update({PlayerX:null})
-			}else if(Dft.Oln.Typ=="X"){
-				if(confirm("對方已不在線,是否要申請房間?"))Req("R")
-			}
 		}
 	})
 }
@@ -59,25 +45,17 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 		OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)
 	}else{if(Tn<2)Id("msgr").style.opacity=1
 		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
-		if(Dft.Oln.CkK)OpS("Dft-Oln-CkS","t","更新秒數",Dft.Oln.CkS)
 	}
-	Id("OptionMenu").innerHTML+="效能不佳建議關閉此選項:<br>"
-	OpS("Dft-Oln-CkK","k","判斷在線",Dft.Oln.CkK)
 }
 Oln.OpK=function(){
 	if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
-	if(Id("Dft-Oln-CkS")&&Dft.Oln.CkK){
-		if(Id("Dft-Oln-CkS").value<5)Dft.Oln.CkS=5;else Dft.Oln.CkS=Id("Dft-Oln-CkS").value
-	}Dft.Oln.CkK=Id("Dft-Oln-CkK").checked
 }
 Oln.Ffb=function(){
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
+	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0]
+		if(d.getElementById(id))return;js=d.createElement(s);js.id=id;
+		js.src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+		fjs.parentNode.insertBefore(js, fjs)
+	}(document,'script','facebook-jssdk'))
 }
 function RJC(){var r="",t=[]
   for(var i=48;i<58;i++)t.push(String.fromCharCode(i))

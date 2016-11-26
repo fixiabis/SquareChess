@@ -9,7 +9,7 @@
 			"black"
 		]
 	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}},
-	Dft={Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1,CkS:5,CkK:1},System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}}
+	Dft={Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1},System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
