@@ -11,7 +11,7 @@ Shl.Ara.Defend=[
 ];Dft.Defend={Ara:1}
 Shl.Rul.Defend=function(){
 	for(var i=0;i<9;i++)for(var s=0;s<2;s++){
-		if(!Ara(Shl.Ara.Defend[i],Sqr.Sym[(s+1)%2]+">0")&&Ara(Shl.Ara.Defend[i],Sqr.Sym[s]+">4"))return Sqr.Sym[s]+" Win"
+		if(!Ara(Shl.Ara.Defend[i],Sqr.Sym[(s+1)%2]+">0")&&Ara(Shl.Ara.Defend[i],Sqr.Sym[s]+">4"))return Sqr.Sym[s]+"獲勝"
 	}
 }
 Shl.Lmt.Defend=function(){return 0}

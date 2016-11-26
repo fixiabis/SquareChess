@@ -4,7 +4,6 @@ Shl.Lmt.Divider=function(crd,sym){
 	var vt8=Vct("8");Hst.Rut[Tn]=[];if(Tn<2)return 0
 	for(i=0;i<8;i++){
 		var lin=Crd(crd,[vt8[i],"2"+vt8[i],"3"+vt8[i],"4"+vt8[i],"5"+vt8[i],"6"+vt8[i],"7"+vt8[i],"8"+vt8[i],"9"+vt8[i]])
-		
 		Hst.Rut[Tn]=Hst.Rut[Tn].concat(Flt(lin,
 			function(crd){var s=Qre(crd,"Sym");if(!Id(crd)||s!=sym&&s!=2)return 2;return 1}
 		))
