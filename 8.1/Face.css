@@ -40,7 +40,7 @@ section,article{overflow:hidden}
 .mouse{color:steelblue}
 .keyboard{color:indianred}
 .Opbt{height:40px;line-height:40px;text-align:center;background-color:gray;float:right;width:100px;margin-left:5px}
-#msgc{height:205px;width:100%;background-color:lightgray;position:absolute;top:25px;left:0px;overflow:auto}
+#msgc{height:255px;width:100%;background-color:lightgray;position:absolute;top:25px;left:0px;overflow:auto}
 #Message{transition:all 1s}
 #send{position:absolute;bottom:0px;right:0px;opacity:0.2;width:40px;height:20px;background-color:dimgray;text-align:center;line-height:20px}
 #send:hover{opacity:1}

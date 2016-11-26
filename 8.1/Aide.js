@@ -3,15 +3,12 @@ function MsO(e){var v=1,p=0
 	else if(e.pageX>Id("Board").offsetLeft+Id("Board").offsetWidth)p=1
 	else v=0;Mnu(v,p)
 }//滑鼠移動
-function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
-	if(Id("Setting").clientHeight==0&&Id("Message").style.height=="25px")e.preventDefault()
-	else if(k!=27&&k!=13&&Id("Message").style.height=="25px")return
+function KDw(e){
+	var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu"),g=Id("Message").style.height=="25px",t=Id("Setting").style.height=="0px"
+	if(t&&g)e.preventDefault();else if(k!=27&&k!=13&&g)return
 	switch(k){
-		case   8:if(Id("Setting").clientHeight==0)Ctl("Udo");break
-		case  13:
-				if(Id("Setting").clientHeight!=0)OpK()
-				else if(Id("Message").style.height!="25px")Ctl("Msg")
-				else Ctl("Rdo");break
+		case   8:if(t)Ctl("Udo");break
+		case  13:if(!t)OpK();else if(!g)Ctl("Msg");else Ctl("Rdo");break
 		case  18:if(c)Opt();break
 		case  27:if(Id("Message").style.height!="25px")Ctl("MSw",0);else OpK(1);break
 		case  35:Rec(Hst.Crd.length-1);break
@@ -31,7 +28,7 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
 			if(m.style.right=="0px"){
 				if(m.style.width=="0px")Mnu(1,0);else Mnu(0,1)
 			}else Mnu(1,0);break
-		default:if(k>64&&k<74)Dft.System.Crd=Chr(k)
+		default:if(k>64&&k<74&&g)Dft.System.Crd=Chr(k)
 				else if(k>48&&k<58||k>96&&k<106){var num=Chr(k);if(k>96)num=Chr(k-48)
 					if(m.style.width!="0px"){
 						if(!Dft.System.Oln)switch(Val(num)){
@@ -44,8 +41,7 @@ function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
 							case 1:Ctl("Gvp");break
 							case 2:Opt();break
 						}
-					}else{
-						var crd=Dft.System.Crd;crd+=num
+					}else{var crd=Dft.System.Crd;crd+=num
 						if(s)Ctl("Rdo",crd);else if(!c)Set(crd)
 					}
 				}
@@ -68,7 +64,7 @@ function Ctl(t,v){
 		case"Gvp":if(Dft.Set&&confirm("確定認輸?"))Upl(Dft.Oln.Typ+"認輸,"+Enm(Dft.Oln.Typ)+"獲勝");break
 		case"Msg":if(Id("msgs").value)Msg(Id("msgs").value);Id("msgs").value="";break
 		case"MSw":var k=Id("Message").style.height=="25px";if(v)k=1
-		if(k)Id("Message").style.height="250px";else Id("Message").style.height="25px"
+		if(k)Id("Message").style.height="300px";else Id("Message").style.height="25px"
 	}
 }
 function Msg(msg){console.log(msg)
