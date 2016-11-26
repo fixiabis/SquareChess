@@ -1,7 +1,7 @@
-﻿var Oln={CkS:1}
+﻿var Oln={}
 function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1],LastActive:new Date().getTime(),BoardContent:""}
 	if(Jcd)id=Jcd
-	if(Typ=="J"){if(!Jcd)while(id.length==8)id=prompt("輸入id");Dft.Oln.Typ="X"}
+	if(Typ=="J"){if(!Jcd)while(!id)id=prompt("輸入id");Dft.Oln.Typ="X"}
 	else{Dft.Oln.Typ="O";if(!Jcd)id=RJC()}Dft.Oln.Id=id
 	try{
 		firebase.database().ref("Battle/"+id).once("value",function(r){console.log(r.val())
@@ -28,7 +28,7 @@ function Ini(){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){
 		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){Id("msgc").innerHTML=r.val().Message;Ctl("MSw",1)}
 		if(Dft.Oln.Typ!="V"){var d=new Date().getTime()
-			firebase.database().ref("Battle/"+Dft.Oln.Id).update({LastActive:d});Oln.Ckr(d,1);Oln.CkS=1
+			firebase.database().ref("Battle/"+Dft.Oln.Id).update({LastActive:d});if(Dft.Oln.CkK)Oln.Ckr(d,1)
 		}
 		var brd=r.val().BoardContent.split("/")
 		if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini()}
@@ -38,8 +38,8 @@ function Ini(){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 		}
 	})
 }
-Oln.Ckr=function(d,s){if(s||Oln.CkS)return setTimeout("Oln.Ckr("+d+")",Dft.Oln.CkS*1000)
-	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){Oln.CkS=0
+Oln.Ckr=function(d,s){if(s)return setTimeout("Oln.Ckr("+d+")",Dft.Oln.CkS*1000)
+	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){
 		if(r.val().LastActive==d&&r.val().PlayerX){
 			if(Dft.Oln.Typ=="O"){
 				if(confirm("對方已不在線,是否要更新房間?"))
@@ -60,12 +60,15 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 	}else{if(Tn<2)Id("msgr").style.opacity=1
 		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
 		OpS("Dft-Oln-CkS","t","更新秒數",Dft.Oln.CkS)
+		Id("OptionMenu").innerHTML+="效能不佳建議關閉此選項:<br>"
+		OpS("Dft-Oln-CkK","k","判斷在線",Dft.Oln.CkK)
 	}
 }
 Oln.OpK=function(){
 	if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
 	if(Id("Dft-Oln-CkS")){
 		if(Id("Dft-Oln-CkS").value<5)Dft.Oln.CkS=5;else Dft.Oln.CkS=Id("Dft-Oln-CkS").value
+		Dft.Oln.CkK=Id("Dft-Oln-CkK").checked
 	}
 }
 Oln.Ffb=function(){
