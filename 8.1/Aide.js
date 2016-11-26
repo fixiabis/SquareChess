@@ -4,16 +4,16 @@ function MsO(e){var v=1,p=0
 	else v=0;Mnu(v,p)
 }//滑鼠移動
 function KDw(e){var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu")
-	if(Id("Setting").clientHeight==0&&Id("Message").clientHeight==25)e.preventDefault()
-	else if(k!=27&&k!=13&&Id("Message").clientHeight==25)return
+	if(Id("Setting").clientHeight==0&&Id("Message").style.height=="25px")e.preventDefault()
+	else if(k!=27&&k!=13&&Id("Message").style.height=="25px")return
 	switch(k){
 		case   8:if(Id("Setting").clientHeight==0)Ctl("Udo");break
 		case  13:
 				if(Id("Setting").clientHeight!=0)OpK()
-				else if(Id("Message").clientHeight!=25)Ctl("Msg")
+				else if(Id("Message").style.height!="25px")Ctl("Msg")
 				else Ctl("Rdo");break
 		case  18:if(c)Opt();break
-		case  27:OpK(1);break
+		case  27:if(Id("Message").style.height!="25px")Ctl("MSw",0);else OpK(1);break
 		case  35:Rec(Hst.Crd.length-1);break
 		case  37:if(c)Ctl("Udo");else Dft.System.Dir+="L";break
 		case  38:if(c)Ctl("Cln");else Dft.System.Dir+="F";break
