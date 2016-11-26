@@ -12,6 +12,7 @@
 	Dft={Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1},System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
+	while(Instr(mdN,"%3A")>-1)mdN=mdN.replace("%3A",":")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
 }//取得參數
 function MdL(v){
