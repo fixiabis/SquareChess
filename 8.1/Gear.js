@@ -67,7 +67,7 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 Oln.OpK=function(){
 	if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
 	if(Id("Dft-Oln-CkS")){
-		if(Id("Dft-Oln-CkS").value<5)Dft.Oln.CkS=5;else Dft.Oln.CkS=Id("Dft-Oln-CkS").value
+		if(Id("Dft-Oln-CkS").value<1)Dft.Oln.CkS=1;else Dft.Oln.CkS=Id("Dft-Oln-CkS").value
 		Dft.Oln.CkK=Id("Dft-Oln-CkK").checked
 	}
 }
