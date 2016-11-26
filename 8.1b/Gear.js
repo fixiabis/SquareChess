@@ -4,22 +4,20 @@ function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1]
 	if(Typ=="J"){if(!Jcd)while(id.length==8)id=prompt("輸入id");Dft.Oln.Typ="X"}
 	else{Dft.Oln.Typ="O";if(!Jcd)id=RJC()}Dft.Oln.Id=id
 	try{
-		firebase.database().ref("Battle/"+id).once("value",function(r){
+		firebase.database().ref("Battle/"+id).once("value",function(r){console.log(r.val())
 			if(r.val()!=null&&Typ=="R"){id=RJC();return Req(Typ,id)}
 			if(Typ=="R")firebase.database().ref("Battle/"+id).update(req)
 			firebase.database().ref("Battle/"+id).once("value",function(r){
-				if(Typ=="R"){var url=location.href+"#"+id
-					prompt("註冊成功,貼給朋友即可開始對戰",url)
-					Id("msgr").childNodes[1].setAttribute("data-href",url)
-					Oln.Ffb()
+				if(Typ=="R"){var url=location.href+"#"+id;prompt("註冊成功,貼給朋友即可開始對戰",url)
+					Id("msgr").childNodes[1].setAttribute("data-href",url);Oln.Ffb()
 				}else if(Typ=="J"&&!r.val().PlayerX){
 					firebase.database().ref("Battle/"+id).update({PlayerX:"exist"});alert("加入成功")
 				}else{alert("進入觀賞模式");Dft.Oln.Typ="V"}
 			});Ini()
 		})
-	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req()}
+	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req(Typ,Jcd)}
 }
-function Upl(cnt){if(Dft.Oln.Typ=="V")return;console.log(cnt)
+function Upl(cnt){if(Dft.Oln.Typ=="V")return
 	Dft.Set=0;var req={ModeName:location.search.split("?mode=")[1],LastActive:new Date().getTime()}
 	req.BoardContent=cnt;doc.title=location.search.split("?mode=")[1]
 	try{firebase.database().ref("Battle/"+Dft.Oln.Id).update(req);Dft.Oln.Cln=1}
