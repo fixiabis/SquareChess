@@ -19,7 +19,7 @@ function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1]
 		})
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req()}
 }
-function Upl(cnt){if(Dft.Oln.Typ=="V")return
+function Upl(cnt){if(Dft.Oln.Typ=="V")return;console.log(cnt)
 	Dft.Set=0;var req={ModeName:location.search.split("?mode=")[1],LastActive:new Date().getTime()}
 	req.BoardContent=cnt;doc.title=location.search.split("?mode=")[1]
 	try{firebase.database().ref("Battle/"+Dft.Oln.Id).update(req);Dft.Oln.Cln=1}
