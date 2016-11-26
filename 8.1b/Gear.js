@@ -27,12 +27,19 @@ function Ini(){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"||Dft.Oln.Typ=="V")Dft.Set=0;else Dft.Set=1
 	firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){
 		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){Id("msgc").innerHTML=r.val().Message;Ctl("MSw",1)}
+		var d=new Date().getTime()
+		firebase.database().ref("Battle/"+Dft.Oln.Id).update({LastActive:d});Oln.Ckr(d,1)
 		var brd=r.val().BoardContent.split("/")
 		if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini()}
 		else if(brd[1]&&Sqr.Sym[(Val(brd[1])%2)]==Dft.Oln.Typ||Dft.Oln.Typ=="V"){
 			Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=brd[1];Rul()
 			if(Dft.Oln.Typ!="V"){Dft.Set=1;doc.title="輪到你下了"}
 		}
+	})
+}
+Oln.Ckr=function(d,s){if(s)return setTimeout("Oln.Ckr("+d+")",5000)
+	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){
+		if(r.val().LastActive==d&&r.val().PlayerX)if(confirm("對方已不在線,是否要申請新房間?"))Req("R")
 	})
 }
 function Joi(){
