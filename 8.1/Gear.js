@@ -64,6 +64,3 @@ function RJC(){var r="",t=[]
   for(i=0;i<8;i++)r+=t[Math.floor(Math.random()*36)]
   return r
 }
-function BkC(){var r=""
-	for(var i=0;i<10;i++)r+=Math.floor(Math.random()*10);return r
-}
