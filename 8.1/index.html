@@ -32,6 +32,9 @@ function Ldr(){
 		})
 		Class("list")[i].addEventListener("contextmenu",function(){Lst()})
 	}
+	for(var i=0;i<Class("remix").length;i++)Class("remix")[i].addEventListener("click",function(){
+		Dir("chess.html?mode="+this.innerHTML)
+	})
 	for(i=0;i<Tag("a").length;i++){
 		Tag("a")[i].addEventListener("click",function(){
 			Stn(this.innerHTML)
@@ -129,22 +132,22 @@ function KDw(e){var k=e.which
 		<section><font class="title2">試試這些基本操作</font>
 			<article class="Mobile" style="height:0px">
 				<ol>
-					<li>點選<font class="mouse">格子</font>來設置符號</li>
-					<li>點選<font class="mouse">Clean</font>清除棋盤</li>
-					<li>點選<font class="mouse">Undo</font>到上一步</li>
-					<li>按住<font class="mouse">Clean</font>做功能設定</li>
-					<li>按住<font class="mouse">Undo</font>到指定步</li>
+					<li>點選<font class="mouse">格子</font>來<font class="command">設置符號</font></li>
+					<li>點選<font class="mouse">Clean</font><font class="command">清除棋盤</font></li>
+					<li>點選<font class="mouse">Undo</font><font class="command">到上一步</font></li>
+					<li>按住<font class="mouse">Clean</font>做<font class="command">功能設定</font></li>
+					<li>按住<font class="mouse">Undo</font><font class="command">到指定步</font></li>
 				</ol>
 			</article>
 			<article class="Computer" style="height:0px">
 				<ol>
-					<li>點選<font class="mouse">格子</font>或以鍵盤輸入座標(E5即按下<font class="keyboard">E+5</font>)來設置符號</li>
-					<li>滑鼠靠近<font class="mouse">空白處</font>或按下<font class="keyboard">]</font>或<font class="keyboard">[</font>喚出選單</li>
-					<li>點選<font class="mouse">Clean</font>或按下<font class="keyboard">Delete</font>清除棋盤</li>
-					<li>點選<font class="mouse">Undo</font>或按下<font class="keyboard">Ctrl+Z</font>到上一步</li>
-					<li>點選<font class="mouse">Redo</font>或按下<font class="keyboard">Ctrl+Y</font>到下一步</li>
-					<li>點選<font class="mouse">Goto</font>或按下<font class="keyboard">Ctrl+H</font>到指定步</li>
-					<li>點選<font class="mouse">Addons</font>或按下<font class="keyboard">Ctrl+Alt</font>做功能設定</li>
+					<li>點選<font class="mouse">格子</font>或以鍵盤輸入座標(E5即按下<font class="keyboard">E+5</font>)來<font class="command">設置符號</font></li>
+					<li>滑鼠靠近<font class="mouse">空白處</font>或按下<font class="keyboard">]</font>或<font class="keyboard">[</font>即可<font class="command">喚出選單</font></li>
+					<li>點選<font class="mouse">Clean</font>或按下<font class="keyboard">Delete</font>以<font class="command">清除棋盤</font></li>
+					<li>點選<font class="mouse">Undo</font>或按下<font class="keyboard">Ctrl+Z</font><font class="command">到上一步</font></li>
+					<li>點選<font class="mouse">Redo</font>或按下<font class="keyboard">Ctrl+Y</font><font class="command">到下一步</font></li>
+					<li>點選<font class="mouse">Goto</font>或按下<font class="keyboard">Ctrl+H</font><font class="command">到指定步</font></li>
+					<li>點選<font class="mouse">Addons</font>或按下<font class="keyboard">Ctrl+Alt</font>做<font class="command">功能設定</font></li>
 				</ol>
 			</article>
 		</section>
@@ -315,19 +318,19 @@ function KDw(e){var k=e.which
 	<section id="Remix"><font class="title1">混合玩法</font><br>
 		除上面提供預設模式外，部分模式間是可以混合的，例如:
 		<ol>
-			<li>Adapter:Attack</li>
-			<li>Divider:Scheme</li>
-			<li>ByLine</li>
-			<li>Divider:ByLine</li>
-			<li>Adapter:ByLine</li>
-			<li>Connect:Forbid</li>
-			<li>Adapter:Forbid</li>
-			<li>Divider:Forbid</li>
-			<li>Connect:Follow</li>
-			<li>Adapter:Follow</li>
-			<li>Connect:Zombie</li>
-			<li>Blocker:Zombie</li>
-			<li>Adapter:Zombie</li>
+			<li class="remix">Adapter:Attack</li>
+			<li class="remix">Divider:Scheme</li>
+			<li class="remix">ByLine</li>
+			<li class="remix">Divider:ByLine</li>
+			<li class="remix">Adapter:ByLine</li>
+			<li class="remix">Connect:Forbid</li>
+			<li class="remix">Adapter:Forbid</li>
+			<li class="remix">Divider:Forbid</li>
+			<li class="remix">Connect:Follow</li>
+			<li class="remix">Adapter:Follow</li>
+			<li class="remix">Connect:Zombie</li>
+			<li class="remix">Blocker:Zombie</li>
+			<li class="remix">Adapter:Zombie</li>
 		</ol>
 	</section>
 </article>

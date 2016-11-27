@@ -23,6 +23,8 @@ a{color:gray;text-decoration:underline}
 .list[title="Blocker系列"]:hover{color:crimson}
 .list[title="Divider系列"]:hover{color:seagreen}
 .list[title="Adapter系列"]:hover{color:darkorange}
+.remix{text-decoration:underline}
+.remix:hover{color:skyblue}
 .Opt{font-size:inherit}
 .list:hover{background-color:lightgray;color:dimgray}
 #content{margin:10px}
@@ -37,8 +39,9 @@ section,article{overflow:hidden}
 	line-height:40px;background-color:lightgray;opacity:0.5
 }
 #ck:hover{opacity:1}
-.mouse{color:steelblue}
+.command{color:steelblue}
 .keyboard{color:indianred}
+.mouse{color:lightseagreen}
 .Opbt{height:40px;line-height:40px;text-align:center;background-color:gray;float:right;width:100px;margin-left:5px}
 #msgc{height:255px;width:100%;background-color:lightgray;position:absolute;top:25px;left:0px;overflow:auto}
 #Message{transition:all 1s}
