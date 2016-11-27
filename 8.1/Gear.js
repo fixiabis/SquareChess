@@ -1,10 +1,10 @@
 ﻿var Oln={}
-function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1],BoardContent:""}
+function Req(Typ,Jcd){var id="",req={ModeName:doc.title,BoardContent:""};Dft.Oln.MdN=doc.title
 	if(Jcd)id=Jcd
 	if(Typ=="J"){if(!Jcd)while(!id)id=prompt("輸入id");Dft.Oln.Typ="X"}
 	else{Dft.Oln.Typ="O";if(!Jcd)id=RJC()}Dft.Oln.Id=id
 	try{
-		firebase.database().ref("Battle/"+id).once("value",function(r){console.log(r.val())
+		firebase.database().ref("Battle/"+id).once("value",function(r){
 			if(r.val()!=null&&Typ=="R"){id=RJC();return Req(Typ,id)}
 			if(Typ=="R")firebase.database().ref("Battle/"+id).update(req)
 			firebase.database().ref("Battle/"+id).once("value",function(r){
@@ -18,8 +18,8 @@ function Req(Typ,Jcd){var id="",req={ModeName:location.search.split("?mode=")[1]
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req(Typ,Jcd)}
 }
 function Upl(cnt){if(Dft.Oln.Typ=="V")return
-	Dft.Set=0;var req={ModeName:location.search.split("?mode=")[1]}
-	req.BoardContent=cnt;doc.title=location.search.split("?mode=")[1]
+	Dft.Set=0;var req={ModeName:Dft.Oln.MdN}
+	req.BoardContent=cnt;doc.title=Dft.Oln.MdN
 	try{firebase.database().ref("Battle/"+Dft.Oln.Id).update(req);Dft.Oln.Cln=1}
 	catch(e){if(confirm("暫時無法上傳，將繼續重試"))Upl(cnt)}
 }
