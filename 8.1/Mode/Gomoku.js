@@ -1,4 +1,4 @@
-Shl.Ara.Gomoku=[];Dft.Gomoku={Ara:2}
+Shl.Ara.Gomoku=[];Dft.Gomoku={Ara:2,Pro:0}
 Shl.Rul.Gomoku=function(){var c5=[[Sel("A1:I5"),"B"],[Sel("A1:E9"),"R"],[Sel("A1:E5"),"BR"],[Sel("A5:E9"),"FR"]],chs=[[],[]]
 	for(var i=0;i<c5.length;i++){
 		for(var j=0;j<c5[i][0].length;j++){
@@ -20,14 +20,16 @@ Shl.Mrk.Gomoku=function(){var sym=Tn%2
 	}
 }
 Shl.Brd.Gomoku=function(){}
-Shl.Adn.Gomoku=function(){}
-Shl.Ckr.Gomoku=function(){return 1}
+Shl.Adn.Gomoku=function(){if(Dft.Gomoku.Pro){Qre("E5","Sym",0);Tn=1}}
+Shl.Ckr.Gomoku=function(crd){if(Tn==2&&Dft.Gomoku.Pro&&Sel("C3:G7").indexOf(crd)>-1)return 0;return 1}
 Shl.Opt.Gomoku=function(){
 	Id("OptionMenu").innerHTML+="Gomoku設定:<br>"
 	OpS("Gomoku-Ara-0/Gomoku-Ara","r","我方可行區域",Dft.Gomoku.Ara==0)
 	OpS("Gomoku-Ara-1/Gomoku-Ara","r","對方可行區域",Dft.Gomoku.Ara==1)
 	OpS("Gomoku-Ara-2/Gomoku-Ara","r","隱藏可行區域",Dft.Gomoku.Ara==2)
+	OpS("Gomoku-Pro","k","使用Pro規則",Dft.Gomoku.Pro)
 }
 Shl.OpK.Gomoku=function(){
 	for(var i=0;i<3;i++)if(Id("Gomoku-Ara-"+i).checked)Dft.Gomoku.Ara=i
+	Dft.Gomoku.Pro=Id("Gomoku-Pro").checked
 }
