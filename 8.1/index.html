@@ -156,7 +156,7 @@ function KDw(e){var k=e.which
 	<section id="GameRule"><font class="title1">遊戲規則</font>
 		<br>遊戲的<a>基本準則</a>
 		<section><font class="title2">準則說明</font>
-			<section style="background:lightgray;color:white">基本準則:當符合條件將形成<a>禁區</a>，當無法設置符號時對方獲勝</section>
+			<section style="background:lightgray;color:white">基本準則:雙方第一回合皆可隨意設置一枚符號於場上，場上有符號處不得重複設置，當符合條件將形成<a>禁區</a>，當無法設置符號時對方獲勝</section>
 			<section style="background:royalblue;color:white">Connect準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為一格，其餘無法設置</section>
 			<section style="background:crimson;color:white">Blocker準則:用四枚符號形成矩形，我方形成指定形狀時，其中對方是無法設置的</section>
 			<section style="background:seagreen;color:white">Divider準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為無限距離長，除非該方有非我方符號存在，其餘無法設置</section>
@@ -185,7 +185,6 @@ function KDw(e){var k=e.which
 		<section><font class="title2">Square.Connect</font>
 			<article>規則說明
 				<ol>
-					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
 					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
 				</ol>
 			</article>
@@ -202,7 +201,6 @@ function KDw(e){var k=e.which
 		<section><font class="title2">Connect:Defend</font>
 			<article>規則說明
 				<ol>
-					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
 					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
 					<li>在一區域佔下我方符號五枚，且無對方符號時，我方獲勝</li>
 				</ol>
@@ -248,7 +246,6 @@ function KDw(e){var k=e.which
 		<section><font class="title2">Square.Divider</font>
 			<article>規則說明
 				<ol>
-					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
 					<li>第二回合後設置符號需依照<a>Divider準則</a>設置</li>
 				</ol>
 			</article>
@@ -256,7 +253,6 @@ function KDw(e){var k=e.which
 		<section><font class="title2">Divider:Zombie</font>
 			<article>規則說明
 				<ol>
-					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
 					<li>第二回合後設置符號需依照<a>Divider準則</a>設置</li>
 					<li>不同的符號靠近時雙方皆會變成<a>殭屍</a></li>
 				</ol>
@@ -265,7 +261,6 @@ function KDw(e){var k=e.which
 		<section><font class="title2">Divider:Follow</font>
 			<article>規則說明
 				<ol>
-					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
 					<li>第二回合後設置符號需依照<a>Divider準則</a>設置</li>
 					<li>變更原生準則，原依照己方所有符號，改為依照己方上回合符號</li>
 				</ol>
@@ -274,8 +269,14 @@ function KDw(e){var k=e.which
 		<section><font class="title2">Square.Adapter</font>
 			<article>規則說明
 				<ol>
-					<li>雙方第一回合皆可隨意設置一枚符號於場上</li>
 					<li>第二回合後設置符號需依照<a>Adapter準則</a>設置</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Adapter:Follow</font>
+			<article>規則說明
+				<ol>
+					<li>第二回合後設置符號不得依照<a>Adapter準則</a>設置</li>
 				</ol>
 			</article>
 		</section>
