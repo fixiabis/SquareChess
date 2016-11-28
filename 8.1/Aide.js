@@ -11,7 +11,7 @@ function KDw(e){
 		case   8:if(t)Ctl("Udo");break
 		case  13:if(!t)OpK();else if(!g)Ctl("Msg");else Ctl("Rdo");break
 		case  18:if(c)Opt();break
-		case  27:if(Id("Message").style.height!="25px")Ctl("MSw",0);else OpK(1);break
+		case  27:if(!g)Ctl("MSw",0);else OpK(1);break
 		case  35:Rec(Hst.Crd.length-1);break
 		case  37:if(c)Ctl("Udo");else Dft.System.Dir+="L";break
 		case  38:if(c)Ctl("Cln");else Dft.System.Dir+="F";break
