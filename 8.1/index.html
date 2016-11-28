@@ -21,7 +21,7 @@ function CPg(v){
 	Hid(Id('content'));Shw(Id(v));Shw(Id('content'))
 }
 function Ldr(){
-	for(var i=0;i<14;i++){
+	for(var i=0;i<15;i++){
 		Class("list")[i].addEventListener("mouseover",function(){
 			Hid(Id("content"));Hid(Id("GameRule"))
 			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
@@ -126,6 +126,7 @@ function KDw(e){var k=e.which
         <div class="list" title="Blocker系列">Square.Blocker</div>
         <div class="list" title="Blocker系列">Blocker:ByLine</div>
         <div class="list" title="Blocker系列">Blocker:Forbid</div>
+        <div class="list" title="Blocker系列">Blocker:Anomal</div>
         <div class="list" title="Divider系列">Square.Divider</div>
         <div class="list" title="Divider系列">Divider:Zombie</div>
         <div class="list" title="Divider系列">Divider:Follow</div>
@@ -240,7 +241,6 @@ function KDw(e){var k=e.which
 				<ol>
 					<li>雙方皆可隨意設置一枚符號於場上</li>
 					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
-					<li>用四枚符號形成矩形</li>
 					<li>用兩枚符號形成直線</li>
 				</ol>
 			</article>
@@ -251,6 +251,15 @@ function KDw(e){var k=e.which
 					<li>雙方皆可隨意設置一枚符號於場上</li>
 					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
 					<li>對方不可設置的地方，我方也無法設置</li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">Blocker:Anomal</font>
+			<article>規則說明
+				<ol>
+					<li>雙方皆可隨意設置一枚符號於場上</li>
+					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
+					<li>用多枚符號形成不規則形狀</li>
 				</ol>
 			</article>
 		</section>
