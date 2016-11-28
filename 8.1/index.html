@@ -21,7 +21,7 @@ function CPg(v){
 	Hid(Id('content'));Shw(Id(v));Shw(Id('content'))
 }
 function Ldr(){
-	for(var i=0;i<13;i++){
+	for(var i=0;i<14;i++){
 		Class("list")[i].addEventListener("mouseover",function(){
 			Hid(Id("content"));Hid(Id("GameRule"))
 			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
@@ -122,6 +122,7 @@ function KDw(e){var k=e.which
         <div class="list" title="Adapter系列">Square.Adapter</div>
         <div class="list" title="Adapter系列">Adapter:Invert</div>
         <div class="list" title="五子棋">Gomoku</div>
+        <div class="list" title="類圍棋">GoLike</div>
 		<div class="list" title="社交網站" onclick="CPg('Social')">社交網站</div>
 		<div class="list" title="回報問題" onclick="CPg('Problem')">回報問題</div>
 		<div class="list" title="線上對戰" onclick="CPg('Online')">線上對戰</div>
@@ -281,7 +282,19 @@ function KDw(e){var k=e.which
 			</article>
 		</section>
 		<section><font class="title2">Gomoku</font>
-			<article><a href="https://zh.wikipedia.org/wiki/Gomoku">五子棋規則</a></article>
+			<article>
+				<ol>
+					<li><a href="https://zh.wikipedia.org/wiki/五子棋">五子棋規則</a></li>
+				</ol>
+			</article>
+		</section>
+		<section><font class="title2">GoLike</font>
+			<article>
+				<ol>
+					<li><a href="https://zh.wikipedia.org/wiki/圍棋">圍棋規則</a></li>
+					<li>不提子，被圍起來的符號都變成<a>殭屍</a></li>
+				</ol>
+			</article>
 		</section>
 	</section>
 	<section id="Problem"><font class="title1">回報問題</font><br>
