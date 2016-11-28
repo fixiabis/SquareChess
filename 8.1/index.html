@@ -21,7 +21,7 @@ function CPg(v){
 	Hid(Id('content'));Shw(Id(v));Shw(Id('content'))
 }
 function Ldr(){
-	for(var i=0;i<12;i++){
+	for(var i=0;i<13;i++){
 		Class("list")[i].addEventListener("mouseover",function(){
 			Hid(Id("content"));Hid(Id("GameRule"))
 			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
@@ -120,6 +120,7 @@ function KDw(e){var k=e.which
         <div class="list" title="Divider系列">Divider:Zombie</div>
         <div class="list" title="Divider系列">Divider:Follow</div>
         <div class="list" title="Adapter系列">Square.Adapter</div>
+        <div class="list" title="Adapter系列">Adapter:Invert</div>
         <div class="list" title="五子棋">Gomoku</div>
 		<div class="list" title="社交網站" onclick="CPg('Social')">社交網站</div>
 		<div class="list" title="回報問題" onclick="CPg('Problem')">回報問題</div>
@@ -321,20 +322,26 @@ function KDw(e){var k=e.which
 			<li class="remix">Connect:Follow</li>
 			<li class="remix">Connect:Zombie</li>
 			<li class="remix">Connect:Forbid</li>
+			<li class="remix">Connect:Invert</li>
 			<li class="remix">Blocker:Zombie</li>
 			<li class="remix">Divider:Scheme</li>
 			<li class="remix">Divider:ByLine</li>
 			<li class="remix">Divider:Forbid</li>
 			<li class="remix">Divider:Follow</li>
-			<li class="remix">Divider:Follow:Forbid</li>
-			<li class="remix">Divider:ByLine:Forbid</li>
+			<li class="remix">Divider:Invert</li>
 			<li class="remix">Adapter:Attack</li>
 			<li class="remix">Adapter:Follow</li>
 			<li class="remix">Adapter:ByLine</li>
 			<li class="remix">Adapter:Forbid</li>
 			<li class="remix">Adapter:Zombie</li>
-			<li class="remix">ByLine</li>
-			<li class="remix">ByLine:Forbid</li>
+			<li class="remix">Gomoku:Blocker</li>
+			<li class="remix">Gomoku:Divider</li>
+			<li class="remix">Gomoku:Connect</li>
+		</ol>
+		除上例外，只要規則之間不會發生衝突，可以將模式進行多重混合，以下為會發生衝突的類型:
+		<ol>
+			<li class="remix">Connect:Adapter</li>
+			<li class="remix">Divider:Adapter</li>
 		</ol>
 	</section>
 </article>

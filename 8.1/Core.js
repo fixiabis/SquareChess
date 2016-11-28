@@ -92,7 +92,9 @@ function Lmt(crd,sym){if(Qre(crd,"Sym")!=2)return 1;if(typeof sym=="undefined")s
 	for(var i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,sym))return 1;return 0
 }//設置限制
 function Ckr(crd){if(Qre(crd,"Sym")!=2)return 0
-	for(var i=MdQ.length-1;i>-1;i--)if(!Shl.Ckr[MdQ[i]](crd))return 0;return 1
+	for(var i=MdQ.length-1;i>-1;i--){var ckr=Shl.Ckr[MdQ[i]](crd)
+		if(ckr==2)return 1;else if(!ckr)return 0
+	}return 1
 }//設置確認
 function Mrk(){Brd();BJd()
 	if(Dft.System.Nxt)Qre(BJd(),"Opa",0.2)
