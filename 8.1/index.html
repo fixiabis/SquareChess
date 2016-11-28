@@ -41,6 +41,16 @@ function Ldr(){
 		})
 	}Rsz();var shw="MainPage";if(location.hash.length>1){var pg=Mid(location.hash,1,location.hash.length-1);if(Id(pg))shw=pg}
 	Hid(Id("content"));Shw(Id(shw));Shw(Id("content"))
+	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;
+		js=d.createElement(s);js.id=id;
+		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
+		fjs.parentNode.insertBefore(js,fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
+		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
+		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
+		t._e=[];t.ready=function(f){t._e.push(f)};return t;
+	}(document, "script", "twitter-wjs"));
 }
 function Ich(f,v){
 	for(var i=0;i<f.childNodes.length;i++){
@@ -361,14 +371,4 @@ function KDw(e){var k=e.which
 </article>
 </body>
 <div id="fb-root"></div>
-<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;
-  js=d.createElement(s);js.id=id;
-  js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
-  fjs.parentNode.insertBefore(js,fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
-  if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
-  js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
-  t._e=[];t.ready=function(f){t._e.push(f)};return t;
-}(document, "script", "twitter-wjs"));</script>
 </html>
