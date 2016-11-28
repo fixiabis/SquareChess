@@ -1,4 +1,4 @@
-Shl.Ara.Invert=[];Dft.Invert={};Dft.System.iTn=1
+Shl.Ara.Invert=[];Dft.Invert={};Dft.System.Nxt=1
 Shl.Rul.Invert=function(){}
 Shl.Lmt.Invert=function(){}
 Shl.Mrk.Invert=function(){}
