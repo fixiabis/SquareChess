@@ -4,7 +4,7 @@ function MsO(e){var v=1,p=0
 	else v=0;Mnu(v,p)
 }//滑鼠移動
 function KDw(e){
-	var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu"),t=Id("Setting").style.height=="0px",g=0
+	var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu"),t=Id("Setting").style.height=="0px",g=1
 	if(Id("Message"))g=Id("Message").style.height=="25px"
 	if(t&&g)e.preventDefault();else if(k!=27&&k!=13&&g)return
 	switch(k){

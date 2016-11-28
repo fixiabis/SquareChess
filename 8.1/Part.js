@@ -185,3 +185,24 @@ function BJd(){var nxt=[],nxn=[]
 		else nxt.push(Chr(cd1)+cd2)
 	}if(nxt.length==0&&Tn>2)Jdg(Sqr.Sym[(Tn+1)%2]+"獲勝");return nxn
 }
+function Map(crd,typ){if(!typ)typ="4"
+	var sym=Qre(crd,"Sym"),vst=Flt(Crd(crd,typ),function(crd){if(Id(crd)&&Qre(crd,"Sym")==sym)return 1;return 0});vst.push(crd)
+	while(1){var cds=Sel("All"),ckr=0
+		for(var i=0;i<cds.length;i++){
+			if(vst.indexOf(cds[i])>-1||Qre(cds[i],"Sym")!=sym)continue;var cs2=Crd(cds[i],typ)
+			for(var j=0;j<cs2.length;j++){
+				if(vst.indexOf(cs2[j])>-1){vst.push(cds[i]);ckr++;break}
+			}
+		}if(!ckr)break
+	}return vst
+}
+Map.Bdr=function(cds,ckr,odr,typ){if(!typ)typ="4";var res=[]
+	for(var i=0;i<cds.length;i++){
+		var grp=Flt(Crd(cds[i],typ),function(crd){if(Id(crd)&&cds.indexOf(crd)<0)return 1;return 0})
+		for(var j=0;j<grp.length;j++)grp[j]=Qre(grp[j],"Sym");res=res.concat(grp)
+	}console.log(res)
+	if(!odr(res,ckr))return 0;return 1
+}
+function Idt(grp,ckr){
+	if(typeof ckr=="undefined")ckr=grp[0];for(var i=0;i<grp.length;i++)if(grp[i]!=ckr)return 0;return 1
+}
