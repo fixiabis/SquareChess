@@ -27,7 +27,7 @@ a{color:gray;text-decoration:underline}
 .remix:hover{color:skyblue}
 .Opt{font-size:inherit}
 .list:hover{background-color:lightgray;color:dimgray}
-#content{margin:10px}
+#content{margin:10px;transition:all 2s}
 #home{transition:all 2s;width:320px;font-size:28px}
 .bt{font-family:Arial;transition:all 1s;text-align:center}
 section,article{overflow:hidden}
