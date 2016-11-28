@@ -183,7 +183,7 @@ function BJd(){var nxt=[],nxn=[]
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
 		if(!Ckr(Chr(cd1)+cd2)){if(Qre(Chr(cd1)+cd2,"Sym")==2)nxn.push(Chr(cd1)+cd2)}
 		else nxt.push(Chr(cd1)+cd2)
-	}if(nxt.length==0&&Tn>2)Jdg(Sqr.Sym[(Tn+1)%2]+"獲勝");return nxn
+	}if(nxt.length==0&&Tn>2&&Tn!=81)Jdg(Sqr.Sym[(Tn+1)%2]+"獲勝");return nxn
 }
 function Map(crd,typ){if(!typ)typ="4"
 	var sym=Qre(crd,"Sym"),vst=Flt(Crd(crd,typ),function(crd){if(Id(crd)&&Qre(crd,"Sym")==sym)return 1;return 0});vst.push(crd)
@@ -200,8 +200,7 @@ Map.Bdr=function(cds,ckr,odr,typ){if(!typ)typ="4";var res=[]
 	for(var i=0;i<cds.length;i++){
 		var grp=Flt(Crd(cds[i],typ),function(crd){if(Id(crd)&&cds.indexOf(crd)<0)return 1;return 0})
 		for(var j=0;j<grp.length;j++)grp[j]=Qre(grp[j],"Sym");res=res.concat(grp)
-	}console.log(res)
-	if(!odr(res,ckr))return 0;return 1
+	}if(!odr(res,ckr))return 0;return 1
 }
 function Idt(grp,ckr){
 	if(typeof ckr=="undefined")ckr=grp[0];for(var i=0;i<grp.length;i++)if(grp[i]!=ckr)return 0;return 1
