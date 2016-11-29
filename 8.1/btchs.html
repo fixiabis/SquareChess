@@ -5,11 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
 <meta property="og:url" content="http://fixiabis.github.io/SquareChess" />
-<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-messaging.js"></script>
-<!-- <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-storage.js"></script> -->
 <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 <meta property="og:type" content="website" /><meta property="og:title" content="Square Chess Game" />
 <meta property="og:description" content="棋盤遊戲" /><meta name="mobile-web-app-capable" content="yes" />
@@ -41,8 +36,8 @@ var config = {
 	</div>
 	<div id="menu" style="left:0px;top:0px;width:0px;height:180px;overflow:hidden">
 		<div class="list" onclick="Ctl('Gvp')">GiveUp</div>
-		<div class="list" onclick="Opt()">Addons</div>
 		<div class="list" onclick="location='index.html'">Home</div>
+		<div class="list" onclick="Opt()">Addons</div>
 	</div>
 	<div id="Setting" style="position:fixed;height:0px;width:100%;top:0px;left:0px;background-color:dimgray;overflow:auto;transition:all 1s;font-size:20px">
 		<div id="OptionMenu" style="width:99%;height:280px;top:10px;left:0.5%;position:absolute;background-color:lightgray;overflow:auto"></div>
