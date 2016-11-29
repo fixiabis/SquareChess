@@ -91,7 +91,7 @@ function Flt(grp,ord){var res=[]
 	}return res
 }//元素篩選
 function Ser(crd){
-	for(var i=0;i<Tn;i++)if(Hst.Crd[i]==crd)return i;return -1
+	return Hst.Crd.indexOf(crd)
 }
 function Cnt(){var ara={O:[],X:[],P:[]},ser=0;ara.O.All=[];ara.X.All=[];ara.P.All=[]
 	while(1){ara.O[ser]=[];ara.X[ser]=[];ara.P[ser]=[]
