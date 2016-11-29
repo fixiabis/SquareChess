@@ -1,8 +1,0 @@
-額外模式支援:
-Attack 到達指定地點時判斷勝負:Connect/Adapter
-Defend 將指定區域取得五枚，且無對方符號時獲勝:Connect
-Follow 設置限定只能以我方上ㄧ回合的符號設置:Divider/Connect/Adapter
-Scheme 到達指定地點時判斷勝負:Connect/Adapter
-ByLine 成一直條即可講該區變更為我方區域:Blocker
-Forbid 我方區域形成時雙方不得設置:Blocker/Connect/Divider/Adapter
-Zombie 鄰近的符號會變成Z:Divider/Connect/Adapter/Blocker
