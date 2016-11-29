@@ -10,7 +10,7 @@
 		]
 	},Dft={
 		Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1,MdN:""},
-		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0,Nit:100,Ato:0}
+		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0,Ato:0}
 	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
@@ -23,7 +23,6 @@ function MdL(v){
 	else md.onload=function(){
 		Itf();Rsz();Cln();if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
 		Id("LdA").parentNode.parentNode.style.display="none"
-		doc.body.style.background="black"
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
@@ -137,8 +136,6 @@ function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
 	}else Oln.Opt()
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
-	OpS("System-Fsn","k","全螢幕模式",doc.webkitIsFullScreen)
-	OpS("System-Nit","t","夜間模式(%)",Dft.System.Nit)
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
 function OpK(k){Id("Setting").style.height="0px";if(k)return
@@ -148,9 +145,6 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 		Dft.System.Qsr=Id("System-Qsr").checked
 	}else Oln.OpK();for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	Dft.System.Nxt=Id("System-Nxt").checked
-	if(Val(Id("System-Nit").value)!=NaN&&Id("System-Nit").value!="")Dft.System.Nit=Val(Id("System-Nit").value)
-	if(Id("System-Fsn").checked)Id("NightMode").webkitRequestFullScreen();else doc.webkitCancelFullScreen()
-	Id("NightMode").style.opacity=Dft.System.Nit/100
 	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
