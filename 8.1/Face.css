@@ -3,7 +3,7 @@ body{
 	-ms-user-select:none;font-family:Consolas;
 	-moz-user-select:none;-webkit-user-select:none;
 }
-body::-webkit-scrollbar,.txt::-webkit-scrollbar,#menu::-webkit-scrollbar,#OptionMenu::-webkit-scrollbar,#Setting::-webkit-scrollbar{
+body::-webkit-scrollbar,.txt::-webkit-scrollbar,#menu::-webkit-scrollbar,#OptionMenu::-webkit-scrollbar,#Setting::-webkit-scrollbar,header::-webkit-scrollbar,footer::-webkit-scrollbar{
 	width:0px;height:0px
 }
 #msgc::-webkit-scrollbar{
@@ -12,11 +12,13 @@ body::-webkit-scrollbar,.txt::-webkit-scrollbar,#menu::-webkit-scrollbar,#Option
 #msgc::-webkit-scrollbar-thumb{
 	width:5px;height:5px;background-color:dimgray;border-radius:5px
 }
-header{background-color:gray;height:40px;transition:height 2s;overflow:hidden;color:white}
-#menu{float:right;height:40px;transition:all 2s}
+header,footer{background-color:gray;height:40px;transition:height 2s;overflow:auto;color:white;width:100%;animation:Show 0.5s}
+footer{position:absolute;bottom:0px}
+#menu{transition:width 2s}
+#menu,#about{float:right;height:40px}
 .list,#home{
 	float:left;height:40px;line-height:40px;width:160px;font-size:18px;
-	text-align:center;background-color:gray;transition:background 1s;
+	text-align:center;background-color:gray;transition:background 2s;
 }
 a{color:gray;text-decoration:underline}
 .list[title="Connect系列"]:hover{color:royalblue}
@@ -49,3 +51,4 @@ section,article{overflow:hidden}
 #send:hover{opacity:1}
 #LdA{height:100px;width:100px;-webkit-user-select: none; display: block; margin:auto;background:dimgray;line-height:100px;text-align:center;border-radius:5px;animation:Load 1s infinite}
 @keyframes Load{0%{transform:rotate(720deg)}}
+@keyframes Show{0%{height:0px}}
