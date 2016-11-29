@@ -21,6 +21,7 @@ function MdL(v){
 	else md.onload=function(){
 		Itf();Rsz();Cln();if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
 		Id("LdA").parentNode.parentNode.style.display="none"
+		doc.body.style.background="black"
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
