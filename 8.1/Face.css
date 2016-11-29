@@ -49,4 +49,4 @@ section,article{overflow:hidden}
 #send:hover{opacity:1}
 #LdA{height:100px;width:100px;-webkit-user-select: none; display: block; margin:auto;background:dimgray;line-height:100px;text-align:center;border-radius:5px;animation:Load 1s infinite}
 @keyframes Load{0%{transform:rotate(720deg)}}
-#NightMode{background:white}
+#NightMode{background:white;width:100%}

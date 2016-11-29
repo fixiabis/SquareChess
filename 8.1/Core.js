@@ -132,6 +132,7 @@ function Opt(){Id("Setting").style.height="300px";var id=Dft.Oln.Id
 	}else Oln.Opt()
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
+	OpS("System-Fsn","k","全螢幕模式",doc.webkitIsFullScreen)
 	OpS("System-Nit","t","夜間模式(%)",Dft.System.Nit)
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
@@ -142,7 +143,8 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 		Dft.System.Qsr=Id("System-Qsr").checked
 	}else Oln.OpK();for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	Dft.System.Nxt=Id("System-Nxt").checked
-	if(Val(Id("System-Nit").value)!=NaN)Dft.System.Nit=Val(Id("System-Nit").value)
+	if(Val(Id("System-Nit").value)!=NaN&&Id("System-Nit").value!="")Dft.System.Nit=Val(Id("System-Nit").value)
+	if(Id("System-Fsn").checked)Id("NightMode").webkitRequestFullScreen();else doc.webkitCancelFullScreen()
 	Id("NightMode").style.opacity=Dft.System.Nit/100
 	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
 }//功能確認
