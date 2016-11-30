@@ -86,6 +86,7 @@ function Mnu(v){
 	var h=Tag("header")[0].scrollHeight;if(!v)h="40"
 	Tag("header")[0].style.height=h+"px"
 	if(!scn){Id("home").style.height=h+"px";Id("home").style.lineHeight=h+"px"}
+	$(".space")[0].style.height=h+"px"
 }
 function Stn(v){
 	var stn=[
@@ -142,6 +143,7 @@ function KDw(e){var k=e.which
         <div class="list" title="類圍棋">GoLike</div>
     </div>
 </header>
+<div class="space"></div>
 <article id="content" style="color:dimgray;height:0px"><font></font>
 	<section id="MainPage"><font class="title1">歡迎使用</font>
 		<section><font class="title2">試試這些基本操作</font>
@@ -157,7 +159,7 @@ function KDw(e){var k=e.which
 			<article class="Computer" style="height:0px">
 				<ol>
 					<li>點選<font class="mouse">格子</font>或以鍵盤輸入座標(E5即按下E+5)來<font class="command">設置符號</font></li>
-					<li>滑鼠靠近<font class="mouse">空白處</font>或按下<font class="keyboard">]</font>或<font class="keyboard">[</font>即可<font class="command">喚出選單</font></li>
+					<li>滑鼠靠近<font class="mouse">空白處</font>或按下]或[即可<font class="command">喚出選單</font></li>
 					<li>點選<font class="mouse">Clean</font>或按下Del以<font class="command">清除棋盤</font></li>
 					<li>點選<font class="mouse">Undo</font>或按下Ctrl+Z<font class="command">到上一步</font></li>
 					<li>點選<font class="mouse">Redo</font>或按下Ctrl+Y<font class="command">到下一步</font></li>
@@ -165,6 +167,9 @@ function KDw(e){var k=e.which
 					<li>點選<font class="mouse">Addons</font>或按下Ctrl+Alt做<font class="command">功能設定</font></li>
 				</ol>
 			</article>
+		</section>
+		<section><font class="title2">功能介紹</font>
+			
 		</section>
 	</section>
 	<section id="GameRule"><font class="title1">遊戲規則</font>
@@ -379,7 +384,7 @@ function KDw(e){var k=e.which
 			<li class="remix">Divider:Adapter</li>
 		</ol>
 	</section>
-</article>
+</article><div class="space"></div>
 <footer>
 	<div id="about">
 		<div class="list" title="社交網站" onclick="CPg('Social')">社交網站</div>

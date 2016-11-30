@@ -6,8 +6,8 @@ body{
 ::-webkit-scrollbar{width:0px;height:0px}
 #msgc::-webkit-scrollbar{width:5px;height:5px}
 #msgc::-webkit-scrollbar-thumb{width:5px;height:5px;background-color:dimgray;border-radius:5px}
-header,footer{background-color:gray;height:40px;transition:height 2s;overflow:auto;color:white;width:100%;animation:Show 0.5s}
-footer{position:absolute;bottom:0px}
+header,footer{background-color:gray;height:40px;transition:height 2s;overflow:auto;color:white;width:100%;animation:Show 0.5s;position:fixed;left:0px}
+header{top:0px}footer{bottom:0px}.space{height:40px;transition:all 2s}
 #menu{transition:width 2s}
 #menu,#about{float:right;height:40px}
 .list,#home{

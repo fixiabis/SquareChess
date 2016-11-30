@@ -28,7 +28,7 @@ function MdL(v){
 function Rsz(){var scn=1;Id("Board").style.display="none"
 	var sz=doc.body.scrollWidth;Id("QCtrl").style.display="none"
 	if(doc.body.scrollHeight<sz){sz=doc.body.scrollHeight;scn=0}sz=Math.floor(sz/9)
-	$(".bt").css("width",sz+"px");$(".bt").css("height",sz+"px");$(".bt").css("font-size",sz-10+"px")
+	$(".bt").css("width",sz+"px");$(".bt").css("height",sz+"px");$(".bt").css("font-size",sz-15+"px")
 	for(i=81;i<83;i++){if(!Class("bt")[i])break
 		if(i>80)Class("bt")[i].style.width=sz*4.5+"px"
 		if(!Class("bt")[i+1]&&i==81)Class("bt")[i].style.width=sz*9+"px"
