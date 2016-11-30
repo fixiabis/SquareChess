@@ -1,5 +1,5 @@
 ﻿var Oln={}
-function Req(Typ,Jcd){var id="",req={ModeName:doc.title,BoardContent:""};Dft.Oln.MdN=doc.title
+function Req(Typ,Jcd){var id="",req={ModeName:doc.title,BoardContent:"",LastActive:new Date().getTime()};Dft.Oln.MdN=doc.title
 	if(Jcd)id=Jcd
 	if(Typ=="J"){if(!Jcd)while(!id)id=prompt("輸入id");Dft.Oln.Typ="X"}
 	else{Dft.Oln.Typ="O";if(!Jcd)id=RJC()}Dft.Oln.Id=id
@@ -18,7 +18,7 @@ function Req(Typ,Jcd){var id="",req={ModeName:doc.title,BoardContent:""};Dft.Oln
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req(Typ,Jcd)}
 }
 function Upl(cnt){if(Dft.Oln.Typ=="V")return
-	Dft.Set=0;var req={ModeName:Dft.Oln.MdN}
+	Dft.Set=0;var req={ModeName:Dft.Oln.MdN,,LastActive:new Date().getTime()}
 	req.BoardContent=cnt;Atn(Dft.Oln.MdN)
 	try{firebase.database().ref("Battle/"+Dft.Oln.Id).update(req);Dft.Oln.Cln=1}
 	catch(e){if(confirm("暫時無法上傳，將繼續重試"))Upl(cnt)}
