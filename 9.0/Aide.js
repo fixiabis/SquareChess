@@ -6,7 +6,7 @@ function MsO(e){var v=1,p=0
 function KDw(e){
 	var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu"),t=Id("Setting").style.height=="0%",g=1
 	if(Id("Message"))g=Id("Message").style.height=="25px"
-	if(t&&g)e.preventDefault();else if(k!=27&&k!=13&&g)return
+	if(t&&g)e.preventDefault();else if(k!=27&&k!=13&&!g)return
 	switch(k){
 		case   8:if(t)Ctl("Udo");break
 		case  13:if(!t)OpK();else if(!g)Ctl("Msg");else Ctl("Rdo");break
@@ -37,9 +37,11 @@ function KDw(e){
 							case 2:Ctl("Udo");break
 							case 3:Ctl("Rdo");break
 							case 4:Ctl("Gto");break
+							case 5:location="index.html";break
 							case 6:Opt();break
 						}else switch(Val(num)){
 							case 1:Ctl("Gvp");break
+							case 2:location="index.html";break
 							case 3:Opt();break
 						}
 					}else{var crd=Dft.System.Crd;crd+=num
