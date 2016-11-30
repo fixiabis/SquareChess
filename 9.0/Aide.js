@@ -37,11 +37,9 @@ function KDw(e){
 							case 2:Ctl("Udo");break
 							case 3:Ctl("Rdo");break
 							case 4:Ctl("Gto");break
-							case 5:location="index.html";break
 							case 6:Opt();break
 						}else switch(Val(num)){
 							case 1:Ctl("Gvp");break
-							case 2:location="index.html";break
 							case 3:Opt();break
 						}
 					}else{var crd=Dft.System.Crd;crd+=num
