@@ -6,7 +6,7 @@
 			"khaki","lightcoral","lightseagreen","black"
 		]
 	},Dft={
-		Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1,MdN:""},
+		Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1,MdN:"",Msg:0},
 		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}
 	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()

@@ -19,7 +19,7 @@ function Req(Typ,Jcd){var id="",req={ModeName:doc.title,BoardContent:""};Dft.Oln
 }
 function Upl(cnt){if(Dft.Oln.Typ=="V")return
 	Dft.Set=0;var req={ModeName:Dft.Oln.MdN}
-	req.BoardContent=cnt;doc.title=Dft.Oln.MdN
+	req.BoardContent=cnt;Atn(Dft.Oln.MdN)
 	try{firebase.database().ref("Battle/"+Dft.Oln.Id).update(req);Dft.Oln.Cln=1}
 	catch(e){if(confirm("暫時無法上傳，將繼續重試"))Upl(cnt)}
 }
@@ -27,15 +27,20 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"||Dft.Oln.Typ=="V")Dft.Set=0;else Dft.Set=1
 	if(!v)firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){
 		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){
-			Id("msgc").innerHTML=r.val().Message
+			Id("msgc").innerHTML=r.val().Message;Dft.Oln.Msg++;Atn()
 			Ctl("MSw",1);Id("msgc").scrollTop=Id("msgc").scrollHeight
 		}var brd=r.val().BoardContent.split("/")
 		if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini(1)}
 		else if(brd[1]&&Sqr.Sym[(Val(brd[1])%2)]==Dft.Oln.Typ||Dft.Oln.Typ=="V"){
 			Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=Val(brd[1]);Rul()
-			if(Dft.Oln.Typ!="V"){Dft.Set=1;doc.title="輪到你下了"}
+			if(Dft.Oln.Typ!="V"){Dft.Set=1;Atn("輪到你下了")}
 		}
 	})
+}
+function Atn(v){
+	if(v)doc.title=v
+	else if(doc.title[doc.title.length-1]==")")doc.title=doc.title.split("(")[0]
+	if(Dft.Oln.Msg)doc.title+="("+Dft.Oln.Msg+")"
 }
 function Joi(){
 	if(location.hash.length!=9)Opt();else Req("J",Mid(location.hash,1,location.hash.length-1))

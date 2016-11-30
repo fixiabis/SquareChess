@@ -67,10 +67,11 @@ function Ctl(t,v){
 		case"Gvp":if(Dft.Set&&confirm("確定認輸?"))Upl(Dft.Oln.Typ+"認輸,"+Enm(Dft.Oln.Typ)+"獲勝");break
 		case"Msg":if(Id("msgs").value)Msg(Id("msgs").value);Id("msgs").value="";break
 		case"MSw":var k=Id("Message").style.height=="25px";if(v)k=1
-		if(k)Id("Message").style.height="300px";else Id("Message").style.height="25px"
+		if(k)Id("Message").style.height="300px"
+		else{Id("Message").style.height="25px";Dft.Oln.Msg=0}Atn()
 	}
 }
-function Msg(msg){console.log(msg)
+function Msg(msg){Dft.Oln.Msg=-1
 	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){var msgo=r.val().Message
 		if(!msgo)msgo="";else msgo=msgo+"<br>"
 		firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+Dft.Oln.Typ+":"+msg})
