@@ -49,7 +49,7 @@ section,article{overflow:hidden}
 #Message{transition:all 1s}
 #send{position:absolute;bottom:0px;right:0px;opacity:0.2;width:40px;height:20px;background-color:dimgray;text-align:center;line-height:20px}
 #send:hover{opacity:1}
-#LdA{height:100px;width:100px;-webkit-user-select: none; display: block;background:dimgray;line-height:100px;text-align:center;border-radius:5px;animation:Load 1s infinite}
+#LdA{height:100px;width:100px;-webkit-user-select: none; display: block;background:dimgray;line-height:100px;text-align:center;border-radius:5px;animation:Load 1s infinite;margin:auto}
 @keyframes Load{0%{transform:rotate(720deg)}}
 @keyframes Show{0%{height:0px}}
 #Setting{position:absolute;width:100%;top:0px;left:0px;background-color:dimgray;overflow:hidden;transition:all 1s;font-size:20px}

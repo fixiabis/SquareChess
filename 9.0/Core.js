@@ -10,7 +10,8 @@
 		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}
 	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()
-	var mdN=location.search.replace("?mode=","")
+	var mdN=location.search.replace("?mode=",""),tm=new Date().getHours()
+	if(tm>21||tm<6)Id("NightMode").style.opacity=0.5
 	while(Instr(mdN,"%3A")>-1)mdN=mdN.replace("%3A",":")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
 }//取得參數
