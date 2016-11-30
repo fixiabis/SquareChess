@@ -1,0 +1,57 @@
+body{
+	margin:0px;cursor:default;user-select:none;
+	-ms-user-select:none;font-family:Consolas;
+	-moz-user-select:none;-webkit-user-select:none;
+}
+body::-webkit-scrollbar,.txt::-webkit-scrollbar,#menu::-webkit-scrollbar,#OptionMenu::-webkit-scrollbar,#Setting::-webkit-scrollbar,header::-webkit-scrollbar,footer::-webkit-scrollbar{
+	width:0px;height:0px
+}
+#msgc::-webkit-scrollbar{
+	width:5px;height:5px
+}
+#msgc::-webkit-scrollbar-thumb{
+	width:5px;height:5px;background-color:dimgray;border-radius:5px
+}
+header,footer{background-color:gray;height:40px;transition:height 2s;overflow:auto;color:white;width:100%;animation:Show 0.5s}
+footer{position:absolute;bottom:0px}
+#menu{transition:width 2s}
+#menu,#about{float:right;height:40px}
+.list,#home{
+	float:left;height:40px;line-height:40px;width:160px;font-size:18px;
+	text-align:center;background-color:gray;transition:background 2s;
+}
+a{color:gray;text-decoration:underline}
+.list[title="Connect系列"]:hover{color:royalblue}
+.list[title="Blocker系列"]:hover{color:crimson}
+.list[title="Divider系列"]:hover{color:seagreen}
+.list[title="Adapter系列"]:hover{color:darkorange}
+.remix{text-decoration:underline}
+.remix:hover{color:skyblue}
+.Opt{font-size:inherit}
+.list:hover{background-color:lightgray;color:dimgray}
+#content{margin:10px;transition:all 2s}
+#home{transition:all 2s;width:320px;font-size:28px}
+.bt{font-family:Arial;transition:all 1s;text-align:center;overflow:hidden}
+section,article{overflow:hidden}
+.title1{font-size:30px;line-height:60px;font-weight:bold}
+.title2{font-size:20px;line-height:40px;font-weight:bold}
+.txt{font-size:20px;border:solid 1px}
+#ck{
+	position:absolute;bottom:1px;right:1px;width:80px;height:40px;
+	line-height:40px;background-color:lightgray;opacity:0.5
+}
+#ck:hover{opacity:1}
+.command{color:steelblue}
+.keyboard{color:indianred}
+.mouse{color:lightseagreen}
+.Opbt{height:40px;line-height:40px;text-align:center;background-color:gray;float:right;width:100px;margin-left:5px}
+#msgc{height:255px;width:100%;background-color:lightgray;position:absolute;top:25px;left:0px;overflow:auto}
+#Message{transition:all 1s}
+#send{position:absolute;bottom:0px;right:0px;opacity:0.2;width:40px;height:20px;background-color:dimgray;text-align:center;line-height:20px}
+#send:hover{opacity:1}
+#LdA{height:100px;width:100px;-webkit-user-select: none; display: block;background:dimgray;line-height:100px;text-align:center;border-radius:5px;animation:Load 1s infinite}
+@keyframes Load{0%{transform:rotate(720deg)}}
+@keyframes Show{0%{height:0px}}
+#Setting{position:absolute;width:100%;top:0px;left:0px;background-color:dimgray;overflow:hidden;transition:all 1s;font-size:20px}
+#OptionMenu{width:99%;height:99%;top:0.5%;left:0.5%;position:absolute;background-color:lightgray;overflow:auto}
+#NightMode{background:white}
