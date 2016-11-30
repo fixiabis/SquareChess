@@ -114,7 +114,10 @@ function Rpt(){var v=[];if(Class("txt")[0].value.length<4)return alert("標題�
 	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
 }
 function KDw(e){var k=e.which
-	switch(k){case 13:if(e.shiftKey)Rpt();break}
+	switch(k){
+		case 13:if(e.shiftKey)Rpt();break
+		case 27:for(var i=0;i<2;i++)$(".txt")[i].value=""
+	}
 }
 </script>
 </head>
@@ -153,13 +156,13 @@ function KDw(e){var k=e.which
 			</article>
 			<article class="Computer" style="height:0px">
 				<ol>
-					<li>點選<font class="mouse">格子</font>或以鍵盤輸入座標(E5即按下<font class="keyboard">E+5</font>)來<font class="command">設置符號</font></li>
+					<li>點選<font class="mouse">格子</font>或以鍵盤輸入座標(E5即按下E+5)來<font class="command">設置符號</font></li>
 					<li>滑鼠靠近<font class="mouse">空白處</font>或按下<font class="keyboard">]</font>或<font class="keyboard">[</font>即可<font class="command">喚出選單</font></li>
-					<li>點選<font class="mouse">Clean</font>或按下<font class="keyboard">Delete</font>以<font class="command">清除棋盤</font></li>
-					<li>點選<font class="mouse">Undo</font>或按下<font class="keyboard">Ctrl+Z</font><font class="command">到上一步</font></li>
-					<li>點選<font class="mouse">Redo</font>或按下<font class="keyboard">Ctrl+Y</font><font class="command">到下一步</font></li>
-					<li>點選<font class="mouse">Goto</font>或按下<font class="keyboard">Ctrl+H</font><font class="command">到指定步</font></li>
-					<li>點選<font class="mouse">Addons</font>或按下<font class="keyboard">Ctrl+Alt</font>做<font class="command">功能設定</font></li>
+					<li>點選<font class="mouse">Clean</font>或按下Del以<font class="command">清除棋盤</font></li>
+					<li>點選<font class="mouse">Undo</font>或按下Ctrl+Z<font class="command">到上一步</font></li>
+					<li>點選<font class="mouse">Redo</font>或按下Ctrl+Y<font class="command">到下一步</font></li>
+					<li>點選<font class="mouse">Goto</font>或按下Ctrl+H<font class="command">到指定步</font></li>
+					<li>點選<font class="mouse">Addons</font>或按下Ctrl+Alt做<font class="command">功能設定</font></li>
 				</ol>
 			</article>
 		</section>
@@ -316,7 +319,7 @@ function KDw(e){var k=e.which
 		</section>
 	</section>
 	<section id="Problem"><font class="title1">回報問題</font><br>
-		<div class="Computer">按下Shift+Enter傳送</div>
+		<div class="Computer">按下Shift+Enter傳送,按下Esc可取消</div>
 		<div align="center"><div style="height:150px" id="Report">
 			<input type="text" class="txt" value="" placeholder="輸入遇到的問題"/><br>
 			<div id="txc" style="position:relative;height:120px;width:462px">

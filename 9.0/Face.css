@@ -3,15 +3,9 @@ body{
 	-ms-user-select:none;font-family:Consolas;
 	-moz-user-select:none;-webkit-user-select:none;
 }
-body::-webkit-scrollbar,.txt::-webkit-scrollbar,#menu::-webkit-scrollbar,#OptionMenu::-webkit-scrollbar,#Setting::-webkit-scrollbar,header::-webkit-scrollbar,footer::-webkit-scrollbar{
-	width:0px;height:0px
-}
-#msgc::-webkit-scrollbar{
-	width:5px;height:5px
-}
-#msgc::-webkit-scrollbar-thumb{
-	width:5px;height:5px;background-color:dimgray;border-radius:5px
-}
+::-webkit-scrollbar{width:0px;height:0px}
+#msgc::-webkit-scrollbar{width:5px;height:5px}
+#msgc::-webkit-scrollbar-thumb{width:5px;height:5px;background-color:dimgray;border-radius:5px}
 header,footer{background-color:gray;height:40px;transition:height 2s;overflow:auto;color:white;width:100%;animation:Show 0.5s}
 footer{position:absolute;bottom:0px}
 #menu{transition:width 2s}
@@ -42,14 +36,19 @@ section,article{overflow:hidden}
 }
 #ck:hover{opacity:1}
 .command{color:steelblue}
-.keyboard{color:indianred}
-.mouse{color:lightseagreen}
+.keyboard,.mouse{color:indianred}
+#Opc{right:0.5%;position:absolute;bottom:0.5%;width:210px;height:40px}
 .Opbt{height:40px;line-height:40px;text-align:center;background-color:gray;float:right;width:100px;margin-left:5px}
 #msgc{height:255px;width:100%;background-color:lightgray;position:absolute;top:25px;left:0px;overflow:auto}
 #Message{transition:all 1s}
 #send{position:absolute;bottom:0px;right:0px;opacity:0.2;width:40px;height:20px;background-color:dimgray;text-align:center;line-height:20px}
 #send:hover{opacity:1}
-#LdA{height:100px;width:100px;-webkit-user-select: none; display: block;background:dimgray;line-height:100px;text-align:center;border-radius:5px;animation:Load 1s infinite;margin:auto}
+#LdA{
+	height:100px;width:100px;
+	background:dimgray;line-height:100px;
+	text-align:center;border-radius:5px;
+	animation:Load 1s infinite;margin:auto
+}
 @keyframes Load{0%{transform:rotate(720deg)}}
 @keyframes Show{0%{height:0px}}
 #Setting{position:absolute;width:100%;top:0px;left:0px;background-color:dimgray;overflow:hidden;transition:all 1s;font-size:20px}
