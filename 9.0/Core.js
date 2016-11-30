@@ -11,7 +11,7 @@
 	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=",""),tm=new Date().getHours()
-	if(tm>21||tm<6)Id("NightMode").style.opacity=0.5
+	if(tm>21||tm<6)Id("NightMode").style.opacity=0.3
 	while(Instr(mdN,"%3A")>-1)mdN=mdN.replace("%3A",":")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
 }//取得參數
@@ -125,7 +125,7 @@ function Opt(){Id("Setting").style.height="100%";var id=Dft.Oln.Id
 	}else Oln.Opt()
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
-	OpS("System-Nit","k","夜間模式",Id("NightMode").style.opacity==0.5)
+	OpS("System-Nit","k","夜間模式",Id("NightMode").style.opacity!=1)
 	OpS("System-Ful","k","全螢幕模式",doc.webkitIsFullScreen)
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
@@ -136,7 +136,7 @@ function OpK(k){Id("Setting").style.height="0%";if(k)return
 		if(Id("System-Oln").checked)location="btchs.html"+location.search
 		Dft.System.Qsr=Id("System-Qsr").checked
 	}else Oln.OpK();for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
-	if(Id("System-Nit").checked)Id("NightMode").style.opacity=0.5;else Id("NightMode").style.opacity=1
+	if(Id("System-Nit").checked)Id("NightMode").style.opacity=0.3;else Id("NightMode").style.opacity=1
 	if(Id("System-Ful").checked)Id("NightMode").webkitRequestFullScreen();else doc.webkitCancelFullScreen()
 	Dft.System.Nxt=Id("System-Nxt").checked
 	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
