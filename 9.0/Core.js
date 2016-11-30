@@ -132,6 +132,7 @@ function Opt(){Id("Setting").style.height="100%";var id=Dft.Oln.Id
 function OpK(k){Id("Setting").style.height="0%";if(k)return
 	if(!Dft.System.Oln){
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
+		if(Dft.System.Blk>27)Dft.System.Blk=27
 		if(Id("System-Oln").checked)location="btchs.html"+location.search
 		Dft.System.Qsr=Id("System-Qsr").checked
 	}else Oln.OpK();for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()

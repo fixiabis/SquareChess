@@ -8,7 +8,22 @@
 <meta name="mobile-web-app-capable" content="yes" />
 <title>Square Chess Game</title>
 <script src="Prun.js"></script>
-<style>@import "Face.css";</style>
+<style>
+@import "Face.css";
+#FNight:hover{background-image:url(pics/Night.jpg)}
+#FNext:hover{background-image:url(pics/Next.jpg)}
+#FBefore:hover{background-image:url(pics/Before.jpg)}
+#FAssist:hover{background-image:url(pics/Assist.jpg)}
+#FBlock:hover{background-image:url(pics/Block.jpg)}
+.FBoard{
+	float:left;width:300px;height:300px;background:url(pics/Normal.jpg) no-repeat;
+	background-size:contain;height:300px;width:300px;margin:5px;font-size:20px;display:table
+}
+.FBoard div{
+	display:table-cell;vertical-align:middle;height:100%;color:black;text-align:center;background:white;opacity:0.6
+}
+.FBoard:hover{background-repeat:no-repeat;background-size:contain;height:300px;width:300px}
+</style>
 <script>var scn=0,Mod=""
 function Dir(v){location=v}
 function Shw(v){v.style.height=v.scrollHeight+"px"}
@@ -25,7 +40,7 @@ function Ldr(){
 		Class("list")[i].addEventListener("mouseover",function(){
 			Hid(Id("content"));Hid(Id("GameRule"))
 			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
-			Shw(Id("GameRule"));Shw(Id("content"))
+			Shw(Id("GameRule"));Shw(Id("content"));doc.body.scrollTop=0
 		})
 		Class("list")[i].addEventListener("click",function(){
 			Dir("chess.html?mode="+this.innerHTML)
@@ -58,16 +73,14 @@ function Ich(f,v){
 	}
 }
 function Rsz(){
-	var sz=Math.floor((doc.body.clientWidth-320)/160),s2=Math.floor(doc.body.clientWidth/160);if(s2>4)s2=4
-	Id("home").style.width="320px";scn=0
-	Id("menu").style.width=sz*160+"px"
-	Id("about").style.width=s2*160+"px"
-	Id("menu").style.marginRight=""
-	Id("Report").style.width="460px"
+	var sz=Math.floor((doc.body.clientWidth-320)/160),s2=Math.floor(doc.body.clientWidth/160),s3=Math.floor(doc.body.clientWidth/310)
+	if(s2>4)s2=4;Id("home").style.width="320px";scn=0;Id("menu").style.width=sz*160+"px"
+	Id("about").style.width=s2*160+"px";Id("menu").style.marginRight="";Id("Report").style.width="460px"
 	for(var i=0;i<Class("Mobile").length;i++)Class("Mobile")[i].style.height="0px"
 	for(var i=0;i<Class("Computer").length;i++)Class("Computer")[i].style.height=Class("Computer")[i].scrollHeight+"px"
 	Class("txt")[0].style.width=Id("Report").clientWidth+"px"
 	Class("txt")[1].style.width=Id("Report").clientWidth-4+"px"
+	if(s3>5)s3=5;Id("Func").style.width=s3*310+"px"
 	if(doc.body.clientWidth<480){scn=1,w=Math.floor(doc.body.clientWidth/160)*160
 		Id("home").style.width=doc.body.clientWidth+"px"
 		Id("menu").style.width=w+"px"
@@ -81,6 +94,7 @@ function Rsz(){
 		for(var i=0;i<Class("Computer").length;i++)Class("Computer")[i].style.height="0px"
 	}Id("txc").style.width=Class("txt")[1].clientWidth+2+"px"
 	Id("txc").style.height=Class("txt")[1].clientHeight+1+"px"
+	Id("Func").style.marginLeft=(Id("Func").parentNode.clientWidth-Id("Func").clientWidth)/2+"px"
 }
 function Mnu(v){
 	var h=Tag("header")[0].scrollHeight;if(!v)h="40"
@@ -168,8 +182,14 @@ function KDw(e){var k=e.which
 				</ol>
 			</article>
 		</section>
-		<section><font class="title2">常用功能介紹</font>
-			
+		<section><font class="title2">常用功能介紹</font><br>
+			<article id="Func">
+				<div class="FBoard" id="FNight"><div>夜間模式<br>就算在夜間也不會覺得頁面刺眼</div></div>
+				<div class="FBoard" id="FNext"><div>次回設置<br>幫助初學者了解可放置區域</div></div>
+				<div class="FBoard" id="FBefore"><div>上回設置<br>幫助確認上一回合設置符號</div></div>
+				<div class="FBoard" id="FAssist"><div>輔助標記<br>輔助了解現在場面情況</div></div>
+				<div class="FBoard" id="FBlock"><div>障礙數量<br>若模式未禁止障礙物元件，則可輸入障礙數量(最大27)</div></div>
+			</article>
 		</section>
 	</section>
 	<section id="GameRule"><font class="title1">遊戲規則</font>
