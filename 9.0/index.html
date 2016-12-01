@@ -8,23 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes" />
 <title>Square Chess Game</title>
 <script src="Prun.js"></script>
-<style>
-@import "Face.css";
-body{content:url(Pics/Night.jpg) url(Pics/Next.jpg) url(Pics/Before.jpg) url(Pics/Assist.jpg) url(Pics/Block.jpg)}
-#FNight:hover{background-image:url(Pics/Night.jpg)}
-#FNext:hover{background-image:url(Pics/Next.jpg)}
-#FBefore:hover{background-image:url(Pics/Before.jpg)}
-#FAssist:hover{background-image:url(Pics/Assist.jpg)}
-#FBlock:hover{background-image:url(Pics/Block.jpg)}
-.FBoard{
-	float:left;width:300px;height:300px;background:url(Pics/Normal.jpg) no-repeat;transition:all 1s;
-	background-size:contain;height:300px;width:300px;margin:5px;font-size:20px;display:table
-}
-.FBoard div{
-	display:table-cell;vertical-align:middle;height:100%;color:black;text-align:center;background:white;opacity:0.6
-}
-.FBoard:hover{background-repeat:no-repeat;background-size:contain;height:300px;width:300px}
-</style>
+<style>@import "Face.css";</style>
 <script>var scn=0,Mod=""
 function Dir(v){location=v}
 function Shw(v){v.style.height=v.scrollHeight+"px"}
@@ -74,14 +58,13 @@ function Ich(f,v){
 	}
 }
 function Rsz(){
-	var sz=Math.floor((doc.body.clientWidth-320)/160),s2=Math.floor(doc.body.clientWidth/160),s3=Math.floor(doc.body.clientWidth/310)
+	var sz=Math.floor((doc.body.clientWidth-320)/160),s2=Math.floor(doc.body.clientWidth/160)
 	if(s2>4)s2=4;Id("home").style.width="320px";scn=0;Id("menu").style.width=sz*160+"px"
 	Id("about").style.width=s2*160+"px";Id("menu").style.marginRight="";Id("Report").style.width="460px"
 	for(var i=0;i<Class("Mobile").length;i++)Class("Mobile")[i].style.height="0px"
 	for(var i=0;i<Class("Computer").length;i++)Class("Computer")[i].style.height=Class("Computer")[i].scrollHeight+"px"
 	Class("txt")[0].style.width=Id("Report").clientWidth+"px"
 	Class("txt")[1].style.width=Id("Report").clientWidth-4+"px"
-	if(s3>5)s3=5;Id("Func").style.width=s3*310+"px"
 	if(doc.body.clientWidth<480){scn=1,w=Math.floor(doc.body.clientWidth/160)*160
 		Id("home").style.width=doc.body.clientWidth+"px"
 		Id("menu").style.width=w+"px"
@@ -95,7 +78,6 @@ function Rsz(){
 		for(var i=0;i<Class("Computer").length;i++)Class("Computer")[i].style.height="0px"
 	}Id("txc").style.width=Class("txt")[1].clientWidth+2+"px"
 	Id("txc").style.height=Class("txt")[1].clientHeight+1+"px"
-	Id("Func").style.marginLeft=(Id("Func").parentNode.clientWidth-Id("Func").clientWidth)/2+"px"
 }
 function Mnu(v){
 	var h=Tag("header")[0].scrollHeight;if(!v)h="40"
@@ -181,15 +163,6 @@ function KDw(e){var k=e.which
 					<li>點選<font class="mouse">Goto</font>或按下Ctrl+H<font class="command">到指定步</font></li>
 					<li>點選<font class="mouse">Addons</font>或按下Ctrl+Alt做<font class="command">功能設定</font></li>
 				</ol>
-			</article>
-		</section>
-		<section><font class="title2">常用功能介紹</font><br>
-			<article id="Func">
-				<div class="FBoard" id="FNight"><div>夜間模式<br>就算在夜間也不會覺得頁面刺眼</div></div>
-				<div class="FBoard" id="FNext"><div>次回設置<br>幫助初學者了解可放置區域</div></div>
-				<div class="FBoard" id="FBefore"><div>上回設置<br>幫助確認上一回合設置符號</div></div>
-				<div class="FBoard" id="FAssist"><div>輔助標記<br>輔助了解現在場面情況</div></div>
-				<div class="FBoard" id="FBlock"><div>障礙數量<br>若模式未禁止障礙物元件，則可輸入障礙數量(最大27)</div></div>
 			</article>
 		</section>
 	</section>
