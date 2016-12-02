@@ -24,7 +24,7 @@ function Ldr(){
 	for(var i=0;i<15;i++){
 		Class("list")[i].addEventListener("mouseover",function(){
 			Hid(Id("content"));Hid(Id("GameRule"));NoR=""
-			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9]);setTimeout("NoR='&NoRule'",5000)
+			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9]);setTimeout("NoR='&NoRule'",3000)
 			Shw(Id("GameRule"));Shw(Id("content"));doc.body.scrollTop=0
 		})
 		Class("list")[i].addEventListener("click",function(){
