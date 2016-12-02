@@ -9,7 +9,7 @@
 <title>Square Chess Game</title>
 <script src="Prun.js"></script>
 <style>@import "Face.css";</style>
-<script>var scn=0,Mod="",NoR=""
+<script>var scn=0,Mod=""
 function Dir(v){location=v}
 function Shw(v){v.style.height=v.scrollHeight+"px"}
 function Hid(v){
@@ -23,12 +23,12 @@ function CPg(v){
 function Ldr(){
 	for(var i=0;i<15;i++){
 		Class("list")[i].addEventListener("mouseover",function(){
-			Hid(Id("content"));Hid(Id("GameRule"));NoR=""
-			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9]);setTimeout("NoR='&NoRule'",5000)
+			Hid(Id("content"));Hid(Id("GameRule"))
+			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
 			Shw(Id("GameRule"));Shw(Id("content"));doc.body.scrollTop=0
 		})
 		Class("list")[i].addEventListener("click",function(){
-			Dir("chess.html?mode="+this.innerHTML+NoR)
+			Dir("chess.html?mode="+this.innerHTML)
 		})
 		Class("list")[i].addEventListener("contextmenu",function(){Lst()})
 	}
@@ -173,7 +173,7 @@ function KDw(e){var k=e.which
 			<section style="background:royalblue;color:white">Connect準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為一格，其餘無法設置</section>
 			<section style="background:crimson;color:white">Blocker準則:用四枚符號形成矩形，我方形成指定形狀時，其中對方是無法設置的</section>
 			<section style="background:seagreen;color:white">Divider準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為無限距離長，除非該方有非我方符號存在，其餘無法設置</section>
-			<section style="background:darkorange;color:white">Adapter準則:己方所有符號的右前前，左前前，右右前，左左前，右後後，左後後，右右後，左左後方，單位為ㄧ格，其餘無法設置</section>
+			<section style="background:darkorange;color:white">Adapter準則:即己方所有符號的右前前，左前前，右右前，左左前，右後後，左後後，右右後，左左後方，單位為ㄧ格，其餘無法設置</section>
 		</section>
 		<section><font class="title2">名稱說明</font>
 			<section>封限區:<font color="crimsom">O為此色</font>，<font color="royalblue">X為此色</font>

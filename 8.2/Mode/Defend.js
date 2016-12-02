@@ -30,4 +30,3 @@ Shl.Opt.Defend=function(){
 Shl.OpK.Defend=function(){
 	Dft.Defend.Ara=Id("Defend-Ara").checked
 }
-Shl.Rls.Defend="在一區域佔下我方符號五枚，且無對方符號時，我方獲勝"

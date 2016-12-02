@@ -33,4 +33,3 @@ Shl.OpK.Gomoku=function(){
 	for(var i=0;i<3;i++)if(Id("Gomoku-Ara-"+i).checked)Dft.Gomoku.Ara=i
 	Dft.Gomoku.Pro=Id("Gomoku-Pro").checked
 }
-Shl.Rls.Gomoku="<a href='https://zh.wikipedia.org/wiki/五子棋' target='_new'>五子棋規則</a>"

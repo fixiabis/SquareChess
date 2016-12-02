@@ -32,4 +32,3 @@ Shl.Opt.Adapter=function(){
 Shl.OpK.Adapter=function(){
 	Ara.OpK("Adapter")
 }
-Shl.Rls.Adapter="己方所有符號的右前前，左前前，右右前，左左前，右後後，左後後，右右後，左左後方，路徑間必須為空白或我方符號，例如E5開始到D3，為右前前方，則E5三條路徑中(右前方及前方或前方及前前方或右方及右前方)必須要有空白或我方符號，其餘無法設置"

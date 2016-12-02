@@ -1,6 +1,6 @@
 function MsO(e){var v=1,p=0
-	if(e.pageX<$("#Board").offset().left)p=0
-	else if(e.pageX>$("#Board").offset().left+Id("Board").offsetWidth)p=1
+	if(e.pageX<Id("Board").offsetLeft)p=0
+	else if(e.pageX>Id("Board").offsetLeft+Id("Board").offsetWidth)p=1
 	else v=0;Mnu(v,p)
 }//滑鼠移動
 function KDw(e){
@@ -69,11 +69,6 @@ function Ctl(t,v){
 		case"MSw":var k=Id("Message").style.height=="25px";if(v)k=1
 		if(k)Id("Message").style.height="300px"
 		else{Id("Message").style.height="25px";Dft.Oln.Msg=0}Atn()
-	}
-	switch(t){
-		case"Rul":if(typeof v!="number")v=Id("Rule").style.height=="0px"
-			if(v)Id("Rule").style.height=Id("UI").style.width
-			else Id("Rule").style.height="0px";break
 	}
 }
 function Msg(msg){Dft.Oln.Msg=-1

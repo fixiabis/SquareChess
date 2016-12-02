@@ -14,4 +14,3 @@ Shl.Ckr.Forbid=function(crd){var sym=Tn%2
 }
 Shl.Opt.Forbid=function(){}
 Shl.OpK.Forbid=function(){Dft.System.Qsr=0}
-Shl.Rls.Forbid="對方無法設置的地方，我方也無法設置"

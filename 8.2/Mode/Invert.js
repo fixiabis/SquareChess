@@ -11,4 +11,3 @@ Shl.Ckr.Invert=function(crd){var sym=Tn%2
 }
 Shl.Opt.Invert=function(){}
 Shl.OpK.Invert=function(){Dft.System.Qsr=0}
-Shl.Rls.Invert="第二回合後設置符號不得依照上述方法設置，但其他位置不限"
