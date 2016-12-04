@@ -30,7 +30,7 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 			Id("msgc").innerHTML=r.val().Message;Dft.Oln.Msg++;Atn()
 			Ctl("MSw",1);Id("msgc").scrollTop=Id("msgc").scrollHeight
 		}var brd=r.val().BoardContent.split("/")
-		if(brd[0].length<81&&Dft.Oln.Cln){alert(brd[0]);Ini(1)}
+		if(brd[0].length<81&&(Dft.Oln.Cln||Dft.Oln.Typ=="V")){alert(brd[0]);Ini(1)}
 		else if(brd[1]&&Sqr.Sym[(Val(brd[1])%2)]==Dft.Oln.Typ||Dft.Oln.Typ=="V"){
 			Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=Val(brd[1]);Rul()
 			if(Dft.Oln.Typ!="V"){Dft.Set=1;Atn("輪到你下了")}
