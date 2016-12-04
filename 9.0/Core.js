@@ -10,17 +10,16 @@
 		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}
 	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{},Rls:{}}
 function Ldr(){if(!location.search)history.back()
-	var mdN=location.search.replace("?mode=",""),tm=new Date().getHours(),rl=0
-	if(Instr(mdN,"&NoRule")>-1){while(Instr(mdN,"&NoRule")>-1)mdN=mdN.replace("&NoRule","");rl=1}
+	var mdN=location.search.replace("?mode=",""),tm=new Date().getHours()
 	if(tm>21||tm<6)Id("NightMode").style.opacity=0.3
 	while(Instr(mdN,"%3A")>-1)mdN=mdN.replace("%3A",":")
-	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0,rl)
+	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
 }//取得參數
-function MdL(v,k){
+function MdL(v){
 	var md=doc.createElement("script");md.src="Mode/"+MdQ[v]+".js"
 	if(MdQ[v+1])md.onload=function(){MdL(v+1,k)}
 	else md.onload=function(){
-		Itf();Rsz();Cln();Id("LdA").style.display="none";if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()};if(k)Ctl("Rul")
+		Itf();Rsz();Cln();Id("LdA").style.display="none";if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
 		for(var i=0;i<MdQ.length;i++)if(Shl.Rls[MdQ[i]])Id("Rule").childNodes[3].innerHTML+="<li>"+Shl.Rls[MdQ[i]]+"</li>"
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
@@ -136,7 +135,7 @@ function OpK(k){Id("Setting").style.height="0%";if(k)return
 	if(!Dft.System.Oln){
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 		if(Dft.System.Blk>27)Dft.System.Blk=27
-		if(Id("System-Oln").checked)location="btchs.html"+location.search+"&NoRule"
+		if(Id("System-Oln").checked)location="btchs.html"+location.search
 		Dft.System.Qsr=Id("System-Qsr").checked
 	}else Oln.OpK();for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	if(Id("System-Nit").checked)Id("NightMode").style.opacity=0.3;else Id("NightMode").style.opacity=1
