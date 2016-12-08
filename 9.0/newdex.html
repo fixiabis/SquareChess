@@ -11,34 +11,33 @@
 <script>
 	function Ldr(){
 		$("section").css("height",doc.body.scrollHeight+"px")
-		$("article").css("height",doc.body.scrollHeight+"px")
+		$("article").css("height",$("section")[0].style.height)
 	}
 </script>
 <style>@import "Face.css";
-	section{background-color:lightgray;position:relative}
-	article{background-color:dimgray;position:absolute;left:0px}
-	article:nth-child(3){position:absolute;right:0px}
+	section{background-color:lightgray;position:relative;top:0px;left:0px;width:100%}
+	article{width:50%;position:absolute;background-color:dimgray;top:0px}
 </style>
 </head>
-<body>
+<body onload="Ldr()">
 	<section>
-		<article style="width:50%">
+		<article style="left:0px ;z-index:1">
 		</article>
 	</section>
 	<section>
-		<article style="width:50%">
+		<article style="right:0px;z-index:2">
 		</article>
 	</section>
 	<section>
-		<article style="width:50%">
+		<article style="left:0px ;z-index:3">
 		</article>
 	</section>
 	<section>
-		<article style="width:50%">
+		<article style="right:0px;z-index:4">
 		</article>
 	</section>
 	<section>
-		<article style="width:50%">
+		<article style="left:0px ;z-index:5">
 		</article>
 	</section>
 </body>
