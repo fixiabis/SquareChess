@@ -32,7 +32,7 @@ function Rsz(){var scn=1;Id("Board").style.display="none"
 	for(i=81;i<83;i++){if(!Class("bt")[i])break
 		if(i>80)Class("bt")[i].style.width=sz*4.5+"px"
 		if(!Class("bt")[i+1]&&i==81)Class("bt")[i].style.width=sz*9+"px"
-	}if(scn)Id("QCtrl").style.display="";Id("Board").style.display="";Id("UI").style.width=sz*9+"px"
+	}if(scn&&Id("LdA").style.display=="none")Id("QCtrl").style.display="";Id("Board").style.display="";Id("UI").style.width=sz*9+"px"
 	Id("Rule").style.width=sz*9+"px";if(Id("Rule").style.height!="0px")Id("Rule").style.height=sz*9+"px"
 }//大小變更
 function Itf(){var bd=""
