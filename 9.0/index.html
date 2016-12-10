@@ -153,6 +153,16 @@ function Ldr(){
 		for(var i=0;i<$("a").length;i++)if(!$("a")[i].href)$("a")[i].href="chess.html?mode="+$("a")[i].innerHTML
 	})
 	for(var i=1;i<$("article").length;i++)$("article")[i].style.top=Id("Content").scrollHeight+"px"
+	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
+		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
+		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
+		t._e=[];t.ready=function(f){t._e.push(f)};return t;
+	}(document, "script", "twitter-wjs"));
+	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;
+		js=d.createElement(s);js.id=id;
+		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
+		fjs.parentNode.insertBefore(js,fjs);
+	}(document, 'script', 'facebook-jssdk'));
 }
 function Scl(){
 	for(var i=0;i<Math.floor(doc.body.scrollTop/doc.body.clientHeight)+1;i++){
@@ -180,15 +190,5 @@ var Caption={
 	Divider:"seagreen",
 	Adapter:"darkorange"
 }
-	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
-		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
-		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
-		t._e=[];t.ready=function(f){t._e.push(f)};return t;
-	}(document, "script", "twitter-wjs"));
-	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;
-		js=d.createElement(s);js.id=id;
-		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
-		fjs.parentNode.insertBefore(js,fjs);
-	}(document, 'script', 'facebook-jssdk'));
 </script>
 </html>
