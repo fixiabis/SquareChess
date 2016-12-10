@@ -10,4 +10,5 @@ Shl.Ckr.Follow=function(crd){var sym=Tn%2
 	}if(Hst.Rut[Tn].indexOf(Hst.Crd[Tn-1])>-1||Tn<2)return 1;return 0
 }
 Shl.Opt.Follow=function(){}
-Shl.OpK.Follow=function(){Dft.System.Qsr=0}
+Shl.OpK.FollowShl.OpK.Follow=function(){Dft.System.Qsr=0}
+Shl.Rls.Follow="原依照己方所有符號，改為依照己方上回合符號"

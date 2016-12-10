@@ -21,3 +21,4 @@ Shl.Opt.Divider=function(){
 Shl.OpK.Divider=function(){
 	Ara.OpK("Divider")
 }
+Shl.Rls.Divider="己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為無限距離長，若該方向中有非我方符號存在，則非我方符號後無法設置，其餘無法設置"

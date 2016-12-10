@@ -22,3 +22,4 @@ Shl.Opt.GoLike=function(){
 Shl.OpK.GoLike=function(){
 	Dft.GoLike.MJg=Id("GoLike-MJg").checked
 }
+Shl.Rls.GoLike="<a href='https://zh.wikipedia.org/wiki/圍棋' target='_new'>圍棋規則</a>，不提子，被圍起來的符號都變成殭屍"

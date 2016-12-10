@@ -1,392 +1,194 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon"><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
 <meta name="mobile-web-app-capable" content="yes" />
 <title>Square Chess Game</title>
 <script src="Prun.js"></script>
-<style>@import "Face.css";</style>
-<script>var scn=0,Mod=""
-function Dir(v){location=v}
-function Shw(v){v.style.height=v.scrollHeight+"px"}
-function Hid(v){
-	for(var i=2;i<v.childNodes.length;i+=2){
-		v.childNodes[i].style.height="0px"
-	}v.style.height="0px"
+<style>
+body{
+	margin:0px;cursor:default;user-select:none;
+	-ms-user-select:none;font-family:Consolas;
+	-moz-user-select:none;-webkit-user-select:none;
 }
-function CPg(v){
-	Hid(Id('content'));Shw(Id(v));Shw(Id('content'))
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{width:5px;height:5px;opacity:0.5}
+::-webkit-scrollbar-thumb{width:5px;height:5px;border-radius:5px;background-color:lightgray}
+article{position:absolute;left:0px;width:100%;color:white}
+#Content{position:relative;font-size:20px}
+#Home{
+	color:lightgray
 }
+#Mode{
+	background-color:lightblue
+}
+#Report{
+	background-color:palevioletred
+}
+#Social{
+	background-color:palegreen;color:black
+}
+#About{
+	background-color:lightcoral
+}
+.Game{
+	float:left;width:160px;height:40px;font-size:16px;line-height:40px;text-align:center;transition:all 2s
+}
+#Main{
+	width:250px;background-image:url(https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png);
+	background-size:30px 30px;background-repeat:no-repeat;background-position:5px 5px;font-size:18px
+}
+.Func{float:left;margin:10px}
+h1{font-size:xx-large}
+h2{font-size:x-large}
+.Game:hover{background-color:lightgray;color:white}
+#Main:hover{color:dimgray}
+.Game[title=Connect]:hover{background-color:royalblue}
+.Game[title=Blocker]:hover{background-color:crimson}
+.Game[title=Divider]:hover{background-color:seagreen}
+.Game[title=Adapter]:hover{background-color:darkorange}
+#Menu{overflow:auto;height:40px}
+#Caption{margin:auto;width:100%;overflow:hidden;background-color:none;transition:all 2s}
+.Game:hover{text-decoration:none}
+a{color:silver;text-decoration:none}
+a:hover{text-decoration:underline}
+.Field{width:80%;height:90%;margin:5% 10%}
+</style>
+</head>
+<body style="margin:0px" onload="Ldr()" onscroll="Scl()">
+	<section id="Content">
+		<article id="Home">
+			<div id="Menu">
+				<a id="Main" class="Game" title="MainPage" href="#">Square Chess Game</a>
+				<a class="Game" title="Connect">Square.Connect</a>
+				<a class="Game" title="Blocker">Square.Blocker</a>
+				<a class="Game" title="Divider">Square.Divider</a>
+				<a class="Game" title="Adapter">Square.Adapter</a>
+				<a class="Game" title="Other">Other</a>
+			</div>
+			<div id="Rule" style="transition:all 2s"><br>
+				<div id="Caption" style='width:80%;height:100%;margin:0% 10%'>
+					<h1>歡迎使用</h1>
+						滑鼠靠近其他模式即可查看說明，點選即可進入遊戲
+					<h2>最適狀態</h2>
+						絕對貼合所有裝置，且容易操作
+					<h2>新式規則</h2>
+						前所未見的玩法
+				</div>
+			</div>
+		</article>
+		<article id="Mode">
+			<div class="Field"><h1>功能介紹</h1>
+				<div class="Func">
+					<div><h2>常用功能</h2>
+						常用的一般功能:
+						<ol>
+							<li>點選格子或以鍵盤輸入座標(E5即按下E+5)來設置符號</li>
+							<li>滑鼠靠近空白處或按下]或[即可喚出選單</li>
+							<li>點選Clean或按下Del以清除棋盤</li>
+							<li>點選Undo或按下Ctrl+Z到上一步</li>
+							<li>點選Redo或按下Ctrl+Y到下一步</li>
+							<li>點選Goto或按下Ctrl+H到指定步</li>
+							<li>點選Addons或按下Ctrl+Alt做功能設定</li>
+						</ol>
+						線上對戰可用的功能:
+						<ol>
+							<li>點選GiveUp可以向對方認輸</li>
+							<li>點選右下方即時訊息即可傳送訊息</li>
+						</ol>
+					</div>
+				</div>
+				<div class="Func">
+					<div><h2>夜間模式</h2>
+						就算在光線較暗之處也不會太刺眼
+					</div>
+					<div><h2>線上對戰</h2>
+						可在線上進行對戰，並提供即時訊息
+					</div>
+					<div><h2>輔助標記</h2>
+						幫助新的使用者更快了解遊戲狀況
+					</div>
+				</div>
+			</div>
+		</article>
+		<article id="Report">
+			<div class="Field"><h1>回報問題</h1>
+				<div align="center">
+					<div style="height:150px;width:500px;font-size:20px;position:relative">
+						<input type="text" value="" placeholder="輸入遇到的問題" style="font-size:20px;width:500px;border:none" id="RTt"/><br>
+						<textarea rows="5" placeholder="詳述該狀況" style="font-size:20px;width:496px;border:none" id="RCt"></textarea>
+						<div onclick="Rpt(this)" style="width:500px">送出</div>
+					</div>
+				</div>
+			</div>
+		</article>
+		<article id="Social">
+			<div class="Field"><h1>社群網站</h1>跟隨或追蹤我們<br>
+				<a class="twitter-follow-button" href="https://twitter.com/SquareChessGame" data-size="large"></a><br>
+				<div class="fb-like" data-href="https://www.facebook.com/SquareChessGame" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+			</div>
+		</article>
+		<article id="About">
+			<div class="Field"><h1>關於我們</h1>
+				開發者fixiabis在某日偶然在紙上想出了一個新式的紙筆遊戲─Square.Connect，而後想出了許多玩法與功能，進而開發了Square Chess Game，希望給棋盤遊戲的愛好者一個新的選擇。
+			</div>
+		</article>
+	</section>
+</body>
+<div id="fb-root"></div>
+<script>
 function Ldr(){
-	for(var i=0;i<15;i++){
-		Class("list")[i].addEventListener("mouseover",function(){
-			Hid(Id("content"));Hid(Id("GameRule"))
-			Shw(Id("GameRule").childNodes[Ich(Id("menu"),this)+9])
-			Shw(Id("GameRule"));Shw(Id("content"));doc.body.scrollTop=0
-		})
-		Class("list")[i].addEventListener("click",function(){
-			Dir("chess.html?mode="+this.innerHTML)
-		})
-		Class("list")[i].addEventListener("contextmenu",function(){Lst()})
-	}
-	for(var i=0;i<Class("remix").length;i++)Class("remix")[i].addEventListener("click",function(){
-		Dir("chess.html?mode="+this.innerHTML)
+	$("article").css("height",doc.body.scrollHeight)
+	Id("Rule").style.height=(Id("Home").scrollHeight-Id("Menu").scrollHeight)+"px"
+	Id("Caption").style.height=(Id("Home").clientHeight-40)+"px"
+	Id("Content").style.height=Id("Content").scrollHeight+"px"
+	$(".Game").on("mouseover",function(){
+		if(MainColor[this.title]){
+			Id("Rule").style.backgroundColor=MainColor[this.title]
+		}else Id("Rule").style.backgroundColor="white"
+		$(".Game").css("background-color","");this.style.backgroundColor=MainColor[this.title]
+		Id("Caption").innerHTML=Caption[this.title]
+		for(var i=0;i<$("a").length;i++)if(!$("a")[i].href)$("a")[i].href="chess.html?mode="+$("a")[i].innerHTML
 	})
-	for(i=0;i<Tag("a").length;i++){
-		Tag("a")[i].addEventListener("click",function(){
-			Stn(this.innerHTML)
-		})
-	}Rsz();var shw="MainPage";if(location.hash.length>1){var pg=Mid(location.hash,1,location.hash.length-1);if(Id(pg))shw=pg}
-	Hid(Id("content"));Shw(Id(shw));Shw(Id("content"));
-	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;
-		js=d.createElement(s);js.id=id;
-		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
-		fjs.parentNode.insertBefore(js,fjs);
-	}(document, 'script', 'facebook-jssdk'));
+	for(var i=1;i<$("article").length;i++)$("article")[i].style.top=Id("Content").scrollHeight+"px"
+}
+function Scl(){
+	for(var i=0;i<Math.floor(doc.body.scrollTop/doc.body.clientHeight)+1;i++){
+		if(!$("article")[i])break;$("article")[i].style.top=doc.body.scrollTop+"px"
+	}
+}
+function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
+	if(v[0].length<4)return alert("標題不足四字");btn.style.backgroundColor="lightgray"
+	try{$.get(
+		"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec",
+		{Typ:"P",title:"BY9.1:"+v[0],content:v[1]},
+		function(r){alert(r);Id("RTt").value="";Id("RCt").value="";btn.style.backgroundColor=""}
+	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
+}
+var Caption={
+	Connect:"<a>Square.Connect</a>是Square Chess Game的代表，也是孕育Square Chess系列所有模式的始祖。<br>延伸模式:<br><a>Connect:Attack</a>:為Connect延伸模式中最有名的一個模式<br><a>Connect:Defend</a>:為Connect獨立支援的模式<br><a>Connect:Scheme</a>:為Connect延伸模式中最具耐玩度的模式",
+	Blocker:"<a>Square.Blocker</a>是繼Square.Connect之後，第二個出現的棋盤遊戲，其遊戲時間在系列中最短。<br>延伸模式:<br><a>Blocker:ByLine</a>:增加Blocker的遊戲速度<br><a>Blocker:Forbid</a>:大量增加Blocker的遊戲速度<br><a>Blocker:Anomal</a>:增加Blocker的遊戲速度",
+	Divider:"<a>Square.Divider</a>擴大Square.Connect的符號放置權利外，也提升了遊戲的耐玩度。<br>延伸模式:<br><a>Divider:Zombie</a>:第一個導入死亡觀念的延伸模式<br><a>Divider:Follow</a>:需要多思考的延伸模式",
+	Adapter:"<a>Square.Adapter</a>是在系列中最需要思考的模式。<br>延伸模式:<br><a>Adapter:Invert</a>:完全倒轉規則",
+	Other:"<a>Gomoku</a>:即五子棋<br><a>GoLike</a>類圍棋，但不提子<br><h2>混合玩法</h2>可將剛剛所有模式重新組合成新的模式，例:<a>Divider:ByLine</a>",
+	MainPage:"<h1>歡迎使用</h1>滑鼠靠近其他模式即可查看說明，點選即可進入遊戲								<h2>最適狀態</h2>絕對貼合所有裝置，且容易操作<h2>新式規則</h2>前所未見的玩法"
+},MainColor={
+	Connect:"royalblue",
+	Blocker:"crimson",
+	Divider:"seagreen",
+	Adapter:"darkorange"
+}
 	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
 		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
 		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
 		t._e=[];t.ready=function(f){t._e.push(f)};return t;
 	}(document, "script", "twitter-wjs"));
-}
-function Ich(f,v){
-	for(var i=0;i<f.childNodes.length;i++){
-		if(f.childNodes[i]==v)return i
-	}
-}
-function Rsz(){
-	var sz=Math.floor((doc.body.clientWidth-320)/160),s2=Math.floor(doc.body.clientWidth/160)
-	if(s2>4)s2=4;Id("home").style.width="320px";scn=0;Id("menu").style.width=sz*160+"px"
-	Id("about").style.width=s2*160+"px";Id("menu").style.marginRight="";Id("Report").style.width="460px"
-	for(var i=0;i<Class("Mobile").length;i++)Class("Mobile")[i].style.height="0px"
-	for(var i=0;i<Class("Computer").length;i++)Class("Computer")[i].style.height=Class("Computer")[i].scrollHeight+"px"
-	Class("txt")[0].style.width=Id("Report").clientWidth+"px"
-	Class("txt")[1].style.width=Id("Report").clientWidth-4+"px"
-	if(doc.body.clientWidth<480){scn=1,w=Math.floor(doc.body.clientWidth/160)*160
-		Id("home").style.width=doc.body.clientWidth+"px"
-		Id("menu").style.width=w+"px"
-		Id("menu").style.marginRight=(doc.body.clientWidth-w)/2+"px"
-		Id("about").style.width=w+"px"
-		Id("about").style.marginRight=(doc.body.clientWidth-w)/2+"px"
-		Id("Report").style.width="100%"
-		Class("txt")[0].style.width=Id("Report").clientWidth-Id("Report").offsetLeft+"px"
-		Class("txt")[1].style.width=Id("Report").clientWidth-Id("Report").offsetLeft-4+"px"
-		for(var i=0;i<Class("Mobile").length;i++)Class("Mobile")[i].style.height=Class("Mobile")[i].scrollHeight+"px"
-		for(var i=0;i<Class("Computer").length;i++)Class("Computer")[i].style.height="0px"
-	}Id("txc").style.width=Class("txt")[1].clientWidth+2+"px"
-	Id("txc").style.height=Class("txt")[1].clientHeight+1+"px"
-}
-function Mnu(v){
-	var h=Tag("header")[0].scrollHeight;if(!v)h="40"
-	Tag("header")[0].style.height=h+"px"
-	if(!scn){Id("home").style.height=h+"px";Id("home").style.lineHeight=h+"px"}
-	$(".space")[0].style.height=h+"px"
-}
-function Stn(v){
-	var stn=[
-		["基本準則","Connect準則","Blocker準則","Divider準則","Adapter準則"],
-		["封限區","封區","禁區","殭屍","障礙"]
-	],ck=0
-	for(var i=0;i<stn.length;i++){
-		for(var j=0;j<stn[i].length;j++){
-			if(v==stn[i][j]){
-				Hid(Id("GameRule").childNodes[(i+3)*2])
-				Shw(Id("GameRule").childNodes[(i+3)*2].childNodes[(j+1)*2])
-				Shw(Id("GameRule").childNodes[(i+3)*2]);ck=1
-			}if(ck)break
-		}if(ck)break
-	}Shw(Id("GameRule"));Shw(Id("content"))
-}
-function Lst(){
-	if(Tag("header")[0].style.height=="40px")Mnu(1);else Mnu()
-}
-function Rpt(){var v=[];if(Class("txt")[0].value.length<4)return alert("標題不足四字")
-	for(var i=0;i<2;i++)v[i]=Class("txt")[i].value
-	try{$.get(
-		"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec",
-		{Typ:"P",title:"BY8.1:"+v[0],content:v[1]},
-		function(r){alert(r);for(var i=0;i<2;i++)Class("txt")[i].value=""}
-	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
-}
-function KDw(e){var k=e.which
-	switch(k){
-		case 13:if(e.shiftKey)Rpt();break
-		case 27:for(var i=0;i<2;i++)$(".txt")[i].value=""
-	}
-}
+	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;
+		js=d.createElement(s);js.id=id;
+		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
+		fjs.parentNode.insertBefore(js,fjs);
+	}(document, 'script', 'facebook-jssdk'));
 </script>
-</head>
-<body onLoad="Ldr()" onResize="Rsz()" oncontextmenu="event.preventDefault()" onkeydown="KDw(event)">
-<header onMouseOver="Lst()" onMouseOut="Mnu()" onclick="Lst()">
-    <div id="home" onclick="CPg('MainPage')">Square Chess Game</div>
-    <div id="menu">
-        <div class="list" title="Connect系列">Square.Connect</div>
-        <div class="list" title="Connect系列">Connect:Attack</div>
-        <div class="list" title="Connect系列">Connect:Defend</div>
-        <div class="list" title="Connect系列">Connect:Scheme</div>
-        <div class="list" title="Blocker系列">Square.Blocker</div>
-        <div class="list" title="Blocker系列">Blocker:ByLine</div>
-        <div class="list" title="Blocker系列">Blocker:Forbid</div>
-        <div class="list" title="Blocker系列">Blocker:Anomal</div>
-        <div class="list" title="Divider系列">Square.Divider</div>
-        <div class="list" title="Divider系列">Divider:Zombie</div>
-        <div class="list" title="Divider系列">Divider:Follow</div>
-        <div class="list" title="Adapter系列">Square.Adapter</div>
-        <div class="list" title="Adapter系列">Adapter:Invert</div>
-        <div class="list" title="五子棋">Gomoku</div>
-        <div class="list" title="類圍棋">GoLike</div>
-    </div>
-</header>
-<div class="space"></div>
-<article id="content" style="color:dimgray;height:0px"><font></font>
-	<section id="MainPage"><font class="title1">歡迎使用</font>
-		<section><font class="title2">試試這些基本操作</font>
-			<article class="Mobile" style="height:0px">
-				<ol>
-					<li>點選<font class="mouse">格子</font>來<font class="command">設置符號</font></li>
-					<li>點選<font class="mouse">Clean</font><font class="command">清除棋盤</font></li>
-					<li>點選<font class="mouse">Undo</font><font class="command">到上一步</font></li>
-					<li>按住<font class="mouse">Clean</font>做<font class="command">功能設定</font></li>
-					<li>按住<font class="mouse">Undo</font><font class="command">到指定步</font></li>
-				</ol>
-			</article>
-			<article class="Computer" style="height:0px">
-				<ol>
-					<li>點選<font class="mouse">格子</font>或以鍵盤輸入座標(E5即按下E+5)來<font class="command">設置符號</font></li>
-					<li>滑鼠靠近<font class="mouse">空白處</font>或按下]或[即可<font class="command">喚出選單</font></li>
-					<li>點選<font class="mouse">Clean</font>或按下Del以<font class="command">清除棋盤</font></li>
-					<li>點選<font class="mouse">Undo</font>或按下Ctrl+Z<font class="command">到上一步</font></li>
-					<li>點選<font class="mouse">Redo</font>或按下Ctrl+Y<font class="command">到下一步</font></li>
-					<li>點選<font class="mouse">Goto</font>或按下Ctrl+H<font class="command">到指定步</font></li>
-					<li>點選<font class="mouse">Addons</font>或按下Ctrl+Alt做<font class="command">功能設定</font></li>
-				</ol>
-			</article>
-		</section>
-	</section>
-	<section id="GameRule"><font class="title1">遊戲規則</font>
-		<br>遊戲的<a>基本準則</a>
-		<section><font class="title2">準則說明</font>
-			<section style="background:lightgray;color:white">基本準則:雙方第一回合皆可隨意設置一枚符號於場上，場上有符號處不得重複設置，當符合條件將形成<a>禁區</a>，當無法設置符號時對方獲勝</section>
-			<section style="background:royalblue;color:white">Connect準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為一格，其餘無法設置</section>
-			<section style="background:crimson;color:white">Blocker準則:用四枚符號形成矩形，我方形成指定形狀時，其中對方是無法設置的</section>
-			<section style="background:seagreen;color:white">Divider準則:己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為無限距離長，除非該方有非我方符號存在，其餘無法設置</section>
-			<section style="background:darkorange;color:white">Adapter準則:己方所有符號的右前前，左前前，右右前，左左前，右後後，左後後，右右後，左左後方，單位為ㄧ格，其餘無法設置</section>
-		</section>
-		<section><font class="title2">名稱說明</font>
-			<section>封限區:<font color="crimsom">O為此色</font>，<font color="royalblue">X為此色</font>
-					<ol>
-						<li>當對方封限區有一枚我方符號時，我方獲勝</li>
-						<li>當我方封限區皆為我方符號時，對方獲勝</li>
-					</ol>
-			</section>
-			<section>封區:<font color="palevioletred">O為此色</font>，<font color="lightsteelblue">X為此色</font>
-					<ol>
-						<li>當我方限區皆為我方符號時，對方獲勝</li>
-					</ol>
-			</section>
-			<section>禁區:<font color="indianred">O為此色</font>，<font color="lightskyblue">X為此色</font>
-					<ol>
-						<li>對方無法設置符號於此</li>
-					</ol>
-			</section>
-			<section>殭屍:<font color="black">皆為此色</font>，字樣為"<font color="red">Z</font>"</section>
-			<section>障礙:<font color="dimgray">皆為此色</font>，字樣為" "</section>
-		</section>
-		<section><font class="title2">Square.Connect</font>
-			<article>規則說明
-				<ol>
-					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Connect:Attack</font>
-			<article>規則說明
-				<ol>
-					<li>場上會有固定的<a>封區</a>與<a>封限區</a></li>
-					<li>雙方第一回合限定設置於指定區域</li>
-					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Connect:Defend</font>
-			<article>規則說明
-				<ol>
-					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
-					<li>在一區域佔下我方符號五枚，且無對方符號時，我方獲勝</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Connect:Scheme</font>
-			<article>規則說明
-				<ol>
-					<li>場上會有隨機的的<a>障礙</a></li>
-					<li>雙方第一回合皆可隨意設置一枚符號於場上，但不得設置於C3-G7的座標上</li>
-					<li>第一回合設置後會自動於附近產生<a>封限區</a></li>
-					<li>第二回合後設置符號需依照<a>Connect準則</a>設置</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Square.Blocker</font>
-			<article>規則說明
-				<ol>
-					<li>雙方皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Blocker:ByLine</font>
-			<article>規則說明
-				<ol>
-					<li>雙方皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
-					<li>用兩枚符號形成直線</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Blocker:Forbid</font>
-			<article>規則說明
-				<ol>
-					<li>雙方皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
-					<li>對方不可設置的地方，我方也無法設置</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Blocker:Anomal</font>
-			<article>規則說明
-				<ol>
-					<li>雙方皆可隨意設置一枚符號於場上</li>
-					<li>第二回合後設置符號需依照<a>Blocker準則</a>設置</li>
-					<li>用多枚符號形成不規則形狀</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Square.Divider</font>
-			<article>規則說明
-				<ol>
-					<li>第二回合後設置符號需依照<a>Divider準則</a>設置</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Divider:Zombie</font>
-			<article>規則說明
-				<ol>
-					<li>第二回合後設置符號需依照<a>Divider準則</a>設置</li>
-					<li>不同的符號靠近時雙方皆會變成<a>殭屍</a></li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Divider:Follow</font>
-			<article>規則說明
-				<ol>
-					<li>第二回合後設置符號需依照<a>Divider準則</a>設置</li>
-					<li>變更原生準則，原依照己方所有符號，改為依照己方上回合符號</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Square.Adapter</font>
-			<article>規則說明
-				<ol>
-					<li>第二回合後設置符號需依照<a>Adapter準則</a>設置</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Adapter:Invert</font>
-			<article>規則說明
-				<ol>
-					<li>第二回合後設置符號不得依照<a>Adapter準則</a>設置</li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">Gomoku</font>
-			<article>
-				<ol>
-					<li><a href="https://zh.wikipedia.org/wiki/五子棋">五子棋規則</a></li>
-				</ol>
-			</article>
-		</section>
-		<section><font class="title2">GoLike</font>
-			<article>
-				<ol>
-					<li><a href="https://zh.wikipedia.org/wiki/圍棋">圍棋規則</a></li>
-					<li>不提子，被圍起來的符號都變成<a>殭屍</a></li>
-				</ol>
-			</article>
-		</section>
-	</section>
-	<section id="Problem"><font class="title1">回報問題</font><br>
-		<div class="Computer">按下Shift+Enter傳送,按下Esc可取消</div>
-		<div align="center"><div style="height:150px" id="Report">
-			<input type="text" class="txt" value="" placeholder="輸入遇到的問題"/><br>
-			<div id="txc" style="position:relative;height:120px;width:462px">
-				<textarea rows="5" class="txt" placeholder="詳述該狀況" style="border-top:none"></textarea>
-				<div onclick="Rpt()" id="ck">送出</div>
-			</div>
-		</div></div>
-	</section>
-	<section id="Online"><font class="title1">線上對戰</font><br>
-		啟動線上對戰只需將Addons中的線上對戰選項打勾，並按下OK即進入線上對戰。
-		<section><font class="title2">試試這些基本操作</font>
-			<article class="Mobile" style="height:0px">
-				<ol>
-					<li>點選GiveUp認輸</li>
-					<li>按住GiveUp做功能設定</li>
-					<li>點選右下角即時訊息即可傳送訊息</li>
-				</ol>
-			</article>
-			<article class="Computer" style="height:0px">
-				<ol>
-					<li>點選GiveUp認輸</li>
-					<li>點選Addons做功能設定</li>
-					<li>點選右下角即時訊息即可傳送訊息</li>
-				</ol>
-			</article>
-		</section>
-	</section>
-	<section id="Social"><font class="title1">社交網站</font><br>
-		<a class="twitter-follow-button" href="https://twitter.com/SquareChessGame" data-size="large"></a><br>
-		<div class="fb-like" data-href="https://www.facebook.com/SquareChessGame" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
-	</section>
-	<section id="Remix"><font class="title1">混合玩法</font><br>
-		除上面提供預設模式外，部分模式間是可以混合的，例如:
-		<ol>
-			<li class="remix">Connect:Follow</li>
-			<li class="remix">Connect:Zombie</li>
-			<li class="remix">Connect:Forbid</li>
-			<li class="remix">Connect:Invert</li>
-			<li class="remix">Blocker:Zombie</li>
-			<li class="remix">Divider:Scheme</li>
-			<li class="remix">Divider:ByLine</li>
-			<li class="remix">Divider:Forbid</li>
-			<li class="remix">Divider:Follow</li>
-			<li class="remix">Divider:Invert</li>
-			<li class="remix">Adapter:Attack</li>
-			<li class="remix">Adapter:Follow</li>
-			<li class="remix">Adapter:ByLine</li>
-			<li class="remix">Adapter:Forbid</li>
-			<li class="remix">Adapter:Zombie</li>
-			<li class="remix">Gomoku:Blocker</li>
-			<li class="remix">Gomoku:Divider</li>
-			<li class="remix">Gomoku:Connect</li>
-		</ol>
-		除上例外，只要規則之間不會發生衝突，可以將模式進行多重混合，以下為會發生衝突的類型:
-		<ol>
-			<li class="remix">Connect:Adapter</li>
-			<li class="remix">Divider:Adapter</li>
-		</ol>
-	</section>
-</article><div class="space"></div>
-<footer>
-	<div id="about">
-		<div class="list" title="社交網站" onclick="CPg('Social')">社交網站</div>
-		<div class="list" title="回報問題" onclick="CPg('Problem')">回報問題</div>
-		<div class="list" title="線上對戰" onclick="CPg('Online')">線上對戰</div>
-		<div class="list" title="混合玩法" onclick="CPg('Remix')">混合玩法</div>
-	</div>
-</footer>
-</body>
-<div id="fb-root"></div>
 </html>

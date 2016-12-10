@@ -31,3 +31,4 @@ Shl.OpK.Scheme=function(){
 	Dft.System.Blk=18
 	Dft.Scheme.Ara=Id("Scheme-Ara").checked
 }
+Shl.Rls.Scheme="場上會有隨機的的障礙，雙方第一回合皆可隨意設置一枚符號於場上，但不得設置於C3-G7的座標上，第一回合設置後會自動於附近產生封限區"

@@ -21,3 +21,4 @@ Shl.Opt.Connect=function(){
 Shl.OpK.Connect=function(){
 	if(!Dft.System.Oln)Dft.Connect.Rnd=Id("Connect-Rnd").checked;Ara.OpK("Connect")
 }
+Shl.Rls.Connect="己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為一格，其餘無法設置"

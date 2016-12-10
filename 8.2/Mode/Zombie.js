@@ -20,3 +20,4 @@ Shl.OpK.Zombie=function(){
 	if(!Dft.System.Oln)Dft.Zombie.ToZ=Val(Id("Zombie-ToZ").value)
 	if(Dft.Zombie.ToZ<10)Dft.Zombie.ToZ=10
 }
+Shl.Rls.Zombie="不同的符號靠近時雙方皆會變成殭屍"

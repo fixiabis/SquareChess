@@ -33,3 +33,4 @@ Shl.OpK.Attack=function(){
 	if(Dft.Connect)Dft.Connect.Rnd=0
 	Dft.Attack.Ara=Id("Attack-Ara").checked
 }
+Shl.Rls.Attack="雙方第一回合限定設置於指定區域，場上會有固定的封區與封限區"

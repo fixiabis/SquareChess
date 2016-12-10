@@ -40,3 +40,4 @@ function Lin(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]
 		}
 	}return Ara.AJd("ByLine",ara)
 }
+Shl.ByLine="用兩枚符號形成直線，我方形成指定形狀時，其中對方是無法設置的"

@@ -15,8 +15,8 @@ Shl.Lmt.Gomoku=function(){}
 Shl.Mrk.Gomoku=function(){var sym=Tn%2
 	if(Dft.Gomoku.Ara==1)sym=(Tn+1)%2
 	if(Dft.Gomoku.Ara!=2)for(var i=0;i<Shl.Ara.Gomoku[sym].length;i++){var s=0
-		for(var j=0;j<5;j++)if(Qre(Shl.Ara.Gomoku[sym][i][j],"Sym")==2)s++;if(s==5)continue
-		for(var j=0;j<Shl.Ara.Gomoku[sym][i].length;j++)if(Qre(Shl.Ara.Gomoku[sym][i][j],"Sym")==2)Qre(Shl.Ara.Gomoku[sym][i][j],"BgC",9)
+		for(var j=0;j<5;j++)if(Qre(Shl.Ara.Gomoku[sym][i][j],"Sym")==2)s++;if(s>2)continue
+		Qre(Shl.Ara.Gomoku[sym][i],"BgC",9)
 	}
 }
 Shl.Brd.Gomoku=function(){}
@@ -27,9 +27,10 @@ Shl.Opt.Gomoku=function(){
 	OpS("Gomoku-Ara-0/Gomoku-Ara","r","我方可行區域",Dft.Gomoku.Ara==0)
 	OpS("Gomoku-Ara-1/Gomoku-Ara","r","對方可行區域",Dft.Gomoku.Ara==1)
 	OpS("Gomoku-Ara-2/Gomoku-Ara","r","隱藏可行區域",Dft.Gomoku.Ara==2)
-	OpS("Gomoku-Pro","k","使用Pro規則",Dft.Gomoku.Pro)
+	if(!Dft.System.Oln)OpS("Gomoku-Pro","k","使用Pro規則",Dft.Gomoku.Pro)
 }
 Shl.OpK.Gomoku=function(){
 	for(var i=0;i<3;i++)if(Id("Gomoku-Ara-"+i).checked)Dft.Gomoku.Ara=i
-	Dft.Gomoku.Pro=Id("Gomoku-Pro").checked
+	if(!Dft.System.Oln)Dft.Gomoku.Pro=Id("Gomoku-Pro").checked
 }
+Shl.Rls.Gomoku="<a href='https://zh.wikipedia.org/wiki/五子棋' target='_new'>五子棋規則</a>"

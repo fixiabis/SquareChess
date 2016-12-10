@@ -8,7 +8,7 @@
 	},Dft={
 		Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1,MdN:"",Msg:0},
 		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}
-	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{}}
+	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{},Rls:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=",""),tm=new Date().getHours()
 	if(tm>21||tm<6)Id("NightMode").style.opacity=0.3
@@ -17,10 +17,10 @@ function Ldr(){if(!location.search)history.back()
 }//取得參數
 function MdL(v){
 	var md=doc.createElement("script");md.src="Mode/"+MdQ[v]+".js"
-	if(MdQ[v+1])md.onload=function(){MdL(v+1)}
+	if(MdQ[v+1])md.onload=function(){MdL(v+1,k)}
 	else md.onload=function(){
-		Itf();Rsz();Cln();if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
-		Id("LdA").style.display="none"
+		Itf();Rsz();Cln();Id("LdA").style.display="none";if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
+		for(var i=0;i<MdQ.length;i++)if(Shl.Rls[MdQ[i]])Id("Rule").childNodes[3].innerHTML+="<li>"+Shl.Rls[MdQ[i]]+"</li>"
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
@@ -32,7 +32,8 @@ function Rsz(){var scn=1;Id("Board").style.display="none"
 	for(i=81;i<83;i++){if(!Class("bt")[i])break
 		if(i>80)Class("bt")[i].style.width=sz*4.5+"px"
 		if(!Class("bt")[i+1]&&i==81)Class("bt")[i].style.width=sz*9+"px"
-	}if(scn)Id("QCtrl").style.display="";Id("Board").style.display=""
+	}if(scn)Id("QCtrl").style.display="";Id("Board").style.display="";Id("UI").style.width=sz*9+"px"
+	Id("Rule").style.width=sz*9+"px";if(Id("Rule").style.height!="0px")Id("Rule").style.height=sz*9+"px"
 }//大小變更
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd
@@ -127,6 +128,7 @@ function Opt(){Id("Setting").style.height="100%";var id=Dft.Oln.Id
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
 	OpS("System-Nit","k","夜間模式",Id("NightMode").style.opacity!=1)
 	OpS("System-Ful","k","全螢幕模式",doc.webkitIsFullScreen)
+	OpS("System-Rul","k","顯示規則",Id("Rule").style.height!="0px")
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
 function OpK(k){Id("Setting").style.height="0%";if(k)return
@@ -138,6 +140,7 @@ function OpK(k){Id("Setting").style.height="0%";if(k)return
 	}else Oln.OpK();for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	if(Id("System-Nit").checked)Id("NightMode").style.opacity=0.3;else Id("NightMode").style.opacity=1
 	if(Id("System-Ful").checked)Id("NightMode").webkitRequestFullScreen();else doc.webkitCancelFullScreen()
+	if(Id("System-Rul").checked)Ctl("Rul",1);else Ctl("Rul",0)
 	Dft.System.Nxt=Id("System-Nxt").checked
 	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
 }//功能確認

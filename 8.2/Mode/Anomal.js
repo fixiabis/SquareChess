@@ -29,3 +29,4 @@ function Anm(){
 		return ara.O.All.indexOf(crd)<0&&ara.X.All.indexOf(crd)<0&&Qre(crd,"Sym")==2
 	});ara.P.All=ara.P[0];return ara
 }
+Shl.Rls.Anomal="用多枚符號形成不規則形狀，我方形成指定形狀時，其中對方是無法設置的"

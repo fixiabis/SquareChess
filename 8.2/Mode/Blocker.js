@@ -39,3 +39,4 @@ function Blk(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]
 		}
 	}return Ara.AJd("Blocker",ara)
 }
+Shl.Rls.Blocker="用四枚符號形成矩形，我方形成指定形狀時，其中對方是無法設置的"

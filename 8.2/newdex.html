@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<title>Square Chess Game</title>
+<script src="Prun.js"></script>
+<script>
+	function Ldr(){
+		$("section").css("height",doc.body.scrollHeight+"px")
+		$("article").css("height",$("section")[0].style.height)
+	}
+</script>
+<style>@import "Face.css";
+	section{background-color:lightgray;position:relative;top:0px;left:0px;width:100%}
+	article{width:50%;position:absolute;background-color:dimgray;top:0px}
+</style>
+</head>
+<body onload="Ldr()">
+	<section>
+		<article style="left:0px ;z-index:1">
+		</article>
+	</section>
+	<section>
+		<article style="right:0px;z-index:2">
+		</article>
+	</section>
+	<section>
+		<article style="left:0px ;z-index:3">
+		</article>
+	</section>
+	<section>
+		<article style="right:0px;z-index:4">
+		</article>
+	</section>
+	<section>
+		<article style="left:0px ;z-index:5">
+		</article>
+	</section>
+</body>
+</html>
