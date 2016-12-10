@@ -7,7 +7,7 @@
 		]
 	},Dft={
 		Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1,MdN:"",Msg:0},
-		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}
+		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:1,Oln:0}
 	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{},Rls:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=",""),tm=new Date().getHours()
@@ -19,7 +19,7 @@ function MdL(v){
 	var md=doc.createElement("script");md.src="Mode/"+MdQ[v]+".js"
 	if(MdQ[v+1])md.onload=function(){MdL(v+1)}
 	else md.onload=function(){
-		Itf();Cln();Id("LdA").style.display="none";Rsz()
+		Id("LdA").style.display="none";Itf();Cln();Rsz()
 		if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
 		for(var i=0;i<MdQ.length;i++)if(Shl.Rls[MdQ[i]])Id("Rule").childNodes[3].innerHTML+="<li>"+Shl.Rls[MdQ[i]]+"</li>"
 	}
