@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<title>Square Chess Game</title>
+<script src="Prun.js"></script><script src="Core.js"></script>
+<script src="Part.js"></script><script src="Aide.js"></script>
+<script src="Mode.js"></script>
+<style>@import "Face.css";#menu{position:fixed;}body{background-color:black}</style>
+</head>
+<body onLoad="Ldr()" onResize="Rsz()" onmouseover="MsO(event)" onkeydown="KDw(event)" onkeyup="KUp(event)" oncontextmenu="event.preventDefault()">
+	<div style="display:table;width:100%;height:100%;position:fixed;top:0px;left:0px;opacity:1" id="NightMode">
+		<div style="display:table-cell;height:100%;vertical-align:middle">
+			<div id="UI" style="margin:auto;position:relative"><div id="LdA">Creating...</div>
+				<div id="Rule" style="height:0px">
+					<div style="position:absolute;top:0px;right:4px;height:100%;width:20px;opacity:0.5">
+						<div style="width:20px;height:20px;border:solid 2px;text-align:center;line-height:20px" onclick="Ctl('Rul')">X</div>
+					</div>
+					<ul></ul>
+				</div>
+				<table id="Board" style="background:gray;border:none" cellpadding="0" cellspacing="0"></table>
+				<table id="QCtrl" style="border:none;display:none" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="bt" onclick="Ctl('Udo')" oncontextmenu="Ctl('Gto')">Undo</td>
+						<td class="bt" onclick="Ctl('Cln')" oncontextmenu="Opt()">Clean</td>
+					</tr>
+				</table>
+			</div>
+			<div id="Setting" style="height:0%">
+				<div id="OptionMenu"></div>
+					<div id="Opc"><div class="Opbt" onclick="OpK()">OK</div><div class="Opbt" onclick="OpK(1)">Cancel</div>
+				</div>
+			</div>
+		</div>
+		<div id="menu" style="left:0px;top:0px;width:0px;height:240px;overflow:hidden">
+			<div class="list" onclick="Ctl('Cln')">Clean</div>
+			<div class="list" onclick="Ctl('Udo')">Undo</div>
+			<div class="list" onclick="Ctl('Rdo')">Redo</div>
+			<div class="list" onclick="Ctl('Gto')">Goto</div>
+			<div class="list" onclick="location='index.html'">Home</div>
+			<div class="list" onclick="Opt()">Addons</div>
+		</div>
+	</div>
+</body>
+</html>
