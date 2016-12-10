@@ -19,7 +19,8 @@ function MdL(v){
 	var md=doc.createElement("script");md.src="Mode/"+MdQ[v]+".js"
 	if(MdQ[v+1])md.onload=function(){MdL(v+1)}
 	else md.onload=function(){
-		Itf();Rsz();Cln();Id("LdA").style.display="none";if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
+		Itf();Cln();Id("LdA").style.display="none";Rsz()
+		if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
 		for(var i=0;i<MdQ.length;i++)if(Shl.Rls[MdQ[i]])Id("Rule").childNodes[3].innerHTML+="<li>"+Shl.Rls[MdQ[i]]+"</li>"
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
