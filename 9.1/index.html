@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png" rel="shortcut icon"><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<title>Square Chess Game</title>
+<script src="Prun.js"></script>
+<style>
+body{
+	margin:0px;cursor:default;user-select:none;
+	-ms-user-select:none;font-family:Consolas;
+	-moz-user-select:none;-webkit-user-select:none;
+}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{width:5px;height:5px;opacity:0.5}
+::-webkit-scrollbar-thumb{width:5px;height:5px;border-radius:5px;background-color:lightgray}
+article{position:absolute;left:0px;width:100%;color:white}
+#Content{position:relative;font-size:20px}
+#Home{
+	color:lightgray
+}
+#Mode{
+	background-color:lightblue
+}
+#Report{
+	background-color:palevioletred
+}
+#Social{
+	background-color:palegreen;color:black
+}
+#About{
+	background-color:lightcoral
+}
+.Game{
+	float:left;width:160px;height:40px;font-size:16px;line-height:40px;text-align:center;transition:all 2s
+}
+#Main{
+	width:250px;background-image:url(https://upload.wikimedia.org/wikipedia/commons/2/20/Square.Connect.png);
+	background-size:30px 30px;background-repeat:no-repeat;background-position:5px 5px;font-size:18px
+}
+.Func{float:left;margin:10px}
+h1{font-size:xx-large}
+h2{font-size:x-large}
+.Game:hover{background-color:lightgray;color:white}
+#Main:hover{color:dimgray}
+.Game[title=Connect]:hover{background-color:royalblue}
+.Game[title=Blocker]:hover{background-color:crimson}
+.Game[title=Divider]:hover{background-color:seagreen}
+.Game[title=Adapter]:hover{background-color:darkorange}
+#Menu{overflow:auto;height:40px}
+#Caption{margin:auto;width:100%;overflow:hidden;background-color:none;transition:all 2s}
+.Game:hover{text-decoration:none}
+a{color:silver;text-decoration:none}
+a:hover{text-decoration:underline}
+.Field{width:80%;height:90%;margin:5% 10%}
+</style>
+</head>
+<body style="margin:0px" onload="Ldr()" onscroll="Scl()">
+	<section id="Content">
+		<article id="Home">
+			<div id="Menu">
+				<a id="Main" class="Game" title="MainPage" href="#">Square Chess Game</a>
+				<a class="Game" title="Connect">Square.Connect</a>
+				<a class="Game" title="Blocker">Square.Blocker</a>
+				<a class="Game" title="Divider">Square.Divider</a>
+				<a class="Game" title="Adapter">Square.Adapter</a>
+				<a class="Game" title="Other">Other</a>
+			</div>
+			<div id="Rule" style="transition:all 2s"><br>
+				<div id="Caption" style='width:80%;height:100%;margin:0% 10%'>
+					<h1>歡迎使用</h1>
+						滑鼠靠近其他模式即可查看說明，點選即可進入遊戲
+					<h2>最適狀態</h2>
+						絕對貼合所有裝置，且容易操作
+					<h2>新式規則</h2>
+						前所未見的玩法
+				</div>
+			</div>
+		</article>
+		<article id="Mode">
+			<div class="Field"><h1>功能介紹</h1>
+				<div class="Func">
+					<div><h2>常用功能</h2>
+						常用的一般功能:
+						<ol>
+							<li>點選格子或以鍵盤輸入座標(E5即按下E+5)來設置符號</li>
+							<li>滑鼠靠近空白處或按下]或[即可喚出選單</li>
+							<li>點選Clean或按下Del以清除棋盤</li>
+							<li>點選Undo或按下Ctrl+Z到上一步</li>
+							<li>點選Redo或按下Ctrl+Y到下一步</li>
+							<li>點選Goto或按下Ctrl+H到指定步</li>
+							<li>點選Addons或按下Ctrl+Alt做功能設定</li>
+						</ol>
+						線上對戰可用的功能:
+						<ol>
+							<li>點選GiveUp可以向對方認輸</li>
+							<li>點選右下方即時訊息即可傳送訊息</li>
+						</ol>
+					</div>
+				</div>
+				<div class="Func">
+					<div><h2>夜間模式</h2>
+						就算在光線較暗之處也不會太刺眼
+					</div>
+					<div><h2>線上對戰</h2>
+						可在線上進行對戰，並提供即時訊息
+					</div>
+					<div><h2>輔助標記</h2>
+						幫助新的使用者更快了解遊戲狀況
+					</div>
+				</div>
+			</div>
+		</article>
+		<article id="Report">
+			<div class="Field"><h1>回報問題</h1>
+				<div align="center">
+					<div style="height:150px;width:500px;font-size:20px;position:relative">
+						<input type="text" value="" placeholder="輸入遇到的問題" style="font-size:20px;width:500px;border:none" id="RTt"/><br>
+						<textarea rows="5" placeholder="詳述該狀況" style="font-size:20px;width:496px;border:none" id="RCt"></textarea>
+						<div onclick="Rpt(this)" style="width:500px">送出</div>
+					</div>
+				</div>
+			</div>
+		</article>
+		<article id="Social">
+			<div class="Field"><h1>社群網站</h1>跟隨或追蹤我們<br>
+				<a class="twitter-follow-button" href="https://twitter.com/SquareChessGame" data-size="large"></a><br>
+				<div class="fb-like" data-href="https://www.facebook.com/SquareChessGame" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+			</div>
+		</article>
+		<article id="About">
+			<div class="Field"><h1>關於我們</h1>
+				開發者fixiabis在某日偶然在紙上想出了一個新式的紙筆遊戲─Square.Connect，而後想出了許多玩法與功能，進而開發了Square Chess Game，希望給棋盤遊戲的愛好者一個新的選擇。
+			</div>
+		</article>
+	</section>
+</body>
+<div id="fb-root"></div>
+<script>
+function Ldr(){
+	$("article").css("height",doc.body.scrollHeight)
+	Id("Rule").style.height=(Id("Home").scrollHeight-Id("Menu").scrollHeight)+"px"
+	Id("Caption").style.height=(Id("Home").clientHeight-40)+"px"
+	Id("Content").style.height=Id("Content").scrollHeight+"px"
+	$(".Game").on("mouseover",function(){
+		if(MainColor[this.title]){
+			Id("Rule").style.backgroundColor=MainColor[this.title]
+		}else Id("Rule").style.backgroundColor="white"
+		$(".Game").css("background-color","");this.style.backgroundColor=MainColor[this.title]
+		Id("Caption").innerHTML=Caption[this.title]
+		for(var i=0;i<$("a").length;i++)if(!$("a")[i].href)$("a")[i].href="chess.html?mode="+$("a")[i].innerHTML
+	})
+	for(var i=1;i<$("article").length;i++)$("article")[i].style.top=Id("Content").scrollHeight+"px"
+}
+function Scl(){
+	for(var i=0;i<Math.floor(doc.body.scrollTop/doc.body.clientHeight)+1;i++){
+		if(!$("article")[i])break;$("article")[i].style.top=doc.body.scrollTop+"px"
+	}
+}
+function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
+	if(v[0].length<4)return alert("標題不足四字");btn.style.backgroundColor="lightgray"
+	try{$.get(
+		"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec",
+		{Typ:"P",title:"BY9.1:"+v[0],content:v[1]},
+		function(r){alert(r);Id("RTt").value="";Id("RCt").value="";btn.style.backgroundColor=""}
+	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
+}
+var Caption={
+	Connect:"<a>Square.Connect</a>是Square Chess Game的代表，也是孕育Square Chess系列所有模式的始祖。<br>延伸模式:<br><a>Connect:Attack</a>:為Connect延伸模式中最有名的一個模式<br><a>Connect:Defend</a>:為Connect獨立支援的模式<br><a>Connect:Scheme</a>:為Connect延伸模式中最具耐玩度的模式",
+	Blocker:"<a>Square.Blocker</a>是繼Square.Connect之後，第二個出現的棋盤遊戲，其遊戲時間在系列中最短。<br>延伸模式:<br><a>Blocker:ByLine</a>:增加Blocker的遊戲速度<br><a>Blocker:Forbid</a>:大量增加Blocker的遊戲速度<br><a>Blocker:Anomal</a>:增加Blocker的遊戲速度",
+	Divider:"<a>Square.Divider</a>擴大Square.Connect的符號放置權利外，也提升了遊戲的耐玩度。<br>延伸模式:<br><a>Divider:Zombie</a>:第一個導入死亡觀念的延伸模式<br><a>Divider:Follow</a>:需要多思考的延伸模式",
+	Adapter:"<a>Square.Adapter</a>是在系列中最需要思考的模式。<br>延伸模式:<br><a>Adapter:Invert</a>:完全倒轉規則",
+	Other:"<a>Gomoku</a>:即五子棋<br><a>GoLike</a>類圍棋，但不提子<br><h2>混合玩法</h2>可將剛剛所有模式重新組合成新的模式，例:<a>Divider:ByLine</a>",
+	MainPage:"<h1>歡迎使用</h1>滑鼠靠近其他模式即可查看說明，點選即可進入遊戲								<h2>最適狀態</h2>絕對貼合所有裝置，且容易操作<h2>新式規則</h2>前所未見的玩法"
+},MainColor={
+	Connect:"royalblue",
+	Blocker:"crimson",
+	Divider:"seagreen",
+	Adapter:"darkorange"
+}
+	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
+		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
+		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
+		t._e=[];t.ready=function(f){t._e.push(f)};return t;
+	}(document, "script", "twitter-wjs"));
+	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;
+		js=d.createElement(s);js.id=id;
+		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
+		fjs.parentNode.insertBefore(js,fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+</html>
