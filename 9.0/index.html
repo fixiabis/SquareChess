@@ -141,9 +141,8 @@ a:hover{text-decoration:underline}
 <script>
 function Ldr(){
 	$("article").css("height",doc.body.scrollHeight)
-	Id("Rule").style.height=(Id("Home").scrollHeight-Id("Menu").scrollHeight)+"px"
-	Id("Caption").style.height=(Id("Home").clientHeight-40)+"px"
-	Id("Content").style.height=Id("Content").scrollHeight+"px"
+	Id("Rule").style.height=(Id("Home").scrollHeight-40)+"px"
+	Id("Caption").style.height=Id("Rule").style.height
 	$(".Game").on("mouseover",function(){
 		if(MainColor[this.title]){
 			Id("Rule").style.backgroundColor=MainColor[this.title]
@@ -152,10 +151,11 @@ function Ldr(){
 		Id("Caption").innerHTML=Caption[this.title]
 		for(var i=0;i<$("a").length;i++)if(!$("a")[i].href)$("a")[i].href="chess.html?mode="+$("a")[i].innerHTML
 	})
-	for(var i=1;i<$("article").length;i++)$("article")[i].style.top=Id("Content").scrollHeight+"px"
+	for(var i=1;i<$("article").length;i++)$("article")[i].style.top=doc.body.scrollHeight+"px"
+	Id("Content").style.height=Id("Content").scrollHeight+"px"
 }
 function Scl(){
-	for(var i=0;i<Math.floor(doc.body.scrollTop/doc.body.clientHeight)+1;i++){
+	for(var i=0;i<Math.floor(doc.body.scrollTop/doc.body.scrollHeight)+1;i++){
 		if(!$("article")[i])break;$("article")[i].style.top=doc.body.scrollTop+"px"
 	}
 }
