@@ -62,7 +62,7 @@ function Ctl(t,v){
 		case"Cln":if(Tn!=Dft.Tn)Cln("確認清除棋盤?");else Cln();break
 		case"Udo":if(v)Rec(Ser(v)-1);else if(Tn>Dft.Tn)Rec(Tn-1);break
 		case"Rdo":if(v)Rec(Ser(v));else Rec(Tn+1);break
-		case"Gto":var tn=prompt("輸入要前往的回合");if(tn>Dft.Tn)Rec(Val(tn));break
+		case"Gto":var tn=prompt("輸入要前往的回合",Tn);if(tn>Dft.Tn)Rec(Val(tn));break
 	}else switch(t){
 		case"Gvp":if(Dft.Set&&confirm("確定認輸?"))Upl(Dft.Oln.Typ+"認輸,"+Enm(Dft.Oln.Typ)+"獲勝");break
 		case"Msg":if(Id("msgs").value)Msg(Id("msgs").value);Id("msgs").value="";break

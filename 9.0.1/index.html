@@ -24,10 +24,14 @@
 .chess[title*=Blocker],
 .chess[title*=Divider],
 .chess[title*=Adapter]{color:white}
-.chess[title*=Connect]{background-color:royalblue}
-.chess[title*=Blocker]{background-color:crimson}
-.chess[title*=Divider]{background-color:seagreen}
-.chess[title*=Adapter]{background-color:darkorange}
+.chess[title*=Connect]{background-color:lightblue}
+.chess[title*=Blocker]{background-color:palevioletred}
+.chess[title*=Divider]{background-color:lightseagreen}
+.chess[title*=Adapter]{background-color:lightcoral}
+.chess[title*=Connect]:hover{background-color:royalblue}
+.chess[title*=Blocker]:hover{background-color:crimson}
+.chess[title*=Divider]:hover{background-color:seagreen}
+.chess[title*=Adapter]:hover{background-color:coral}
 #launcher{transition:all 2s;overflow:auto}
 hr{border-style:solid}
 .Tt{font-size:25px;line-height:50px}
@@ -59,6 +63,7 @@ header{
 <div id="NightMode">
 	<header onmouseover="MnP()">Square Chess Game</header>
 	<div align="center" style="height:100%;width:100%;position:fixed;top:40px;left:0px">
+		<div class="Mobile">按住欲進入的模式取得說明</div>
 		<div id="launcher">
 			<a class="chess" title="Square.Connect">S.C</a>
 			<a class="chess" title="Connect:Attack">C:A</a>
@@ -81,11 +86,10 @@ header{
 		<div style="color:lightgray;margin:5%">
 			<font style="font-size:30px">
 				歡迎使用<font style="float:right" onclick="desc=0;Rsz()">(關閉)</font>
-			</font>
-			<hr>
+			</font><hr>
 			<div><font class="Tt">常用功能</font><br>
 				常用的一般功能:
-				<ol>
+				<ol class="Computer">
 					<li>點選格子或以鍵盤輸入座標(E5即按下E+5)來設置符號</li>
 					<li>滑鼠靠近空白處或按下]或[即可喚出選單</li>
 					<li>點選Clean或按下Del以清除棋盤</li>
@@ -93,6 +97,13 @@ header{
 					<li>點選Redo或按下Ctrl+Y到下一步</li>
 					<li>點選Goto或按下Ctrl+H到指定步</li>
 					<li>點選Addons或按下Ctrl+Alt做功能設定</li>
+				</ol>
+				<ol class="Mobile">
+					<li>點選格子來設置符號</li>
+					<li>點選Clean清除棋盤</li>
+					<li>點選Undo到上一步</li>
+					<li>按住Clean做功能設定</li>
+					<li>按住Undo到指定步</li>
 				</ol>
 				線上對戰可用的功能:
 				<ol>
@@ -103,11 +114,14 @@ header{
 			<div><font class="Tt">回報問題</font>
 				<div align="center">
 					<div style="font-size:20px;position:relative">
-						<input type="text" value="" placeholder="輸入遇到的問題" style="font-size:20px;width:500px;border:solid 1px" id="RTt"/><br>
-						<textarea rows="5" placeholder="詳述該狀況" style="font-size:20px;width:496px;border:solid 1px;border-top:none" id="RCt"></textarea>
+						<input type="text" value="" placeholder="輸入遇到的問題" style="font-size:20px;width:500px;border:solid 1px;color:lightgray" id="RTt"/><br>
+						<textarea rows="5" placeholder="詳述該狀況" style="font-size:20px;width:496px;border:solid 1px;border-top:none;color:lightgray" id="RCt"></textarea>
 						<div onclick="Rpt(this)" style="text-align:center;border:solid 1px;width:500px" id="RSd">送出</div>
 					</div>
 				</div>
+			</div><br>
+			<div><font class="Tt">常見問題</font><br>
+				為何頁面暗暗的?<font style="color:dimgray" onclick="Id('NightMode').style.opacity=1">點此可取消夜間模式</font>，夜間模式會在晚上9點至早上6點時自動啟動
 			</div><br>
 			<div><font class="Tt">社群網站</font><br>
 				跟隨或追蹤我們<br>
@@ -127,7 +141,7 @@ var MainColor={
 	Connect:"royalblue",
 	Blocker:"crimson",
 	Divider:"seagreen",
-	Adapter:"darkorange"
+	Adapter:"coral"
 },MainPage=$("footer")[0].innerHTML,desc=2
 function Ldr(){var tm=new Date().getHours()
 	if(tm>21||tm<6)Id("NightMode").style.opacity=0.3
@@ -171,6 +185,10 @@ function Rsz(){
 		Id("RTt").style.width=w+"px"
 		Id("RSd").style.width=w+"px"
 		Id("RCt").style.width=w-4+"px"
+		$(".Computer").css("display","")
+		$(".Mobile").css("display","")
+		if(w!=500)$(".Computer").css("display","none")
+		else $(".Mobile").css("display","none")
 	}
 }
 function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
