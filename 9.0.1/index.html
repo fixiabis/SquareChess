@@ -55,7 +55,8 @@ header{
 }
 </style>
 </head>
-<body onresize="Rsz()" onload="Ldr()">
+<body onresize="Rsz()" onload="Ldr()" oncontextmenu="event.preventDefault()">
+<div id="NightMode">
 	<header onmouseover="MnP()">Square Chess Game</header>
 	<div align="center" style="height:100%;width:100%;position:fixed;top:40px;left:0px">
 		<div id="launcher">
@@ -98,7 +99,7 @@ header{
 					<li>點選GiveUp可以向對方認輸</li>
 					<li>點選右下方即時訊息即可傳送訊息</li>
 				</ol>
-			</div>
+			</div><br>
 			<div><font class="Tt">回報問題</font>
 				<div align="center">
 					<div style="font-size:20px;position:relative">
@@ -107,17 +108,18 @@ header{
 						<div onclick="Rpt(this)" style="text-align:center;border:solid 1px;width:500px" id="RSd">送出</div>
 					</div>
 				</div>
-			</div>
+			</div><br>
 			<div><font class="Tt">社群網站</font><br>
 				跟隨或追蹤我們<br>
 				<a class="twitter-follow-button" href="https://twitter.com/SquareChessGame" data-size="large"></a><br>
 				<div class="fb-like" data-href="https://www.facebook.com/SquareChessGame" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
-			</div>
+			</div><br>
 			<div><font class="Tt">關於我們</font><br>
 				開發者fixiabis在某日偶然在紙上想出了一個新式的紙筆遊戲─Square.Connect，而後想出了許多玩法與功能，進而開發了Square Chess Game，希望給棋盤遊戲的愛好者一個新的選擇。
 			</div>
 		</div>
 	</footer>
+</div>
 </body>
 <div id="fb-root"></div>
 <script>
@@ -127,7 +129,8 @@ var MainColor={
 	Divider:"seagreen",
 	Adapter:"darkorange"
 },MainPage=$("footer")[0].innerHTML,desc=2
-function Ldr(){
+function Ldr(){var tm=new Date().getHours()
+	if(tm>21||tm<6)Id("NightMode").style.opacity=0.3
 	for(var i=0;i<$(".chess").length;i++){
 		if(!$(".chess")[i].href)$(".chess")[i].href="chess.html?mode="+$(".chess")[i].title
 	}Rsz()
