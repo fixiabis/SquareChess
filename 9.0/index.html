@@ -141,8 +141,8 @@ a:hover{text-decoration:underline}
 <script>
 function Ldr(){
 	$("article").css("height",doc.body.scrollHeight)
-	Id("Rule").style.height=(Id("Home").scrollHeight-Id("Menu").scrollHeight)+"px"
-	Id("Caption").style.height=(Id("Home").clientHeight-40)+"px"
+	Id("Rule").style.height=(Id("Home").scrollHeight-40)+"px"
+	Id("Caption").style.height=Id("Rule").style.height
 	Id("Content").style.height=Id("Content").scrollHeight+"px"
 	$(".Game").on("mouseover",function(){
 		if(MainColor[this.title]){
