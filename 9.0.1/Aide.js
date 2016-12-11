@@ -1,7 +1,9 @@
 function MsO(e){var v=1,p=0
 	if(e.pageX<$("#Board").offset().left)p=0
-	else if(e.pageX>$("#Board").offset().left+Id("Board").offsetWidth)p=1
-	else v=0;Mnu(v,p)
+	else if(e.pageX>$("#Board").offset().left+$("#Board").width())p=1
+	else v=0;
+	console.log(v+":"+p)
+	Mnu(v,p)
 }//滑鼠移動
 function KDw(e){
 	var c=e.ctrlKey,k=e.which,s=e.shiftKey,m=Id("menu"),t=Id("Setting").style.height=="0px",g=1
