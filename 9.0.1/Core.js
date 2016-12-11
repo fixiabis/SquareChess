@@ -29,17 +29,17 @@ function MdL(v){
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
 }//模式裝載
-function Rsz(){var scn=1;Id("Board").style.display="none"
-	var sz=doc.body.scrollWidth;Id("QCtrl").style.display="none"
-	if(doc.body.scrollHeight<sz){sz=doc.body.scrollHeight;scn=0}sz=Math.floor(sz/9)
+function Rsz(){
+	var sz=$(window).width(),scn=1
+	if($(window).height()<sz){sz=$(window).height();scn=0}sz=Math.floor(sz/9)
 	$(".bt").css("width",sz+"px");$(".bt").css("height",sz+"px");$(".bt").css("font-size",sz-15+"px")
 	for(i=81;i<83;i++){if(!Class("bt")[i])break
 		if(i>80)Class("bt")[i].style.width=sz*4.5+"px"
 		if(!Class("bt")[i+1]&&i==81)Class("bt")[i].style.width=sz*9+"px"
 	}if(scn&&Id("LdA").style.display=="none")Id("QCtrl").style.display=""
 	Id("Board").style.display="";Id("UI").style.width=sz*9+"px"
-	if(Id("UI").offsetTop>40)$("header").css("display","");else $("header").css("display","none")
 	Id("Rule").style.width=sz*9+"px";if(Id("Rule").style.height!="0px")Id("Rule").style.height=sz*9+"px"
+	if($("#UI").offset().top>40)$("header").css("display","");else $("header").css("display","none")
 }//大小變更
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd
