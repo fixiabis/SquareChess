@@ -109,9 +109,7 @@ hr{border-style:solid}
 				</div>
 			</div><br>
 			<div><font class="Tt">常見問題</font><br>
-				<div>
-					為何頁面暗暗的?<font style="color:blue" onclick="Nit()">開啟/取消夜間模式</font>，夜間模式會在晚上9點至早上6點時自動啟動
-				</div>
+				<font style="color:blue" onclick="Nit()">開啟/取消夜間模式</font>
 				<div class="IE" style="display:none">全螢幕功能未支援Trident排版引擎</div>
 			</div><br>
 		</div>
@@ -126,8 +124,7 @@ var MainColor={
 	Divider:"seagreen",
 	Adapter:"coral"
 },MainPage=$("footer")[0].innerHTML,desc=2
-function Ldr(){var tm=new Date().getHours()
-	if(tm>21||tm<6)Id("NightMode").style.opacity=0.3
+function Ldr(){
 	for(var i=0;i<$(".chess").length;i++){
 		if(!$(".chess")[i].href)$(".chess")[i].href="chess.html?mode="+$(".chess")[i].title
 	}Rsz()
