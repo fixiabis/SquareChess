@@ -151,7 +151,7 @@ function Ldr(){var tm=new Date().getHours()
 	$(".chess").on("mouseover",function(){
 		var ModeName=this.title.replace("Square.","").split(":"),Rule=""
 		$("footer")[0].style.backgroundColor="lightgray";
-		Rule="<div style='margin:5%'>"+this.title+"<hr><ol>"
+		Rule="<div style='margin:5%'>"+this.title+"<font style='float:right' onclick='desc=0;Rsz()'>(關閉)</font><hr><ol>"
 		for(var i=0;i<ModeName.length;i++){
 			if(MainColor[ModeName[i]])$("footer")[0].style.backgroundColor=MainColor[ModeName[i]]
 			if(Rls[ModeName[i]])Rule+="<li>"+Rls[ModeName[i]]+"</li>"
