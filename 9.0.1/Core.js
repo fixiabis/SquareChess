@@ -133,7 +133,7 @@ function Opt(){Id("Setting").style.height="100%";var id=Dft.Oln.Id
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
 	OpS("System-Nit","k","夜間模式",Id("NightMode").style.opacity!=1)
-	OpS("System-Ful","k","全螢幕模式",doc.webkitIsFullScreen)
+	OpS("System-Ful","k","全螢幕模式",doc.webkitIsFullScreen||doc.mozFullScreen||doc.fullscreen)
 	OpS("System-Rul","k","顯示規則",Id("Rule").style.height!="0px")
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
@@ -145,7 +145,13 @@ function OpK(k){Id("Setting").style.height="0%";if(k)return
 		Dft.System.Qsr=Id("System-Qsr").checked
 	}else Oln.OpK();for(i=0;i<MdQ.length;i++)Shl.OpK[MdQ[i]]()
 	if(Id("System-Nit").checked)Id("NightMode").style.opacity=0.3;else Id("NightMode").style.opacity=1
-	if(Id("System-Ful").checked)Id("NightMode").webkitRequestFullScreen();else doc.webkitCancelFullScreen()
+	if(Id("System-Ful").checked){
+		if(Id("NightMode").mozRequestFullScreen)Id("NightMode").mozRequestFullScreen()
+		if(Id("NightMode").webkitRequestFullScreen)Id("NightMode").webkitRequestFullScreen()
+	}else{
+		if(doc.mozCancelFullScreen)doc.mozCancelFullScreen()
+		if(doc.webkitCancelFullScreen)doc.webkitCancelFullScreen()
+	}
 	if(Id("System-Rul").checked)Ctl("Rul",1);else Ctl("Rul",0)
 	Dft.System.Nxt=Id("System-Nxt").checked
 	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
