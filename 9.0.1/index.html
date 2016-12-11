@@ -151,14 +151,14 @@ function MnP(){
 	$('footer')[0].innerHTML=MainPage;$('footer')[0].style.backgroundColor='white';desc=2;Rsz()
 }
 function Rsz(){
-	var sz=Math.floor(doc.body.clientWidth/120)*120+5,h=0;
+	var sz=Math.floor($(window).width()/120)*120+5,h=0;
 	Id("launcher").style.width=sz+"px"
 	switch(desc){
 		case 0:h=0;break
-		case 1:h=doc.body.scrollHeight/2;break
-		case 2:h=doc.body.scrollHeight-40;break
+		case 1:h=$(window).height()/2;break
+		case 2:h=$(window).height()-40;break
 	}$("footer")[0].style.height=h+"px"
-	Id("launcher").style.height=doc.body.scrollHeight-h-40+"px"
+	Id("launcher").style.height=$(window).height()-h-40+"px"
 	if(Id("RTt")){var w=Id("RTt").parentNode.clientWidth
 		if(Id("RTt").parentNode.clientWidth>500)w=500
 		Id("RTt").style.width=w+"px"

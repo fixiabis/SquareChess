@@ -16,7 +16,7 @@ body{
 	float:left;height:40px;line-height:40px;width:160px;font-size:18px;
 	text-align:center;background-color:gray;transition:background 2s;
 }
-hr{border:solid 1px}
+hr{border:solid 1px inherit}
 a{color:gray;text-decoration:underline}
 .Opt{font-size:inherit}
 .list:hover{background-color:lightgray;color:dimgray}
