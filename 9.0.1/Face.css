@@ -57,6 +57,7 @@ header{
 	color:white;
 	position:fixed;
 	font-size:30px;
+	line-height:40px;
 	text-align:center;
-	background-color:lightgray;
+	background-color:gray;
 }
