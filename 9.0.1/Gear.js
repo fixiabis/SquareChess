@@ -10,7 +10,7 @@ function Req(Typ,Jcd){var id="",req={ModeName:doc.title,BoardContent:"",LastActi
 			firebase.database().ref("Battle/"+id).once("value",function(r){
 				if(Typ=="R"){var url=location.href+"#"+id;prompt("註冊成功,貼給朋友即可開始對戰",url)
 					Id("msgr").childNodes[1].setAttribute("data-href",url);Oln.Ffb()
-				}else if(Typ=="J"&&!r.val().PlayerX){
+				}else if(Typ=="J"&&!r.val().PlayerX){Msg("X方已加入",1)
 					firebase.database().ref("Battle/"+id).update({PlayerX:"exist"});alert("加入成功")
 				}else{alert("進入觀賞模式");Dft.Oln.Typ="V"}
 			});Ini()

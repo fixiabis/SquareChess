@@ -76,9 +76,10 @@ function Ctl(t,v){
 			else Id("Rule").style.height="0px";break
 	}
 }
-function Msg(msg){Dft.Oln.Msg=-1
+function Msg(msg,sys){Dft.Oln.Msg=-1
 	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){var msgo=r.val().Message
-		if(!msgo)msgo="";else msgo=msgo+"<br>"
-		firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+Dft.Oln.Typ+":"+msg})
+		if(!msgo)msgo=""
+		if(!sys)firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+Dft.Oln.Typ+":"+msg+"<br>"})
+		else firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+"<hr>"+msg+"<hr>"})
 	})
 }
