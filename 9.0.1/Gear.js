@@ -13,10 +13,9 @@ function Req(Typ,Jcd){var id="",req={ModeName:doc.title,BoardContent:"",LastActi
 				}else if(Typ=="J"&&!r.val().PlayerX){Msg("X方已加入",1)
 					firebase.database().ref("Battle/"+id).update({PlayerX:"exist"})
 				}else{alert("進入觀賞模式");Dft.Oln.Typ="V"}
-			});Ini()
+			});if(Notification&&Notification.permission!="granted")Notification.requestPermission();Ini()
 		})
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req(Typ,Jcd)}
-	if(Notification.permission=="denied")Notification.requestPermission()
 }
 function Upl(cnt){if(Dft.Oln.Typ=="V"||!Dft.Oln.Id)return
 	Dft.Set=0;var req={ModeName:Dft.Oln.MdN,LastActive:new Date().getTime()}
