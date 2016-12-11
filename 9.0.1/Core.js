@@ -23,7 +23,7 @@ function MdL(v){
 		if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
 		for(var i=0;i<MdQ.length;i++)if(Shl.Rls[MdQ[i]])Id("Rule").childNodes[3].innerHTML+="<li>"+Shl.Rls[MdQ[i]]+"</li>"
 		$("#UI").on("swipe",function(e){var arw=e.swipestart.coords[0]-e.swipestop.coords[0]
-			if(lst>80)Opt();else if(arw>0)Ctl("Udo");else if(arw<0)Ctl("Rdo")
+			if(arw>0)Ctl("Udo");else if(arw<0)Ctl("Rdo")
 		})
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
