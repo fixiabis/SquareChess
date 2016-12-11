@@ -11,11 +11,12 @@ function Req(Typ,Jcd){var id="",req={ModeName:doc.title,BoardContent:"",LastActi
 				if(Typ=="R"){var url=location.href+"#"+id;prompt("註冊成功,貼給朋友即可開始對戰",url)
 					Id("msgr").childNodes[1].setAttribute("data-href",url);Oln.Ffb()
 				}else if(Typ=="J"&&!r.val().PlayerX){Msg("X方已加入",1)
-					firebase.database().ref("Battle/"+id).update({PlayerX:"exist"});alert("加入成功")
+					firebase.database().ref("Battle/"+id).update({PlayerX:"exist"})
 				}else{alert("進入觀賞模式");Dft.Oln.Typ="V"}
 			});Ini()
 		})
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req(Typ,Jcd)}
+	if(Notification.permission=="denied")Notification.requestPermission()
 }
 function Upl(cnt){if(Dft.Oln.Typ=="V"||!Dft.Oln.Id)return
 	Dft.Set=0;var req={ModeName:Dft.Oln.MdN,LastActive:new Date().getTime()}
@@ -27,14 +28,13 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"||Dft.Oln.Typ=="V")Dft.Set=0;else Dft.Set=1
 	if(!v)firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){
 		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){var msg=r.val().Message
+			console.log(Id("msgc").innerHTML==r.val().Message)
+			console.log(Id("msgc").innerHTML+":"+r.val().Message)
 			Id("msgc").innerHTML=msg;Dft.Oln.Msg++;Atn()
 			Ctl("MSw",1);Id("msgc").scrollTop=Id("msgc").scrollHeight
-			if(Notification){var m=msg.split("<br>")
-				if(Notification.permission=="denied")Notification.requestPermission()
-				var n=new Notification("即時訊息",{
-					body:m[m.length-2],
-					renotify:true,
-					icon:""
+			if(Notification){var m=msg.replace('<div style="text-align:center">-X方已加入-</div>',"").split("<br>")
+				if(m.length>1)var n=new Notification("即時訊息",{
+					body:m[m.length-2],icon:"Logo.png"
 				})
 			}
 		}var brd=r.val().BoardContent.split("/")

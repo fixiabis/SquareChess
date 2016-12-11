@@ -81,6 +81,6 @@ function Msg(msg,sys){Dft.Oln.Msg=-1
 	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){var msgo=r.val().Message
 		if(!msgo)msgo=""
 		if(!sys)firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+Dft.Oln.Typ+":"+msg+"<br>"})
-		else firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+"<div style='text-align:center'>-"+msg+"-</div>"})
+		else firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+'<div style="text-align:center">-'+msg+"-</div>"})
 	})
 }
