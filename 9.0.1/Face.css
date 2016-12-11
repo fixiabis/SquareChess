@@ -2,7 +2,7 @@ body{
 	margin:0px;cursor:default;user-select:none;
 	-ms-user-select:none;font-family:Consolas;
 	-moz-user-select:none;-webkit-user-select:none;
-	background-color:black
+	background-color:black;overflow:hidden;
 }
 @font-face {
   font-family:Consolas;
