@@ -27,8 +27,6 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"||Dft.Oln.Typ=="V")Dft.Set=0;else Dft.Set=1
 	if(!v)firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){
 		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){var msg=r.val().Message
-			console.log(Id("msgc").innerHTML==r.val().Message)
-			console.log(Id("msgc").innerHTML+":"+r.val().Message)
 			Id("msgc").innerHTML=msg;Dft.Oln.Msg++;Atn()
 			Ctl("MSw",1);Id("msgc").scrollTop=Id("msgc").scrollHeight
 			if(Notification){var m=msg.replace('<div style="text-align:center">-X方已加入-</div>',"").split("<br>")
