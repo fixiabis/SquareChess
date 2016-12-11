@@ -108,7 +108,10 @@ hr{border-style:solid}
 				</div>
 			</div><br>
 			<div><font class="Tt">常見問題</font><br>
-				為何頁面暗暗的?<font style="color:blue" onclick="Nit()">開啟/取消夜間模式</font>，夜間模式會在晚上9點至早上6點時自動啟動
+				<div>
+					為何頁面暗暗的?<font style="color:blue" onclick="Nit()">開啟/取消夜間模式</font>，夜間模式會在晚上9點至早上6點時自動啟動
+				</div>
+				<div class="IE" style="display:none">全螢幕功能未支援Trident排版引擎</div>
 			</div><br>
 		</div>
 	</footer>
@@ -136,6 +139,7 @@ function Ldr(){var tm=new Date().getHours()
 			if(Rls[ModeName[i]])Rule+="<li>"+Rls[ModeName[i]]+"</li>"
 		}$("footer")[0].innerHTML=Rule+"</ol></div>";desc=1;Rsz()
 	})
+	if(navigator.userAgent.search("Trident"))$(".IE").css("display","")
 	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
 		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
 		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
