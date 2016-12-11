@@ -23,8 +23,8 @@ Shl.Opt.Connect=function(){
 	Id("OptionMenu").innerHTML+="Connect設定:<br>"
 	if(!Dft.System.Oln){
 		OpS("Connect-Rul-0/Connect-Rul","r","無設置",Dft.Connect.Rul==0)
-		OpS("Connect-Rul-1/Connect-Rul","r","隨機設置",Dft.Connect.Rul==1)
-		OpS("Connect-Rul-2/Connect-Rul","r","對峙設置",Dft.Connect.Rul==2)
+		OpS("Connect-Rul-1/Connect-Rul","r","隨機設置一型",Dft.Connect.Rul==1)
+		OpS("Connect-Rul-2/Connect-Rul","r","隨機設置二型",Dft.Connect.Rul==2)
 	}Ara.Opt("Connect")
 }
 Shl.OpK.Connect=function(){
