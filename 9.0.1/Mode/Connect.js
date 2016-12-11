@@ -25,9 +25,9 @@ Shl.Opt.Connect=function(){
 		OpS("Connect-Rul-0/Connect-Rul","r","無設置",Dft.Connect.Rul==0)
 		OpS("Connect-Rul-1/Connect-Rul","r","隨機設置",Dft.Connect.Rul==1)
 		OpS("Connect-Rul-2/Connect-Rul","r","對峙設置",Dft.Connect.Rul==2)
-	}
-	Ara.Opt("Connect")
+	}Ara.Opt("Connect")
 }
 Shl.OpK.Connect=function(){
 	if(!Dft.System.Oln)for(var i=0;i<3;i++)if(Id("Connect-Rul-"+i).checked)Dft.Connect.Rul=i
+	Ara.OpK("Connect")
 }
