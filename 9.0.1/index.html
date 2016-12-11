@@ -140,7 +140,7 @@ function Ldr(){var tm=new Date().getHours()
 			if(Rls[ModeName[i]])Rule+="<li>"+Rls[ModeName[i]]+"</li>"
 		}$("footer")[0].innerHTML=Rule+"</ol></div>";desc=1;Rsz()
 	})
-	if(navigator.userAgent.search("Trident"))$(".IE").css("display","")
+	if(navigator.userAgent.search("Trident")>-1)$(".IE").css("display","")
 	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
 		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
 		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
