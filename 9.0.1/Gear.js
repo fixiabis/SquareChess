@@ -26,9 +26,17 @@ function Upl(cnt){if(Dft.Oln.Typ=="V"||!Dft.Oln.Id)return
 function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"||Dft.Oln.Typ=="V")Dft.Set=0;else Dft.Set=1
 	if(!v)firebase.database().ref("Battle/"+Dft.Oln.Id).on("value",function(r){
-		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){
-			Id("msgc").innerHTML=r.val().Message;Dft.Oln.Msg++;Atn()
+		if(r.val().Message&&Id("msgc").innerHTML!=r.val().Message){var msg=r.val().Message
+			Id("msgc").innerHTML=msg;Dft.Oln.Msg++;Atn()
 			Ctl("MSw",1);Id("msgc").scrollTop=Id("msgc").scrollHeight
+			if(Notification){var m=msg.split("<br>")
+				if(Notification.permission=="denied")Notification.requestPermission()
+				var n=new Notification("即時訊息",{
+					body:m[m.length-2],
+					renotify:true,
+					icon:""
+				})
+			}
 		}var brd=r.val().BoardContent.split("/")
 		if(brd[0].length<81&&(Dft.Oln.Cln||Dft.Oln.Typ=="V")){alert(brd[0]);Ini(1)}
 		else if(brd[1]&&Sqr.Sym[(Val(brd[1])%2)]==Dft.Oln.Typ||Dft.Oln.Typ=="V"){
