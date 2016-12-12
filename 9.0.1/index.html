@@ -18,6 +18,7 @@
 	font-size:50px;
 	line-height:100px;
 	text-align:center;
+	border-radius:5px;
 	text-decoration:none;
 	background-color:lightgray;
 }
@@ -36,11 +37,14 @@
 #launcher{transition:all 2s;overflow:auto}
 hr{border-style:solid}
 .Tt{font-size:25px;line-height:50px}
+#close{float:right;cursor:pointer}
+#close:hover{text-decoration:underline}
+#Slt{width:200px;height:50px;line-height:50px;font-size:30px;background-color:lightgray;text-align:center;border-radius:10px;cursor:pointer}
 </style>
 </head>
 <body onresize="Rsz()" onload="Ldr()" oncontextmenu="event.preventDefault()">
 <div id="NightMode" style="opacity:1">
-	<header onmouseover="MnP()">Square Chess Game</header>
+	<header onclick="MnP()">Square Chess Game</header>
 	<div align="center" style="height:100%;width:100%;position:fixed;top:40px;left:0px">
 		<div class="Mobile">按住欲進入的模式取得說明</div>
 		<div id="launcher">
@@ -64,7 +68,7 @@ hr{border-style:solid}
 	<footer>
 		<div style="color:dimgray;margin:5%">
 			<font style="font-size:30px">
-				歡迎使用<font style="float:right" onclick="desc=0;Rsz()">(關閉)</font>
+				歡迎使用<font id="close" onclick="desc=0;Rsz()">(關閉)</font>
 			</font><hr>
 			<div><font class="Tt">常用功能</font><br>
 				常用的一般功能:
@@ -90,6 +94,9 @@ hr{border-style:solid}
 					<li>點選GiveUp可以向對方認輸</li>
 					<li>點選右下方即時訊息即可傳送訊息</li>
 				</ol>
+				<div align="center">
+					<div onclick="desc=0;Rsz()" id="Slt">選擇遊戲模式</div>
+				</div>
 			</div><br>
 			<div><font class="Tt">社群網站</font><br>
 				跟隨或追蹤我們<br>
