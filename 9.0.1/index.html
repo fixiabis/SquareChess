@@ -121,6 +121,8 @@ hr{border-style:solid}
 			</div><br>
 		</div>
 	</footer>
+	<footer>
+	</footer>
 </div>
 </body>
 <div id="fb-root"></div>
@@ -130,35 +132,22 @@ var MainColor={
 	Blocker:"crimson",
 	Divider:"seagreen",
 	Adapter:"coral"
-},MainPage="",desc=2
+},desc=2
 function Ldr(){
 	for(var i=0;i<$(".chess").length;i++){
 		if(!$(".chess")[i].href)$(".chess")[i].href="chess.html?mode="+$(".chess")[i].title
 	}Rsz()
 	$(".chess").on("mouseover",function(){
 		var ModeName=this.title.replace("Square.","").split(":"),Rule=""
-		$("footer")[0].style.backgroundColor="lightgray";
-		Rule="<div style='margin:5%'>"+this.title+"<font style='float:right' onclick='desc=0;Rsz()'>(關閉)</font><hr><ol>"
+		$("footer")[1].style.backgroundColor="lightgray"
+		Rule="<div style='margin:5%'>"+this.title+"<font id='close' onclick='desc=0;Rsz()'>(關閉)</font><hr><ol>"
 		for(var i=0;i<ModeName.length;i++){
-			if(MainColor[ModeName[i]])$("footer")[0].style.backgroundColor=MainColor[ModeName[i]]
+			if(MainColor[ModeName[i]])$("footer")[1].style.backgroundColor=MainColor[ModeName[i]]
 			if(Rls[ModeName[i]])Rule+="<li>"+Rls[ModeName[i]]+"</li>"
-		}$("footer")[0].innerHTML=Rule+"</ol></div>";desc=1;Rsz()
+		}$("footer")[1].innerHTML=Rule+"</ol></div>";desc=1;Rsz()
 	})
-	if(navigator.userAgent.search("Trident")>-1)$(".IE").css("display","")
-	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
-		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
-		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
-		t._e=[];t.ready=function(f){t._e.push(f)};return t;
-	}(document, "script", "twitter-wjs"));
-	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;
-		js=d.createElement(s);js.id=id;
-		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
-		fjs.parentNode.insertBefore(js,fjs);
-	}(document, 'script', 'facebook-jssdk'));MainPage=$("footer")[0].innerHTML
 }
-function MnP(){
-	$('footer')[0].innerHTML=MainPage;$('footer')[0].style.backgroundColor='white';desc=2;Rsz()
-}
+function MnP(){desc=2;Rsz()}
 function Rsz(){
 	var sz=Math.floor($(window).width()/120)*120+5,h=0;
 	Id("launcher").style.width=sz+"px"
@@ -166,7 +155,8 @@ function Rsz(){
 		case 0:h=0;break
 		case 1:h=$(window).height()/2;break
 		case 2:h=$(window).height()-40;break
-	}$("footer")[0].style.height=h+"px"
+	}$("footer").css("height",h+"px");
+	if(desc==2)$("footer")[1].style.height="0px"
 	Id("launcher").style.height=$(window).height()-h-40+"px"
 	if(Id("RTt")){var w=Id("RTt").parentNode.clientWidth
 		if(Id("RTt").parentNode.clientWidth>500)w=500
@@ -178,6 +168,17 @@ function Rsz(){
 		if(w!=500)$(".Computer").css("display","none")
 		else $(".Mobile").css("display","none")
 	}
+	if(navigator.userAgent.search("Trident")>-1)$(".IE").css("display","")
+	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
+		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
+		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
+		t._e=[];t.ready=function(f){t._e.push(f)};return t;
+	}(document, "script", "twitter-wjs"));
+	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;
+		js=d.createElement(s);js.id=id;
+		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
+		fjs.parentNode.insertBefore(js,fjs);
+	}(document, 'script', 'facebook-jssdk'))
 }
 function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
 	if(v[0].length<4)return alert("標題不足四字");btn.style.backgroundColor="lightgray"
