@@ -130,7 +130,7 @@ var MainColor={
 	Blocker:"crimson",
 	Divider:"seagreen",
 	Adapter:"coral"
-},MainPage=$("footer")[0].innerHTML,desc=2
+},MainPage="",desc=2
 function Ldr(){
 	for(var i=0;i<$(".chess").length;i++){
 		if(!$(".chess")[i].href)$(".chess")[i].href="chess.html?mode="+$(".chess")[i].title
@@ -154,7 +154,7 @@ function Ldr(){
 		js=d.createElement(s);js.id=id;
 		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
 		fjs.parentNode.insertBefore(js,fjs);
-	}(document, 'script', 'facebook-jssdk'));
+	}(document, 'script', 'facebook-jssdk'));MainPage=$("footer")[0].innerHTML
 }
 function MnP(){
 	$('footer')[0].innerHTML=MainPage;$('footer')[0].style.backgroundColor='white';desc=2;Rsz()
