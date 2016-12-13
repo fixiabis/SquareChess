@@ -8,7 +8,7 @@ function Req(Typ,Jcd){var id="",req={ModeName:doc.title,BoardContent:"",LastActi
 			if(r.val()!=null&&Typ=="R"){id=RJC();return Req(Typ,id)}
 			if(Typ=="R")firebase.database().ref("Battle/"+id).update(req)
 			firebase.database().ref("Battle/"+id).once("value",function(r){
-				if(Typ=="R"){var url=location.href+"#"+id;prompt("註冊成功,貼給朋友即可開始對戰",url)
+				if(Typ=="R"){var url="http://fixiabis.github.io/SquareChessGame/9.0.1/jndir.html?"+doc.title+"/"+id;prompt("註冊成功,貼給朋友即可開始對戰",url)
 					Id("msgr").childNodes[1].setAttribute("data-href",url);Oln.Ffb()
 					Id("QR").style.background="url(https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+url+")"
 				}else if(Typ=="J"&&!r.val().PlayerX){Msg("X方已加入",1)
