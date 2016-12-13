@@ -30,15 +30,19 @@ function MdL(v){
 }//模式裝載
 function Rsz(){
 	var sz=$(window).width(),scn=1
-	if($(window).height()<sz){sz=$(window).height();scn=0}sz=Math.floor(sz/9)
+	if($(window).height()-40<sz){sz=$(window).height()-40;scn=0}sz=Math.floor(sz/9)
 	$(".bt").css("width",sz+"px");$(".bt").css("height",sz+"px");$(".bt").css("font-size",sz-15+"px")
+	Id("NightMode").style.height=($(window).height()-40)+"px"
 	for(i=81;i<83;i++){if(!Class("bt")[i])break
 		if(i>80)Class("bt")[i].style.width=sz*4.5+"px"
 		if(!Class("bt")[i+1]&&i==81)Class("bt")[i].style.width=sz*9+"px"
 	}if(scn&&Id("LdA").style.display=="none")Id("QCtrl").style.display=""
+	if(Id("QR")){
+		Id("QR").style.top=Math.floor(($(window).height()-40)/2)-75+"px"
+		Id("QR").style.right=Math.floor(($(window).width())/2)-75+"px"
+	}
 	Id("Board").style.display="";Id("UI").style.width=sz*9+"px"
 	Id("Rule").style.width=sz*9+"px";if(Id("Rule").style.height!="0px")Id("Rule").style.height=sz*9+"px"
-	if($("#UI").offset().top>40)$("header").css("display","");else $("header").css("display","none")
 }//大小變更
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd
@@ -122,7 +126,7 @@ function Adn(){
 function Rul(){
 	for(var i=MdQ.length-1;i>-1;i--)if(Jdg(Shl.Rul[MdQ[i]]()))break;Mrk()
 }//規則判定
-function Opt(){Id("Setting").style.height=$(window).height()+"px";var id=Dft.Oln.Id
+function Opt(){Id("Setting").style.height="100%";var id=Dft.Oln.Id
 	Id("OptionMenu").innerHTML="系統內建:<br>"
 	if(!Dft.System.Oln){
 		OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
@@ -136,7 +140,7 @@ function Opt(){Id("Setting").style.height=$(window).height()+"px";var id=Dft.Oln
 	OpS("System-Rul","k","顯示規則",Id("Rule").style.height!="0px")
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
-function OpK(k){Id("Setting").style.height="0px";if(k)return
+function OpK(k){Id("Setting").style.height="0%";if(k)return
 	if(!Dft.System.Oln){
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 		if(Dft.System.Blk>27)Dft.System.Blk=27
