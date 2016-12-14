@@ -126,7 +126,7 @@ function Adn(){
 function Rul(){
 	for(var i=MdQ.length-1;i>-1;i--)if(Jdg(Shl.Rul[MdQ[i]]()))break;Mrk()
 }//規則判定
-function Opt(){Id("Setting").style.height="100%";var id=Dft.Oln.Id
+function Opt(){Id("Setting").style.height=($(window).height()-40)+"px";var id=Dft.Oln.Id
 	Id("OptionMenu").innerHTML="系統內建:<br>"
 	if(!Dft.System.Oln){
 		OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
@@ -140,7 +140,7 @@ function Opt(){Id("Setting").style.height="100%";var id=Dft.Oln.Id
 	OpS("System-Rul","k","顯示規則",Id("Rule").style.height!="0px")
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
 }//功能設定
-function OpK(k){Id("Setting").style.height="0%";if(k)return
+function OpK(k){Id("Setting").style.height="0px";if(k)return
 	if(!Dft.System.Oln){
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
 		if(Dft.System.Blk>27)Dft.System.Blk=27

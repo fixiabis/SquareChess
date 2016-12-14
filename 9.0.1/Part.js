@@ -185,11 +185,14 @@ function BJd(){var nxt=[],nxn=[]
 		else nxt.push(Chr(cd1)+cd2)
 	}if(nxt.length==0&&Tn>2&&Tn!=81)Jdg(Sqr.Sym[(Tn+1)%2]+"獲勝");return nxn
 }
-function Map(crd,typ){if(!typ)typ="4"
-	var sym=Qre(crd,"Sym"),vst=Flt(Crd(crd,typ),function(crd){if(Id(crd)&&Qre(crd,"Sym")==sym)return 1;return 0});vst.push(crd)
+function Map(crd,sym,typ){if(!typ)typ="4";if(!sym)sym=Qre(Sel(crd),"Sym")
+	if(typeof sym!="object")sym=[sym]
+	var vst=Flt(Crd(crd,typ),function(crd){
+		if(Id(crd)&&sym.indexOf(Qre(crd,"Sym"))>-1)return 1;return 0
+	});vst.push(crd)
 	while(1){var cds=Sel("All"),ckr=0
 		for(var i=0;i<cds.length;i++){
-			if(vst.indexOf(cds[i])>-1||Qre(cds[i],"Sym")!=sym)continue;var cs2=Crd(cds[i],typ)
+			if(vst.indexOf(cds[i])>-1||sym.indexOf(Qre(cds[i],"Sym"))<0)continue;var cs2=Crd(cds[i],typ)
 			for(var j=0;j<cs2.length;j++){
 				if(vst.indexOf(cs2[j])>-1){vst.push(cds[i]);ckr++;break}
 			}
