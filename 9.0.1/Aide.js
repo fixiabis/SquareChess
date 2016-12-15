@@ -57,7 +57,7 @@ function Mnu(v,p){var h=0;if(v)h=160;if(Id("Setting").style.height!="0px")h=0;Id
 	if(v)if(p){Id("menu").style.left="";Id("menu").style.right="0px"}
 	else{Id("menu").style.left="0px";Id("menu").style.right=""}
 }//輔助選單
-function Ctl(t,v){
+function Ctl(t,v){if(t=="Udo"||t=="Rdo")if(v&&v.length==3)return
 	if(!Dft.System.Oln)switch(t){
 		case"Cln":if(Tn!=Dft.Tn)Cln("確認清除棋盤?");else Cln();break
 		case"Udo":if(v)Rec(Ser(v)-1);else if(Tn>Dft.Tn)Rec(Tn-1);break

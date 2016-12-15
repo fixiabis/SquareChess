@@ -7,7 +7,7 @@
 		]
 	},Dft={
 		Set:1,Tn:0,Blk:[],Oln:{Typ:"",Id:"",Row:"",Rgt:0,Cln:1,MdN:"",Msg:0},
-		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0}
+		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0,Gst:0}
 	},Hst={Brd:[],Crd:[],Sel:[],Rut:[]},Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{},Rls:{}}
 function Ldr(){if(!location.search)history.back()
 	var mdN=location.search.replace("?mode=","")
@@ -21,7 +21,7 @@ function MdL(v){
 		Id("LdA").style.display="none";Itf();Cln();Rsz()
 		if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
 		for(var i=0;i<MdQ.length;i++)if(Shl.Rls[MdQ[i]])Id("Rule").childNodes[3].innerHTML+="<li>"+Shl.Rls[MdQ[i]]+"</li>"
-		$("#UI").on("swipe",function(e){var arw=e.swipestart.coords[0]-e.swipestop.coords[0]
+		$("#UI").on("swipe",function(e){var arw=e.swipestart.coords[0]-e.swipestop.coords[0];if(!Dft.System.Gst)return
 			if(arw>0)Ctl("Udo");else if(arw<0)Ctl("Rdo")
 		})
 	}
@@ -46,7 +46,9 @@ function Rsz(){
 }//大小變更
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd
-	$(".bt").click(function(){Set(this.id)});$(".bt").dblclick(function(){Ctl("Udo",this.id)});$(".bt").contextmenu(function(){Ctl("Rdo",this.id)})
+	$(".bt").click(function(){Set(this.id)});
+	$(".bt").dblclick(function(){if(Dft.System.Gst)Ctl("Udo",this.id)});
+	$(".bt").contextmenu(function(){if(Dft.System.Gst)Ctl("Rdo",this.id)})
 }//棋盤介面
 function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(msg)
 	if(ckr){Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]}
@@ -135,6 +137,7 @@ function Opt(){Id("Setting").style.height=($(window).height()-40)+"px";var id=Df
 	}else Oln.Opt()
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
+	OpS("System-Gst","k","手勢操作",Dft.System.Gst)
 	OpS("System-Nit","k","夜間模式",Id("NightMode").style.opacity!=1)
 	OpS("System-Ful","k","全螢幕模式",doc.webkitIsFullScreen||doc.mozFullScreen||doc.fullscreen)
 	OpS("System-Rul","k","顯示規則",Id("Rule").style.height!="0px")
@@ -156,7 +159,7 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 		if(doc.webkitCancelFullScreen)doc.webkitCancelFullScreen()
 	}
 	if(Id("System-Rul").checked)Ctl("Rul",1);else Ctl("Rul",0)
-	Dft.System.Nxt=Id("System-Nxt").checked
+	Dft.System.Nxt=Id("System-Nxt").checked;Dft.System.Gst=Id("System-Gst").checked;
 	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
 }//功能確認
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"

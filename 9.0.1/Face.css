@@ -6,7 +6,7 @@ body{
 }
 @font-face {
   font-family:Consolas;
-  src:url(Consolas.ttf);
+  src:url(Impo/Consolas.ttf);
 }
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{width:5px;height:5px;opacity:0.5}
