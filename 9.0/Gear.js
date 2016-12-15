@@ -69,3 +69,9 @@ function RJC(){var r="",t=[]
   for(i=0;i<8;i++)r+=t[Math.floor(Math.random()*36)]
   return r
 }
+function Msg(msg){Dft.Oln.Msg=-1
+	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){var msgo=r.val().Message
+		if(!msgo)msgo="";else msgo=msgo+"<br>"
+		firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+Dft.Oln.Typ+":"+msg})
+	})
+}

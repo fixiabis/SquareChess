@@ -77,10 +77,3 @@ function Ctl(t,v){if(t=="Udo"||t=="Rdo")if(v&&v.length==3)return
 		case"Hom":if(confirm('確定離開頁面?'))location="index.html";break
 	}
 }
-function Msg(msg,sys){Dft.Oln.Msg=-1
-	firebase.database().ref("Battle/"+Dft.Oln.Id).once("value",function(r){var msgo=r.val().Message
-		if(!msgo)msgo=""
-		if(!sys)firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+Dft.Oln.Typ+":"+msg+"<br>"})
-		else firebase.database().ref("Battle/"+Dft.Oln.Id).update({Message:msgo+'<div style="text-align:center">-'+msg+"-</div>"})
-	})
-}
