@@ -24,6 +24,7 @@ function MdL(v){
 		$("#UI").on("swipe",function(e){var arw=e.swipestart.coords[0]-e.swipestop.coords[0];if(!Dft.System.Gst)return
 			if(arw>0)Ctl("Udo");else if(arw<0)Ctl("Rdo")
 		})
+		$("#UI").bind("swipedown",function(){Opt()})
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
