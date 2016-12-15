@@ -1,6 +1,8 @@
 ﻿var Oln={}
-function Req(Typ,Jcd){
-	var id="",req={ModeName:doc.title,BoardContent:"",LastActive:new Date().getTime(),CheckNum:RJC(),PlayerX:"N"};Dft.Oln.MdN=doc.title
+function Req(Typ,Jcd){Dft.Oln.CkN=RJC()
+	var id="",req={
+		ModeName:doc.title,BoardContent:"",LastActive:new Date().getTime(),CheckNum:Dft.Oln.CkN,PlayerX:"N",Message:{Content:""}
+	};Dft.Oln.MdN=doc.title
 	if(Jcd)id=Jcd
 	if(Typ=="J"){if(!Jcd)while(!id)id=prompt("輸入id");Dft.Oln.Typ="X"}
 	else{Dft.Oln.Typ="O";if(!Jcd)id=RJC()}Dft.Oln.Id=id
@@ -16,7 +18,7 @@ function Req(Typ,Jcd){
 				}else if(Typ=="J"&&r.val()=="N"){
 					firebase.database().ref("Battle/"+id+"/CheckNum").once("value",function(r){
 						Msg("X方已加入",1);Dft.Oln.CkN=r.val()
-						firebase.database().ref("Battle/"+id).update({PlayerX:"Y",CheckNum:r})
+						firebase.database().ref("Battle/"+id).update({PlayerX:"Y",CheckNum:r.val()})
 					})
 				}else{alert("進入觀賞模式");Dft.Oln.Typ="V"}
 			});if(Notification&&Notification.permission!="granted")Notification.requestPermission();Ini()
@@ -33,7 +35,7 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 	if(Dft.Oln.Typ=="X"||Dft.Oln.Typ=="V")Dft.Set=0;else Dft.Set=1
 	if(!v){
 		firebase.database().ref("Battle/"+Dft.Oln.Id+"/BoardContent").on("value",function(r){
-			var brd=r.val().BoardContent.split("/")
+			var brd=r.val().split("/")
 			if(brd[0].length<81&&(Dft.Oln.Cln||Dft.Oln.Typ=="V")){alert(brd[0]);Ini(1)}
 			else if(brd[1]&&Sqr.Sym[(Val(brd[1])%2)]==Dft.Oln.Typ||Dft.Oln.Typ=="V"){
 				Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=Val(brd[1]);Rul()
@@ -87,9 +89,11 @@ function RJC(){var r="",t=[]
   return r
 }
 function Msg(msg,sys){Dft.Oln.Msg=-1
-	firebase.database().ref("Battle/"+Dft.Oln.Id+"/Message").once("value",function(r){var msgo=r.val()
+	firebase.database().ref("Battle/"+Dft.Oln.Id+"/Message").once("value",function(r){var msgo=r.val().Content
 		if(!msgo)msgo=""
-		if(!sys)firebase.database().ref("Battle/"+Dft.Oln.Id).update(msgo+Dft.Oln.Typ+":"+msg+"<br>")
-		else firebase.database().ref("Battle/"+Dft.Oln.Id).update(msgo+'<div style="text-align:center">-'+msg+"-</div>")
+		if(!sys)firebase.database().ref("Battle/"+Dft.Oln.Id+"/Message").update({Content:msgo+Dft.Oln.Typ+":"+msg+"<br>"})
+		else firebase.database().ref("Battle/"+Dft.Oln.Id+"/Message").update({
+			Content:msgo+'<div style="text-align:center">-'+msg+"-</div>"
+		})
 	})
 }
