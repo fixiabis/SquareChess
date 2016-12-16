@@ -10,7 +10,29 @@
 <script src="Prun.js"></script>
 <script src="Mode.js"></script>
 <style>@import "Face.css";
-header{background-color:#758f9b;line-height:40px;height:40px}
+header{
+	top:0px;
+	left:0px;
+	width:100%;
+	color:white;
+	height:40px;
+	position:fixed;
+	font-size:30px;
+	line-height:40px;
+	text-align:center;
+	background-color:#758f9b;
+	overflow:hidden
+}
+footer{
+	width:100%;
+	text-align:center;
+	color:white;
+	font-size:16px;
+	background-color:#758f9b;
+	height:40px;
+	line-height:40px;
+	overflow:hidden
+}
 #Home{
 	line-height:40px;
 	height:40px;
@@ -20,15 +42,25 @@ header{background-color:#758f9b;line-height:40px;height:40px}
 	background-position:2.5px 2.5px;
 	background-repeat:no-repeat;
 	width:350px;
+	color:white;
+	float:left;
 	margin-left:40px;
 }
-#Menu{
+#Menu,#List{
 	height:40px;
-	width:350px;
+	width:400px;
+	float:right;
+	font-size:16px;
+	margin-right:10px
 }
-#Menu hr{
-	width:0px;height:25px
+#Menu hr,#List hr{
+	width:0px;height:60%;float:right
 }
+#Copy{
+	width:250px;margin-left:20px;float:left
+}
+.Social{width:35px;height:35px;margin:2.5px;float:right}
+.page{width:120px;float:right}
 </style>
 </head>
 <body onresize="Rsz()" onload="Ldr()" oncontextmenu="event.preventDefault()">
@@ -36,9 +68,21 @@ header{background-color:#758f9b;line-height:40px;height:40px}
 <header>
 <div id="Home">Square Chess Game</div>
 <div id="Menu">
-	開始遊戲<hr>線上對戰<hr>遊戲規則
+	<div class="page">開始遊戲</div><hr>
+	<div class="page">線上對戰</div><hr>
+	<div class="page">遊戲說明</div>
 </div>
 </header>
+<footer>
+	<div id="Copy">&copy 2016 Square Chess Game.</div>
+	<div id="List">
+		<div id="fb" class="Social"></div>
+		<div id="tw" class="Social"></div>
+		<div id="g+" class="Social"></div><hr>
+		<div  class="page">回報問題</div><hr>
+		<div  class="page">關於我們</div>
+	</div>
+</footer>
 </div>
 </body>
 <div id="fb-root"></div>
@@ -56,6 +100,7 @@ function Ldr(){
 	}(document, 'script', 'facebook-jssdk'))}
 function MnP(){}
 function Rsz(){
+	
 }
 function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
 	if(v[0].length<4)return alert("標題不足四字");btn.style.backgroundColor="lightgray"
