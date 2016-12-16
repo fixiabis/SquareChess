@@ -13,21 +13,20 @@ function Req(Typ,Jcd){Dft.Oln.CkN=RJC()
 			firebase.database().ref("Battle/"+id+"/PlayerX").once("value",function(r){
 				if(Typ=="R"){var url="http://fixiabis.github.io/SquareChessGame/9.1/jndir.html?"+doc.title+"/"+id
 					prompt("註冊成功,貼給朋友即可開始對戰",url)
-					Id("msgr").childNodes[1].setAttribute("data-href",url);Oln.Ffb()
+					Id("msgr").childNodes[1].setAttribute("data-href",url);Oln.Ffb();Ini();Oln.Ckr()
 					Id("QR").style.background="url(http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl="+url+")"
 				}else if(Typ=="J"&&r.val()=="N"){
 					firebase.database().ref("Battle/"+id+"/CheckNum").once("value",function(r){
-						Msg("X方已加入",1);Dft.Oln.CkN=r.val()
-						firebase.database().ref("Battle/"+id).update({PlayerX:"Y",CheckNum:r.val()})
+						Msg("X方已加入",1);Dft.Oln.CkN=r.val();Ini();Oln.Ckr()
+						firebase.database().ref("Battle/"+id).update({PlayerX:"Y",CheckNum:r.val(),LastActive:new Date().getTime()})
 					})
-				}else{alert("進入觀賞模式");Dft.Oln.Typ="V"}
-			});if(Notification&&Notification.permission!="granted")Notification.requestPermission();Ini()
+				}else{alert("進入觀賞模式");Dft.Oln.Typ="V";Ini()}
+			});if(Notification&&Notification.permission!="granted")Notification.requestPermission()
 		})
 	}catch(e){if(confirm("暫時無法申請，將繼續重試"))Req(Typ,Jcd)}
 }
 function Upl(cnt){if(Dft.Oln.Typ=="V"||!Dft.Oln.Id)return
-	Dft.Set=0;var req={LastActive:new Date().getTime(),CheckNum:Dft.Oln.CkN}
-	req.BoardContent=cnt;Atn(Dft.Oln.MdN)
+	Dft.Set=0;var req={CheckNum:Dft.Oln.CkN,BoardContent:cnt};Atn(Dft.Oln.MdN)
 	try{firebase.database().ref("Battle/"+Dft.Oln.Id).update(req);Dft.Oln.Cln=1}
 	catch(e){if(confirm("暫時無法上傳，將繼續重試"))Upl(cnt)}
 }
@@ -53,6 +52,10 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 					})
 				}
 			}
+		})
+		if("OX".search(Dft.Oln.Typ)>-1)firebase.database().ref("Battle/"+Dft.Oln.Id+"/LastActive").on("value",
+		function(r){Dft.Oln.Lst=new Date().getTime();Dft.Oln.CkO=1
+			firebase.database().ref("Battle/"+Dft.Oln.Id).update({LastActive:Dft.Oln.Lst,CheckNum:Dft.Oln.CkN})
 		})
 	}
 }
@@ -96,4 +99,10 @@ function Msg(msg,sys){Dft.Oln.Msg=-1
 			Content:msgo+'<div style="text-align:center">-'+msg+"-</div>"
 		})
 	})
+}
+Oln.Ckr=function(){var msg=Id("msgc").innerHTML
+	if(Dft.Oln.CkO){
+		if(msg.search('<div style="text-align:center">-X方已加入-</div>')>-1)Dft.Oln.CkO=0
+	}else if(msg.search('<div style="text-align:center">-對手已離開-</div>')<0)Msg("對手已離開",1)
+	setTimeout("Oln.Ckr()",10000)
 }
