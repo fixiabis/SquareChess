@@ -43,11 +43,11 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 			}
 		})
 		firebase.database().ref("Battle/"+Dft.Oln.Id+"/Message").on("value",function(r){
-			if(r.val()&&Id("msgc").innerHTML!=r.val()){var msg=r.val()
+			if(r.val()&&Id("msgc").innerHTML!=r.val()){var msg=r.val().Content;if(msg=="")return
 				Id("msgc").innerHTML=msg;Dft.Oln.Msg++;Atn()
 				Ctl("MSw",1);Id("msgc").scrollTop=Id("msgc").scrollHeight
 				if(msg.search('<div style="text-align:center">-X方已加入-</div>')>-1)$(".join").css("display","none")
-				if(Notification){var m=msg.replace('<div style="text-align:center">-X方已加入-</div>',"").split("<br>")
+				if(Notification&&msg.length>2){var m=msg.replace('<div style="text-align:center">-X方已加入-</div>',"").split("<br>")
 					if(m[m.length-2][0]!=Dft.Oln.Typ&&m.length>1)var n=new Notification("即時訊息",{
 						body:m[m.length-2],icon:"Impo/Logo.png"
 					})
