@@ -10,165 +10,40 @@
 <script src="Prun.js"></script>
 <script src="Mode.js"></script>
 <style>@import "Face.css";
-.chess{
-	float:left;
-	margin:10px;
-	width:100px;
-	height:100px;
-	font-size:50px;
-	line-height:100px;
-	text-align:center;
-	border-radius:5px;
-	text-decoration:none;
-	background-color:lightgray;
+header{background-color:#758f9b;line-height:40px;height:40px}
+#Home{
+	line-height:40px;
+	height:40px;
+	font-size:25px;
+	background-image:url(Impo/Logo.png);
+	background-size:35px 35px;
+	background-position:2.5px 2.5px;
+	background-repeat:no-repeat;
+	width:350px;
+	margin-left:40px;
 }
-.chess[title*=Connect],
-.chess[title*=Blocker],
-.chess[title*=Divider],
-.chess[title*=Adapter]{color:white}
-.chess[title*=Connect]{background-color:cornflowerblue}
-.chess[title*=Blocker]{background-color:palevioletred}
-.chess[title*=Divider]{background-color:lightseagreen}
-.chess[title*=Adapter]{background-color:lightcoral}
-.chess[title*=Connect]:hover{background-color:royalblue}
-.chess[title*=Blocker]:hover{background-color:crimson}
-.chess[title*=Divider]:hover{background-color:seagreen}
-.chess[title*=Adapter]:hover{background-color:coral}
-#launcher{transition:all 2s;overflow:auto}
-hr{border-style:solid}
-.Tt{font-size:25px;line-height:50px}
-#close{float:right;cursor:pointer}
-#close:hover{text-decoration:underline}
-#Slt{width:200px;height:50px;line-height:50px;font-size:30px;background-color:lightgray;text-align:center;border-radius:10px;cursor:pointer}
+#Menu{
+	height:40px;
+	width:350px;
+}
+#Menu hr{
+	width:0px;height:25px
+}
 </style>
 </head>
 <body onresize="Rsz()" onload="Ldr()" oncontextmenu="event.preventDefault()">
 <div id="NightMode" style="opacity:1">
-	<header onclick="MnP()">Square Chess Game</header>
-	<div align="center" style="height:100%;width:100%;position:fixed;top:40px;left:0px">
-		<div class="Mobile">按住欲進入的模式取得說明</div>
-		<div id="launcher">
-			<a class="chess" title="Square.Connect">S.C</a>
-			<a class="chess" title="Connect:Attack">C:A</a>
-			<a class="chess" title="Connect:Defend">C:D</a>
-			<a class="chess" title="Connect:Scheme">C:S</a>
-			<a class="chess" title="Square.Blocker">S.B</a>
-			<a class="chess" title="Blocker:ByLine">B:B</a>
-			<a class="chess" title="Blocker:Forbid">B:F</a>
-			<a class="chess" title="Blocker:Anomal">B:A</a>
-			<a class="chess" title="Square.Divider">S.D</a>
-			<a class="chess" title="Divider:Zombie">D:Z</a>
-			<a class="chess" title="Divider:Follow">D:F</a>
-			<a class="chess" title="Square.Adapter">S.A</a>
-			<a class="chess" title="Adapter:Invert">A:I</a>
-			<a class="chess" title="Gomoku">Gmk</a>
-			<a class="chess" title="GoLike">GoL</a>
-		</div>
-	</div>
-	<footer>
-		<div style="color:dimgray;margin:5%">
-			<font style="font-size:30px">
-				歡迎使用<font id="close" onclick="desc=0;Rsz()">(關閉)</font>
-			</font><hr>
-			<div><font class="Tt">常用功能</font><br>
-				常用的一般功能:
-				<ol class="Computer">
-					<li>點選格子或以鍵盤輸入座標(E5即按下E+5)來設置符號</li>
-					<li>滑鼠靠近空白處或按下]或[即可喚出選單</li>
-					<li>點選Clean或按下Del以清除棋盤</li>
-					<li>點選Undo或按下Ctrl+Z到上一步</li>
-					<li>點選Redo或按下Ctrl+Y到下一步</li>
-					<li>點選Goto或按下Ctrl+H到指定步</li>
-					<li>點選Addons或按下Ctrl+Alt做功能設定</li>
-				</ol>
-				<ol class="Mobile">
-					<li>點選格子來設置符號</li>
-					<li>點選Clean清除棋盤</li>
-					<li>點選Undo或在格子上向左滑到上一步</li>
-					<li>在格子上向右滑到下一步</li>
-					<li>按住Clean做功能設定</li>
-					<li>按住Undo到指定步</li>
-				</ol>
-				線上對戰可用的功能:
-				<ol>
-					<li>點選GiveUp可以向對方認輸</li>
-					<li>點選右下方即時訊息即可傳送訊息</li>
-				</ol>
-				<div align="center">
-					<div onclick="desc=0;Rsz()" id="Slt">選擇遊戲模式</div>
-				</div>
-			</div><br>
-			<div><font class="Tt">社群網站</font><br>
-				跟隨或追蹤我們<br>
-				<a class="twitter-follow-button" href="https://twitter.com/SquareChessGame" data-size="large"></a><br>
-				<div class="fb-like" data-href="https://www.facebook.com/SquareChessGame" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
-			</div><br>
-			<div><font class="Tt">關於我們</font><br>
-				開發者fixiabis在某日偶然在紙上想出了一個新式的紙筆遊戲─Square.Connect，而後想出了許多玩法與功能，進而開發了Square Chess Game，希望給棋盤遊戲的愛好者一個新的選擇。
-			</div><br>
-			<div><font class="Tt">回報問題</font>
-				<div align="center">
-					<div style="font-size:20px;position:relative">
-						<input type="text" value="" placeholder="輸入遇到的問題" style="font-size:20px;width:500px;border:solid 1px;color:gray" id="RTt"/><br>
-						<textarea rows="5" placeholder="詳述該狀況" style="font-size:20px;width:496px;border:solid 1px;border-top:none;color:gray" id="RCt"></textarea>
-						<div onclick="Rpt(this)" style="text-align:center;border:solid 1px;width:500px" id="RSd">送出</div>
-					</div>
-				</div>
-			</div><br>
-			<div><font class="Tt">常見問題</font><br>
-				<font style="color:blue" onclick="Nit()">開啟/取消夜間模式</font>
-				<div class="IE" style="display:none">全螢幕功能未支援Trident排版引擎</div>
-			</div><br>
-		</div>
-	</footer>
-	<footer>
-	</footer>
+<header>
+<div id="Home">Square Chess Game</div>
+<div id="Menu">
+	開始遊戲<hr>線上對戰<hr>遊戲規則
+</div>
+</header>
 </div>
 </body>
 <div id="fb-root"></div>
 <script>
-var MainColor={
-	Connect:"royalblue",
-	Blocker:"crimson",
-	Divider:"seagreen",
-	Adapter:"coral"
-},desc=2
 function Ldr(){
-	for(var i=0;i<$(".chess").length;i++){
-		if(!$(".chess")[i].href)$(".chess")[i].href="chess.html?mode="+$(".chess")[i].title
-	}Rsz()
-	$(".chess").on("mouseover",function(){
-		var ModeName=this.title.replace("Square.","").split(":"),Rule=""
-		$("footer")[1].style.backgroundColor="lightgray"
-		Rule="<div style='margin:5%'>"+this.title+"<font id='close' onclick='desc=0;Rsz()'>(關閉)</font><hr><ol>"
-		for(var i=0;i<ModeName.length;i++){
-			if(MainColor[ModeName[i]])$("footer")[1].style.backgroundColor=MainColor[ModeName[i]]
-			if(Rls[ModeName[i]])Rule+="<li>"+Rls[ModeName[i]]+"</li>"
-		}$("footer")[1].innerHTML=Rule+"</ol></div>";desc=1;Rsz()
-	})
-}
-function MnP(){desc=2;Rsz()}
-function Rsz(){
-	var sz=Math.floor($(window).width()/120)*120+5,h=0;
-	Id("launcher").style.width=sz+"px"
-	switch(desc){
-		case 0:h=0;break
-		case 1:h=$(window).height()/2;break
-		case 2:h=$(window).height()-40;break
-	}$("footer").css("height",h+"px");
-	if(desc==2)$("footer")[1].style.height="0px"
-	Id("launcher").style.height=$(window).height()-h-40+"px"
-	if(Id("RTt")){var w=Id("RTt").parentNode.clientWidth
-		if(Id("RTt").parentNode.clientWidth>500)w=500
-		Id("RTt").style.width=w+"px"
-		Id("RSd").style.width=w+"px"
-		Id("RCt").style.width=w-4+"px"
-		$(".Computer").css("display","")
-		$(".Mobile").css("display","")
-		if(w!=500)$(".Computer").css("display","none")
-		else $(".Mobile").css("display","none")
-	}
-	if(navigator.userAgent.search("Trident")>-1)$(".IE").css("display","")
 	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
 		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
 		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
@@ -178,7 +53,9 @@ function Rsz(){
 		js=d.createElement(s);js.id=id;
 		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
 		fjs.parentNode.insertBefore(js,fjs);
-	}(document, 'script', 'facebook-jssdk'))
+	}(document, 'script', 'facebook-jssdk'))}
+function MnP(){}
+function Rsz(){
 }
 function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
 	if(v[0].length<4)return alert("標題不足四字");btn.style.backgroundColor="lightgray"
@@ -187,10 +64,6 @@ function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
 		{Typ:"P",title:"BY9.1:"+v[0],content:v[1]},
 		function(r){alert(r);Id("RTt").value="";Id("RCt").value="";btn.style.backgroundColor=""}
 	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
-}
-function Nit(){
-	if(Id('NightMode').style.opacity==1)Id('NightMode').style.opacity=0.3
-	else Id('NightMode').style.opacity=1
 }
 </script>
 </html>
