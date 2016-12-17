@@ -13,7 +13,7 @@ Shl.Opt.Anomal=function(){
 	Id("OptionMenu").innerHTML+="Anomal設定:<br>";Ara.Opt("Anomal")
 }
 Shl.OpK.Anomal=function(){
-	Ara.OpK("Anomal");if(Shl.Ara.Anomal.QJd==2)Shl.Ara.Anomal.QJd=3
+	Ara.OpK("Anomal");if(Shl.Ara.Anomal.QJd==2)Shl.Ara.Anomal.QJd=3;Dft.System.Qsr=0
 }
 function Anm(){
 	var ara={O:[[]],X:[[]],P:[]},cds=Sel("All"),vst=[];ara.O.All=[],ara.X.All=[]

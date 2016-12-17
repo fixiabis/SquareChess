@@ -177,7 +177,7 @@ Ara.AJd=function(shl,ara){var sot={O:[],X:[],P:[]};sot.O.All=[];sot.X.All=[];sot
 	}sot.O[0]=sot.O.All;sot.X[0]=sot.X.All;sot.P[0]=sot.P.All;return sot
 }
 function Enm(sym){
-	if(sym=="O")return "X";else return "O"
+	if(sym=="O")return "X";else if(sym=="X") return "O";else return ""
 }
 function BJd(){var nxt=[],nxn=[]
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){

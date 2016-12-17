@@ -20,7 +20,7 @@ Shl.Opt.Blocker=function(){
 }
 Shl.OpK.Blocker=function(){
 	if(!Dft.System.Oln)for(var i=0;i<3;i++)if(Id("Blocker-AJd-"+i).checked)Dft.Blocker.AJd=i
-	Ara.OpK("Blocker");if(Shl.Ara.Blocker.QJd==2)Shl.Ara.Blocker.QJd=3
+	Ara.OpK("Blocker");if(Shl.Ara.Blocker.QJd==2)Shl.Ara.Blocker.QJd=3;Dft.System.Qsr=0
 }
 function Blk(){var ara={O:[],X:[]};ara.O.age=[];ara.X.age=[]
 	for(var cd1=65;cd1<73;cd1++)for(cd2=1;cd2<9;cd2++){var key=Qre(Chr(cd1)+cd2,"Sym");if(key==2||cd1==72&&cd2==9)continue
