@@ -59,35 +59,39 @@ footer{
 #Copy{
 	width:250px;margin-left:20px;float:left
 }
-.Social{width:35px;height:35px;margin:2.5px;float:right}
-.page{width:120px;float:right}
+.Social{width:35px;height:35px;margin:2.5px;float:right;transition:all 2s}
+.page:hover{color:#99bccc}
+.page{width:120px;float:right;transition:all 2s}
 </style>
 </head>
 <body onresize="Rsz()" onload="Ldr()" oncontextmenu="event.preventDefault()">
 <div id="NightMode" style="opacity:1">
 <header>
-<div id="Home">Square Chess Game</div>
-<div id="Menu">
-	<div class="page">開始遊戲</div><hr>
-	<div class="page">線上對戰</div><hr>
-	<div class="page">遊戲說明</div>
-</div>
-</header>
-<footer>
-	<div id="Copy">&copy 2016 Square Chess Game.</div>
-	<div id="List">
-		<div id="fb" class="Social"></div>
-		<div id="tw" class="Social"></div>
-		<div id="g+" class="Social"></div><hr>
-		<div  class="page">回報問題</div><hr>
-		<div  class="page">關於我們</div>
+	<div id="Home">Square Chess Game</div>
+	<div id="Menu">
+		<div class="page">開始遊戲</div><hr>
+		<div class="page">線上對戰</div><hr>
+		<div class="page">遊戲說明</div>
 	</div>
-</footer>
+</header>
+<article>
+	
+	<footer>
+		<div id="Copy">&copy 2016 Square Chess Game.</div>
+		<div id="List">
+			<div id="fb" class="Social"></div>
+			<div id="tw" class="Social"></div>
+			<div id="g+" class="Social"></div><hr>
+			<div  class="page">回報問題</div><hr>
+			<div  class="page">關於我們</div>
+		</div>
+	</footer>
+</article>
 </div>
 </body>
 <div id="fb-root"></div>
 <script>
-function Ldr(){
+function Ldr(){Rsz()
 	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};
 		if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;
 		js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
@@ -100,7 +104,7 @@ function Ldr(){
 	}(document, 'script', 'facebook-jssdk'))}
 function MnP(){}
 function Rsz(){
-	
+	$("article").css("height",($(window).height())-80+"px")
 }
 function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
 	if(v[0].length<4)return alert("標題不足四字");btn.style.backgroundColor="lightgray"

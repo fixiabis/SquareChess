@@ -36,3 +36,16 @@ body{
 #OptionMenu{width:99%;height:99%;top:0.5%;left:0.5%;position:absolute;background-color:lightgray;overflow:auto}
 #NightMode{background-color:white;width:100%;height:100%;position:fixed;top:40px;left:0px;display:table}
 #Rule{position:fixed;background:white;opacity:0.7;overflow:auto;transition:all 2s;font-size:25px}
+header{
+	top:0px;
+	left:0px;
+	width:100%;
+	color:white;
+	height:40px;
+	position:fixed;
+	font-size:30px;
+	line-height:40px;
+	text-align:center;
+	background-color:#758f9b;
+	overflow:hidden
+}
