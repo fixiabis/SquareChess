@@ -66,7 +66,7 @@ function Ctl(t,v){if(t=="Udo"||t=="Rdo")if(v&&v.length==3)return
 	}else switch(t){
 		case"Gvp":if(Dft.Set&&confirm("確定認輸?"))Upl(Dft.Oln.Typ+"認輸,"+Enm(Dft.Oln.Typ)+"獲勝");break
 		case"Msg":if(Id("msgs").value)Msg(Id("msgs").value);Id("msgs").value="";break
-		case"MSw":var k=Id("Message").style.height=="25px";if(v)k=1
+		case"MSw":var k=Id("Message").style.height=="25px";if(typeof v!="undefined"){if(v)k=1;else k=0}
 		if(k)Id("Message").style.height="300px"
 		else{Id("Message").style.height="25px";Dft.Oln.Msg=0}Atn()
 	}

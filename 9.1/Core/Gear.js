@@ -70,14 +70,15 @@ function Joi(){
 }
 Oln.Opt=function(){Id("msgr").style.opacity=0
 	if(!Dft.Oln.Id){
-		OpS("Dft-ORg-0/Dft.ORg","r","註冊房間",Dft.Oln.Rgt==0)
-		OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)
+		OpS("ORg-0/ORg","r","註冊房間",Dft.Oln.Rgt==0)
+		OpS("ORg-1/ORg","r","加入房間",Dft.Oln.Rgt==1)
 	}else{if(Tn<2)Id("msgr").style.opacity=1
 		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
 	}OpS("Oln-MSw","k","訊息窗彈出",Dft.Oln.MSw)
 }
 Oln.OpK=function(){
-	if(!Dft.Oln.Id){if(Id("Dft-ORg-0").checked)Req("R");else Req("J")}
+	if(!Dft.Oln.Id){if(Id("ORg-0").checked)Req("R");else Req("J")}
+	Dft.Oln.MSw=Id("Oln-MSw").checked
 }
 Oln.Ffb=function(){
 	(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0]
