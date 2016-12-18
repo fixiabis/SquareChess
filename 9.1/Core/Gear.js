@@ -45,7 +45,7 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 		firebase.database().ref("Battle/"+Dft.Oln.Id+"/Message").on("value",function(r){
 			if(r.val()&&Id("msgc").innerHTML!=r.val()){var msg=r.val().Content;if(msg=="")return
 				Id("msgc").innerHTML=msg;Dft.Oln.Msg++;Atn()
-				Ctl("MSw",1);Id("msgc").scrollTop=Id("msgc").scrollHeight
+				Ctl("MSw",Dft.Oln.MSw);Id("msgc").scrollTop=Id("msgc").scrollHeight
 				if(msg.search('<div style="text-align:center">-X方已加入-</div>')>-1)$(".join").css("display","none")
 				if(Notification){var m=msg.replace('<div style="text-align:center">-X方已加入-</div>',"").split("<br>")
 					if(m.length>1&&m[m.length-2][0]!=Dft.Oln.Typ)var n=new Notification("即時訊息",{
@@ -63,7 +63,7 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 function Atn(v){
 	if(v)doc.title=v
 	else if(doc.title[doc.title.length-1]==")")doc.title=doc.title.split("(")[0]
-	if(Dft.Oln.Msg)doc.title+="("+Dft.Oln.Msg+")"
+	if(Dft.Oln.Msg)doc.title+="("+Dft.Oln.Msg+")";Tag("header")[0].innerHTML=doc.title
 }
 function Joi(){
 	if(location.hash.length!=9)Opt();else Req("J",Mid(location.hash,1,location.hash.length-1))
@@ -74,6 +74,7 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 		OpS("Dft.ORg-1/Dft.ORg","r","加入房間",Dft.Oln.Rgt==1)
 	}else{if(Tn<2)Id("msgr").style.opacity=1
 		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
+		OpS("Oln-MSw","k","訊息窗彈出",Dft.Oln.MSw)
 	}
 }
 Oln.OpK=function(){

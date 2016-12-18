@@ -7,7 +7,7 @@
 		]
 	},Dft={
 		Set:1,Tn:0,Blk:[],
-		Oln:{Typ:"",Id:"",Rgt:0,Cln:1,MdN:"",Msg:0,CkN:"",Lst:"",CkO:1,Ckr:0},
+		Oln:{Typ:"",Id:"",Rgt:0,Cln:1,MdN:"",Msg:0,CkN:"",Lst:"",CkO:1,Ckr:0,MSw:1},
 		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0,Gst:0}
 	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
