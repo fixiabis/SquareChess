@@ -12,37 +12,33 @@
 <style>@import "Core/Face.css";
 body{
 	content:
-		url(Pics/fb.png)
-		url(Pics/tw.png)
-		url(Pics/gp.png)
-		url(Pics/fbh.png)
-		url(Pics/twh.png)
-		url(Pics/gph.png)
-	;
+		url(Pics/fb.png) url(Pics/fbh.png)
+		url(Pics/tw.png) url(Pics/twh.png)
+		url(Pics/gp.png) url(Pics/gph.png)
 }
 footer{
 	width:100%;
-	text-align:center;
+	height:40px;
 	color:white;
 	font-size:16px;
-	background-color:#758f9b;
-	height:40px;
+	overflow:hidden;
 	line-height:40px;
-	overflow:hidden
+	text-align:center;
+	background-color:#758f9b;
 }
 #Home{
-	line-height:40px;
+	float:left;
 	height:40px;
-	font-size:25px;
-	font-family:Consolas;
-	background-image:url(Pics/Logo.png);
-	background-size:35px 35px;
-	background-position:2.5px 2.5px;
-	background-repeat:no-repeat;
 	width:350px;
 	color:white;
-	float:left;
+	font-size:25px;
+	line-height:40px;
 	margin-left:40px;
+	font-family:Consolas;
+	background-size:35px 35px;
+	background-repeat:no-repeat;
+	background-position:2.5px 2.5px;
+	background-image:url(Pics/Logo.png);
 }
 #Menu,#List{
 	height:40px;
@@ -51,13 +47,18 @@ footer{
 	font-size:16px;
 	margin-right:10px;
 }
-#Menu hr,#List hr{
-	width:0px;height:60%;float:right
+#Menu hr,#List hr{width:0px;height:60%;float:right}
+#Copy{width:230px;margin-left:5px;float:left}
+.Social{
+	width:35px;
+	height:35px;
+	float:right;
+	margin:2.5px;
+	cursor:pointer;
+	transition:all 1s;
+	background-repeat:no-repeat;
+	background-position:center center;
 }
-#Copy{
-	width:230px;margin-left:5px;float:left
-}
-.Social{width:35px;height:35px;margin:2.5px;float:right;transition:all 1s;background-repeat:no-repeat;background-position:center center;cursor:pointer}
 .page:hover{color:#48585f}
 .page{width:120px;float:right;transition:all 1s;font-weight:bold;cursor:pointer}
 #fb{background-image:url(Pics/fb.png);background-size:20px 20px;background-position:right center;}
