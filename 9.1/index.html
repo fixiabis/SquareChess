@@ -80,7 +80,7 @@ footer{
 	height:40px;width:100%;float:left;
 	text-decoration:none;overflow:hidden;
 }
-#pStart,#pAbout,#pOnline,#pReport,#pRules{
+#pStart,#pAbout,#pOnline,#pReport,#pRules,.pTab{
 	background-position:right 5px;
 	background-size:30px 30px;
 	background-repeat:no-repeat;
@@ -95,6 +95,8 @@ footer{
 #pReport:hover{background-image:url(Pics/Reporth.png)}
 #pRules{background-image:url(Pics/Rules.png)}
 #pRules:hover{background-image:url(Pics/Rulesh.png)}
+.pTab{background-image:url(Pics/Down.png)}
+.pTab:hover{background-image:url(Pics/Downh.png)}
 #lLst div{overflow:auto;height:280px}
 #lLst div::-webkit-scrollbar{width:0px;height:0px}
 #lLst div div:hover{background-color:#99bccc}
@@ -120,51 +122,51 @@ a{color:inherit;text-decoration:none}
 	<div class="Mobile" style="width:100%;font-size:16px;float:right;text-align:left" id="lLst">
 		<div style="width:80%;margin-left:10%">
 			<div id="pStart" onclick="Hid();Shw('chess','Main')">開始遊戲</div>
-				<div data-chess="Main" onclick="Lst('chess','CSub')"><a>Square.Connect</a></div>
+				<div data-chess="Main" onclick="Lst('chess','CSub')" class="pTab"><a>Square.Connect</a></div>
 				<div data-chess="CSub"><a>Connect:Attack</a></div>
 				<div data-chess="CSub"><a>Connect:Defend</a></div>
 				<div data-chess="CSub"><a>Connect:Scheme</a></div>
 				<div data-chess="CSub"><a>Connect:Anomal</a></div>
-				<div data-chess="Main" onclick="Lst('chess','BSub')"><a>Square.Blocker</a></div>
+				<div data-chess="Main" onclick="Lst('chess','BSub')" class="pTab"><a>Square.Blocker</a></div>
 				<div data-chess="BSub"><a>Blocker:Forbid</a></div>
-				<div data-chess="Main" onclick="Lst('chess','DSub')"><a>Square.Divider</a></div>
+				<div data-chess="Main" onclick="Lst('chess','DSub')" class="pTab"><a>Square.Divider</a></div>
 				<div data-chess="DSub"><a>Divider:Zombie</a></div>
 				<div data-chess="DSub"><a>Divider:Follow</a></div>
-				<div data-chess="Main" onclick="Lst('chess','ASub')"><a>Square.Adapter</a></div>
+				<div data-chess="Main" onclick="Lst('chess','ASub')" class="pTab"><a>Square.Adapter</a></div>
 				<div data-chess="ASub"><a>Adapter:Invert</a></div>
-				<div data-chess="Main" onclick="Lst('chess','OSub')"><a>Other</a></div>
+				<div data-chess="Main" onclick="Lst('chess','OSub')" class="pTab"><a>Other</a></div>
 				<div data-chess="OSub"><a>Gomoku</a></div>
 				<div data-chess="OSub"><a>GoLike</a></div>
 			<div id="pOnline" onclick="Hid();Shw('btchs','Main')">線上對戰</div>
-				<div data-btchs="Main" onclick="Lst('btchs','CSub')"><a>Square.Connect</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','CSub')" class="pTab"><a>Square.Connect</a></div>
 				<div data-btchs="CSub"><a>Connect:Attack</a></div>
 				<div data-btchs="CSub"><a>Connect:Defend</a></div>
 				<div data-btchs="CSub"><a>Connect:Scheme</a></div>
 				<div data-btchs="CSub"><a>Connect:Anomal</a></div>
-				<div data-btchs="Main" onclick="Lst('btchs','BSub')"><a>Square.Blocker</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','BSub')" class="pTab"><a>Square.Blocker</a></div>
 				<div data-btchs="BSub"><a>Blocker:Forbid</a></div>
-				<div data-btchs="Main" onclick="Lst('btchs','DSub')"><a>Square.Divider</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','DSub')" class="pTab"><a>Square.Divider</a></div>
 				<div data-btchs="DSub"><a>Divider:Zombie</a></div>
 				<div data-btchs="DSub"><a>Divider:Follow</a></div>
-				<div data-btchs="Main" onclick="Lst('btchs','ASub')"><a>Square.Adapter</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','ASub')" class="pTab"><a>Square.Adapter</a></div>
 				<div data-btchs="ASub"><a>Adapter:Invert</a></div>
-				<div data-btchs="Main" onclick="Lst('btchs','OSub')"><a>Other</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','OSub')" class="pTab"><a>Other</a></div>
 				<div data-btchs="OSub"><a>Gomoku</a></div>
 				<div data-btchs="OSub"><a>GoLike</a></div>
 			<div id="pRules" onclick="Hid();Shw('rules','Main')">遊戲說明</div>
-				<div data-rules="Main" onclick="Lst('rules','CSub')"><a>Square.Connect</a></div>
+				<div data-rules="Main" onclick="Lst('rules','CSub')" class="pTab"><a>Square.Connect</a></div>
 				<div data-rules="CSub"><a>Connect:Attack</a></div>
 				<div data-rules="CSub"><a>Connect:Defend</a></div>
 				<div data-rules="CSub"><a>Connect:Scheme</a></div>
 				<div data-rules="CSub"><a>Connect:Anomal</a></div>
-				<div data-rules="Main" onclick="Lst('rules','BSub')"><a>Square.Blocker</a></div>
+				<div data-rules="Main" onclick="Lst('rules','BSub')" class="pTab"><a>Square.Blocker</a></div>
 				<div data-rules="BSub"><a>Blocker:Forbid</a></div>
-				<div data-rules="Main" onclick="Lst('rules','DSub')"><a>Square.Divider</a></div>
+				<div data-rules="Main" onclick="Lst('rules','DSub')" class="pTab"><a>Square.Divider</a></div>
 				<div data-rules="DSub"><a>Divider:Zombie</a></div>
 				<div data-rules="DSub"><a>Divider:Follow</a></div>
-				<div data-rules="Main" onclick="Lst('rules','ASub')"><a>Square.Adapter</a></div>
+				<div data-rules="Main" onclick="Lst('rules','ASub')" class="pTab"><a>Square.Adapter</a></div>
 				<div data-rules="ASub"><a>Adapter:Invert</a></div>
-				<div data-rules="Main" onclick="Lst('rules','OSub')"><a>Other</a></div>
+				<div data-rules="Main" onclick="Lst('rules','OSub')" class="pTab"><a>Other</a></div>
 				<div data-rules="OSub"><a>Gomoku</a></div>
 				<div data-rules="OSub"><a>GoLike</a></div>
 			<div id="pAbout">關於我們</div>
