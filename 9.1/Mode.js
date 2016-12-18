@@ -1,18 +1,82 @@
 var Rls={
-	Adapter:"己方所有符號的右前前，左前前，右右前，左左前，右後後，左後後，右右後，左左後方，路徑間必須為空白或我方符號，例如E5開始到D3，為右前前方，則E5三條路徑中(右前方及前方或前方及前前方或右方及右前方)必須要有空白或我方符號，其餘無法設置",
-	Anomal:"用多枚符號形成不規則形狀，我方形成指定形狀時，其中對方是無法設置的",
-	Attack:"雙方第一回合限定設置於指定區域，場上會有固定的封區與封限區",
-	Blocker:"用四枚符號形成矩形，我方形成指定形狀時，其中對方是無法設置的",
-	ByLine:"用兩枚符號形成直線，我方形成指定形狀時，其中對方是無法設置的",
-	Connect:"己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為一格，其餘無法設置",
-	Defend:"在一區域佔下我方符號五枚，且無對方符號時，我方獲勝",
-	Divider:"己方所有符號的前，後，左，右，右前，左前，右後，右左方，單位為無限距離長，若該方向中有非我方符號存在，則非我方符號後無法設置，其餘無法設置",
-	Follow:"原依照己方所有符號，改為依照己方上回合符號",
-	Forbid:"對方無法設置的地方，我方也無法設置",
-	GoLike:"<a href='https://zh.wikipedia.org/wiki/圍棋', target='_new'>圍棋規則</a>，不提子，被圍起來的符號都變成殭屍",
-	Gomoku:"<a href='https://zh.wikipedia.org/wiki/五子棋' target='_new'>五子棋規則</a>",
-	Invert:"第二回合後設置符號不得依照上述方法設置，但其他位置不限",
-	Scheme:"場上會有隨機的的障礙，雙方第一回合皆可隨意設置一枚符號於場上，但不得設置於C3-G7的座標上，第一回合設置後會自動於附近產生封限區",
-	Zombie:"不同的符號靠近時雙方皆會變成殭屍"
+	Jdg:{
+		Bsc:{
+			0:"對方無法設置符號時獲勝",
+			1:"無公區時，我方禁區較對方多時獲勝",
+			2:"公區無法形成禁區時，我方禁區較對方多時獲勝",
+			3:"我方禁區超過公區一半時獲勝",
+			D:"棋盤已滿時平手",
+			N:"對方符號不存在時獲勝"
+		}
+		Ara:{
+			B:"對方封限區或封區皆為對方符號時獲勝",
+			L:"對方封限區或限區有我方符號時獲勝"
+		}
+	},
+	Lmt:{
+		Bsc:[
+			"第一回合雙方可隨意設置符號",
+			"無法設置的區域將變成禁區",
+			"雙方可隨意設置符號"
+		],
+		Cnt:"符號須設置於我方符號周圍",
+		Div:"符號須設置於我方符號米字，設置路徑間不得有對方符號",
+		Adp:"符號須設置於我方符號口字，設置路徑間不得有對方符號"
+	}
 }
+Rls.Connect="<ol>"+
+	"<li class='Lmt-Bsc-0'>"+Rls.Lmt.Bsc[0]+"</li>"+
+	"<li class='Lmt-Bsc-1'>"+Rls.Lmt.Bsc[1]+"</li>"+
+	"<li class='Lmt-Cnt'>"+Rls.Lmt.Cnt+"</li>"+
+	"<li class='Jdg-Bsc-1'>"+Rls.Jdg.Bsc[1]+"</li>"+
+"</ol>"
+Rls.Attack="<ol>"+
+	"<li class='Atk-Bsc-0'>第一回合雙方符號將分別位於左上角與右下角</li>"+
+	"<li class='Atk-Bsc-1'>深色區域為我方封限區</li>"+
+	"<li class='Atk-Bsc-2'>淺色區域為我方封區</li>"+
+	"<li class='Jdg-Ara-B'>"+Rls.Jdg.Ara.B+"</li>"+
+	"<li class='Jdg-Ara-L'>"+Rls.Jdg.Ara.L.replace("或限區","")+"</li>"+
+"</ol>"
+Rls.Defend="<ol>"+
+	"<li class='Def-Bsc-0'>不同色塊為一區域</li>"+
+	"<li class='Def-Bsc-1'>區域內有五枚我方符號，且無對方符號時獲勝</li>"+
+"</ol>"
+Rls.Scheme="<ol>"+
+	"<li class='Sch-Bsc-0'>第一回合雙方符號不得設置於C3:G7之座標</li>"+
+	"<li class='Sch-Bsc-1'>第一回合符號設置完成時，周圍將產生封限區</li>"+
+	"<li class='Jdg-Ara-B'>"+Rls.Jdg.Ara.B.replace("或封區","")+"</li>"+
+	"<li class='Jdg-Ara-L'>"+Rls.Jdg.Ara.L.replace("或限區","")+"</li>"+
+"</ol>"
+Rls.Anomal="<ol>"+
+	"<li class='Anm-Bsc-0'>空白區域被符號包圍時，空白區域將產生禁區</li>"+
+"</ol>"
+Rls.Blocker="<ol>"+
+	"<li class='Lmt-Bsc-2'>"+Rls.Lmt.Bsc[2]+"</li>"+
+	"<li class='Blk-Bsc-0'>我方四枚符號形成矩形時，該矩形區域將產生禁區</li>"+
+	"<li class='Jdg-Bsc-1'>"+Rls.Jdg.Bsc[1]+"</li>"+
+"</ol>"
+Rls.Forbid="<ol>"+
+	"<li class='Fbd-Bsc-0'>我方不得設置符號於我方禁區</li>"+
+"</ol>"
+Rls.Divider="<ol>"+
+	"<li class='Lmt-Bsc-0'>"+Rls.Lmt.Bsc[0]+"</li>"+
+	"<li class='Lmt-Bsc-1'>"+Rls.Lmt.Bsc[1]+"</li>"+
+	"<li class='Lmt-Div'>"+Rls.Lmt.Div+"</li>"+
+	"<li class='Jdg-Bsc-1'>"+Rls.Jdg.Bsc[1]+"</li>"+
+"</ol>"
+Rls.Zombie="<ol>"+
+	"<li class='Zmb-Bsc-0'>第十回合後，若雙方符號接觸將變成殭屍符號</li>"+
+"</ol>"
+Rls.Follow="<ol>"+
+	"<li class='Flw-Bsc-0'>設置符號只能依上一回合符號</li>"+
+"</ol>"
+Rls.ByLine="<ol>"+
+	"<li class='ByL-Bsc-0'>我方兩枚符號形成直線時，該直線區域將產生禁區</li>"+
+"</ol>"
+Rls.Adapter="<ol>"+
+	"<li class='Lmt-Bsc-0'>"+Rls.Lmt.Bsc[0]+"</li>"+
+	"<li class='Lmt-Bsc-1'>"+Rls.Lmt.Bsc[1]+"</li>"+
+	"<li class='Lmt-Adp'>"+Rls.Lmt.Adp+"</li>"+
+	"<li class='Jdg-Bsc-1'>"+Rls.Jdg.Bsc[1]+"</li>"+
+"</ol>"
 if(typeof Shl=="object")Shl.Rls=Rls
