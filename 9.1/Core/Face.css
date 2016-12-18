@@ -9,6 +9,7 @@ body{
   src:url(../Font/Consolas.ttf);
 }
 @font-face{
+  font-family:courb;
   src:url(../Font/courb.ttf);
 }
 @font-face{
