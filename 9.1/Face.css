@@ -6,14 +6,14 @@ body{
 }
 @font-face{
   font-family:Consolas;
-  src:url(Impo/Consolas.ttf);
+  src:url(Font/Consolas.ttf);
 }
 @font-face {
-  src:url(Impo/courb.ttf);
+  src:url(Font/courb.ttf);
 }
 @font-face {
   font-family:kokilab;
-  src:url(Impo/kokilab.ttf);
+  src:url(Font/kokilab.ttf);
 }
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{width:5px;height:5px;opacity:0.5}
