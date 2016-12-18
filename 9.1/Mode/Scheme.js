@@ -31,3 +31,6 @@ Shl.OpK.Scheme=function(){
 	Dft.System.Blk=18
 	Dft.Scheme.Ara=Id("Scheme-Ara").checked
 }
+Shl.RlR.Scheme=function(){
+	$(".Lmt-Bsc-0").css("text-decoration","line-through")
+}

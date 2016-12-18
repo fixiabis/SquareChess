@@ -7,7 +7,7 @@ var Rls={
 			3:"我方禁區超過公區一半時獲勝",
 			D:"棋盤已滿時平手",
 			N:"對方符號不存在時獲勝"
-		}
+		},
 		Ara:{
 			B:"對方封限區或封區皆為對方符號時獲勝",
 			L:"對方封限區或限區有我方符號時獲勝"
@@ -29,6 +29,7 @@ Rls.Connect="<ol>"+
 	"<li class='Lmt-Bsc-1'>"+Rls.Lmt.Bsc[1]+"</li>"+
 	"<li class='Lmt-Cnt'>"+Rls.Lmt.Cnt+"</li>"+
 	"<li class='Jdg-Bsc-1'>"+Rls.Jdg.Bsc[1]+"</li>"+
+	"<li class='Jdg-Bsc-D'>"+Rls.Jdg.Bsc.D+"</li>"+
 "</ol>"
 Rls.Attack="<ol>"+
 	"<li class='Atk-Bsc-0'>第一回合雙方符號將分別位於左上角與右下角</li>"+
@@ -63,9 +64,11 @@ Rls.Divider="<ol>"+
 	"<li class='Lmt-Bsc-1'>"+Rls.Lmt.Bsc[1]+"</li>"+
 	"<li class='Lmt-Div'>"+Rls.Lmt.Div+"</li>"+
 	"<li class='Jdg-Bsc-1'>"+Rls.Jdg.Bsc[1]+"</li>"+
+	"<li class='Jdg-Bsc-D'>"+Rls.Jdg.Bsc.D+"</li>"+
 "</ol>"
 Rls.Zombie="<ol>"+
 	"<li class='Zmb-Bsc-0'>第十回合後，若雙方符號接觸將變成殭屍符號</li>"+
+	"<li class='Lmt-Bsc-N'>"+Rls.Lmt.Bsc.N+"</li>"+
 "</ol>"
 Rls.Follow="<ol>"+
 	"<li class='Flw-Bsc-0'>設置符號只能依上一回合符號</li>"+
@@ -76,7 +79,21 @@ Rls.ByLine="<ol>"+
 Rls.Adapter="<ol>"+
 	"<li class='Lmt-Bsc-0'>"+Rls.Lmt.Bsc[0]+"</li>"+
 	"<li class='Lmt-Bsc-1'>"+Rls.Lmt.Bsc[1]+"</li>"+
+	"<li class='Jdg-Bsc-D'>"+Rls.Jdg.Bsc.D+"</li>"+
 	"<li class='Lmt-Adp'>"+Rls.Lmt.Adp+"</li>"+
 	"<li class='Jdg-Bsc-1'>"+Rls.Jdg.Bsc[1]+"</li>"+
+"</ol>"
+Rls.Invert="<ol>"+
+	"<li class='Ivt-Bsc-0'>符號不得設置於原須設置區域</li>"+
+"</ol>"
+Rls.Gomoku="<ol>"+
+	"<li class='Lmt-Bsc-2'>"+Rls.Lmt.Bsc[2]+"</li>"+
+	"<li class='Gmk-Bsc-0'>當五個我方符號呈一直線時獲勝</li>"+
+"</ol>"
+Rls.GoLike="<ol>"+
+	"<li class='Lmt-Bsc-2'>"+Rls.Lmt.Bsc[2]+"</li>"+
+	"<li class='GoL-Bsc-0'>對方符號被我方符號包圍時，對方符號將變成殭屍符號</li>"+
+	"<li class='Lmt-Bsc-N'>"+Rls.Lmt.Bsc.N+"</li>"+
+	"<li class='GoL-Bsc-1'>棋盤已滿，我方符號較對方多時獲勝</li>"+
 "</ol>"
 if(typeof Shl=="object")Shl.Rls=Rls
