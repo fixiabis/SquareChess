@@ -17,10 +17,13 @@ body{
 		url(Pics/gp.png) url(Pics/gph.png)
 }
 footer{
+	left:0px;
 	width:100%;
+	bottom:0px;
 	height:40px;
 	color:white;
 	font-size:16px;
+	position:fixed;
 	overflow:hidden;
 	line-height:40px;
 	text-align:center;
@@ -35,9 +38,9 @@ footer{
 	line-height:40px;
 	margin-left:40px;
 	font-family:Consolas;
-	background-size:35px 35px;
+	background-size:30px 30px;
 	background-repeat:no-repeat;
-	background-position:2.5px 2.5px;
+	background-position:5px 5px;
 	background-image:url(Pics/Logo.png);
 }
 #Menu,#List{
@@ -89,17 +92,17 @@ footer{
 	</div>
 </header>
 <article>
-	<footer>
-		<div id="Copy">&copy 2016 Square Chess Game.</div>
-		<div id="gp" class="Social"></div>
-		<div id="tw" class="Social"></div>
-		<div id="fb" class="Social"></div>
-		<div id="List" class="Computer"><hr>
-			<div  class="page">回報問題</div><hr>
-			<div  class="page">關於我們</div>
-		</div>
-	</footer>
 </article>
+<footer>
+	<div id="Copy">&copy 2016 Square Chess Game.</div>
+	<div id="gp" class="Social"></div>
+	<div id="tw" class="Social"></div>
+	<div id="fb" class="Social"></div>
+		<div id="List" class="Computer"><hr>
+		<div  class="page">回報問題</div><hr>
+		<div  class="page">關於我們</div>
+	</div>
+</footer>
 </div>
 </body>
 <div id="fb-root"></div>
@@ -120,11 +123,13 @@ function Rsz(){
 	if($(window).width()<770){
 		$(".Computer").css("display","none")
 		$(".Mobile").css("display","")
-		Id("Home").style.marginLeft=(($(window).width()-350)/2)+"px"
+		Id("Home").style.marginLeft=(($(window).width()-40)/2)+"px"
+		Id("Home").innerHTML=""
 	}else{
 		$(".Computer").css("display","")
 		$(".Mobile").css("display","none")
 		Id("Home").style.marginLeft="40px"
+		Id("Home").innerHTML=doc.title
 	}
 }
 function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
