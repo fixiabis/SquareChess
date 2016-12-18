@@ -52,9 +52,10 @@ header{
 	height:40px;
 	position:fixed;
 	font-size:30px;
+	overflow:hidden;
 	line-height:40px;
 	text-align:center;
 	font-family:courb;
+	transition:all 1s;
 	background-color:#758f9b;
-	overflow:hidden
 }
