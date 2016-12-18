@@ -69,7 +69,6 @@ footer{
 	width:40px;height:40px;
 	background-position:center center;
 	transition:background 1s;
-	display:none;
 }
 .page:hover,#lLst div:hover{color:#48585f}
 .page{width:120px;float:right;transition:all 1s;font-weight:bold;cursor:pointer}
@@ -92,7 +91,7 @@ footer{
 		<div class="page">線上對戰</div><hr>
 		<div class="page">開始遊戲</div>
 	</div>
-	<div id="LstB" class="Mobile" onclick="Lst()"></div>
+	<div id="LstB" class="Mobile" onclick="Lst()" style="display:none"></div>
 	<div class="Mobile" style="width:100%;font-size:16px;float:right;text-align:left" id="lLst">
 		<div>開始遊戲</div>
 		<div>線上對戰</div>
@@ -128,7 +127,6 @@ function Ldr(){Rsz()
 		js.src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=898060713628151";
 		fjs.parentNode.insertBefore(js,fjs);
 	}(document, 'script', 'facebook-jssdk'))}
-function MnP(){}
 function Rsz(){
 	if($(window).width()<770){
 		$(".Computer").css("display","none")
