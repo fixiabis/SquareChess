@@ -51,7 +51,7 @@ footer{
 	margin-right:10px;
 }
 #Menu hr,#List hr{width:0px;height:60%;float:right}
-#Copy{width:250px;margin-left:5px;float:left;font-family:courbd;}
+#Copy{width:235px;margin-left:5px;float:left;font-family:courbd;font-size:15px;}
 .Social{
 	width:35px;
 	height:35px;
@@ -70,10 +70,14 @@ footer{
 	background-position:center center;
 	transition:background 1s;
 }
-.page:hover,#lLst div:hover{color:#48585f}
+.page:hover,#lLst div div:hover{color:#48585f}
 .page{width:120px;float:right;transition:all 1s;font-weight:bold;cursor:pointer}
-#lLst div{transition:all 1s;border-left:solid 5px #758f9b;cursor:pointer;font-weight:bold}
-#lLst div:hover{background-color:#99bccc;border-left:solid 5px}
+#lLst div div{
+	transition:all 1s;
+	cursor:pointer;font-weight:bold;
+	border-bottom:solid 1px;
+}
+#lLst div div:hover{background-color:#99bccc}
 #fb{background-image:url(Pics/fb.png);background-size:20px 20px;background-position:right center;}
 #tw{background-image:url(Pics/tw.png);background-size:20px 20px;}
 #gp{background-image:url(Pics/gp.png);background-size:20px 20px;}
@@ -93,11 +97,13 @@ footer{
 	</div>
 	<div id="LstB" class="Mobile" onclick="Lst()" style="display:none"></div>
 	<div class="Mobile" style="width:100%;font-size:16px;float:right;text-align:left" id="lLst">
-		<div>開始遊戲</div>
-		<div>線上對戰</div>
-		<div>遊戲說明</div>
-		<div>關於我們</div>
-		<div>回報問題</div>
+		<div style="width:80%;margin-left:10%">
+			<div>開始遊戲</div>
+			<div>線上對戰</div>
+			<div>遊戲說明</div>
+			<div>關於我們</div>
+			<div>回報問題</div>
+		</div>
 	</div>
 </header>
 <article>
@@ -141,11 +147,11 @@ function Rsz(){
 	}
 }
 function Lst(){
-	if(Tag("header")[0].style.height=="240px"){
+	if(Tag("header")[0].style.height=="280px"){
 		Tag("header")[0].style.height="40px"
 		Id("LstB").style.backgroundImage="url(Pics/List.png)"
 	}else{
-		Tag("header")[0].style.height="240px"
+		Tag("header")[0].style.height="280px"
 		Id("LstB").style.backgroundImage="url(Pics/Close.png)"
 	}
 }
