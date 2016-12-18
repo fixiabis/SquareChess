@@ -71,12 +71,14 @@ footer{
 	transition:background 1s;
 }
 .page:hover,#lLst div div:hover{color:#48585f}
-.page{width:120px;float:right;transition:all 1s;font-weight:bold;cursor:pointer}
+.page{width:120px;float:right;transition:all 1s;font-weight:bold;cursor:pointer;overflow:visible}
 #lLst div div{
 	transition:all 1s;
 	cursor:pointer;font-weight:bold;
 	border-bottom:solid 1px;
+	height:40px
 }
+#lLst div{overflow:auto;height:280px}
 #lLst div div:hover{background-color:#99bccc}
 #fb{background-image:url(Pics/fb.png);background-size:20px 20px;background-position:right center;}
 #tw{background-image:url(Pics/tw.png);background-size:20px 20px;}
@@ -131,6 +133,7 @@ function Rsz(){
 		Id("Home").innerHTML=""
 	}else{
 		$(".Computer").css("display","")
+		Tag("header")[0].style.height="40px"
 		$(".Mobile").css("display","none")
 		Id("Home").style.marginLeft="40px"
 		Id("Home").innerHTML=doc.title
