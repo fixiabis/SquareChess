@@ -121,7 +121,7 @@ a{color:inherit;text-decoration:none}
 	<div id="LstB" class="Mobile" onclick="Mnu()" style="display:none"></div>
 	<div class="Mobile" style="width:100%;font-size:16px;float:right;text-align:left" id="lLst">
 		<div style="width:80%;margin-left:10%">
-			<div id="pStart" onclick="Hid();Shw('chess','Main')">開始遊戲</div>
+			<div id="pStart" onclick="Lst('chess','Main')">開始遊戲</div>
 				<div data-chess="Main" onclick="Lst('chess','CSub')" class="pTab"><a>Square.Connect</a></div>
 				<div data-chess="CSub"><a>Connect:Attack</a></div>
 				<div data-chess="CSub"><a>Connect:Defend</a></div>
@@ -137,7 +137,7 @@ a{color:inherit;text-decoration:none}
 				<div data-chess="Main" onclick="Lst('chess','OSub')" class="pTab"><a>Other</a></div>
 				<div data-chess="OSub"><a>Gomoku</a></div>
 				<div data-chess="OSub"><a>GoLike</a></div>
-			<div id="pOnline" onclick="Hid();Shw('btchs','Main')">線上對戰</div>
+			<div id="pOnline" onclick="Lst('btchs','Main')">線上對戰</div>
 				<div data-btchs="Main" onclick="Lst('btchs','CSub')" class="pTab"><a>Square.Connect</a></div>
 				<div data-btchs="CSub"><a>Connect:Attack</a></div>
 				<div data-btchs="CSub"><a>Connect:Defend</a></div>
@@ -153,7 +153,7 @@ a{color:inherit;text-decoration:none}
 				<div data-btchs="Main" onclick="Lst('btchs','OSub')" class="pTab"><a>Other</a></div>
 				<div data-btchs="OSub"><a>Gomoku</a></div>
 				<div data-btchs="OSub"><a>GoLike</a></div>
-			<div id="pRules" onclick="Hid();Shw('rules','Main')">遊戲說明</div>
+			<div id="pRules" onclick="Lst('rules','Main')">遊戲說明</div>
 				<div data-rules="Main" onclick="Lst('rules','CSub')" class="pTab"><a>Square.Connect</a></div>
 				<div data-rules="CSub"><a>Connect:Attack</a></div>
 				<div data-rules="CSub"><a>Connect:Defend</a></div>
@@ -199,7 +199,11 @@ function Ldr(){
 	Rsz();Hid()
 }
 function Lst(d,v){
-	Hid(d,'Main');if(show!=d+"/"+v)Shw(d,v)
+	Hid(d,'Main')
+	if(show!=d+"/"+v)Shw(d,v)
+	else{
+		if(show.split("/").length==2&&show.split("/")[1]=="Main")Hid();show=""
+	}
 }
 function Shw(d,v){
 	for(var i=0;i<link.length;i++){
