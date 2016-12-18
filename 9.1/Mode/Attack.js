@@ -33,6 +33,3 @@ Shl.OpK.Attack=function(){
 	if(Dft.Connect)Dft.Connect.Rnd=0
 	Dft.Attack.Ara=Id("Attack-Ara").checked
 }
-Shl.RlR.Attack=function(){
-	$(".Lmt-Bsc-0").css("text-decoration","line-through")
-}

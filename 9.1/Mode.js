@@ -96,4 +96,7 @@ Rls.GoLike="<ol>"+
 	"<li class='Lmt-Bsc-N'>"+Rls.Lmt.Bsc.N+"</li>"+
 	"<li class='GoL-Bsc-1'>棋盤已滿，我方符號較對方多時獲勝</li>"+
 "</ol>"
-if(typeof Shl=="object")Shl.Rls=Rls
+var RlR={
+	Attack:function(){$(".Lmt-Bsc-0").css("text-decoration","line-through")}
+};RlR.Scheme=RlR.Attack
+if(typeof Shl=="object"){Shl.Rls=Rls;Shl.RlR=RlR}
