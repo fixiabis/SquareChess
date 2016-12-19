@@ -7,6 +7,7 @@
 <link href="Pics/Icon.png" rel="shortcut icon">
 <title>Square Chess Game</title>
 <script src="Impo/jquery.min.js"></script>
+<script src="Impo/jquery.mobile-1.4.5.min.js"></script>
 <script src="Core/Prun.js"></script>
 <script src="Core/Mode.js"></script>
 <style>@import "Core/Face.css";
@@ -100,7 +101,6 @@ footer{
 .pTab{background-image:url(Pics/Down.png)}
 .pTab:hover{background-image:url(Pics/Downh.png)}
 #lLst div{overflow:auto;height:280px}
-#lLst div::-webkit-scrollbar{width:0px;height:0px}
 #lLst div div:hover{background-color:#99bccc}
 a{color:inherit;text-decoration:none}
 #fb{background-image:url(Pics/fb.png);background-size:20px 20px;background-position:right center;}
@@ -122,12 +122,12 @@ a{color:inherit;text-decoration:none}
 				<div data-rules="CSub"><a>Connect:Attack</a></div>
 				<div data-rules="CSub"><a>Connect:Defend</a></div>
 				<div data-rules="CSub"><a>Connect:Scheme</a></div>
-				<div data-rules="CSub"><a>Connect:Anomal</a></div>
 				<div data-rules="Main" onmouseover="Lst('rules','BSub')" class="tab"><a>Square.Blocker</a></div>
 				<div data-rules="BSub"><a>Blocker:Forbid</a></div>
 				<div data-rules="Main" onmouseover="Lst('rules','DSub')" class="tab"><a>Square.Divider</a></div>
 				<div data-rules="DSub"><a>Divider:Zombie</a></div>
 				<div data-rules="DSub"><a>Divider:Follow</a></div>
+				<div data-rules="DSub"><a>Divider:Anomal</a></div>
 				<div data-rules="Main" onmouseover="Lst('rules','ASub')" class="tab"><a>Square.Adapter</a></div>
 				<div data-rules="ASub"><a>Adapter:Invert</a></div>
 				<div data-rules="Main" onmouseover="Lst('rules','OSub')" class="tab"><a>Other</a></div>
@@ -140,12 +140,12 @@ a{color:inherit;text-decoration:none}
 				<div data-btchs="CSub"><a>Connect:Attack</a></div>
 				<div data-btchs="CSub"><a>Connect:Defend</a></div>
 				<div data-btchs="CSub"><a>Connect:Scheme</a></div>
-				<div data-btchs="CSub"><a>Connect:Anomal</a></div>
 				<div data-btchs="Main" onmouseover="Lst('btchs','BSub')" class="tab"><a>Square.Blocker</a></div>
 				<div data-btchs="BSub"><a>Blocker:Forbid</a></div>
 				<div data-btchs="Main" onmouseover="Lst('btchs','DSub')" class="tab"><a>Square.Divider</a></div>
 				<div data-btchs="DSub"><a>Divider:Zombie</a></div>
 				<div data-btchs="DSub"><a>Divider:Follow</a></div>
+				<div data-btchs="DSub"><a>Divider:Anomal</a></div>
 				<div data-btchs="Main" onmouseover="Lst('btchs','ASub')" class="tab"><a>Square.Adapter</a></div>
 				<div data-btchs="ASub"><a>Adapter:Invert</a></div>
 				<div data-btchs="Main" onmouseover="Lst('btchs','OSub')" class="tab"><a>Other</a></div>
@@ -158,12 +158,12 @@ a{color:inherit;text-decoration:none}
 				<div data-chess="CSub"><a>Connect:Attack</a></div>
 				<div data-chess="CSub"><a>Connect:Defend</a></div>
 				<div data-chess="CSub"><a>Connect:Scheme</a></div>
-				<div data-chess="CSub"><a>Connect:Anomal</a></div>
 				<div data-chess="Main" onmouseover="Lst('chess','BSub')" class="tab"><a>Square.Blocker</a></div>
 				<div data-chess="BSub"><a>Blocker:Forbid</a></div>
 				<div data-chess="Main" onmouseover="Lst('chess','DSub')" class="tab"><a>Square.Divider</a></div>
 				<div data-chess="DSub"><a>Divider:Zombie</a></div>
 				<div data-chess="DSub"><a>Divider:Follow</a></div>
+				<div data-chess="DSub"><a>Divider:Anomal</a></div>
 				<div data-chess="Main" onmouseover="Lst('chess','ASub')" class="tab"><a>Square.Adapter</a></div>
 				<div data-chess="ASub"><a>Adapter:Invert</a></div>
 				<div data-chess="Main" onmouseover="Lst('chess','OSub')" class="tab"><a>Other</a></div>
@@ -179,12 +179,12 @@ a{color:inherit;text-decoration:none}
 				<div data-chess="CSub"><a>Connect:Attack</a></div>
 				<div data-chess="CSub"><a>Connect:Defend</a></div>
 				<div data-chess="CSub"><a>Connect:Scheme</a></div>
-				<div data-chess="CSub"><a>Connect:Anomal</a></div>
 				<div data-chess="Main" onclick="Lst('chess','BSub')" class="pTab"><a>Square.Blocker</a></div>
 				<div data-chess="BSub"><a>Blocker:Forbid</a></div>
 				<div data-chess="Main" onclick="Lst('chess','DSub')" class="pTab"><a>Square.Divider</a></div>
 				<div data-chess="DSub"><a>Divider:Zombie</a></div>
 				<div data-chess="DSub"><a>Divider:Follow</a></div>
+				<div data-chess="DSub"><a>Divider:Anomal</a></div>
 				<div data-chess="Main" onclick="Lst('chess','ASub')" class="pTab"><a>Square.Adapter</a></div>
 				<div data-chess="ASub"><a>Adapter:Invert</a></div>
 				<div data-chess="Main" onclick="Lst('chess','OSub')" class="pTab"><a>Other</a></div>
@@ -195,12 +195,12 @@ a{color:inherit;text-decoration:none}
 				<div data-btchs="CSub"><a>Connect:Attack</a></div>
 				<div data-btchs="CSub"><a>Connect:Defend</a></div>
 				<div data-btchs="CSub"><a>Connect:Scheme</a></div>
-				<div data-btchs="CSub"><a>Connect:Anomal</a></div>
 				<div data-btchs="Main" onclick="Lst('btchs','BSub')" class="pTab"><a>Square.Blocker</a></div>
 				<div data-btchs="BSub"><a>Blocker:Forbid</a></div>
 				<div data-btchs="Main" onclick="Lst('btchs','DSub')" class="pTab"><a>Square.Divider</a></div>
 				<div data-btchs="DSub"><a>Divider:Zombie</a></div>
 				<div data-btchs="DSub"><a>Divider:Follow</a></div>
+				<div data-btchs="DSub"><a>Divider:Anomal</a></div>
 				<div data-btchs="Main" onclick="Lst('btchs','ASub')" class="pTab"><a>Square.Adapter</a></div>
 				<div data-btchs="ASub"><a>Adapter:Invert</a></div>
 				<div data-btchs="Main" onclick="Lst('btchs','OSub')" class="pTab"><a>Other</a></div>
@@ -211,12 +211,12 @@ a{color:inherit;text-decoration:none}
 				<div data-rules="CSub"><a>Connect:Attack</a></div>
 				<div data-rules="CSub"><a>Connect:Defend</a></div>
 				<div data-rules="CSub"><a>Connect:Scheme</a></div>
-				<div data-rules="CSub"><a>Connect:Anomal</a></div>
 				<div data-rules="Main" onclick="Lst('rules','BSub')" class="pTab"><a>Square.Blocker</a></div>
 				<div data-rules="BSub"><a>Blocker:Forbid</a></div>
 				<div data-rules="Main" onclick="Lst('rules','DSub')" class="pTab"><a>Square.Divider</a></div>
 				<div data-rules="DSub"><a>Divider:Zombie</a></div>
 				<div data-rules="DSub"><a>Divider:Follow</a></div>
+				<div data-rules="DSub"><a>Divider:Anomal</a></div>
 				<div data-rules="Main" onclick="Lst('rules','ASub')" class="pTab"><a>Square.Adapter</a></div>
 				<div data-rules="ASub"><a>Adapter:Invert</a></div>
 				<div data-rules="Main" onclick="Lst('rules','OSub')" class="pTab"><a>Other</a></div>
