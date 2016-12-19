@@ -7,15 +7,16 @@ Shl.Lmt.Connect=function(crd,sym){
 }
 Shl.Mrk.Connect=function(){Ara.Mrk("Connect")}
 Shl.Brd.Connect=function(){}
-Shl.Adn.Connect=function(){
+Shl.Adn.Connect=function(){Tn+=2
 	switch(Dft.Connect.Rul){
-		case 1:var Os=Crd("E5","4"),Xs=Crd("E5","X");Tn=2
+		case 0:Tn=0;break
+		case 1:var Os=Crd("E5","4"),Xs=Crd("E5","X")
 			Qre(Os[Math.floor(Rnd()*4)],"Sym",0);Qre(Xs[Math.floor(Rnd()*4)],"Sym",1);break
 		case 2:var s=Crd("E5",Vct("24"))
 			Qre(s[Math.floor(Rnd()*4)],"Sym",0)
 			while(1){var crd=s[Math.floor(Rnd()*4)]
 				if(Qre(crd,"Sym")!=0){Qre(crd,"Sym",1);break}
-			}Tn=2
+			}
 	}
 }
 Shl.Ckr.Connect=function(crd){return Ara.Ckr("Connect",crd)}

@@ -72,8 +72,10 @@ function Ctl(t,v){if(t=="Udo"||t=="Rdo")if(v&&v.length==3)return
 	}
 	switch(t){
 		case"Rul":if(typeof v!="number")v=Id("Rule").style.height=="0px"
-			if(v)Id("Rule").style.height=Id("UI").style.width
-			else Id("Rule").style.height="0px";break
+			if(v){Id("Rule").childNodes[3].innerHTML="";var rls=[]
+				Id("Rule").style.height=Id("UI").style.width
+				for(var i=0;i<MdQ.length;i++)if(Shl.Rls[MdQ[i]])rls=Shl.Rls[MdQ[i]](rls)
+			}else Id("Rule").style.height="0px";break
 		case"Hom":if(confirm('確定離開頁面?'))location="index.html";break
 	}
 }

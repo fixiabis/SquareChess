@@ -23,7 +23,7 @@ Shl.Mrk.Attack=function(){
 	}
 }
 Shl.Brd.Attack=function(){}
-Shl.Adn.Attack=function(){Qre("A1","Sym",0);Qre("I9","Sym",1);Tn=2}
+Shl.Adn.Attack=function(){Qre("A1","Sym",0);Qre("I9","Sym",1);Tn+=2}
 Shl.Ckr.Attack=function(crd){return 1}
 Shl.Opt.Attack=function(){
 	Id("OptionMenu").innerHTML+="Attack設定:<br>"

@@ -11,7 +11,7 @@ Shl.Lmt.Adapter=function(crd,sym){
 				Crd(crd,vtQ[i][2]),
 			]
 			for(var j=0;j<vts.length;j++){var s=Qre(vts[j],"Sym")
-				vts[j]=s==2||s==sym&&s.length>0
+				vts[j]=(s==2||s==sym&&s.length>0)
 			}
 			if(vts[0]&&vts[1]||vts[0]&&vts[2]||vts[3]&&vts[2])Hst.Rut[Tn]=Hst.Rut[Tn].concat(crd)
 		}
