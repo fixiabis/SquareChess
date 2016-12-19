@@ -32,9 +32,17 @@ Rls.Connect=function(r){
 }
 Rls.Attack=function(r){
 	var l=[
-		"第一回合雙方符號將分別位於左上角與右下角",
+		"雙方符號將分別位於A1與I9",
 		"深色區域為我方封限區",
 		"淺色區域為我方封區",
+		Rls.Jdg.Ara.B,
+		Rls.Jdg.Ara.L.replace("或限區","")
+	]
+}
+Rls.Castle=function(r){
+	var l=[
+		"雙方符號將分別位於D2,G1與C9,F8",
+		"深色區域為我方封限區",
 		Rls.Jdg.Ara.B,
 		Rls.Jdg.Ara.L.replace("或限區","")
 	]
