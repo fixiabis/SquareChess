@@ -1,5 +1,5 @@
 Shl.Ara.Scheme=[[],[]];Dft.System.Blk=18
-Dft.Scheme={Ara:1}
+Dft.Scheme={Ara:1,Lmt:1}
 Shl.Rul.Scheme=function(){
 	if(Tn>2)for(var i=0;i<2;i++){
 		if(Ara(Shl.Ara.Scheme[i],Sqr.Sym[i]+"A")||Ara(Shl.Ara.Scheme[i],Sqr.Sym[(i+1)%2]+">0"))return Sqr.Sym[(i+1)%2]+"獲勝"
@@ -8,7 +8,7 @@ Shl.Rul.Scheme=function(){
 	if(Tn==1)Shl.Ara.Scheme.Lmt=Flt(Crd(Hst.Crd[1],["28","Q","8"]),function(crd){if(Qre(crd,"Sym")==2)return 1;return 0})
 }
 Shl.Lmt.Scheme=function(crd,sym){
-	if(Tn<2&&Crd("E5",["8","C","28","Q"]).indexOf(crd)>-1)return 1
+	if(Tn<2&&Sel("C3:G7").indexOf(crd)>-1&&Dft.Scheme.Lmt)return 1
 	if(Tn==1&&sym==1)return Shl.Ara.Scheme.Lmt.indexOf(crd)>-1;return 0
 }
 Shl.Mrk.Scheme=function(){
@@ -26,8 +26,10 @@ Shl.Ckr.Scheme=function(crd){return 1}
 Shl.Opt.Scheme=function(){
 	Id("OptionMenu").innerHTML+="Scheme設定:<br>"
 	OpS("Scheme-Ara","k","雙方區域",Dft.Scheme.Ara)
+	OpS("Scheme-Lmt","k","首回限制",Dft.Scheme.Lmt)
 }
 Shl.OpK.Scheme=function(){
 	Dft.System.Blk=18
 	Dft.Scheme.Ara=Id("Scheme-Ara").checked
+	Dft.Scheme.Lmt=Id("Scheme-Lmt").checked
 }

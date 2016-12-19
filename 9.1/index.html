@@ -72,12 +72,12 @@ footer{
 	transition:background 1s;
 }
 .page div:hover,#lLst div div:hover{color:#48585f}
-.page{width:140px;float:right;transition:all 1s;font-weight:bold;overflow:visible}
+.page,.pPage{width:140px;float:right;transition:all 1s;font-weight:bold;overflow:visible}
+.pPage{width:100%}
 #lLst div div,.page div{
-	transition:all 1s;
 	font-weight:bold;
 	border-bottom:solid 1px;
-	height:40px;width:100%;float:left;
+	height:0px;width:100%;float:left;
 	background-color:#758f9b;
 	text-decoration:none;overflow:hidden;
 }
@@ -174,7 +174,7 @@ a{color:inherit;text-decoration:none}
 	<div id="LstB" class="Mobile" onclick="Mnu()" style="display:none"></div>
 	<div id="lLst" class="Mobile" style="width:100%;font-size:16px;float:right;text-align:left">
 		<div style="width:80%;margin-left:10%">
-			<div id="pStart" onclick="Lst('chess','Main')">開始遊戲</div>
+			<div id="pStart" onclick="Lst('chess','Main')" class="pPage">開始遊戲</div>
 				<div data-chess="Main" onclick="Lst('chess','CSub')" class="pTab"><a>Square.Connect</a></div>
 				<div data-chess="CSub"><a>Connect:Attack</a></div>
 				<div data-chess="CSub"><a>Connect:Defend</a></div>
@@ -190,7 +190,7 @@ a{color:inherit;text-decoration:none}
 				<div data-chess="Main" onclick="Lst('chess','OSub')" class="pTab"><a>Other</a></div>
 				<div data-chess="OSub"><a>Gomoku</a></div>
 				<div data-chess="OSub"><a>GoLike</a></div>
-			<div id="pOnline" onclick="Lst('btchs','Main')">線上對戰</div>
+			<div id="pOnline" onclick="Lst('btchs','Main')" class="pPage">線上對戰</div>
 				<div data-btchs="Main" onclick="Lst('btchs','CSub')" class="pTab"><a>Square.Connect</a></div>
 				<div data-btchs="CSub"><a>Connect:Attack</a></div>
 				<div data-btchs="CSub"><a>Connect:Defend</a></div>
@@ -206,7 +206,7 @@ a{color:inherit;text-decoration:none}
 				<div data-btchs="Main" onclick="Lst('btchs','OSub')" class="pTab"><a>Other</a></div>
 				<div data-btchs="OSub"><a>Gomoku</a></div>
 				<div data-btchs="OSub"><a>GoLike</a></div>
-			<div id="pRules" onclick="Lst('rules','Main')">遊戲說明</div>
+			<div id="pRules" onclick="Lst('rules','Main')" class="pPage">遊戲說明</div>
 				<div data-rules="Main" onclick="Lst('rules','CSub')" class="pTab"><a>Square.Connect</a></div>
 				<div data-rules="CSub"><a>Connect:Attack</a></div>
 				<div data-rules="CSub"><a>Connect:Defend</a></div>
@@ -222,8 +222,8 @@ a{color:inherit;text-decoration:none}
 				<div data-rules="Main" onclick="Lst('rules','OSub')" class="pTab"><a>Other</a></div>
 				<div data-rules="OSub"><a>Gomoku</a></div>
 				<div data-rules="OSub"><a>GoLike</a></div>
-			<div id="pAbout">關於我們</div>
-			<div id="pReport">回報問題</div>
+			<div id="pAbout" class="pPage">關於我們</div>
+			<div id="pReport" class="pPage">回報問題</div>
 		</div>
 	</div>
 </header>
@@ -235,8 +235,8 @@ a{color:inherit;text-decoration:none}
 	<div id="tw" class="Social"></div>
 	<div id="fb" class="Social"></div>
 		<div id="List" class="Computer"><hr>
-		<div class="page" id="Report"><div class="tab">回報問題</div></div><hr>
-		<div class="page" id="About"><div class="tab">關於我們</div></div>
+		<div class="page"><div class="tab" id="Report">回報問題</div></div><hr>
+		<div class="page"><div class="tab" id="About">關於我們</div></div>
 	</div>
 </footer>
 </div>
@@ -244,14 +244,18 @@ a{color:inherit;text-decoration:none}
 <div id="fb-root"></div>
 <script>
 var link=$("#lLst div a,.page div a"),show=""
-function Ldr(){
+function Ldr(){Rsz();Hid();var page=["Start","Online","Rules","About","Report"]
+	for(var i=0;i<5;i++){
+		Id(page[i]).style.height="40px"
+		Id("p"+page[i]).style.height="40px"
+	}
 	for(var i=0;i<link.length;i++){
 		if(link[i].parentNode.getAttribute("data-chess"))link[i].href="chess.html?mode="+link[i].innerHTML
 		if(link[i].parentNode.getAttribute("data-btchs"))link[i].href="btchs.html?mode="+link[i].innerHTML
-	}Rsz();Hid()
+		link[i].parentNode.style.transition="all 1s"
+	}
 }
-function Lst(d,v){
-	Hid(d,'Main')
+function Lst(d,v){Hid(d,'Main')
 	if(show!=d+"/"+v)Shw(d,v)
 	else{
 		if(show.split("/").length==2&&show.split("/")[1]=="Main")Hid();show=""

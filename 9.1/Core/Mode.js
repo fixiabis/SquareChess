@@ -2,9 +2,9 @@ var Rls={
 	Jdg:{
 		Bsc:{
 			0:"對方無法設置符號時獲勝",
-			1:"無公區時，我方禁區較對方多時獲勝",
-			2:"公區無法形成禁區時，我方禁區較對方多時獲勝",
-			3:"我方禁區超過公區一半時獲勝",
+			1:"無公區時，我方私區較對方多時獲勝",
+			2:"公區無法形成私區時，我方私區較對方多時獲勝",
+			3:"我方私區超過公區一半時獲勝",
 			D:"棋盤已滿時平手",
 			N:"對方符號不存在時獲勝"
 		},
@@ -16,7 +16,7 @@ var Rls={
 	Lmt:{
 		Bsc:[
 			"第一回合雙方可隨意設置符號",
-			"無法設置的區域將變成禁區",
+			"無法設置的區域將轉為私區",
 			"雙方可隨意設置符號"
 		],
 		Cnt:"符號須設置於我方符號周圍",
@@ -44,20 +44,20 @@ Rls.Defend="<ol>"+
 "</ol>"
 Rls.Scheme="<ol>"+
 	"<li class='Sch-Bsc-0'>第一回合雙方符號不得設置於C3:G7之座標</li>"+
-	"<li class='Sch-Bsc-1'>第一回合符號設置完成時，周圍將產生封限區</li>"+
+	"<li class='Sch-Bsc-1'>第一回合符號設置完成時，周圍將轉為封限區</li>"+
 	"<li class='Jdg-Ara-B'>"+Rls.Jdg.Ara.B.replace("或封區","")+"</li>"+
 	"<li class='Jdg-Ara-L'>"+Rls.Jdg.Ara.L.replace("或限區","")+"</li>"+
 "</ol>"
 Rls.Anomal="<ol>"+
-	"<li class='Anm-Bsc-0'>空白區域被符號包圍時，空白區域將產生禁區</li>"+
+	"<li class='Anm-Bsc-0'>空白區域被符號包圍時，空白區域將轉為私區</li>"+
 "</ol>"
 Rls.Blocker="<ol>"+
 	"<li class='Lmt-Bsc-2'>"+Rls.Lmt.Bsc[2]+"</li>"+
-	"<li class='Blk-Bsc-0'>我方四枚符號形成矩形時，該矩形區域將產生禁區</li>"+
+	"<li class='Blk-Bsc-0'>我方四枚符號形成矩形時，該矩形區域將轉為私區</li>"+
 	"<li class='Jdg-Bsc-1'>"+Rls.Jdg.Bsc[1]+"</li>"+
 "</ol>"
 Rls.Forbid="<ol>"+
-	"<li class='Fbd-Bsc-0'>我方不得設置符號於我方禁區</li>"+
+	"<li class='Fbd-Bsc-0'>我方不得設置符號於我方私區</li>"+
 "</ol>"
 Rls.Divider="<ol>"+
 	"<li class='Lmt-Bsc-0'>"+Rls.Lmt.Bsc[0]+"</li>"+
@@ -67,14 +67,14 @@ Rls.Divider="<ol>"+
 	"<li class='Jdg-Bsc-D'>"+Rls.Jdg.Bsc.D+"</li>"+
 "</ol>"
 Rls.Zombie="<ol>"+
-	"<li class='Zmb-Bsc-0'>第十回合後，若雙方符號接觸將變成殭屍符號</li>"+
+	"<li class='Zmb-Bsc-0'>第十回合後，若雙方符號接觸將轉為殭屍符號</li>"+
 	"<li class='Lmt-Bsc-N'>"+Rls.Lmt.Bsc.N+"</li>"+
 "</ol>"
 Rls.Follow="<ol>"+
 	"<li class='Flw-Bsc-0'>設置符號只能依上一回合符號</li>"+
 "</ol>"
 Rls.ByLine="<ol>"+
-	"<li class='ByL-Bsc-0'>我方兩枚符號形成直線時，該直線區域將產生禁區</li>"+
+	"<li class='ByL-Bsc-0'>我方兩枚符號形成直線時，該直線區域將轉為私區</li>"+
 "</ol>"
 Rls.Adapter="<ol>"+
 	"<li class='Lmt-Bsc-0'>"+Rls.Lmt.Bsc[0]+"</li>"+
@@ -92,9 +92,15 @@ Rls.Gomoku="<ol>"+
 "</ol>"
 Rls.GoLike="<ol>"+
 	"<li class='Lmt-Bsc-2'>"+Rls.Lmt.Bsc[2]+"</li>"+
-	"<li class='GoL-Bsc-0'>對方符號被我方符號包圍時，對方符號將變成殭屍符號</li>"+
+	"<li class='GoL-Bsc-0'>對方符號被我方符號包圍時，對方符號將轉為殭屍符號</li>"+
 	"<li class='Lmt-Bsc-N'>"+Rls.Lmt.Bsc.N+"</li>"+
 	"<li class='GoL-Bsc-1'>棋盤已滿，我方符號較對方多時獲勝</li>"+
+"</ol>"
+Rls.Kingdom="<ol>"+
+	"<li class='Lmt-Bsc-2'>"+Rls.Lmt.Bsc[2]+"</li>"+
+	"<li class='Kdm-Bsc-1'>將符號組合成一塊，當一塊有10個(含)符號時為一王國</li>"+
+	"<li class='Kdm-Bsc-2'>棋盤已滿，我方王國符號數較對方多時獲勝</li>"+
+	"<li class='Kdm-Bsc-3'>棋盤已滿，我方王國符號數與對方相同，我方王國數較對方多時獲勝</li>"+
 "</ol>"
 var RlR={Attack:function(){$(".Lmt-Bsc-0").css("text-decoration","line-through")}}
 RlR.Scheme=RlR.Attack;if(typeof Shl=="object"){Shl.Rls=Rls;Shl.RlR=RlR}
