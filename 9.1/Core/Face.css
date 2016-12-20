@@ -43,7 +43,7 @@ body{
 	animation:Load 1s infinite;margin:auto
 }
 #LdB{
-	transition:all 1s;width:0%;height:5px;background-color:#99bccc;
+	transition:all 1s;width:0%;height:5px;background-color:#99bccc;position:fixed
 }
 @keyframes Load{0%{transform:rotate(720deg)}}
 #Setting{position:absolute;width:100%;top:0px;left:0px;background-color:#48585f;overflow:auto;transition:all 1s;font-size:20px}
