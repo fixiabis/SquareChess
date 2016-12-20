@@ -147,7 +147,7 @@ function Opt(){Id("Setting").style.height=($(window).height()-40)+"px";var id=Df
 }
 function OpK(k){Id("Setting").style.height="0px";if(k)return
 	if(!Dft.System.Oln){
-		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
+		if(Val(Id("System-Blk").value)!=NaN&&Id("System-Blk").value!="")Dft.System.Blk=Val(Id("System-Blk").value)
 		if(Dft.System.Blk>27)Dft.System.Blk=27
 		if(Id("System-Oln").checked)location="btchs.html"+location.search
 		Dft.System.Qsr=Id("System-Qsr").checked
@@ -160,7 +160,7 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 		if(doc.mozCancelFullScreen)doc.mozCancelFullScreen()
 		if(doc.webkitCancelFullScreen)doc.webkitCancelFullScreen()
 	}
-	if(Id("System-Rul").checked)Ctl("Rul",1);else Ctl("Rul",0)
+	if(Id("System-Rul").checked)Ctl("RSw",1);else Ctl("RSw",0)
 	Dft.System.Nxt=Id("System-Nxt").checked;Dft.System.Gst=Id("System-Gst").checked;
 	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
 }

@@ -71,12 +71,12 @@ function Ctl(t,v){if(t=="Udo"||t=="Rdo")if(v&&v.length==3)return
 		else{Id("Message").style.height="25px";Dft.Oln.Msg=0}Atn()
 	}
 	switch(t){
-		case"Rul":if(typeof v!="number")v=Id("Rule").style.height=="0px"
-			if(v){Id("Rule").childNodes[3].innerHTML="";var rls=[]
-				Id("Rule").style.height=Id("UI").style.width
-				for(var i=0;i<MdQ.length;i++)if(Shl.Rls[MdQ[i]])rls=Shl.Rls[MdQ[i]](rls)
-				for(var i=0;i<rls.length;i++)Id("Rule").childNodes[3].innerHTML+="<li>"+rls[i]+"</li>"
+		case "RSw":if(typeof v!="number")v=Id("Rule").style.height=="0px"
+			if(v){Id("Rule").style.height=Id("UI").style.width;Ctl("Rul")}
 			}else Id("Rule").style.height="0px";break
+		case"Rul":Id("Rule").childNodes[3].innerHTML="";var rls=[]
+			for(var i=0;i<MdQ.length;i++)if(Shl.Rls[MdQ[i]])rls=Shl.Rls[MdQ[i]](rls);Shl.Rls.System(rls)
+			for(var i=0;i<rls.length;i++)Id("Rule").childNodes[3].innerHTML+="<li>"+rls[i]+"</li>";break
 		case"Hom":if(confirm('確定離開頁面?'))location="index.html";break
 	}
 }
