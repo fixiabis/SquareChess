@@ -12,11 +12,11 @@
 	},
 	Hst={Brd:[],Crd:[],Sel:[],Rut:[]},
 	Shl={Rul:{},Lmt:{},Brd:{},Mrk:{},Adn:{},Ara:{},Ckr:{},Opt:{},OpK:{},Rls:{}}
-function Ldr(){if(!location.search||location.search.substr(0,6)!="?mode=")location="index.html"
+function Ldr(){if(!location.search||location.search.substr(0,6)!="?mode="){alert("要求格式錯誤");location="index.html"}
 	var mdN=location.search.replace("?mode=","")
 	while(Instr(mdN,"%3A")>-1)mdN=mdN.replace("%3A",":")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
-}//取得參數
+}
 function MdL(v){
 	var md=doc.createElement("script");md.src="Mode/"+MdQ[v]+".js"
 	if(MdQ[v+1])md.onload=function(){MdL(v+1)}
@@ -29,7 +29,7 @@ function MdL(v){
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
-}//模式裝載
+}
 function Rsz(){
 	var sz=$(window).width(),scn=1
 	if($(window).height()-40<sz){sz=$(window).height()-40;scn=0}sz=Math.floor(sz/9)
@@ -45,25 +45,25 @@ function Rsz(){
 	}
 	Id("Board").style.display="";Id("UI").style.width=sz*9+"px"
 	Id("Rule").style.width=sz*9+"px";if(Id("Rule").style.height!="0px")Id("Rule").style.height=sz*9+"px"
-}//大小變更
+}
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd
 	$(".bt").click(function(){Set(this.id)});
 	$(".bt").dblclick(function(){if(Dft.System.Gst)Ctl("Udo",this.id)});
 	$(".bt").contextmenu(function(){if(Dft.System.Gst)Ctl("Rdo",this.id)})
-}//棋盤介面
+}
 function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(msg)
 	if(ckr){Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]}
 		Qre(Sel("All"),"Sym",2);Brd()
 		Rul();Adn();Hst.Brd[Tn]=Rec();Dft.Tn=Tn
 	}
-}//清除棋盤
+}
 function Set(crd){if(!Dft.Set)return;var ckr=Ckr(crd);if(Dft.System.Qsr)ckr=!Lmt(crd)
 	if(ckr){
 		Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Rul();Hst.Brd[Tn]=Rec()
 		if(Dft.System.Oln)Upl(Hst.Brd[Tn]+"/"+Tn+"/"+Hst.Crd[Tn])
 	}
-}//設置符號
+}
 function Qre(crd,atr,typ){var res=[],ckr=0
 	if(typ&&typeof typ!="object"&&Asc(typ+"")>64)typ=Asc(typ+"")-55
 	if(typeof crd=="object"){
@@ -90,34 +90,34 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 	}
 	for(var i=0;i<res.length;i++)if(res[i]>9)res[i]=Chr(res[i]+55)
 	if(res.length>1)return res;return res[0]
-}//元素操作
+}
 function Rec(brd){var res=""
 	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);if(!Dft.System.Qsr)Rul();return}
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
 		if(brd)Qre(Chr(cd1)+cd2,"Sym",brd[((cd1-65)*9+cd2-1)])
 		else res+=Qre(Chr(cd1)+cd2,"Sym")
 	}return res
-}//棋盤紀錄
+}
 function Lmt(crd,sym){if(Qre(crd,"Sym")!=2)return 1;if(typeof sym=="undefined")sym=Tn%2
 	for(var i=MdQ.length-1;i>-1;i--)if(Shl.Lmt[MdQ[i]](crd,sym))return 1;return 0
-}//設置限制
+}
 function Ckr(crd){if(Qre(crd,"Sym")!=2)return 0
 	for(var i=MdQ.length-1;i>-1;i--){var ckr=Shl.Ckr[MdQ[i]](crd)
 		if(ckr==2)return 1;else if(!ckr)return 0
 	}return 1
-}//設置確認
+}
 function Mrk(){Brd();BJd()
 	if(Dft.System.Nxt)Qre(BJd(),"Opa",0.2)
 	if(Dft.System.iTn){Qre(Hst.Crd[Tn],"FtC",1);Qre(Hst.Crd[Tn-1],"FtC",1)}
 	for(var i=0;i<MdQ.length;i++)Shl.Mrk[MdQ[i]]()
 	Qre(Flt(Sel("All"),function(crd){if(Qre(crd,"Sym")==3)return 1;return 0}),"BgC",2)
-}//棋盤標記
+}
 function Brd(){Qre(Sel("All"),["FtC","BgC"],[0,0]);Qre(Sel("All"),"Opa",1)
 	var ord=function(crd){
 			var cd1=Asc(crd[0]),cd2=Val(crd[1]);if((cd1+cd2)%2==0)return 1
 		};Qre(Flt(Sel("All"),ord),"BgC",1)
 	for(var i=0;i<MdQ.length;i++)Shl.Brd[MdQ[i]]()
-}//棋盤外觀
+}
 function Adn(){
 	for(var i=0;i<MdQ.length;i++)Shl.Adn[MdQ[i]]()
 	if(Dft.System.Blk){var s=Dft.System.Blk
@@ -125,10 +125,10 @@ function Adn(){
 			if((cd1+cd2)%2==0&&Qre(Chr(cd1)+cd2,"Sym")==2&&Dft.Blk.indexOf(Chr(cd1)+cd2)<0){Qre(Chr(cd1)+cd2,["Sym","BgC"],[3,2]);s--}
 		}
 	}
-}//功能執行
+}
 function Rul(){
 	for(var i=MdQ.length-1;i>-1;i--)if(Jdg(Shl.Rul[MdQ[i]]()))break;Mrk()
-}//規則判定
+}
 function Opt(){Id("Setting").style.height=($(window).height()-40)+"px";var id=Dft.Oln.Id
 	Id("OptionMenu").innerHTML="系統內建:<br>"
 	if(!Dft.System.Oln){
@@ -143,7 +143,7 @@ function Opt(){Id("Setting").style.height=($(window).height()-40)+"px";var id=Df
 	OpS("System-Ful","k","全螢幕模式",doc.webkitIsFullScreen||doc.mozFullScreen||doc.fullscreen)
 	OpS("System-Rul","k","顯示規則",Id("Rule").style.height!="0px")
 	for(var i=0;i<MdQ.length;i++)Shl.Opt[MdQ[i]]()
-}//功能設定
+}
 function OpK(k){Id("Setting").style.height="0px";if(k)return
 	if(!Dft.System.Oln){
 		if(Val(Id("System-Blk").value)!=NaN)Dft.System.Blk=Val(Id("System-Blk").value)
@@ -162,7 +162,7 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 	if(Id("System-Rul").checked)Ctl("Rul",1);else Ctl("Rul",0)
 	Dft.System.Nxt=Id("System-Nxt").checked;Dft.System.Gst=Id("System-Gst").checked;
 	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
-}//功能確認
+}
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 	switch(typ){
 		case"t":input=til+"<input type='text' id='"+id+"' placeholder='"+dft+"' class='Opt' style='width:40px;text-align:right'/>";break

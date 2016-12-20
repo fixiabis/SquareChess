@@ -9,7 +9,7 @@ function Crd(crd,vct){var x=0,y=0;vct=Vct(vct)
 		case"L":x--;break
 		case"C":x=0;y=0;break
 	}return Chr(Asc(crd[0])+x)+Val(Val(crd[1])+y)
-}//座標元素
+}
 function Vct(typ){
 	if(typeof typ=="object"){var res=[]
 		for(var i=0;i<typ.length;i++)res=res.concat(Vct(typ[i]));return res
@@ -49,7 +49,7 @@ function Vct(typ){
 		case"H":return"R,L".split(",")
 		case"I":return"F,B".split(",")
 	}return typ
-}//方向元素
+}
 function Sel(typ,ord){
 	if(typeof typ=="string"&&Hst.Sel[typ])return Hst.Sel[typ];Hst.Sel[typ]=[]
 	if(ord)return Flt(Sel(typ),ord)
@@ -84,12 +84,12 @@ function Sel(typ,ord){
 	if(typ.length==1)Hst.Sel[typ]=Flt(Sel("All"),function(ckr){if(Instr(ckr,typ)>-1)return 1;else return 0})
 	if(typ.length==2&&typeof typ=="string")Hst.Sel[typ]=typ
 	return Hst.Sel[typ]
-}//選擇元素
+}
 function Flt(grp,ord){var res=[]
 	for(var i=0;i<grp.length;i++){var odr=ord(grp[i])
 		if(odr==2)return res;else if(odr)res.push(grp[i])
 	}return res
-}//元素篩選
+}
 function Ser(crd){
 	return Hst.Crd.indexOf(crd)
 }
