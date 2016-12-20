@@ -7,20 +7,11 @@ Shl.Ara.Attack=[
 for(var i=0;i<4;i++)Dft.Blk=Dft.Blk.concat(Shl.Ara.Attack[i])
 Dft.Attack={Ara:1}
 Shl.Rul.Attack=function(){
-	for(var i=0;i<2;i++){
-		if(Ara(Shl.Ara.Attack[i],Sqr.Sym[i]+"F")||Ara(Shl.Ara.Attack[i+2],Sqr.Sym[i]+"F")||
-		Ara(Shl.Ara.Attack[i+2],Sqr.Sym[(i+1)%2]+">0"))return Sqr.Sym[(i+1)%2]+"獲勝"
-	}
+	for(var i=0;i<2;i++)if(Ara(Shl.Ara.Attack[i],Sqr.Sym[i]+"F")||Ara(Shl.Ara.Attack[i+2],Sqr.Sym[i]+"F")||Ara(Shl.Ara.Attack[i+2],Sqr.Sym[(i+1)%2]+">0"))return Sqr.Sym[(i+1)%2]+"獲勝"
 }
 Shl.Lmt.Attack=function(){return 0}
 Shl.Mrk.Attack=function(){
-	if(Dft.Attack.Ara){
-		for(var i=0;i<4;i++){
-			for(var j=0;j<Shl.Ara.Attack[i].length;j++){
-				Qre(Shl.Ara.Attack[i][j],"BgC",i+5)
-			}
-		}
-	}
+	if(Dft.Attack.Ara)for(var i=0;i<4;i++)for(var j=0;j<Shl.Ara.Attack[i].length;j++)Qre(Shl.Ara.Attack[i][j],"BgC",i+5)
 }
 Shl.Brd.Attack=function(){}
 Shl.Adn.Attack=function(){Qre("A1","Sym",0);Qre("I9","Sym",1);Tn+=2}

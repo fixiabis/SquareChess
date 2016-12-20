@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
 <meta name="mobile-web-app-capable" content="yes" />
-<link href="Pics/Icon.png" rel="shortcut icon">
+<link href="Pics/Icon.gif" rel="shortcut icon">
 <title>Square Chess Game</title>
 <script src="Impo/jquery.min.js"></script>
 <script src="Core/Prun.js"></script>
@@ -12,9 +12,9 @@
 <style>@import "Core/Face.css";
 body{
 	content:
-		url(Pics/fb.png) url(Pics/fbh.png)
-		url(Pics/tw.png) url(Pics/twh.png)
-		url(Pics/gp.png) url(Pics/gph.png)
+		url(Pics/fb.gif) url(Pics/fbh.gif)
+		url(Pics/tw.gif) url(Pics/twh.gif)
+		url(Pics/gp.gif) url(Pics/gph.gif)
 }
 footer{
 	left:0px;
@@ -40,7 +40,7 @@ footer{
 	background-size:25px 25px;
 	background-repeat:no-repeat;
 	background-position:7.5px 7.5px;
-	background-image:url(Pics/Logo.png);
+	background-image:url(Pics/Logo.gif);
 }
 #Menu,#List{
 	height:40px;
@@ -64,7 +64,7 @@ footer{
 	background-position:center center;
 }
 #LstB{
-	background-image:url(Pics/List.png);
+	background-image:url(Pics/List.gif);
 	background-size:25px 25px;
 	background-repeat:no-repeat;
 	width:40px;height:40px;
@@ -87,27 +87,27 @@ footer{
 	background-size:30px 30px;
 	background-repeat:no-repeat;
 }
-#pStart{background-image:url(Pics/Start.png)}
-#pStart:hover{background-image:url(Pics/Starth.png)}
-#pAbout{background-image:url(Pics/About.png)}
-#pAbout:hover{background-image:url(Pics/Abouth.png)}
-#pOnline{background-image:url(Pics/Online.png)}
-#pOnline:hover{background-image:url(Pics/Onlineh.png)}
-#pReport{background-image:url(Pics/Report.png)}
-#pReport:hover{background-image:url(Pics/Reporth.png)}
-#pRules{background-image:url(Pics/Rules.png)}
-#pRules:hover{background-image:url(Pics/Rulesh.png)}
-.pTab{background-image:url(Pics/Down.png)}
-.pTab:hover{background-image:url(Pics/Downh.png)}
+#pStart{background-image:url(Pics/Start.gif)}
+#pStart:hover{background-image:url(Pics/Starth.gif)}
+#pAbout{background-image:url(Pics/About.gif)}
+#pAbout:hover{background-image:url(Pics/Abouth.gif)}
+#pOnline{background-image:url(Pics/Online.gif)}
+#pOnline:hover{background-image:url(Pics/Onlineh.gif)}
+#pReport{background-image:url(Pics/Report.gif)}
+#pReport:hover{background-image:url(Pics/Reporth.gif)}
+#pRules{background-image:url(Pics/Rules.gif)}
+#pRules:hover{background-image:url(Pics/Rulesh.gif)}
+.pTab{background-image:url(Pics/Down.gif)}
+.pTab:hover{background-image:url(Pics/Downh.gif)}
 #lLst div{overflow:auto;height:280px}
 #lLst div div:hover{background-color:#99bccc}
 a{color:inherit;text-decoration:none}
-#fb{background-image:url(Pics/fb.png);background-size:20px 20px;background-position:right center;}
-#tw{background-image:url(Pics/tw.png);background-size:20px 20px;}
-#gp{background-image:url(Pics/gp.png);background-size:20px 20px;}
-#fb:hover{background-image:url(Pics/fbh.png);background-size:20px 20px;background-position:right center;}
-#tw:hover{background-image:url(Pics/twh.png);background-size:20px 20px;}
-#gp:hover{background-image:url(Pics/gph.png);background-size:20px 20px;}
+#fb{background-image:url(Pics/fb.gif);background-size:20px 20px;background-position:right center;}
+#tw{background-image:url(Pics/tw.gif);background-size:20px 20px;}
+#gp{background-image:url(Pics/gp.gif);background-size:20px 20px;}
+#fb:hover{background-image:url(Pics/fbh.gif);background-size:20px 20px;background-position:right center;}
+#tw:hover{background-image:url(Pics/twh.gif);background-size:20px 20px;}
+#gp:hover{background-image:url(Pics/gph.gif);background-size:20px 20px;}
 </style>
 </head>
 <body onresize="Rsz()" onload="Ldr()" oncontextmenu="event.preventDefault()">
@@ -299,10 +299,10 @@ function Rsz(){
 function Mnu(){
 	if(Tag("header")[0].style.height=="320px"){
 		Tag("header")[0].style.height="40px";Hid()
-		Id("LstB").style.backgroundImage="url(Pics/List.png)"
+		Id("LstB").style.backgroundImage="url(Pics/List.gif)"
 	}else{
 		Tag("header")[0].style.height="320px"
-		Id("LstB").style.backgroundImage="url(Pics/Close.png)"
+		Id("LstB").style.backgroundImage="url(Pics/Close.gif)"
 	}
 }
 function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
