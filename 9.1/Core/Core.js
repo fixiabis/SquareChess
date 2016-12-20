@@ -45,6 +45,7 @@ function Rsz(){
 	}
 	Id("Board").style.display="";Id("UI").style.width=sz*9+"px"
 	Id("Rule").style.width=sz*9+"px";if(Id("Rule").style.height!="0px")Id("Rule").style.height=sz*9+"px"
+	if(Id("Setting").style.height!="0px")Id("Setting").style.height=($(window).height()-40)+"px"
 }
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd
