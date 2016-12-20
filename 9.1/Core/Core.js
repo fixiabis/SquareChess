@@ -17,15 +17,15 @@ function Ldr(){if(!location.search||location.search.substr(0,6)!="?mode="){alert
 	while(Instr(mdN,"%3A")>-1)mdN=mdN.replace("%3A",":")
 	doc.title=mdN;MdQ=mdN.replace("Square.","").split(":");MdL(0)
 }
-function MdL(v){
+function MdL(v){Id("LdB").style.width=(100-Math.floor(v/MdQ.length))+"%"
 	var md=doc.createElement("script");md.src="Mode/"+MdQ[v]+".js"
 	if(MdQ[v+1])md.onload=function(){MdL(v+1)}
 	else md.onload=function(){
 		Id("LdA").style.display="none";Itf();Cln();Rsz()
 		if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
-		$("#UI").on("swipe",function(e){var arw=e.swipestart.coords[0]-e.swipestop.coords[0];if(!Dft.System.Gst)return
-			if(arw>0)Ctl("Udo");else if(arw<0)Ctl("Rdo")
-		})
+		$("#UI").on("swipe",function(e){var arw=e.swipestart.coords[0]-e.swipestop.coords[0]
+			if(!Dft.System.Gst)return;if(arw>0)Ctl("Udo");else if(arw<0)Ctl("Rdo")
+		});Id("LdB").style.opacity=0
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
