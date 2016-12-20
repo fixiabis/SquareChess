@@ -162,7 +162,7 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 	}
 	if(Id("System-Rul").checked)Ctl("RSw",1);else Ctl("RSw",0)
 	Dft.System.Nxt=Id("System-Nxt").checked;Dft.System.Gst=Id("System-Gst").checked;
-	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk()
+	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk();Ctl("Rul")
 }
 function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
 	switch(typ){
