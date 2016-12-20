@@ -109,5 +109,7 @@ Rls.Kingdom=function(r){
 	r=Rls.add(r,"棋盤已滿，我方王國符號數較對方多時獲勝")
 	r=Rls.add(r,"棋盤已滿，我方王國符號數與對方相同，我方王國數較對方多時獲勝");return r
 }
-Rls.System=function(r){}
+Rls.System=function(r){
+	if(Rls.dft&&Dft.System.Blk)r=Rls.add(r,"將產生"+Dft.System.Blk+"個障礙物");return r
+}
 if(typeof Shl=="object")Shl.Rls=Rls

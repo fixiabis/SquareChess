@@ -2,6 +2,7 @@ Shl.Ara.Castle=[
 	["E1","A1","I1"],
 	["E9","A9","I9"]
 ];Dft.Castle={Ara:1}
+for(var i=0;i<2;i++)Dft.Blk=Dft.Blk.concat(Shl.Ara.Castle[i])
 Shl.Rul.Castle=function(){
 	for(var i=0;i<2;i++)if(Ara(Shl.Ara.Castle[i],Sqr.Sym[i]+"F")||Ara(Shl.Ara.Castle[i],Sqr.Sym[(i+1)%2]+">0"))return Sqr.Sym[(i+1)%2]+"獲勝"
 }
