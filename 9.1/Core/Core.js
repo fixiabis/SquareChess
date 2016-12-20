@@ -55,7 +55,7 @@ function Itf(){var bd=""
 function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(msg)
 	if(ckr){Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]}
 		Qre(Sel("All"),"Sym",2);Brd()
-		Rul();Adn();Hst.Brd[Tn]=Rec();Dft.Tn=Tn
+		Adn();Rul();Hst.Brd[Tn]=Rec();Dft.Tn=Tn
 	}
 }
 function Set(crd){if(!Dft.Set)return;var ckr=Ckr(crd);if(Dft.System.Qsr)ckr=!Lmt(crd)

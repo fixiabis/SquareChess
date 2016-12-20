@@ -30,6 +30,6 @@ Shl.Opt.Attack=function(){
 	OpS("Attack-Ara","k","雙方區域",Dft.Attack.Ara)
 }
 Shl.OpK.Attack=function(){
-	if(Dft.Connect)Dft.Connect.Rnd=0
+	if(Dft.Connect)Dft.Connect.Rul=0
 	Dft.Attack.Ara=Id("Attack-Ara").checked
 }
