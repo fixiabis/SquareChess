@@ -76,7 +76,6 @@ footer{
 .pPage{width:100%}
 #lLst div div,.page div{
 	font-weight:bold;
-	border-bottom:solid 1px;
 	height:0px;width:100%;float:left;
 	background-color:#758f9b;
 	text-decoration:none;overflow:hidden;
@@ -258,6 +257,7 @@ function Ldr(){Rsz();Hid();var page=["Start","Online","Rules","About","Report"]
 		if(link[i].parentNode.getAttribute("data-chess"))link[i].href="chess.html?mode="+link[i].innerHTML
 		if(link[i].parentNode.getAttribute("data-btchs"))link[i].href="btchs.html?mode="+link[i].innerHTML
 		link[i].parentNode.style.transition="all 1s"
+		link[i].parentNode.style.borderBottom="solid 1px"
 	}
 }
 function Lst(d,v){Hid(d,'Main')
