@@ -12,10 +12,6 @@ body{
   font-family:courbd;
   src:url(../Font/courbd.ttf);
 }
-@font-face{
-  font-family:msjhbd;
-  src:url(../Font/msjhbd.ttf);
-}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{width:5px;height:5px;opacity:0.5}
 ::-webkit-scrollbar-thumb{width:5px;height:5px;border-radius:5px;background-color:#99bccc}
