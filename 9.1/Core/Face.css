@@ -43,7 +43,7 @@ body{
 	animation:Load 1s infinite;margin:auto
 }
 @keyframes Load{0%{transform:rotate(720deg)}}
-#Setting{position:absolute;width:100%;top:0px;left:0px;background-color:#48585f;overflow:hidden;transition:all 1s;font-size:20px}
+#Setting{position:absolute;width:100%;top:0px;left:0px;background-color:#48585f;overflow:auto;transition:all 1s;font-size:20px}
 #OptionMenu{width:99%;height:99%;top:0.5%;left:0.5%;position:absolute;background-color:#99bccc;overflow:auto}
 #NightMode{background-color:white;width:100%;height:100%;position:fixed;top:40px;left:0px;display:table}
 #Rule{position:fixed;background:white;opacity:0.7;overflow:auto;transition:all 2s;font-size:25px}
