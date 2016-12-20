@@ -25,7 +25,7 @@ function MdL(v){Id("LdB").style.width=(100-Math.floor(v/MdQ.length))+"%"
 		if(typeof Ini!="undefined"){Dft.System.Oln=1;Joi()}
 		$("#UI").on("swipe",function(e){var arw=e.swipestart.coords[0]-e.swipestop.coords[0]
 			if(!Dft.System.Gst)return;if(arw>0)Ctl("Udo");else if(arw<0)Ctl("Rdo")
-		});Id("LdB").style.opacity=0
+		});Id("LdB").style.height="0px"
 	}
 	md.onerror=function(){alert("模式可能被移除或不存在");location="index.html"}
 	doc.body.appendChild(md)
