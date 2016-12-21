@@ -9,8 +9,8 @@ body{
   src:url(../Font/Consolas.ttf);
 }
 @font-face{
-  font-family:courbd;
-  src:url(../Font/courbd.ttf);
+  font-family:CENTAUR;
+  src:url(../Font/CENTAUR.ttf);
 }
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{width:5px;height:5px;opacity:0.5}
@@ -24,7 +24,7 @@ body{
 }
 .Opt{font-size:inherit}
 .list:hover{background-color:#99bccc;color:#48585f}
-.bt{font-family:Arial;transition:all 1s;text-align:center;overflow:hidden}
+.bt{font-family:Arial;transition:all 1s;text-align:center;overflow:hidden;background-color:white}
 #Opc{right:0.5%;position:absolute;bottom:0.5%;width:210px;height:40px}
 .Opbt{height:40px;line-height:40px;text-align:center;background-color:#758f9b;float:right;width:100px;margin-left:5px;opacity:0.5}
 .Opbt:hover{opacity:1}
@@ -44,7 +44,7 @@ body{
 @keyframes Load{0%{transform:rotate(720deg)}}
 #Setting{position:absolute;width:100%;top:0px;left:0px;background-color:#48585f;overflow:auto;transition:all 1s;font-size:20px}
 #OptionMenu{width:99%;height:99%;top:0.5%;left:0.5%;position:absolute;background-color:#99bccc;overflow:auto}
-#NightMode{background-color:white;width:100%;height:100%;position:fixed;top:40px;left:0px;display:table}
+#NightMode{background-color:white;width:100%;height:100%;position:fixed;top:40px;left:0px;display:table;}
 #Rule{position:fixed;background:white;opacity:0.7;overflow:auto;transition:all 2s;font-size:25px}
 header{
 	top:0px;
