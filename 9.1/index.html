@@ -280,6 +280,9 @@ a{color:inherit;text-decoration:none}
 	<div id="cNews" class="field2" data-page="Home">
 		<h1><font class="En">News </font>/<font class="Ch"> 最新消息</font></h1>
 	</div>
+	<div id="cRule" class="field" data-page="Rule">
+		<h1><font class="En">Rule </font>/<font class="Ch"> 規則說明</font></h1>
+	</div>
 </article>
 <footer>
 	<div id="Copy">&copy 2016 Square Chess Game.</div>
@@ -355,8 +358,7 @@ function Rsz(){
 		$(".field").css("width","100%")
 		$(".field2").css("width","50%")
 	}
-	$("#cBoard").css("height",($("article").width()/1676*956)+"px")
-	$("#cHome").css("height",Id("cBoard").style.width+"px")
+	$("#cBoard").css("height",($("#cBoard").width()/1676*956)+"px")
 }
 function Mnu(){
 	if(Tag("header")[0].style.height=="320px"){
