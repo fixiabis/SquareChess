@@ -85,7 +85,7 @@ article{
 	color:#48585f;font-family:CENTAUR;overflow:auto;
 }
 article::-webkit-scrollbar{width:0px;height:0px}
-article div{float:left;height:380px}
+article div{float:left;height:380px;width:100%}
 article div h1{font-size:20px;font-weight:normal}
 article div h1 .En{font-size:50px}
 #pStart{background-image:url(Pics/Start.gif)}
@@ -233,17 +233,14 @@ a{color:inherit;text-decoration:none}
 		</div>
 	</div>
 </header>
-<article style="margin:5% 10%">
+<article style="margin-left:10%;margin-right:10%;margin-top:3%">
 	<div id="cHome" class="field">
 		<h1><font class="En">Welcome</font> 歡迎使用</h1>
 	</div>
-	<div id="cMaqu" class="field">
-		
-	</div>
-	<div id="cFunc" class="field">
+	<div id="cFunc" class="field2">
 		<h1><font class="En">Function</font> 常用功能</h1>
 	</div>
-	<div id="cHome" class="field">
+	<div id="cHome" class="field2">
 		<h1><font class="En">News</font> 最新消息</h1>
 	</div>
 </article>
@@ -301,7 +298,7 @@ function Rsz(){
 		Tag("header")[0].style.overflow="hidden"
 		Id("Home").style.marginLeft=(($(window).width()-40)/2)+"px"
 		Id("Home").innerHTML=""
-		$(".field").css("width","100%")
+		$(".field,.field2").css("width","100%")
 	}else{
 		$(".Computer").css("display","")
 		Tag("header")[0].style.height="40px"
@@ -309,7 +306,8 @@ function Rsz(){
 		$(".Mobile").css("display","none")
 		Id("Home").style.marginLeft="40px"
 		Id("Home").innerHTML=doc.title
-		$(".field").css("width","50%")
+		$(".field").css("width","100%")
+		$(".field2").css("width","50%")
 	}
 }
 function Mnu(){
