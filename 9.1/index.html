@@ -85,11 +85,13 @@ article{
 	color:#48585f;font-family:CENTAUR;overflow:auto;
 }
 article::-webkit-scrollbar{width:0px;height:0px}
-article div{float:left;height:380px;width:100%}
+article div{float:left;height:auto;width:100%}
 article div h1{font-size:20px;font-weight:normal}
 article div h1 .En{font-size:50px}
 article div h1 .Ch{letter-spacing:3px}
-#cBoard{background-image:url(Pics/chsbd.gif);background-repeat:no-repeat;background-size:380px;background-position:center center;}
+article div div{height:auto;width:auto;float:none}
+#cBoard{background-image:url(Pics/chsbd.png);background-repeat:no-repeat;background-size:contain;background-position:center center;}
+.field,.field2{overflow:auto}
 #pStart{background-image:url(Pics/Start.gif)}
 #pStart:hover{background-image:url(Pics/Starth.gif)}
 #pAbout{background-image:url(Pics/About.gif)}
@@ -235,21 +237,38 @@ a{color:inherit;text-decoration:none}
 		</div>
 	</div>
 </header>
-<article style="margin-left:10%;margin-right:10%;margin-top:3%">
+<article style="margin-left:10px;margin-top:3%">
 	<div id="cHome" class="field2">
 		<h1><font class="En">Welcome </font>/<font class="Ch"> 歡迎使用</font></h1>
-		<div style="margin-left:50px;font-size:20px;letter-spacing:2px">
-			<li>最適大小:適應於不同大小裝置</li>
-			<li>新式規則:前所未見的遊戲規則</li>
-			<li>線上對戰:與朋友在線上切磋</li>
-			<li>輔助標記:新手也能快速上手</li>
+		<div style="font-size:20px;letter-spacing:2px;line-height:1.2">
+			<ol>
+				<li>最適大小:適應於不同大小裝置</li>
+				<li>新式規則:前所未見的遊戲規則</li>
+				<li>線上對戰:與朋友在線上切磋</li>
+				<li>輔助標記:新手也能快速上手</li>
+			</ol>
 		</div>
 	</div>
-	<div id="cBoard" class="field2">
-		
-	</div>
+	<div id="cBoard" class="field2"></div>
 	<div id="cFunc" class="field2">
 		<h1><font class="En">Function </font>/<font class="Ch"> 常用功能</font></h1>
+		<div style="font-size:20px;letter-spacing:2px;line-height:1.2">
+			<div>常用的一般功能:</div>
+				<ol>
+					<li>點選格子或以鍵盤輸入座標(E5即按下E+5)來設置符號</li>
+					<li>滑鼠靠近空白處或按下]或[即可喚出選單</li>
+					<li>點選Clean或按下Del以清除棋盤</li>
+					<li>點選Undo或按下Ctrl+Z到上一步</li>
+					<li>點選Redo或按下Ctrl+Y到下一步</li>
+					<li>點選Goto或按下Ctrl+H到指定步</li>
+					<li>點選Addons或按下Ctrl+Alt做功能設定</li>
+				</ol>
+			<div>線上對戰可用的功能:</div>
+				<ol>
+					<li>點選GiveUp可以向對方認輸</li>
+					<li>點選右下方即時訊息即可傳送訊息</li>
+				</ol>
+		</div>
 	</div>
 	<div id="cNews" class="field2">
 		<h1><font class="En">News </font>/<font class="Ch"> 最新消息</font></h1>
@@ -304,6 +323,8 @@ function Hid(d,v){
 function Rsz(){
 	$("article").css("height",($(window).height()-80)+"px")
 	if($(window).width()<830){
+		$("article").css("margin-left","10px")
+		$("article").css("margin-right","")
 		$(".Computer").css("display","none")
 		$(".Mobile").css("display","")
 		Tag("header")[0].style.overflow="hidden"
@@ -311,6 +332,8 @@ function Rsz(){
 		Id("Home").innerHTML=""
 		$(".field,.field2").css("width","100%")
 	}else{
+		$("article").css("margin-left","10%")
+		$("article").css("margin-right","10%")
 		$(".Computer").css("display","")
 		Tag("header")[0].style.height="40px"
 		Tag("header")[0].style.overflow="visible"
