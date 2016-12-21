@@ -53,7 +53,7 @@ Rls.Defend=function(r){
 	r=Rls.add(r,"區域內有五枚我方符號，且無對方符號時獲勝");return r
 }
 Rls.Scheme=function(r){
-	if(!Rls.dft||Rls.dft&&!Dft.Scheme.Lmt){
+	if(!Rls.dft||Rls.dft&&Dft.Scheme.Lmt){
 		r=Rls.ext(r,Rls.Set[0],Rls.Set[1])
 		r=Rls.ext(r,Rls.Set[1],"第一回合雙方符號不得設置於C3:G7之座標")
 	}
@@ -67,7 +67,7 @@ Rls.Blocker=function(r){var jdg=1,ajd=0;if(Rls.dft){jdg=Dft.Blocker.QJd;ajd=Dft.
 	r=Rls.add(r,Rls.Jdg[jdg]);return r
 }
 Rls.Forbid=function(r){
-	r=Rls.add(r,"我方不得設置符號於我方私區");return r
+	r=Rls.add(r,"符號不得設置於私區");return r
 }
 Rls.Divider=function(r){var jdg=1
 	r=Rls.ext(r,Rls.Set[0],Rls.Set[1]);if(Rls.dft)jdg=Dft.Divider.QJd
@@ -109,7 +109,7 @@ Rls.GoLike=function(r){
 	r=Rls.add(r,"我方符號較對方多時獲勝");r=Rls.add(r,"對方符號不存在時獲勝");return r
 }
 Rls.Kingdom=function(r){
-	if(!Rls.dft||Rls.dft&&!Dft.Kingdom.Lmt){
+	if(!Rls.dft||Rls.dft&&Dft.Kingdom.Lmt){
 		r=Rls.ext(r,Rls.Set[0],Rls.Set[1])
 		r=Rls.ext(r,Rls.Set[1],"第一回合雙方符號不得設置於C3:G7之座標")
 	}
@@ -119,6 +119,13 @@ Rls.Kingdom=function(r){
 	r=Rls.add(r,"棋盤已滿，我方王國符號數與對方相同，我方王國數較對方多時獲勝");return r
 }
 Rls.System=function(r){
-	if(Rls.dft&&Dft.System.Blk)r=Rls.add(r,"將產生"+Dft.System.Blk+"個障礙物");return r
+	if(Rls.dft&&Dft.System.Blk)r=Rls.add(r,"將產生"+Dft.System.Blk+"個障礙物")
+	var spc={
+		n:["公區","私區"],
+		d:["雙方皆可設置的區域","其中一方不可設置的區域"]
+	}
+	for(var j=0;j<spc.n.length;j++)for(var i=0;i<r.length;i++)if(r[i].search(spc.n[j])>-1){
+		r=Rls.add(r,spc.n[j]+"即"+spc.d[j]);break
+	}return r
 }
 if(typeof Shl=="object")Shl.Rls=Rls
