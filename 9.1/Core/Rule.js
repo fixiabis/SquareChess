@@ -135,12 +135,23 @@ function Scr(v){
 }
 function Bld(c){
 	var spt=c.split("/")
-	for(var i=0;i<spt.length;i++){
+	for(var i=0;i<spt.length;i++){console.log(spt[i])
 		var cmd=spt[i].split(":"),crd=cmd[2].split(",")
 		switch(cmd[0]){
-			case"F":for(var i=0;i<crd.length;i++)Id(crd[i]).style.color=cmd[1];break
-			case"B":for(var i=0;i<crd.length;i++)Id(crd[i]).style.backgroundColor=cmd[1];break
-			case"S":for(var i=0;i<crd.length;i++)Id(crd[i]).innerHTML=cmd[1];break
+			case"F":for(var j=0;j<crd.length;j++)Id(crd[j]).style.color=cmd[1];break
+			case"B":for(var j=0;j<crd.length;j++)Id(crd[j]).style.backgroundColor=cmd[1];break
+			case"S":for(var j=0;j<crd.length;j++)Id(crd[j]).innerHTML=cmd[1];break
+			case"O":for(var j=0;j<crd.length;j++)Id(crd[j]).style.opacity=cmd[1];break
+		}
+	}
+}
+Bld.Cln=function(){
+	for(var cd1=65;cd1<74;cd1++){
+		for(var cd2=1;cd2<10;cd2++){
+			Id(Chr(cd1)+cd2).innerHTML=""
+			if((cd1+cd2)%2==0)Id(Chr(cd1)+cd2).style.backgroundColor="lightgray"
+			else Id(Chr(cd1)+cd2).style.backgroundColor="white"
+			Id(Chr(cd1)+cd2).style.color="black"
 		}
 	}
 }

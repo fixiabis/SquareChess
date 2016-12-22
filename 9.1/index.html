@@ -90,7 +90,7 @@ article div h1{font-size:20px;font-weight:normal}
 article div h1 .En{font-size:50px}
 article div h1 .Ch{letter-spacing:3px}
 article div div{height:auto;width:auto;float:none}
-#cImag{background-image:url(Pics/chsbd.png);background-repeat:no-repeat;background-size:contain;background-position:center center;}
+#cImag{background-image:url(Pics/chsbd.png);background-repeat:no-repeat;background-position:center center;}
 .field,.field2{overflow:auto}
 #pStart{background-image:url(Pics/Start.gif)}
 #pStart:hover{background-image:url(Pics/Starth.gif)}
@@ -237,15 +237,15 @@ a{color:inherit;text-decoration:none}
 		</div>
 	</div>
 </header>
-<article style="margin-left:10px;margin-top:20px">
-	<div id="cHome" class="field2" data-page="Home">
+<article style="margin-left:10px" onmouseover="Mnu(1)">
+	<div id="cHome" class="field2" data-page="Home" style="margin-top:20px">
 		<h1><font class="En">Welcome </font>/<font class="Ch"> 歡迎使用</font></h1>
 		<div style="font-size:20px;letter-spacing:2px;line-height:1.2">
 			<ol>
 				<li>最適大小:適應於不同大小裝置</li>
 				<li>新式規則:前所未見的遊戲規則</li>
-				<li>線上對戰:與朋友在線上切磋</li>
-				<li>輔助標記:新手也能快速上手</li>
+				<li>線上對戰:可與朋友在線上切磋</li>
+				<li>輔助標記:新手也能夠快速上手</li>
 			</ol>
 		</div>
 	</div>
@@ -282,6 +282,8 @@ a{color:inherit;text-decoration:none}
 	</div>
 	<div id="cRule" class="field2" data-page="Rule">
 		<h1><font class="En">Rule </font>/<font class="Ch"> 規則說明</font></h1>
+		<div style="font-size:20px;letter-spacing:2px;line-height:1.2">
+		</div>
 	</div>
 	<div id="cBoard" class="field2" data-page="Rule">
 		<table id="Board" style="background:gray;border:none" cellpadding="0" cellspacing="0">
@@ -311,13 +313,16 @@ function Ldr(){Rsz();Hid();var page=["Start","Online","Rules","About","Report"],
 	for(var i=0;i<link.length;i++){
 		if(link[i].parentNode.getAttribute("data-chess"))link[i].href="chess.html?mode="+link[i].innerHTML
 		if(link[i].parentNode.getAttribute("data-btchs"))link[i].href="btchs.html?mode="+link[i].innerHTML
+		if(link[i].parentNode.getAttribute("data-rules"))link[i].addEventListener("click",function(){
+			RlS(this.innerHTML)
+		})
 		link[i].parentNode.style.transition="all 1s"
 	}Pge("Home")
-	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd
+	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd;Bld.Cln()
 }
 function Pge(p){Rsz()
-	for(var i=0;i<page.length;i++){
-		if(page[i].getAttribute("data-page")!=p)page[i].style.width="0%"
+	for(var i=0;i<page.length;i++){page[i].style.display=""
+		if(page[i].getAttribute("data-page")!=p)page[i].style.display="none"
 	}
 }
 function Lst(d,v){Hid(d,'Main')
@@ -341,7 +346,7 @@ function Hid(d,v){
 	}
 }
 function Rsz(){
-	$("article").css("height",($(window).height()-100)+"px")
+	$("article").css("height",($(window).height()-80)+"px")
 	if($(window).width()<830){
 		$("article").css("margin-left","10px")
 		$("article").css("margin-right","10px")
@@ -351,6 +356,9 @@ function Rsz(){
 		Id("Home").style.marginLeft=(($(window).width()-40)/2)+"px"
 		Id("Home").innerHTML=""
 		$(".field,.field2").css("width","100%")
+		$(".bt").css("width",($("#cBoard").width()/9)+"px")
+		$(".bt").css("height",($("#cBoard").width()/9)+"px")
+		$("#cImag").css("background-size","85%")
 	}else{
 		$("article").css("margin-left","10%")
 		$("article").css("margin-right","10%")
@@ -362,13 +370,14 @@ function Rsz(){
 		Id("Home").innerHTML=doc.title
 		$(".field").css("width","100%")
 		$(".field2").css("width","50%")
+		$(".bt").css("width",($("#cBoard").height()/9)+"px")
+		$(".bt").css("height",($("#cBoard").height()/9)+"px")
+		$("#cImag").css("background-size","70%")
 	}
-	$("#cImag").css("height",($("#cImag").width()/1676*956)+"px")
-	$(".bt").css("width",($("#cBoard").width()/9)+"px")
-	$(".bt").css("height",($("#cBoard").width()/9)+"px")
+	$("#cImag").css("height",($("#cImag").width()/747*500)+"px")
 }
-function Mnu(){
-	if(Tag("header")[0].style.height=="320px"){
+function Mnu(v){
+	if(Tag("header")[0].style.height=="320px"||v){
 		Tag("header")[0].style.height="40px";Hid()
 		Id("LstB").style.backgroundImage="url(Pics/List.gif)"
 	}else{
@@ -383,6 +392,10 @@ function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
 		{Typ:"P",title:"BY9.1:"+v[0],content:v[1]},
 		function(r){alert(r);Id("RTt").value="";Id("RCt").value="";btn.style.backgroundColor=""}
 	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
+}
+function RlS(m){var rls=[],md=m.replace("Square.","").split(":")
+	Id("cRule").childNodes[3].innerHTML=""
+	for(var i=0;i<md.length;i++)rls=Rls[md[i]](rls)
 }
 </script>
 </html>
