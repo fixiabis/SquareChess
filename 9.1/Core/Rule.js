@@ -135,5 +135,11 @@ function Scr(v){
 }
 function Bld(c){
 	var spt=c.split("/")
+	for(var i=0;i<spt.length;i++){
+		var cmd=spt[i].split(":")
+		switch(cmd[0]){
+			case"":;break
+		}
+	}
 }
 if(typeof Shl=="object")Shl.Rls=Rls
