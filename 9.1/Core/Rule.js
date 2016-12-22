@@ -136,9 +136,11 @@ function Scr(v){
 function Bld(c){
 	var spt=c.split("/")
 	for(var i=0;i<spt.length;i++){
-		var cmd=spt[i].split(":")
+		var cmd=spt[i].split(":"),crd=cmd[2].split(",")
 		switch(cmd[0]){
-			case"":;break
+			case"F":for(var i=0;i<crd.length;i++)Id(crd[i]).style.color=cmd[1];break
+			case"B":for(var i=0;i<crd.length;i++)Id(crd[i]).style.backgroundColor=cmd[1];break
+			case"S":for(var i=0;i<crd.length;i++)Id(crd[i]).innerHTML=cmd[1];break
 		}
 	}
 }
