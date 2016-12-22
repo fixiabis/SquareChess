@@ -26,7 +26,8 @@ var Rls={
 	ext:function(r,a,b){var c=r.indexOf(a)
 		if(r.indexOf(b)>-1)return r
 		if(c>-1)r[c]=b;else r.push(b);return r
-	}
+	},
+	Scr:[]
 }
 Rls.Connect=function(r){var jdg=1
 	r=Rls.ext(r,Rls.Set[0],Rls.Set[1])
@@ -127,5 +128,12 @@ Rls.System=function(r){
 	for(var j=0;j<spc.n.length;j++)for(var i=0;i<r.length;i++)if(r[i].search(spc.n[j])>-1){
 		r=Rls.add(r,spc.n[j]+"即"+spc.d[j]);break
 	}return r
+}
+function Scr(v){
+	if(Rls.Scr)Bld(Rls.Scr[v])
+	if(Rls.Scr.length>v)setTimeout("Scr("+v+1+")",1000)
+}
+function Bld(c){
+	var spt=c.split("/")
 }
 if(typeof Shl=="object")Shl.Rls=Rls
