@@ -17,6 +17,6 @@ Shl.Opt.Zombie=function(){
 	if(!Dft.System.Oln)OpS("Zombie-ToZ","t","感染回合:",Dft.Zombie.ToZ)
 }
 Shl.OpK.Zombie=function(){
-	if(!Dft.System.Oln)Dft.Zombie.ToZ=Val(Id("Zombie-ToZ").value)
+	if(!Dft.System.Oln&&Val(Id("Zombie-ToZ").value)!=NaN)Dft.Zombie.ToZ=Val(Id("Zombie-ToZ").value)
 	if(Dft.Zombie.ToZ<10)Dft.Zombie.ToZ=10
 }

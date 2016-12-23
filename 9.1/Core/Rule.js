@@ -129,7 +129,7 @@ Rls.System=function(r){
 		r=Rls.add(r,spc.n[j]+"即"+spc.d[j]);break
 	}return r
 }
-function Scr(v){
+function Sct(v){
 	if(Rls.Scr)Bld(Rls.Scr[v])
 	if(Rls.Scr.length>v)setTimeout("Scr("+v+1+")",1000)
 }
