@@ -2,8 +2,9 @@ body{
 	margin:0px;cursor:default;user-select:none;
 	-ms-user-select:none;font-family:Consolas;
 	-moz-user-select:none;-webkit-user-select:none;
-	background-color:black;overflow:hidden;
+	background-color:black;overflow:hidden
 }
+a,input,textarea{color:inherit;text-decoration:none;outline:none;border:none}
 @font-face{
   font-family:Consolas;
   src:url(../Font/Consolas.ttf);
@@ -12,7 +13,7 @@ body{
   font-family:CENTAUR;
   src:url(../Font/CENTAUR.ttf);
 }
-::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar{width:0px;height:0px}
 ::-webkit-scrollbar-track{width:5px;height:5px;opacity:0.5}
 ::-webkit-scrollbar-thumb{width:5px;height:5px;border-radius:5px;background-color:#99bccc}
 #lLst div::-webkit-scrollbar{width:0px;height:0px}
@@ -30,6 +31,7 @@ body{
 .Opbt:hover{opacity:1}
 #msgc{height:255px;width:100%;background-color:#99bccc;position:absolute;top:25px;left:0px;overflow:auto}
 #Message{transition:all 1s;user-select:text;-ms-user-select:text;-moz-user-select:text;-webkit-user-select:text}
+#Message::-webkit-scrollbar{width:5px;height:5px}
 #send{position:absolute;bottom:0px;right:0px;opacity:0.2;width:40px;height:20px;background-color:#48585f;text-align:center;line-height:20px}
 #send:hover{opacity:1}
 #LdA{

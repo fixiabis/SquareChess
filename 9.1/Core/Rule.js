@@ -131,7 +131,7 @@ Rls.System=function(r){
 }
 function Sct(v){
 	if(Rls.Scr)Bld(Rls.Scr[v])
-	if(Rls.Scr.length>v)setTimeout("Scr("+v+1+")",1000)
+	if(Rls.Scr.length>v)setTimeout("Sct("+v+1+")",1000)
 }
 function Bld(c){
 	var spt=c.split("/")

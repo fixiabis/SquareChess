@@ -91,7 +91,7 @@ article div h1 .En{font-size:50px}
 article div h1 .Ch{letter-spacing:3px}
 article div div{height:auto;width:auto;float:none}
 #cImag{background-image:url(Pics/chsbd.png);background-repeat:no-repeat;background-position:center center;}
-.field,.field2{overflow:auto}
+.field,.field2{overflow:auto;margin-top:20px;font-size:20px;letter-spacing:2px;line-height:1.2}
 #pStart{background-image:url(Pics/Start.gif)}
 #pStart:hover{background-image:url(Pics/Starth.gif)}
 #pAbout{background-image:url(Pics/About.gif)}
@@ -106,13 +106,25 @@ article div div{height:auto;width:auto;float:none}
 .pTab:hover{background-image:url(Pics/Downh.gif)}
 #lLst div{overflow:auto;height:280px}
 #lLst div div:hover{background-color:#99bccc}
-a{color:inherit;text-decoration:none}
 #fb{background-image:url(Pics/fb.gif)}
 #tw{background-image:url(Pics/tw.gif)}
 #gp{background-image:url(Pics/gp.gif)}
 #fb:hover{background-image:url(Pics/fbh.gif)}
 #tw:hover{background-image:url(Pics/twh.gif)}
 #gp:hover{background-image:url(Pics/gph.gif)}
+input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-height:1.2;margin-top:20px}
+.con{
+	height:50px;background-color:#758f9b;width:50px;border-radius:25px;position:relative;overflow:visible;transition:all 2s;margin-top:10px
+}
+.con:hover{width:340px;color:white}
+.cont{
+	height:40px;width:40px;position:absolute;top:5px;left:5px;
+	background-color:white;border-radius:20px;background-size:80%;
+	background-position:center center;background-repeat:no-repeat
+}
+.conx{
+	position:absolute;top:0px;left:55px;border:none;height:50px;line-height:50px;width:140px
+}
 </style>
 </head>
 <body onresize="Rsz()" onload="Ldr()" oncontextmenu="event.preventDefault()">
@@ -237,8 +249,8 @@ a{color:inherit;text-decoration:none}
 		</div>
 	</div>
 </header>
-<article style="margin-left:10px" onmouseover="Mnu(1)">
-	<div id="cHome" class="field2" data-page="Home" style="margin-top:20px">
+<article style="margin-left:10px" onclick="Mnu(1)">
+	<div id="cHome" class="field2">
 		<h1><font class="En">Welcome </font>/<font class="Ch"> 歡迎使用</font></h1>
 		<div style="font-size:20px;letter-spacing:2px;line-height:1.2">
 			<ol>
@@ -249,10 +261,22 @@ a{color:inherit;text-decoration:none}
 			</ol>
 		</div>
 	</div>
-	<div id="cImag" class="field2" data-page="Home"></div>
-	<div id="cFunc" class="field2" data-page="Home">
+	<div id="cImag" class="field2"></div>
+	<div id="cNews" class="field2">
+		<h1><font class="En">News </font>/<font class="Ch"> 最新消息</font></h1>
+		<div style="margin-left:20px">
+			<table>
+				<tr><td colspan="2">2016</td></tr>
+				<tr><td>11/15</td><td>掃描QRCode進入對戰</td></tr>
+				<tr><td>11/08</td><td>使用Messenger傳送對戰連結</td></tr>
+				<tr><td>10/20</td><td>線上對戰正式提供</td></tr>
+				<tr><td>09/16</td><td>輔助標記正式提供</td></tr>
+			</table>
+		</div>
+	</div>
+	<div id="cFunc" class="field2">
 		<h1><font class="En">Function </font>/<font class="Ch"> 常用功能</font></h1>
-		<div style="font-size:20px;letter-spacing:2px;line-height:1.2">
+		<div>
 			<div>常用的一般功能:</div>
 				<ol class="Computer">
 					<li>點選格子或以鍵盤輸入座標(E5即按下E+5)來設置符號</li>
@@ -277,17 +301,55 @@ a{color:inherit;text-decoration:none}
 				</ol>
 		</div>
 	</div>
-	<div id="cNews" class="field2" data-page="Home">
-		<h1><font class="En">News </font>/<font class="Ch"> 最新消息</font></h1>
-	</div>
-	<div id="cRule" class="field2" data-page="Rule">
-		<h1><font class="En">Rule </font>/<font class="Ch"> 規則說明</font></h1>
-		<div style="font-size:20px;letter-spacing:2px;line-height:1.2">
+	<div id="cRule" class="field2">
+		<h1><font class="En">Rule </font>/<font class="Ch"> 規則說明</font><font id="rlN"></font></h1>
+		<div>
+			<ol>
+				<li>點選上面的遊戲說明以取得規則說明</li>
+				<li>點選項目即可觀看圖解</li>
+			</ol>
 		</div>
 	</div>
-	<div id="cBoard" class="field2" data-page="Rule">
-		<table id="Board" style="background:gray;border:none" cellpadding="0" cellspacing="0">
+	<div id="cBoard" class="field2">
+		<table id="Board" style="background:gray;border:none;margin-top:80px" cellpadding="0" cellspacing="0" align="center">
         </table>
+	</div>
+	<div id="cReport" class="field2">
+		<h1><font class="En">Report </font>/<font class="Ch"> 回報問題</font></h1>
+		<div>
+			軟體故障和錯誤偶爾會發生於以上線的遊戲。<br>
+			如果您發現問題或是錯誤，請填寫表單回報給我們。
+		</div>
+		<div style="margin-top:40px">
+			<div class="con" onclick="location='http://m.me/SquareChessGame'" style="cursor:pointer">
+				<div style="background-image:url('Pics/mng.gif')" class="cont"></div>
+				<a class="conx">m.me/SquareChessGame</a>
+			</div>
+			<div class="con">
+				<div style="background-image:url('Pics/eml.gif')" class="cont"></div>
+				<a class="conx">SquareChessGame@gmail.com</a>
+			</div>
+		</div>
+	</div>
+	<div id="cForm" class="field2">
+		<table align="center" class="Computer" style="margin-top:80px">
+			<tr>
+				<td><font color="red">*</font>標題<br>
+					<input type="text"/>
+				</td>
+				<td width="50"></td>
+				<td>聯絡方式<br>
+				<input type="text"/>
+				</td>
+			</tr>
+			<tr height="20"></tr>
+			<tr>
+				<td colspan="3">詳細內容<br><textarea style="width:99%;height:100px;border:solid 1px"></textarea></td>
+			</tr>
+			<tr height="10"></tr>
+			<tr><td colspan="3"><div style="float:right;width:80px;height:40px;background-color:#758f9b;color:white;line-height:40px;text-align:center">送出</div></td></tr>
+			<tr height="20"></tr>
+		</table>
 	</div>
 </article>
 <footer>
@@ -305,7 +367,7 @@ a{color:inherit;text-decoration:none}
 <div id="fb-root"></div>
 <script>
 var link=$("#lLst div a,.page div a"),show="",page=$(".field,.field2")
-function Ldr(){Rsz();Hid();var page=["Start","Online","Rules","About","Report"],bd=""
+function Ldr(){var page=["Start","Online","Rules","About","Report"],bd=""
 	for(var i=0;i<5;i++){
 		Id(page[i]).style.height="40px"
 		Id("p"+page[i]).style.height="40px"
@@ -315,15 +377,11 @@ function Ldr(){Rsz();Hid();var page=["Start","Online","Rules","About","Report"],
 		if(link[i].parentNode.getAttribute("data-btchs"))link[i].href="btchs.html?mode="+link[i].innerHTML
 		if(link[i].parentNode.getAttribute("data-rules"))link[i].addEventListener("click",function(){
 			RlS(this.innerHTML)
-		})
-		link[i].parentNode.style.transition="all 1s"
-	}Pge("Home")
-	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd;Bld.Cln()
-}
-function Pge(p){Rsz()
-	for(var i=0;i<page.length;i++){page[i].style.display=""
-		if(page[i].getAttribute("data-page")!=p)page[i].style.display="none"
-	}
+		});link[i].parentNode.style.transition="all 1s"
+	}for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd
+	$("#cForm input").focus(function(){this.style.borderBottom='3px solid #758f9b'})
+	$("#cForm input").blur(function(){this.style.borderBottom='1px solid #758f9b'})
+	Rsz();Hid();Bld.Cln()
 }
 function Lst(d,v){Hid(d,'Main')
 	if(show!=d+"/"+v)Shw(d,v)
@@ -356,9 +414,10 @@ function Rsz(){
 		Id("Home").style.marginLeft=(($(window).width()-40)/2)+"px"
 		Id("Home").innerHTML=""
 		$(".field,.field2").css("width","100%")
-		$(".bt").css("width",($("#cBoard").width()/9)+"px")
-		$(".bt").css("height",($("#cBoard").width()/9)+"px")
 		$("#cImag").css("background-size","85%")
+		$("#repa").css("margin-left","")
+		$(".bt").css("width",($("#cBoard").width()/10)+"px")
+		$(".bt").css("height",($("#cBoard").width()/10)+"px")
 	}else{
 		$("article").css("margin-left","10%")
 		$("article").css("margin-right","10%")
@@ -369,10 +428,13 @@ function Rsz(){
 		Id("Home").style.marginLeft="40px"
 		Id("Home").innerHTML=doc.title
 		$(".field").css("width","100%")
-		$(".field2").css("width","50%")
-		$(".bt").css("width",($("#cBoard").height()/9)+"px")
-		$(".bt").css("height",($("#cBoard").height()/9)+"px")
+		$(".field2").css("width","48%")
+		$(".field2").css("margin-left","1%")
+		$(".field2").css("margin-right","1%")
+		$(".bt").css("width",($("#cBoard").width()/9)+"px")
+		$(".bt").css("height",($("#cBoard").width()/9)+"px")
 		$("#cImag").css("background-size","70%")
+		$("#repa").css("margin-left","100px")
 	}
 	$("#cImag").css("height",($("#cImag").width()/747*500)+"px")
 }
@@ -396,6 +458,7 @@ function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
 function RlS(m){var rls=[],md=m.replace("Square.","").split(":")
 	Id("cRule").childNodes[3].innerHTML=""
 	for(var i=0;i<md.length;i++)rls=Rls[md[i]](rls)
+	rls=Rls.System(rls)
 }
 </script>
 </html>
