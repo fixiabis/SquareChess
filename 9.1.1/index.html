@@ -23,7 +23,7 @@ article{background-color:white;margin-top:40px}
 	float:right;background-size:20px 20px;
 	margin:2.5px;cursor:pointer;
 }
-.page{width:140px;float:right;font-weight:bold;overflow:hidden}
+.page{width:100px;float:right;font-weight:bold;overflow:hidden}
 .page:hover{color:#48585f}
 #hMenu,#fMenu{
 	height:40px;font-family:Microsoft JhengHei UI;font-size:16px;
@@ -34,7 +34,9 @@ article{background-color:white;margin-top:40px}
 	background-size:25px 25px;width:40px;height:40px;
 	background-position:center center;transition:background 1s;
 }
-#List{height:280px}
+#List{height:280px;overflow:auto;margin-top:40px;font-size:16px}
+#List .Seri{float:left}
+#List .v{width:0px;height:80%;float:left}
 #hMenu hr,#fMenu hr{width:0px;height:60%;float:right}
 #Copy{width:235px;margin-left:5px;float:left;font-family:Courier New;font-size:15px;}
 #fb{background-image:url(Pics/fb.gif)}
@@ -54,40 +56,40 @@ article{background-color:white;margin-top:40px}
 			<div class="page" id="Start">開始遊戲</div>
 		</div>
 		<div id="LstB" class="Mobile" onclick="Mnu()" style="display:none"></div>
-		<div id="List">
-			<div>
+		<div id="List" class="Computer">
+			<div class="Seri">
 				Connect系列<hr>
-				<a>Square.Connect</a>
-				<a>Connect:Attack</a>
-				<a>Connect:Defend</a>
-				<a>Connect:Scheme</a>
-			</div>
-			<div>
+				<div><a>Square.Connect</a></div>
+				<div><a>Connect:Attack</a></div>
+				<div><a>Connect:Defend</a></div>
+				<div><a>Connect:Scheme</a></div>
+			</div><hr class="v">
+			<div class="Seri">
 				Blocker系列<hr>
-				<a>Square.Blocker</a>
-				<a>Blocker:Forbid</a>
-			</div>
-			<div>
+				<div><a>Square.Blocker</a></div>
+				<div><a>Blocker:Forbid</a></div>
+			</div><hr class="v">
+			<div class="Seri">
 				Divider系列<hr>
-				<a>Square.Divider</a>
-				<a>Divider:Zombie</a>
-				<a>Divider:Follow</a>
-				<a>Divider:Anomal</a>
-			</div>
-			<div>
+				<div><a>Square.Divider</a></div>
+				<div><a>Divider:Zombie</a></div>
+				<div><a>Divider:Follow</a></div>
+				<div><a>Divider:Anomal</a></div>
+			</div><hr class="v">
+			<div class="Seri">
 				Adapter系列<hr>
-				<a>Square.Adapter</a>
-				<a>Adapter:Invert</a>
-				<a>Adapter:Castle</a>
-				<a>Adapter:ByLine</a>
-			</div>
-			<div>
+				<div><a>Square.Adapter</a></div>
+				<div><a>Adapter:Invert</a></div>
+				<div><a>Adapter:Castle</a></div>
+				<div><a>Adapter:ByLine</a></div>
+			</div><hr class="v">
+			<div class="Seri">
 				其他模式<hr>
-				<a>Gomoku</a>
-				<a>GoLike</a>
+				<div><a>Gomoku</a></div>
+				<div><a>GoLike</a></div>
 			</div>
 		</div>
-		<div id="mList">
+		<div id="mList" class="Mobile">
 		</div>
 	</header>
 	<article>
@@ -120,6 +122,7 @@ function Rsz(){
 		Id("Home").style.marginLeft="40px"
 		Id("Home").innerHTML=doc.title
 		Id("Home").style.width="350px"
+		$(".Seri").css("width",(($(window).width()-16)/5)+"px")
 	}
 }
 function Ldr(){Rsz()}
