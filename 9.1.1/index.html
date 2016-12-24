@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="Pics/Icon.png" rel="shortcut icon">
+<title>Square Chess Game</title>
+<script src="Impo/jquery.min.js"></script>
+<script src="Core/Prun.js"></script>
+<style>@import "Core/Face.css";
+#Home{
+	float:left;background-image:url(Pics/Logo.gif);
+	height:40px;background-position:7.5px 7.5px;
+	background-repeat:no-repeat;
+	color:white;background-size:25px 25px;
+	font-size:25px;line-height:40px;margin-left:40px;
+}
+article{background-color:white;margin-top:40px}
+.Social{
+	width:35px;background-position:center center;
+	height:35px;background-repeat:no-repeat;
+	float:right;background-size:20px 20px;
+	margin:2.5px;cursor:pointer;
+}
+.page{width:140px;float:right;font-weight:bold;overflow:hidden}
+#hMenu,#fMenu{
+	height:40px;
+	width:430px;
+	float:right;
+	font-size:16px;
+	overflow:visible;
+	margin-right:10px;
+	font-family:Microsoft JhengHei UI;
+}
+#List{height:280px}
+#hMenu hr,#fMenu hr{width:0px;height:60%;float:right}
+#Copy{width:235px;margin-left:5px;float:left;font-family:Courier New;font-size:15px;}
+#fb{background-image:url(Pics/fb.gif)}
+#tw{background-image:url(Pics/tw.gif)}
+#gp{background-image:url(Pics/gp.gif)}
+#fb:hover{background-image:url(Pics/fbh.gif)}
+#tw:hover{background-image:url(Pics/twh.gif)}
+#gp:hover{background-image:url(Pics/gph.gif)}
+</style>
+</head>
+<body onresize="Rsz()" onload="Ldr()" oncontextmenu="event.preventDefault()">
+	<header>
+		<div id="Home"></div>
+		<div id="hMenu" class="Computer">
+			<div class="page" id="Rules">遊戲說明</div><hr>
+			<div class="page" id="Online">線上對戰</div><hr>
+			<div class="page" id="Start">開始遊戲</div>
+		</div>
+		<div id="List"></div>
+	</header>
+	<article>
+		
+	</article>
+	<footer>
+		<div id="Copy">&copy 2016 Square Chess Game.</div>
+		<a id="gp" class="Social" onclick="alert('即將登場')"></a>
+		<a id="tw" class="Social" href="http://twitter.com/SquareChessGame"></a>
+		<a id="fb" class="Social" href="http://fb.me/SquareChessGame"></a>
+		<div id="fMenu" class="Computer"><hr>
+			<div class="page" id="Report">回報問題</div><hr>
+			<div class="page" id="About">關於我們</div>
+		</div>
+	</footer>
+</body>
+<script>
+function Rsz(){
+	$("article").css("height",($(window).height()-80)+"px")
+	if($(window).width()<830){
+		$(".Computer").css("display","none")
+		$(".Mobile").css("display","")
+		Id("Home").style.marginLeft=(($(window).width()-40)/2)+"px"
+		Id("Home").innerHTML=""
+		Id("Home").style.width="40px"
+	}else{
+		$(".Computer").css("display","")
+		$(".Mobile").css("display","none")
+		Tag("header")[0].style.height="40px"
+		Id("Home").style.marginLeft="40px"
+		Id("Home").innerHTML=doc.title
+		Id("Home").style.width="350px"
+	}
+}
+function Ldr(){Rsz()
+	
+}
+</script>
+</html>

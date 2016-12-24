@@ -1,0 +1,6 @@
+<script>
+if(location.search.length>1){
+	var spt=location.search.replace("?","").replace("%2F","/").split("/")
+	location="btchs.html?mode="+spt[0]+"#"+spt[1]
+}else location="index.html"
+</script>

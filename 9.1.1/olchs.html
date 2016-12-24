@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta property="og:url" content="http://fixiabis.github.io/SquareChess" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Square Chess Game" />
+<meta property="og:description" content="棋盤遊戲" />
+<meta property="og:image" content="Pics/Icon.png" />
+<link href="Pics/Icon.png" rel="shortcut icon">
+<title>Square Chess Game</title>
+<script src="Impo/jquery.min.js"></script>
+<script src="Impo/jquery.mobile-1.4.5.min.js"></script>
+<script src="Impo/firebase.js"></script>
+<script src="Core/Prun.js"></script>
+<script src="Core/Core.js"></script>
+<script src="Core/Part.js"></script>
+<script src="Core/Aide.js"></script>
+<script src="Core/Gear.js"></script>
+<script src="Core/Rule.js"></script>
+<style>@import "Core/Face.css";#menu{position:fixed}</style>
+<script>
+var config = {
+    apiKey: "AIzaSyAkW9z_UKLVGFhgEndtzxiQqh2b8I-Z2eA",
+    authDomain: "square-chess-game-91.firebaseapp.com",
+    databaseURL: "https://square-chess-game-91.firebaseio.com",
+    storageBucket: "square-chess-game-91.appspot.com",
+    messagingSenderId: "757542166819"
+};firebase.initializeApp(config);Dft.Oln.Ckr=1
+</script>
+</head>
+<body onLoad="Ldr()" onResize="Rsz()" onmouseover="MsO(event)" onkeydown="KDw(event)" onkeyup="KUp(event)" oncontextmenu="event.preventDefault()" onscroll="Rsz()">
+	<div id="NightMode" style="opacity:1">
+		<header onclick="Ctl('Hom')"><div id="LdB"></div>Square Chess Game</header>
+		<div style="display:table-cell;height:100%;vertical-align:middle">
+			<div id="UI" style="margin:auto;position:relative"><div id="LdA">Creating...</div>
+				<div id="Rule" style="height:0px">
+					<div style="position:absolute;top:0px;right:4px;height:100%;width:20px;opacity:0.5">
+						<div style="width:20px;height:20px;border:solid 2px;text-align:center;line-height:20px" onclick="Ctl('RSw')">X</div>
+					</div>
+					<ul></ul>
+				</div>
+				<table id="Board" style="background:#758f9b;border:none;margin:auto" cellpadding="0" cellspacing="0"></table>
+				<table id="QCtrl" style="border:none;display:none" cellpadding="0" cellspacing="0">
+					<tr><td class="bt" onclick="Ctl('Gvp')" oncontextmenu="Opt()" id="Gvp">GiveUp</td></tr>
+				</table>
+			</div>
+			<div id="menu" style="left:0px;top:40px;width:0px;height:180px;overflow:hidden">
+				<div class="list" onclick="Ctl('Gvp')">GiveUp</div>
+				<div class="list" onclick="Ctl('Hom')">Home</div>
+				<div class="list" onclick="Opt()">Addons</div>
+			</div>
+			<div id="Message" style="position:fixed;bottom:0px;right:0px;width:250px;height:25px;overflow:hidden">
+				<div style="background-color:#758f9b;height:25px;line-height:25px;position:absolute;top:0px;width:100%;left:0px;font-weight:bold;z-index:3" onclick="Ctl('MSw')">即時訊息</div>
+				<div id="msgc"></div>
+				<input type="text" style="position:absolute;bottom:0px;right:0px;width:98%;height:14px" id="msgs"/>
+				<div id="send" onclick="Ctl('Msg')">送出</div>
+			</div>
+			<div id="Setting" style="height:0px">
+				<div id="OptionMenu"></div>
+				<div id="Opc"><div class="Opbt" onclick="OpK()">OK</div><div class="Opbt" onclick="OpK(1)">Cancel</div></div>
+				<div id="msgr" class="join" style="position:absolute;top: 28px;left: 150px;height:30px;width:60px;opacity:0">
+				<div class='fb-send' data-href='http://fixiabis.github.io/SquareChess/' data-layout='button_count'></div>
+				</div>
+				<div id="QR" class="join" style="width:150px;height:150px;position:absolute;top:0px;right:0px"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<div id="fb-root"></div>
+</html>
