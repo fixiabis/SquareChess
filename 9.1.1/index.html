@@ -24,14 +24,15 @@ article{background-color:white;margin-top:40px}
 	margin:2.5px;cursor:pointer;
 }
 .page{width:140px;float:right;font-weight:bold;overflow:hidden}
+.page:hover{color:#48585f}
 #hMenu,#fMenu{
-	height:40px;
-	width:430px;
-	float:right;
-	font-size:16px;
-	overflow:visible;
-	margin-right:10px;
-	font-family:Microsoft JhengHei UI;
+	height:40px;font-family:Microsoft JhengHei UI;font-size:16px;
+	width:430px;margin-right:10px;overflow:visible;float:right;
+}
+#LstB{
+	background-image:url(Pics/List.gif);background-repeat:no-repeat;
+	background-size:25px 25px;width:40px;height:40px;
+	background-position:center center;transition:background 1s;
 }
 #List{height:280px}
 #hMenu hr,#fMenu hr{width:0px;height:60%;float:right}
@@ -52,7 +53,42 @@ article{background-color:white;margin-top:40px}
 			<div class="page" id="Online">線上對戰</div><hr>
 			<div class="page" id="Start">開始遊戲</div>
 		</div>
-		<div id="List"></div>
+		<div id="LstB" class="Mobile" onclick="Mnu()" style="display:none"></div>
+		<div id="List">
+			<div>
+				Connect系列<hr>
+				<a>Square.Connect</a>
+				<a>Connect:Attack</a>
+				<a>Connect:Defend</a>
+				<a>Connect:Scheme</a>
+			</div>
+			<div>
+				Blocker系列<hr>
+				<a>Square.Blocker</a>
+				<a>Blocker:Forbid</a>
+			</div>
+			<div>
+				Divider系列<hr>
+				<a>Square.Divider</a>
+				<a>Divider:Zombie</a>
+				<a>Divider:Follow</a>
+				<a>Divider:Anomal</a>
+			</div>
+			<div>
+				Adapter系列<hr>
+				<a>Square.Adapter</a>
+				<a>Adapter:Invert</a>
+				<a>Adapter:Castle</a>
+				<a>Adapter:ByLine</a>
+			</div>
+			<div>
+				其他模式<hr>
+				<a>Gomoku</a>
+				<a>GoLike</a>
+			</div>
+		</div>
+		<div id="mList">
+		</div>
 	</header>
 	<article>
 		
@@ -80,14 +116,21 @@ function Rsz(){
 	}else{
 		$(".Computer").css("display","")
 		$(".Mobile").css("display","none")
-		Tag("header")[0].style.height="40px"
+		$("header")[0].style.height="40px"
 		Id("Home").style.marginLeft="40px"
 		Id("Home").innerHTML=doc.title
 		Id("Home").style.width="350px"
 	}
 }
-function Ldr(){Rsz()
-	
+function Ldr(){Rsz()}
+function Mnu(v){
+	if($("header")[0].style.height=="320px"||v){
+		$("header")[0].style.height="40px"
+		Id("LstB").style.backgroundImage="url(Pics/List.gif)"
+	}else{
+		$("header")[0].style.height="320px"
+		Id("LstB").style.backgroundImage="url(Pics/Close.gif)"
+	}
 }
 </script>
 </html>
