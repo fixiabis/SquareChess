@@ -129,30 +129,4 @@ Rls.System=function(r){
 		r=Rls.add(r,spc.n[j]+"即"+spc.d[j]);break
 	}return r
 }
-function Sct(v){
-	if(Rls.Scr)Bld(Rls.Scr[v])
-	if(Rls.Scr.length>v)setTimeout("Sct("+v+1+")",1000)
-}
-function Bld(c){
-	var spt=c.split("/")
-	for(var i=0;i<spt.length;i++){console.log(spt[i])
-		var cmd=spt[i].split(":"),crd=cmd[2].split(",")
-		switch(cmd[0]){
-			case"F":for(var j=0;j<crd.length;j++)Id(crd[j]).style.color=cmd[1];break
-			case"B":for(var j=0;j<crd.length;j++)Id(crd[j]).style.backgroundColor=cmd[1];break
-			case"S":for(var j=0;j<crd.length;j++)Id(crd[j]).innerHTML=cmd[1];break
-			case"O":for(var j=0;j<crd.length;j++)Id(crd[j]).style.opacity=cmd[1];break
-		}
-	}
-}
-Bld.Cln=function(){
-	for(var cd1=65;cd1<74;cd1++){
-		for(var cd2=1;cd2<10;cd2++){
-			Id(Chr(cd1)+cd2).innerHTML=""
-			if((cd1+cd2)%2==0)Id(Chr(cd1)+cd2).style.backgroundColor="lightgray"
-			else Id(Chr(cd1)+cd2).style.backgroundColor="white"
-			Id(Chr(cd1)+cd2).style.color="black"
-		}
-	}
-}
 if(typeof Shl=="object")Shl.Rls=Rls
