@@ -91,7 +91,7 @@ article div h1 .En{font-size:50px}
 article div h1 .Ch{letter-spacing:3px}
 article div div{height:auto;width:auto;float:none}
 #cImag{background-image:url(Pics/chsbd.png);background-repeat:no-repeat;background-position:center center;}
-.field,.field2{overflow:auto;margin-top:20px;font-size:20px;letter-spacing:2px;line-height:1.2}
+.field,.field2{overflow:auto;margin-top:50px;font-size:20px;letter-spacing:2px;line-height:1.2}
 #pStart{background-image:url(Pics/Start.gif)}
 #pStart:hover{background-image:url(Pics/Starth.gif)}
 #pAbout{background-image:url(Pics/About.gif)}
@@ -320,23 +320,33 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 	</div>
 	<div id="cForm" class="field2">
 		<table align="center" class="Computer" style="margin-top:80px">
-			<tr>
-				<td><font color="red">*</font>標題<br>
-					<input type="text" style="width:90%"/>
+			<tr align="center">
+				<td><div style="text-align:left"><font color="red">*</font>標題</div>
+					<input type="text" style="width:90%" id="r-titl"/>
 				</td>
 				<td width="50"></td>
-				<td>聯絡方式<br>
-				<input type="text" style="width:90%"/>
+				<td><div style="text-align:left">聯絡方式</div>
+				<input type="text" style="width:90%" id="r-resp"/>
 				</td>
 			</tr>
 			<tr height="20"></tr>
-			<tr>
-				<td colspan="3">詳細內容<br><textarea style="width:90%;height:100px;border:solid 1px"></textarea></td>
+			<tr align="center">
+				<td colspan="3"><div style="text-align:left">詳細內容</div><textarea style="width:95%;height:100px;border:solid 1px" id="r-cont"></textarea></td>
 			</tr>
 			<tr height="10"></tr>
-			<tr><td colspan="3"><div style="float:right;width:80px;height:40px;background-color:#758f9b;color:white;line-height:40px;text-align:center">送出</div></td></tr>
+			<tr><td colspan="3"><div style="float:right;width:80px;height:40px;background-color:#758f9b;color:white;line-height:40px;text-align:center" onclick="Rpt(this)">送出</div></td></tr>
 			<tr height="20"></tr>
 		</table>
+	</div>
+	<div id="cAbout" class="field">
+		<h1><font class="En">About </font>/<font class="Ch"> 關於我們</font></h1>
+		<p><h2>開發動機</h2>	
+		　　棋類遊戲因電玩遊戲而趨向沒落，我們藉9x9的棋盤設計多種遊戲規則，結合成一個新的棋盤遊戲平台，希望藉由這個迥然不同的棋盤遊戲平台再一次喚起大眾對於棋盤遊戲的熱忱。
+		</p>
+		<p><h2>採用技術</h2>
+		　　主要採用HTML5並使用github pages服務，線上對戰則應用了google firebase作為資料庫來達成，基本上只需要了解javascript，就可以做出一個有資料庫的小平台。
+		</p>
+		<div style="height:100px"></div>
 	</div>
 </article>
 <footer>
@@ -351,7 +361,6 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 </footer>
 </div>
 </body>
-<div id="fb-root"></div>
 <script>
 var link=$("#lLst div a,.page div a"),show="",page=$(".field,.field2")
 function Ldr(){var page=["Start","Online","Rules","About","Report"],bd=""
@@ -364,8 +373,6 @@ function Ldr(){var page=["Start","Online","Rules","About","Report"],bd=""
 		if(link[i].parentNode.getAttribute("data-btchs"))link[i].href="btchs.html?mode="+link[i].innerHTML
 		link[i].parentNode.style.transition="all 1s"
 	}
-	$("#cForm input").focus(function(){this.style.borderBottom='3px solid #758f9b'})
-	$("#cForm input").blur(function(){this.style.borderBottom='1px solid #758f9b'})
 	Rsz();Hid()
 }
 function Lst(d,v){Hid(d,'Main')
@@ -428,13 +435,16 @@ function Mnu(v){
 		Id("LstB").style.backgroundImage="url(Pics/Close.gif)"
 	}
 }
-function Rpt(btn){var v=[Id("RTt").value,Id("RCt").value]
-	if(v[0].length<4)return alert("標題不足四字");btn.style.backgroundColor="lightgray"
+function Rpt(btn){
+	if(Id("r-titl").value.length<4)return alert("標題不足四字");btn.style.backgroundColor="#48585f"
 	try{$.get(
-		"https://script.google.com/macros/s/AKfycbw5re7dDJCy7qGTdjaPFWfunwGoI_1LSOlWZ9APPahlf9pndBMv/exec",
-		{Typ:"P",title:"BY9.1:"+v[0],content:v[1]},
-		function(r){alert(r);Id("RTt").value="";Id("RCt").value="";btn.style.backgroundColor=""}
-	)}catch(e){alert("傳送失敗，將繼續重試");Rpt()}
+		"https://script.google.com/macros/s/AKfycbxcssPqU7igBz6mukhS9zB_ipxg1IVsK86JuSWtKZUI1FTnAbg/exec",
+		{titl:Id("r-titl").value,resp:Id("r-resp").value,cont:Id("r-cont").value},
+		function(r){
+			alert(r);Id("r-titl").value="";Id("r-cont").value="";
+			btn.style.backgroundColor="#758f9b"
+		}
+	)}catch(e){alert("傳送失敗，將繼續重試")}
 }
 </script>
 </html>
