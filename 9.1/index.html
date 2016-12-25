@@ -91,7 +91,7 @@ article div h1 .En{font-size:50px}
 article div h1 .Ch{letter-spacing:3px}
 article div div{height:auto;width:auto;float:none}
 #cImag{background-image:url(Pics/chsbd.png);background-repeat:no-repeat;background-position:center center;}
-.field,.field2{overflow:auto;margin-top:50px;font-size:20px;letter-spacing:2px;line-height:1.2}
+.field,.field2{overflow:auto;margin-top:20px;font-size:20px;letter-spacing:2px;line-height:1.2}
 #pStart{background-image:url(Pics/Start.gif)}
 #pStart:hover{background-image:url(Pics/Starth.gif)}
 #pAbout{background-image:url(Pics/About.gif)}
@@ -244,8 +244,8 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 				<div data-rules="Main" onclick="Lst('rules','OSub')" class="pTab"><a>Other</a></div>
 				<div data-rules="OSub"><a>Gomoku</a></div>
 				<div data-rules="OSub"><a>GoLike</a></div>
-			<div id="pAbout" class="pPage">關於我們</div>
-			<div id="pReport" class="pPage">回報問題</div>
+			<div id="pAbout" class="pPage" onclick="Mnu();Ptg('#cAbout')">關於我們</div>
+			<div id="pReport" class="pPage" onclick="Mnu();Ptg('#cReport')">回報問題</div>
 		</div>
 	</div>
 </header>
@@ -337,6 +337,11 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 			<tr><td colspan="3"><div style="float:right;width:80px;height:40px;background-color:#758f9b;color:white;line-height:40px;text-align:center" onclick="Rpt(this)">送出</div></td></tr>
 			<tr height="20"></tr>
 		</table>
+		<table align="center" class="Mobile" style="100%">
+			<tr><td><input type="text" style="width:100%" id="mr-titl" placeholder="標題"/></td></tr>
+			<tr><td><input type="text" style="width:100%" id="mr-resp" placeholder="聯絡方式"/></td></tr>
+			<tr><td><textarea style="width:95%;height:100px;border:solid 1px" id="r-cont" placeholder="詳細內容"></textarea></td></tr>
+		</table>
 	</div>
 	<div id="cAbout" class="field">
 		<h1><font class="En">About </font>/<font class="Ch"> 關於我們</font></h1>
@@ -355,8 +360,8 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 	<a id="tw" class="Social" href="http://twitter.com/SquareChessGame"></a>
 	<a id="fb" class="Social" href="http://fb.me/SquareChessGame"></a>
 		<div id="List" class="Computer"><hr>
-		<div class="page"><div class="tab" id="Report">回報問題</div></div><hr>
-		<div class="page"><div class="tab" id="About">關於我們</div></div>
+		<div class="page" onclick="Ptg('#cReport')"><div class="tab" id="Report">回報問題</div></div><hr>
+		<div class="page" onclick="Ptg('#cAbout')"><div class="tab" id="About">關於我們</div></div>
 	</div>
 </footer>
 </div>
@@ -371,6 +376,7 @@ function Ldr(){var page=["Start","Online","Rules","About","Report"],bd=""
 	for(var i=0;i<link.length;i++){
 		if(link[i].parentNode.getAttribute("data-chess"))link[i].href="chess.html?mode="+link[i].innerHTML
 		if(link[i].parentNode.getAttribute("data-btchs"))link[i].href="btchs.html?mode="+link[i].innerHTML
+		if(link[i].parentNode.getAttribute("data-rules"))link[i].href="rules.html?mode="+link[i].innerHTML
 		link[i].parentNode.style.transition="all 1s"
 	}
 	Rsz();Hid()
@@ -408,6 +414,9 @@ function Rsz(){
 		$(".field,.field2").css("width","100%")
 		$("#cImag").css("background-size","85%")
 		$("#repa").css("margin-left","")
+		$("table.Mobile").css("width","100%")
+		$("table.Mobile").css("width",$("table.Mobile textarea").width())
+		$("table.Mobile input").css("width",$("table.Mobile textarea").width())
 	}else{
 		$("article").css("margin-left","10%")
 		$("article").css("margin-right","10%")
@@ -435,16 +444,19 @@ function Mnu(v){
 		Id("LstB").style.backgroundImage="url(Pics/Close.gif)"
 	}
 }
-function Rpt(btn){
-	if(Id("r-titl").value.length<4)return alert("標題不足四字");btn.style.backgroundColor="#48585f"
+function Rpt(btn){var t="r-";if($(window).width<830)t="mr-"
+	if(Id(t+"titl").value.length<4)return alert("標題不足四字");btn.style.backgroundColor="#48585f"
 	try{$.get(
 		"https://script.google.com/macros/s/AKfycbxcssPqU7igBz6mukhS9zB_ipxg1IVsK86JuSWtKZUI1FTnAbg/exec",
-		{titl:Id("r-titl").value,resp:Id("r-resp").value,cont:Id("r-cont").value},
+		{titl:Id(t+"titl").value,resp:Id(t+"resp").value,cont:Id(t+"cont").value},
 		function(r){
-			alert(r);Id("r-titl").value="";Id("r-cont").value="";
+			alert(r);Id(t+"titl").value="";Id(t+"cont").value="";
 			btn.style.backgroundColor="#758f9b"
 		}
 	)}catch(e){alert("傳送失敗，將繼續重試")}
+}
+function Ptg(t){
+	$("article").animate({scrollTop:$(t).offset().top-40+$("article")[0].scrollTop},1000)
 }
 </script>
 </html>

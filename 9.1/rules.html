@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="Pics/Icon.png" rel="shortcut icon">
+<title>Square Chess Game</title>
+<script src="Impo/jquery.min.js"></script>
+<script src="Impo/jquery.mobile-1.4.5.min.js"></script>
+<script src="Core/Prun.js"></script>
+<script src="Core/Rule.js"></script>
+<style>
+@import "Core/Face.css";article{background-color:white;width:100%;margin-top:40px}
+#bk{
+	background-image:url(Pics/Back.gif);
+	background-repeat:no-repeat;
+	background-position:10px center;float:left;
+	background-size:20px 20px;font-size:16px;
+	width:120px;height:40px;text-align:center
+}
+</style>
+</head>
+<body onload="Ldr()" onresize="Rsz()">
+	<header onclick="location='index.html'">
+		<div id="bk">回首頁</div>
+	</header>
+	<article style="color:#758f9b">
+		<div style="margin-left:20px">
+			<h1 style="line-height:2"></h1>
+			<ul>
+			</ul>
+		</div>
+	</article>
+</body>
+<script>
+function Ldr(){
+	if(!location.search||location.search.substr(0,6)!="?mode="){
+		alert("要求格式錯誤");location="index.html"
+	}var mdN=location.search.replace("?mode=","")
+	while(Instr(mdN,"%3A")>-1)mdN=mdN.replace("%3A",":")
+	doc.title=mdN;var MdQ=mdN.replace("Square.","").split(":")
+	$("article h1")[0].innerHTML=doc.title
+	var rls=[];Rsz()
+	for(var i=0;i<MdQ.length;i++)if(Rls[MdQ[i]])rls=Rls[MdQ[i]](rls);Rls.System(rls)
+	for(var i=0;i<rls.length;i++)$("article ul")[0].innerHTML+="<li>"+rls[i]+"</li>"
+}
+function Rsz(){
+	$("article").css("height",($(window).height()-40)+"px")
+	
+}
+</script>
+</html>
