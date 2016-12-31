@@ -26,8 +26,7 @@ Shl.Brd.Adapter=function(){}
 Shl.Adn.Adapter=function(){}
 Shl.Ckr.Adapter=function(crd){return Ara.Ckr("Adapter",crd)}
 Shl.Opt.Adapter=function(){
-	Id("OptionMenu").innerHTML+="Adapter設定:<br>"
-	Ara.Opt("Adapter")
+	OpS("","1","Adapter設定");Ara.Opt("Adapter")
 }
 Shl.OpK.Adapter=function(){
 	Ara.OpK("Adapter")

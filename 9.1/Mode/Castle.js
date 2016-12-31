@@ -20,7 +20,7 @@ Shl.Brd.Castle=function(){}
 Shl.Adn.Castle=function(){Qre(["D2","G1"],"Sym",0);Qre(["C9","F8"],"Sym",1);Tn+=4}
 Shl.Ckr.Castle=function(crd){return 1}
 Shl.Opt.Castle=function(){
-	Id("OptionMenu").innerHTML+="Castle設定:<br>"
+	OpS("","1","Castle設定");OpS("","2","輔助標記")
 	OpS("Castle-Ara","k","雙方區域",Dft.Castle.Ara)
 }
 Shl.OpK.Castle=function(){

@@ -10,7 +10,7 @@ Shl.Ckr.Anomal=function(crd){
 	return Shl.Ara.Anomal[Sqr.Sym[(Tn+1)%2]].All.indexOf(crd)<0
 }
 Shl.Opt.Anomal=function(){
-	Id("OptionMenu").innerHTML+="Anomal設定:<br>";Ara.Opt("Anomal")
+	OpS("","1","Anomal設定");Ara.Opt("Anomal")
 }
 Shl.OpK.Anomal=function(){
 	Ara.OpK("Anomal");if(Shl.Ara.Anomal.QJd==2)Shl.Ara.Anomal.QJd=3;Dft.System.Qsr=0

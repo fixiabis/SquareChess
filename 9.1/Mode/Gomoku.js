@@ -23,7 +23,7 @@ Shl.Brd.Gomoku=function(){}
 Shl.Adn.Gomoku=function(){if(Dft.Gomoku.Pro){Qre("E5","Sym",0);Tn=1}}
 Shl.Ckr.Gomoku=function(crd){if(Tn==2&&Dft.Gomoku.Pro&&Sel("C3:G7").indexOf(crd)>-1)return 0;return 1}
 Shl.Opt.Gomoku=function(){
-	Id("OptionMenu").innerHTML+="Gomoku設定:<br>"
+	OpS("","1","Gomoku設定");OpS("","2","輔助標記")
 	OpS("Gomoku-Ara-0/Gomoku-Ara","r","我方可行區域",Dft.Gomoku.Ara==0)
 	OpS("Gomoku-Ara-1/Gomoku-Ara","r","對方可行區域",Dft.Gomoku.Ara==1)
 	OpS("Gomoku-Ara-2/Gomoku-Ara","r","隱藏可行區域",Dft.Gomoku.Ara==2)

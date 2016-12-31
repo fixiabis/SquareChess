@@ -15,8 +15,7 @@ Shl.Brd.Divider=function(){}
 Shl.Adn.Divider=function(){}
 Shl.Ckr.Divider=function(crd){return Ara.Ckr("Divider",crd)}
 Shl.Opt.Divider=function(){
-	Id("OptionMenu").innerHTML+="Divider設定:<br>"
-	Ara.Opt("Divider")
+	OpS("","1","Divider設定");Ara.Opt("Divider")
 }
 Shl.OpK.Divider=function(){
 	Ara.OpK("Divider")

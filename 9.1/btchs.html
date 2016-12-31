@@ -21,15 +21,6 @@
 <script src="Core/Gear.js"></script>
 <script src="Core/Rule.js"></script>
 <style>@import "Core/Face.css";#menu{position:fixed}</style>
-<script>
-var config = {
-    apiKey: "AIzaSyAkW9z_UKLVGFhgEndtzxiQqh2b8I-Z2eA",
-    authDomain: "square-chess-game-91.firebaseapp.com",
-    databaseURL: "https://square-chess-game-91.firebaseio.com",
-    storageBucket: "square-chess-game-91.appspot.com",
-    messagingSenderId: "757542166819"
-};firebase.initializeApp(config)
-</script>
 </head>
 <body onload="Ldr()" onresize="Rsz()" onmouseover="MsO(event)" onkeydown="KDw(event)" onkeyup="KUp(event)" oncontextmenu="event.preventDefault()" onscroll="Rsz()">
 	<div id="NightMode" style="opacity:1">
@@ -42,31 +33,32 @@ var config = {
 					</div>
 					<ul></ul>
 				</div>
-				<table id="Board" style="background:#758f9b;border:none;margin:auto" cellpadding="0" cellspacing="0"></table>
-				<table id="QCtrl" style="border:none;display:none" cellpadding="0" cellspacing="0">
+				<table id="Board" cellpadding="0" cellspacing="0"></table>
+				<table id="QCtrl" style="display:none" cellpadding="0" cellspacing="0">
 					<tr><td class="bt" onclick="Ctl('Gvp')" oncontextmenu="Opt()" id="Gvp">GiveUp</td></tr>
 				</table>
+				<div id="menu" style="left:0px;top:40px;width:0px;height:180px;overflow:hidden;z-index:2">
+					<div class="list" onclick="Ctl('Gvp')" title="提出認輸">GiveUp</div>
+					<div class="list" onclick="Opt()" title="功能選單">Addons</div>
+				</div>
 			</div>
-			<div id="menu" style="left:0px;top:40px;width:0px;height:180px;overflow:hidden">
-				<div class="list" onclick="Ctl('Gvp')">GiveUp</div>
-				<div class="list" onclick="Ctl('Hom')">Home</div>
-				<div class="list" onclick="Opt()">Addons</div>
-			</div>
-			<div id="Message" style="position:fixed;bottom:0px;right:0px;width:250px;height:25px;overflow:hidden">
+			<div id="Recrd"></div>
+			<div id="Message" style="position:fixed;bottom:0px;right:0px;width:250px;height:25px;overflow:hidden;z-index:2">
 				<div style="background-color:#758f9b;height:25px;line-height:25px;position:absolute;top:0px;width:100%;left:0px;font-weight:bold;z-index:3" onclick="Ctl('MSw')">即時訊息</div>
 				<div id="msgc"></div>
-				<input type="text" style="position:absolute;bottom:0px;right:0px;width:98%;height:14px" id="msgs"/>
+				<input type="text" id="msgs"/>
 				<div id="send" onclick="Ctl('Msg')">送出</div>
 			</div>
 			<div id="Setting" style="height:0px">
-				<div id="OptionMenu"></div>
+				<div id="OptionMenu"><div style="margin-left:10px"></div></div>
 				<div id="Opc"><div class="Opbt" onclick="OpK()">OK</div><div class="Opbt" onclick="OpK(1)">Cancel</div></div>
-				<div id="msgr" class="join" style="position:absolute;top: 28px;left: 150px;height:30px;width:60px;opacity:0">
+				<div id="msgr" class="join" style="position:absolute;top:32px;left: 160px;height:30px;width:60px;opacity:0">
 				<div class="fb-send" data-layout="button_count"></div>
 				</div>
 				<div id="QR" class="join" style="width:150px;height:150px;position:absolute;top:0px;right:0px"></div>
 			</div>
 		</div>
+		<div id="Rsw" onclick="Ctl('RSw',1)" title="顯示規則"></div>
 	</div>
 </body>
 <div id="fb-root"></div>

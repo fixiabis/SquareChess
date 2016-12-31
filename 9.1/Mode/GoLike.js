@@ -16,7 +16,7 @@ Shl.Brd.GoLike=function(){}
 Shl.Adn.GoLike=function(){}
 Shl.Ckr.GoLike=function(){return 1}
 Shl.Opt.GoLike=function(){
-	Id("OptionMenu").innerHTML+="GoLike設定:<br>"
+	OpS("","1","GoLike設定")
 	OpS("GoLike-MJg","k","同符號包圍",Dft.GoLike.MJg)
 }
 Shl.OpK.GoLike=function(){

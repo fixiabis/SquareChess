@@ -10,9 +10,8 @@ Shl.Ckr.Blocker=function(crd){
 	return Shl.Ara.Blocker[Sqr.Sym[(Tn+1)%2]].All.indexOf(crd)<0
 }
 Shl.Opt.Blocker=function(){
-	Id("OptionMenu").innerHTML+="Blocker設定:<br>"
-	if(!Dft.System.Oln){
-		Id("OptionMenu").innerHTML+="區域判定:<br>"
+	OpS("","1","Blocker設定")
+	if(!Dft.System.Oln){OpS("","2","區域判定")
 		OpS("Blocker-AJd-0/Blocker-AJd","r","優先",Dft.Blocker.AJd==0)
 		OpS("Blocker-AJd-1/Blocker-AJd","r","占據",Dft.Blocker.AJd==1)
 		OpS("Blocker-AJd-2/Blocker-AJd","r","共有",Dft.Blocker.AJd==2)

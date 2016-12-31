@@ -17,7 +17,7 @@ Shl.Brd.Attack=function(){}
 Shl.Adn.Attack=function(){Qre("A1","Sym",0);Qre("I9","Sym",1);Tn+=2}
 Shl.Ckr.Attack=function(crd){return 1}
 Shl.Opt.Attack=function(){
-	Id("OptionMenu").innerHTML+="Attack設定:<br>"
+	OpS("","1","Attack設定");OpS("","2","輔助標記")
 	OpS("Attack-Ara","k","雙方區域",Dft.Attack.Ara)
 }
 Shl.OpK.Attack=function(){

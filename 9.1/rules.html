@@ -14,11 +14,13 @@
 @import "Core/Face.css";article{background-color:white;width:100%;margin-top:40px}
 #bk{
 	background-image:url(Pics/Back.gif);
-	background-repeat:no-repeat;
+	background-repeat:no-repeat;cursor:pointer;
 	background-position:10px center;float:left;
 	background-size:20px 20px;font-size:16px;
-	width:120px;height:40px;text-align:center
+	width:120px;height:40px;text-align:center;line-height:40px;
 }
+article div{margin:0px 20px;float:left}
+article{overflow:auto;user-select:text;-ms-user-select:text;-moz-user-select:text;-webkit-user-select:text;}
 </style>
 </head>
 <body onload="Ldr()" onresize="Rsz()">
@@ -26,10 +28,14 @@
 		<div id="bk">回首頁</div>
 	</header>
 	<article style="color:#758f9b">
-		<div style="margin-left:20px">
+		<div>
 			<h1 style="line-height:2"></h1>
 			<ul>
 			</ul>
+		</div>
+		<div>
+			<table id="Board" style="background:gray;border:none" cellpadding="0" cellspacing="0">
+			</table>
 		</div>
 	</article>
 </body>
@@ -41,13 +47,28 @@ function Ldr(){
 	while(Instr(mdN,"%3A")>-1)mdN=mdN.replace("%3A",":")
 	doc.title=mdN;var MdQ=mdN.replace("Square.","").split(":")
 	$("article h1")[0].innerHTML=doc.title
-	var rls=[];Rsz()
+	var rls=[],bd=""
 	for(var i=0;i<MdQ.length;i++)if(Rls[MdQ[i]])rls=Rls[MdQ[i]](rls);Rls.System(rls)
 	for(var i=0;i<rls.length;i++)$("article ul")[0].innerHTML+="<li>"+rls[i]+"</li>"
+	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}
+	Id("Board").innerHTML=bd;Rsz();Rls.Brd.Cln();$("article ul")[0].innerHTML+="<li style='color:blue'>點按紅色文字獲得圖解</li>"
+	$("li").click(function(){
+		if(Rls.Scr[0].indexOf(this.innerHTML)>-1){
+			Rls.Scr[1][Rls.Scr[0].indexOf(this.innerHTML)]();$("article").animate({scrollTop:$("article")[0].scrollHeight})
+		}
+	})
+	for(var i=0;i<$("li").length;i++){
+		if(Rls.Scr[0].indexOf($("li")[i].innerHTML)>-1){$("li")[i].style.color="red";$("li")[i].style.cursor="pointer"}
+	}
 }
 function Rsz(){
 	$("article").css("height",($(window).height()-40)+"px")
-	
+	if($(window).width()<830)$("article div").css("width",($(window).width()-40)+"px")
+	else $("article div").css("width",($(window).width()/2-40)+"px");
+	var sz=Math.floor($("article div").width()/9);if(sz>Math.floor($("article").height()/9))sz=Math.floor($("article").height()/9)
+	$(".bt").css("width",sz+"px")
+	$(".bt").css("height",sz+"px")
+	$(".bt").css("font-size",(sz-15)+"px")
 }
 </script>
 </html>

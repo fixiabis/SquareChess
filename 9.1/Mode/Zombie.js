@@ -13,10 +13,10 @@ Shl.Brd.Zombie=function(){}
 Shl.Adn.Zombie=function(){}
 Shl.Ckr.Zombie=function(crd){return 1}
 Shl.Opt.Zombie=function(){
-	Id("OptionMenu").innerHTML+="Zombie設定:<br>"
+	OpS("","1","Zombie設定")
 	if(!Dft.System.Oln)OpS("Zombie-ToZ","t","感染回合:",Dft.Zombie.ToZ)
 }
 Shl.OpK.Zombie=function(){
-	if(!Dft.System.Oln&&Val(Id("Zombie-ToZ").value)!=NaN)Dft.Zombie.ToZ=Val(Id("Zombie-ToZ").value)
+	if(!Dft.System.Oln&&Val(Id("Zombie-ToZ").value)!=NaN&&Id("Zombie-ToZ").value!="")Dft.Zombie.ToZ=Val(Id("Zombie-ToZ").value)
 	if(Dft.Zombie.ToZ<10)Dft.Zombie.ToZ=10
 }

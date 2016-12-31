@@ -24,7 +24,7 @@ Shl.Brd.Defend=function(){}
 Shl.Adn.Defend=function(){}
 Shl.Ckr.Defend=function(crd){return 1}
 Shl.Opt.Defend=function(){
-	Id("OptionMenu").innerHTML+="Defend設定:<br>"
+	OpS("","1","Defend設定");OpS("","2","輔助標記")
 	OpS("Defend-Ara","k","分割區塊",Dft.Defend.Ara)
 }
 Shl.OpK.Defend=function(){

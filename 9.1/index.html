@@ -7,8 +7,9 @@
 <link href="Pics/Icon.png" rel="shortcut icon">
 <title>Square Chess Game</title>
 <script src="Impo/jquery.min.js"></script>
+<script src="Impo/firebase.js"></script>
+<script src="Core/Gear.js"></script>
 <script src="Core/Prun.js"></script>
-<script src="Core/Rule.js"></script>
 <style>@import "Core/Face.css";
 footer{
 	left:0px;
@@ -35,6 +36,7 @@ footer{
 	background-repeat:no-repeat;
 	background-position:7.5px 7.5px;
 	background-image:url(Pics/Logo.gif);
+	cursor:pointer;
 }
 #Menu,#List{
 	height:40px;
@@ -66,7 +68,7 @@ footer{
 	transition:background 1s;
 }
 .page div:hover,#lLst div div:hover{color:#48585f}
-.page,.pPage{width:140px;float:right;font-weight:bold;overflow:visible}
+.page,.pPage{width:140px;float:right;font-weight:bold;overflow:visible;cursor:pointer}
 .pPage{width:100%}
 #lLst div div,.page div{
 	font-weight:bold;line-height:40px
@@ -82,13 +84,14 @@ footer{
 }
 article{
 	user-select:text;-ms-user-select:text;-moz-user-select:text;-webkit-user-select:text;
-	color:#48585f;font-family:CENTAUR;overflow:auto;
+	color:#48585f;font-family:Centaur;overflow:auto;
 }
 article::-webkit-scrollbar{width:0px;height:0px}
 article div{float:left;height:auto;width:100%}
-article div h1{font-size:20px;font-weight:normal}
-article div h1 .En{font-size:50px}
-article div h1 .Ch{letter-spacing:3px}
+h1{font-size:20px;font-weight:normal}
+h2{font-size:25px;font-weight:normal}
+h1 .En{font-size:50px}
+h1 .Ch{letter-spacing:3px}
 article div div{height:auto;width:auto;float:none}
 #cImag{background-image:url(Pics/chsbd.png);background-repeat:no-repeat;background-position:center center;}
 .field,.field2{overflow:auto;margin-top:20px;font-size:20px;letter-spacing:2px;line-height:1.2}
@@ -125,67 +128,86 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 .conx{
 	position:absolute;top:0px;left:55px;border:none;height:50px;line-height:50px;width:140px
 }
+p a{text-decoration:underline}
 </style>
 </head>
-<body onresize="Rsz()" onload="Ldr()" oncontextmenu="event.preventDefault()">
+<body onresize="Rsz()" onload="Ldr()">
 <div id="NightMode" style="opacity:1">
 <header>
-	<div id="Home" onclick="Pge('Home')">Square Chess Game</div>
+	<div id="Home" onclick="$('article').animate({scrollTop:0},1000);Mnu(1)"></div>
 	<div id="Menu" class="Computer">
 		<div class="page">
 			<div class="tab" id="Rules" onclick="Lst('rules','Main')">遊戲說明</div>
-				<div data-rules="Main" onmouseover="Lst('rules','CSub')" class="tab"><a>Square.Connect</a></div>
+				<div data-rules="Main" onclick="Lst('rules','CSub')" class="tab"><a>Connect系列</a></div>
+				<div data-rules="CSub"><a>Square.Connect</a></div>
 				<div data-rules="CSub"><a>Connect:Attack</a></div>
 				<div data-rules="CSub"><a>Connect:Defend</a></div>
 				<div data-rules="CSub"><a>Connect:Scheme</a></div>
-				<div data-rules="Main" onmouseover="Lst('rules','BSub')" class="tab"><a>Square.Blocker</a></div>
+				<div data-rules="Main" onclick="Lst('rules','BSub')" class="tab"><a>Blocker系列</a></div>
+				<div data-rules="BSub"><a>Square.Blocker</a></div>
 				<div data-rules="BSub"><a>Blocker:Forbid</a></div>
-				<div data-rules="Main" onmouseover="Lst('rules','DSub')" class="tab"><a>Square.Divider</a></div>
+				<div data-rules="BSub"><a>Blocker:Mirror</a></div>
+				<div data-rules="Main" onclick="Lst('rules','DSub')" class="tab"><a>Divider系列</a></div>
+				<div data-rules="DSub"><a>Square.Divider</a></div>
 				<div data-rules="DSub"><a>Divider:Zombie</a></div>
 				<div data-rules="DSub"><a>Divider:Follow</a></div>
 				<div data-rules="DSub"><a>Divider:Anomal</a></div>
-				<div data-rules="Main" onmouseover="Lst('rules','ASub')" class="tab"><a>Square.Adapter</a></div>
+				<div data-rules="Main" onclick="Lst('rules','ASub')" class="tab"><a>Adapter系列</a></div>
+				<div data-rules="ASub"><a>Square.Adapter</a></div>
 				<div data-rules="ASub"><a>Adapter:Invert</a></div>
 				<div data-rules="ASub"><a>Adapter:Castle</a></div>
-				<div data-rules="Main" onmouseover="Lst('rules','OSub')" class="tab"><a>Other</a></div>
+				<div data-rules="ASub"><a>Adapter:ByLine</a></div>
+				<div data-rules="Main" onclick="Lst('rules','OSub')" class="tab"><a>其他系列</a></div>
 				<div data-rules="OSub"><a>Gomoku</a></div>
 				<div data-rules="OSub"><a>GoLike</a></div>
 		</div><hr>
 		<div class="page">
 			<div class="tab" id="Online" onclick="Lst('btchs','Main')">線上對戰</div>
-				<div data-btchs="Main" onmouseover="Lst('btchs','CSub')" class="tab"><a>Square.Connect</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','CSub')" class="tab"><a>Connect系列</a></div>
+				<div data-btchs="CSub"><a>Square.Connect</a></div>
 				<div data-btchs="CSub"><a>Connect:Attack</a></div>
 				<div data-btchs="CSub"><a>Connect:Defend</a></div>
 				<div data-btchs="CSub"><a>Connect:Scheme</a></div>
-				<div data-btchs="Main" onmouseover="Lst('btchs','BSub')" class="tab"><a>Square.Blocker</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','BSub')" class="tab"><a>Blocker系列</a></div>
+				<div data-btchs="BSub"><a>Square.Blocker</a></div>
 				<div data-btchs="BSub"><a>Blocker:Forbid</a></div>
-				<div data-btchs="Main" onmouseover="Lst('btchs','DSub')" class="tab"><a>Square.Divider</a></div>
+				<div data-btchs="BSub"><a>Blocker:Mirror</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','DSub')" class="tab"><a>Divider系列</a></div>
+				<div data-btchs="DSub"><a>Square.Divider</a></div>
 				<div data-btchs="DSub"><a>Divider:Zombie</a></div>
 				<div data-btchs="DSub"><a>Divider:Follow</a></div>
 				<div data-btchs="DSub"><a>Divider:Anomal</a></div>
-				<div data-btchs="Main" onmouseover="Lst('btchs','ASub')" class="tab"><a>Square.Adapter</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','ASub')" class="tab"><a>Adapter系列</a></div>
+				<div data-btchs="ASub"><a>Square.Adapter</a></div>
 				<div data-btchs="ASub"><a>Adapter:Invert</a></div>
 				<div data-btchs="ASub"><a>Adapter:Castle</a></div>
-				<div data-btchs="Main" onmouseover="Lst('btchs','OSub')" class="tab"><a>Other</a></div>
+				<div data-btchs="ASub"><a>Adapter:ByLine</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','OSub')" class="tab"><a>其他系列</a></div>
 				<div data-btchs="OSub"><a>Gomoku</a></div>
 				<div data-btchs="OSub"><a>GoLike</a></div>
 		</div><hr>
 		<div class="page">
 			<div class="tab" id="Start" onclick="Lst('chess','Main')">開始遊戲</div>
-				<div data-chess="Main" onmouseover="Lst('chess','CSub')" class="tab"><a>Square.Connect</a></div>
+				<div data-chess="Main" onclick="Lst('chess','CSub')" class="tab"><a>Connect系列</a></div>
+				<div data-chess="CSub"><a>Square.Connect</a></div>
 				<div data-chess="CSub"><a>Connect:Attack</a></div>
 				<div data-chess="CSub"><a>Connect:Defend</a></div>
 				<div data-chess="CSub"><a>Connect:Scheme</a></div>
-				<div data-chess="Main" onmouseover="Lst('chess','BSub')" class="tab"><a>Square.Blocker</a></div>
+				<div data-chess="Main" onclick="Lst('chess','BSub')" class="tab"><a>Blocker系列</a></div>
+				<div data-chess="BSub"><a>Square.Blocker</a></div>
 				<div data-chess="BSub"><a>Blocker:Forbid</a></div>
-				<div data-chess="Main" onmouseover="Lst('chess','DSub')" class="tab"><a>Square.Divider</a></div>
+				<div data-chess="BSub"><a>Blocker:Mirror</a></div>
+				<div data-chess="Main" onclick="Lst('chess','DSub')" class="tab"><a>Divider系列</a></div>
+				<div data-chess="DSub"><a>Square.Divider</a></div>
 				<div data-chess="DSub"><a>Divider:Zombie</a></div>
 				<div data-chess="DSub"><a>Divider:Follow</a></div>
 				<div data-chess="DSub"><a>Divider:Anomal</a></div>
-				<div data-chess="Main" onmouseover="Lst('chess','ASub')" class="tab"><a>Square.Adapter</a></div>
+				<div data-chess="Main" onclick="Lst('chess','ASub')" class="tab"><a>Adapter系列</a></div>
+				<div data-chess="ASub"><a>Square.Adapter</a></div>
 				<div data-chess="ASub"><a>Adapter:Invert</a></div>
 				<div data-chess="ASub"><a>Adapter:Castle</a></div>
-				<div data-chess="Main" onmouseover="Lst('chess','OSub')" class="tab"><a>Other</a></div>
+				<div data-chess="ASub"><a>Adapter:ByLine</a></div>
+				<div data-chess="Main" onclick="Lst('chess','OSub')" class="tab"><a>其他系列</a></div>
 				<div data-chess="OSub"><a>Gomoku</a></div>
 				<div data-chess="OSub"><a>GoLike</a></div>
 		</div>
@@ -194,54 +216,72 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 	<div id="lLst" class="Mobile" style="width:100%;font-size:16px;float:right;text-align:left">
 		<div style="width:80%;margin-left:10%">
 			<div id="pStart" onclick="Lst('chess','Main')" class="pPage">開始遊戲</div>
-				<div data-chess="Main" onclick="Lst('chess','CSub')" class="pTab"><a>Square.Connect</a></div>
+				<div data-chess="Main" onclick="Lst('chess','CSub')" class="pTab"><a>Connect系列</a></div>
+				<div data-chess="CSub"><a>Square.Connect</a></div>
 				<div data-chess="CSub"><a>Connect:Attack</a></div>
 				<div data-chess="CSub"><a>Connect:Defend</a></div>
 				<div data-chess="CSub"><a>Connect:Scheme</a></div>
-				<div data-chess="Main" onclick="Lst('chess','BSub')" class="pTab"><a>Square.Blocker</a></div>
+				<div data-chess="Main" onclick="Lst('chess','BSub')" class="pTab"><a>Blocker系列</a></div>
+				<div data-chess="BSub"><a>Square.Blocker</a></div>
 				<div data-chess="BSub"><a>Blocker:Forbid</a></div>
-				<div data-chess="Main" onclick="Lst('chess','DSub')" class="pTab"><a>Square.Divider</a></div>
+				<div data-chess="BSub"><a>Blocker:Mirror</a></div>
+				<div data-chess="Main" onclick="Lst('chess','DSub')" class="pTab"><a>Divider系列</a></div>
+				<div data-chess="DSub"><a>Square.Divider</a></div>
 				<div data-chess="DSub"><a>Divider:Zombie</a></div>
 				<div data-chess="DSub"><a>Divider:Follow</a></div>
 				<div data-chess="DSub"><a>Divider:Anomal</a></div>
-				<div data-chess="Main" onclick="Lst('chess','ASub')" class="pTab"><a>Square.Adapter</a></div>
+				<div data-chess="Main" onclick="Lst('chess','ASub')" class="pTab"><a>Adapter系列</a></div>
+				<div data-chess="ASub"><a>Square.Adapter</a></div>
 				<div data-chess="ASub"><a>Adapter:Invert</a></div>
 				<div data-chess="ASub"><a>Adapter:Castle</a></div>
-				<div data-chess="Main" onclick="Lst('chess','OSub')" class="pTab"><a>Other</a></div>
+				<div data-chess="ASub"><a>Adapter:ByLine</a></div>
+				<div data-chess="Main" onclick="Lst('chess','OSub')" class="pTab"><a>其他系列</a></div>
 				<div data-chess="OSub"><a>Gomoku</a></div>
 				<div data-chess="OSub"><a>GoLike</a></div>
 			<div id="pOnline" onclick="Lst('btchs','Main')" class="pPage">線上對戰</div>
-				<div data-btchs="Main" onclick="Lst('btchs','CSub')" class="pTab"><a>Square.Connect</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','CSub')" class="pTab"><a>Connect系列</a></div>
+				<div data-btchs="CSub"><a>Square.Connect</a></div>
 				<div data-btchs="CSub"><a>Connect:Attack</a></div>
 				<div data-btchs="CSub"><a>Connect:Defend</a></div>
 				<div data-btchs="CSub"><a>Connect:Scheme</a></div>
-				<div data-btchs="Main" onclick="Lst('btchs','BSub')" class="pTab"><a>Square.Blocker</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','BSub')" class="pTab"><a>Blocker系列</a></div>
+				<div data-btchs="BSub"><a>Square.Blocker</a></div>
 				<div data-btchs="BSub"><a>Blocker:Forbid</a></div>
-				<div data-btchs="Main" onclick="Lst('btchs','DSub')" class="pTab"><a>Square.Divider</a></div>
+				<div data-btchs="BSub"><a>Blocker:Mirror</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','DSub')" class="pTab"><a>Divider系列</a></div>
+				<div data-btchs="DSub"><a>Square.Divider</a></div>
 				<div data-btchs="DSub"><a>Divider:Zombie</a></div>
 				<div data-btchs="DSub"><a>Divider:Follow</a></div>
 				<div data-btchs="DSub"><a>Divider:Anomal</a></div>
-				<div data-btchs="Main" onclick="Lst('btchs','ASub')" class="pTab"><a>Square.Adapter</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','ASub')" class="pTab"><a>Adapter系列</a></div>
+				<div data-btchs="ASub"><a>Square.Adapter</a></div>
 				<div data-btchs="ASub"><a>Adapter:Invert</a></div>
 				<div data-btchs="ASub"><a>Adapter:Castle</a></div>
-				<div data-btchs="Main" onclick="Lst('btchs','OSub')" class="pTab"><a>Other</a></div>
+				<div data-btchs="ASub"><a>Adapter:ByLine</a></div>
+				<div data-btchs="Main" onclick="Lst('btchs','OSub')" class="pTab"><a>其他系列</a></div>
 				<div data-btchs="OSub"><a>Gomoku</a></div>
 				<div data-btchs="OSub"><a>GoLike</a></div>
 			<div id="pRules" onclick="Lst('rules','Main')" class="pPage">遊戲說明</div>
-				<div data-rules="Main" onclick="Lst('rules','CSub')" class="pTab"><a>Square.Connect</a></div>
+				<div data-rules="Main" onclick="Lst('rules','CSub')" class="pTab"><a>Connect系列</a></div>
+				<div data-rules="CSub"><a>Square.Connect</a></div>
 				<div data-rules="CSub"><a>Connect:Attack</a></div>
 				<div data-rules="CSub"><a>Connect:Defend</a></div>
 				<div data-rules="CSub"><a>Connect:Scheme</a></div>
-				<div data-rules="Main" onclick="Lst('rules','BSub')" class="pTab"><a>Square.Blocker</a></div>
+				<div data-rules="Main" onclick="Lst('rules','BSub')" class="pTab"><a>Blocker系列</a></div>
+				<div data-rules="BSub"><a>Square.Blocker</a></div>
 				<div data-rules="BSub"><a>Blocker:Forbid</a></div>
-				<div data-rules="Main" onclick="Lst('rules','DSub')" class="pTab"><a>Square.Divider</a></div>
+				<div data-rules="BSub"><a>Blocker:Mirror</a></div>
+				<div data-rules="Main" onclick="Lst('rules','DSub')" class="pTab"><a>Divider系列</a></div>
+				<div data-rules="DSub"><a>Square.Divider</a></div>
 				<div data-rules="DSub"><a>Divider:Zombie</a></div>
 				<div data-rules="DSub"><a>Divider:Follow</a></div>
 				<div data-rules="DSub"><a>Divider:Anomal</a></div>
-				<div data-rules="Main" onclick="Lst('rules','ASub')" class="pTab"><a>Square.Adapter</a></div>
+				<div data-rules="Main" onclick="Lst('rules','ASub')" class="pTab"><a>Adapter系列</a></div>
+				<div data-rules="ASub"><a>Square.Adapter</a></div>
 				<div data-rules="ASub"><a>Adapter:Invert</a></div>
 				<div data-rules="ASub"><a>Adapter:Castle</a></div>
-				<div data-rules="Main" onclick="Lst('rules','OSub')" class="pTab"><a>Other</a></div>
+				<div data-rules="ASub"><a>Adapter:ByLine</a></div>
+				<div data-rules="Main" onclick="Lst('rules','OSub')" class="pTab"><a>其他系列</a></div>
 				<div data-rules="OSub"><a>Gomoku</a></div>
 				<div data-rules="OSub"><a>GoLike</a></div>
 			<div id="pAbout" class="pPage" onclick="Mnu();Ptg('#cAbout')">關於我們</div>
@@ -307,7 +347,7 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 			軟體故障和錯誤偶爾會發生於以上線的遊戲。<br>
 			如果您發現問題或是錯誤，請填寫表單回報給我們。
 		</div>
-		<div style="margin-top:40px">
+		<div style="margin-top:40px" class="Computer">
 			<div class="con" onclick="location='http://m.me/SquareChessGame'" style="cursor:pointer">
 				<div style="background-image:url('Pics/mng.gif')" class="cont"></div>
 				<a class="conx">m.me/SquareChessGame</a>
@@ -322,11 +362,11 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 		<table align="center" class="Computer" style="margin-top:80px">
 			<tr align="center">
 				<td><div style="text-align:left"><font color="red">*</font>標題</div>
-					<input type="text" style="width:90%" id="r-titl"/>
+					<input type="text" style="width:100%" id="r-titl"/>
 				</td>
 				<td width="50"></td>
 				<td><div style="text-align:left">聯絡方式</div>
-				<input type="text" style="width:90%" id="r-resp"/>
+				<input type="text" style="width:80%" id="r-resp"/>
 				</td>
 			</tr>
 			<tr height="20"></tr>
@@ -345,11 +385,13 @@ input,textarea{border-bottom:1px solid;font-size:20px;letter-spacing:2px;line-he
 	</div>
 	<div id="cAbout" class="field">
 		<h1><font class="En">About </font>/<font class="Ch"> 關於我們</font></h1>
-		<p><h2>開發動機</h2>	
+		<h2>開發動機</h2>	
+		<p>
 		　　棋類遊戲因電玩遊戲而趨向沒落，我們藉9x9的棋盤設計多種遊戲規則，結合成一個新的棋盤遊戲平台，希望藉由這個迥然不同的棋盤遊戲平台再一次喚起大眾對於棋盤遊戲的熱忱。
 		</p>
-		<p><h2>採用技術</h2>
-		　　主要採用HTML5並使用github pages服務，線上對戰則應用了google firebase作為資料庫來達成，基本上只需要了解javascript，就可以做出一個有資料庫的小平台。
+		<h2>採用技術</h2>
+		<p>
+		　　主要採用<a href="https://www.w3.org/TR/html5/">HTML5</a>並使用<a href="http://github.io">GitHub Pages</a>服務，線上對戰則應用了<a href="http://firebase.google.com">Google Firebase</a>作為資料庫來達成，主體是由JavaScript編寫而成。
 		</p>
 		<div style="height:100px"></div>
 	</div>
@@ -374,12 +416,13 @@ function Ldr(){var page=["Start","Online","Rules","About","Report"],bd=""
 		Id("p"+page[i]).style.height="40px"
 	}
 	for(var i=0;i<link.length;i++){
-		if(link[i].parentNode.getAttribute("data-chess"))link[i].href="chess.html?mode="+link[i].innerHTML
-		if(link[i].parentNode.getAttribute("data-btchs"))link[i].href="btchs.html?mode="+link[i].innerHTML
-		if(link[i].parentNode.getAttribute("data-rules"))link[i].href="rules.html?mode="+link[i].innerHTML
-		link[i].parentNode.style.transition="all 1s"
-	}
-	Rsz();Hid()
+		var t=link[i].parentNode.getAttribute("data-chess")||link[i].parentNode.getAttribute("data-rules")||link[i].parentNode.getAttribute("data-btchs")
+		if(t!="Main"){
+			if(link[i].parentNode.getAttribute("data-chess"))link[i].href="chess.html?mode="+link[i].innerHTML
+			if(link[i].parentNode.getAttribute("data-btchs"))link[i].href="btchs.html?mode="+link[i].innerHTML
+			if(link[i].parentNode.getAttribute("data-rules"))link[i].href="rules.html?mode="+link[i].innerHTML
+		}link[i].parentNode.style.transition="all 1s"
+	}Rsz();Hid()
 }
 function Lst(d,v){Hid(d,'Main')
 	if(show!=d+"/"+v)Shw(d,v)
@@ -445,7 +488,7 @@ function Mnu(v){
 	}
 }
 function Rpt(btn){var t="r-";if($(window).width<830)t="mr-"
-	if(Id(t+"titl").value.length<4)return alert("標題不足四字");btn.style.backgroundColor="#48585f"
+	if(Id(t+"titl").value.length<1)return alert("無標題");btn.style.backgroundColor="#48585f"
 	try{$.get(
 		"https://script.google.com/macros/s/AKfycbxcssPqU7igBz6mukhS9zB_ipxg1IVsK86JuSWtKZUI1FTnAbg/exec",
 		{titl:Id(t+"titl").value,resp:Id(t+"resp").value,cont:Id(t+"cont").value},
@@ -453,7 +496,7 @@ function Rpt(btn){var t="r-";if($(window).width<830)t="mr-"
 			alert(r);Id(t+"titl").value="";Id(t+"cont").value="";
 			btn.style.backgroundColor="#758f9b"
 		}
-	)}catch(e){alert("傳送失敗，將繼續重試")}
+	)}catch(e){if(confirm("傳送失敗,重試?"))Rpt(btn)}
 }
 function Ptg(t){
 	$("article").animate({scrollTop:$(t).offset().top-40+$("article")[0].scrollTop},1000)

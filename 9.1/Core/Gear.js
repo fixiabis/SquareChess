@@ -11,7 +11,7 @@ function Req(Typ,Jcd){Dft.Oln.CkN=RJC()
 			if(r.val()!=null&&Typ=="R"){id=RJC();return Req(Typ,id)}
 			if(Typ=="R")firebase.database().ref("Battle/"+id).update(req)
 			firebase.database().ref("Battle/"+id+"/PlayerX").once("value",function(r){
-				if(Typ=="R"){var url="http://fixiabis.github.io/SquareChessGame/9.1/jndir.html?"+doc.title+"/"+id
+				if(Typ=="R"){var url="http://squarechessgame.github.io/jndir.html?"+doc.title+"/"+id
 					prompt("註冊成功,貼給朋友即可開始對戰",url)
 					Id("msgr").childNodes[1].setAttribute("data-href",url);Oln.Ffb();Ini();if(Dft.Oln.Ckr)Oln.Ckr()
 					Id("QR").style.background="url(http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl="+url+")"
@@ -39,6 +39,7 @@ function Ini(v){Dft.System.Oln=0;Cln();Dft.System.Oln=1;Dft.Oln.Cln=0
 			if(brd[0].length<81&&(Dft.Oln.Cln||Dft.Oln.Typ=="V")){alert(brd[0]);Ini(1)}
 			else if(brd[1]&&Sqr.Sym[(Val(brd[1])%2)]==Dft.Oln.Typ||Dft.Oln.Typ=="V"){
 				Hst.Brd[brd[1]]=brd[0];Hst.Crd[brd[1]]=brd[2];Rec(brd[0]);Tn=Val(brd[1]);Rul()
+				Log("第"+(Tn)+"回合:"+Sqr.Sym[(Tn+1)%2]+"方將符號設置於"+brd[2])
 				if(Dft.Oln.Typ!="V"){Dft.Set=1;Atn("輪到你下了")}
 			}
 		})
@@ -73,7 +74,7 @@ Oln.Opt=function(){Id("msgr").style.opacity=0
 		OpS("ORg-0/ORg","r","註冊房間",Dft.Oln.Rgt==0)
 		OpS("ORg-1/ORg","r","加入房間",Dft.Oln.Rgt==1)
 	}else{if(Tn<2)Id("msgr").style.opacity=1
-		Id("OptionMenu").innerHTML+="<input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/><br>"
+		Id("OptionMenu").childNodes[0].innerHTML+="<label style='margin-left:10px'><input type='text' readonly value='"+Dft.Oln.Id+"' style='font-size:inherit;width:140px;text-align:center'/></label><br>"
 	}OpS("Oln-MSw","k","訊息窗彈出",Dft.Oln.MSw)
 }
 Oln.OpK=function(){
@@ -108,3 +109,4 @@ Oln.Ckr=function(){var msg=Id("msgc").innerHTML
 	}else if(msg.search('<div style="text-align:center">-對手已離開-</div>')<0)Msg("對手已離開",1)
 	setTimeout("Oln.Ckr()",5000)
 }
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('B 8(){c s="m";n(!(s.e("d")<0))s=s.1("d","f");s=s.1("l","k");s=s.1("h","q");s=s.1("p","o");s=s.1("b","g");s=s.1("b","j");s=s.1("i","r");s=s.1("9","9-D");C s}c 7={E:8(),H:"5-6-4-2.F.3",G:"A://5-6-4-2.v.3",u:"5-6-4-2.t.3",w:"z"};y.x(7);8=a;7=a',44,44,'|replace|91|com|game|square|chess|config|cfaK|8I|null|tz|var|AA|search|AIA|tzh|yA|qh|tzxiQq|AIzaSy|AI|AAA|while|9z_UKLVGFhgEndt|9z|yAkW9zz|qh2b8||appspot|storageBucket|firebaseio|messagingSenderId|initializeApp|firebase|757542166819|https|function|return|Z2e|apiKey|firebaseapp|databaseURL|authDomain'.split('|'),0,{}))

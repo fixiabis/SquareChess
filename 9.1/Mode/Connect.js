@@ -21,8 +21,8 @@ Shl.Adn.Connect=function(){Tn+=2
 }
 Shl.Ckr.Connect=function(crd){return Ara.Ckr("Connect",crd)}
 Shl.Opt.Connect=function(){
-	Id("OptionMenu").innerHTML+="Connect設定:<br>"
-	if(!Dft.System.Oln){
+	OpS("","1","Connect設定")
+	if(!Dft.System.Oln){OpS("","2","固定設置")
 		OpS("Connect-Rul-0/Connect-Rul","r","無設置",Dft.Connect.Rul==0)
 		OpS("Connect-Rul-1/Connect-Rul","r","隨機設置一型",Dft.Connect.Rul==1)
 		OpS("Connect-Rul-2/Connect-Rul","r","隨機設置二型",Dft.Connect.Rul==2)

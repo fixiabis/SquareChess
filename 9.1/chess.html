@@ -26,28 +26,29 @@
 					</div>
 					<ul></ul>
 				</div>
-				<table id="Board" style="background:gray;border:none" cellpadding="0" cellspacing="0"></table>
-				<table id="QCtrl" style="border:none;display:none" cellpadding="0" cellspacing="0">
+				<table id="Board" cellpadding="0" cellspacing="0"></table>
+				<table id="QCtrl" style="display:none" cellpadding="0" cellspacing="0">
 					<tr>
 						<td class="bt" onclick="Ctl('Udo')" oncontextmenu="Ctl('Gto')" id="Udo">Undo</td>
 						<td class="bt" onclick="Ctl('Cln')" oncontextmenu="Opt()" id="Cln">Clean</td>
 					</tr>
 				</table>
+				<div id="menu" style="left:0px;top:40px;width:0px;height:240px;overflow:hidden;z-index:2">
+					<div class="list" onclick="Ctl('Cln')" title="清除棋盤">Clean</div>
+					<div class="list" onclick="Ctl('Udo')" title="到上一步">Undo</div>
+					<div class="list" onclick="Ctl('Rdo')" title="到下一步">Redo</div>
+					<div class="list" onclick="Ctl('Gto')" title="到指定步">Goto</div>
+					<div class="list" onclick="Opt()" title="功能選單">Addons</div>
+				</div>
 			</div>
+			<div id="Recrd"></div>
 			<div id="Setting" style="height:0px">
-				<div id="OptionMenu"></div>
+				<div id="OptionMenu"><div style="margin-left:10px"></div></div>
 					<div id="Opc"><div class="Opbt" onclick="OpK()">OK</div><div class="Opbt" onclick="OpK(1)">Cancel</div>
 				</div>
 			</div>
 		</div>
-		<div id="menu" style="left:0px;top:40px;width:0px;height:240px;overflow:hidden">
-			<div class="list" onclick="Ctl('Cln')">Clean</div>
-			<div class="list" onclick="Ctl('Udo')">Undo</div>
-			<div class="list" onclick="Ctl('Rdo')">Redo</div>
-			<div class="list" onclick="Ctl('Gto')">Goto</div>
-			<div class="list" onclick="Ctl('Hom')">Home</div>
-			<div class="list" onclick="Opt()">Addons</div>
-		</div>
+		<div id="Rsw" onclick="Ctl('RSw',1)" title="顯示規則"></div>
 	</div>
 </body>
 </html>

@@ -6,7 +6,7 @@
 			"khaki","lightcoral","lightseagreen","black"
 		]
 	},Dft={
-		Set:1,Tn:0,Blk:[],
+		Set:1,Tn:0,Blk:[],Win:0,
 		Oln:{Typ:"",Id:"",Rgt:0,Cln:1,MdN:"",Msg:0,CkN:"",Lst:"",CkO:1,Ckr:0,MSw:1},
 		System:{Blk:0,Nxt:0,Crd:"",Dir:"",iTn:0,Qsr:0,Oln:0,Gst:0}
 	},
@@ -28,21 +28,24 @@ function MdL(v){Id("LdB").style.width=(100-Math.floor(v/MdQ.length))+"%"
 	doc.body.appendChild(md)
 }
 function Rsz(){
-	var sz=$(window).width(),scn=1
+	var sz=$(window).width(),scn=1,rec=1
 	if($(window).height()-40<sz){sz=$(window).height()-40;scn=0}sz=Math.floor(sz/9)
 	$(".bt").css("width",sz+"px");$(".bt").css("height",sz+"px");$(".bt").css("font-size",sz-15+"px")
 	Id("NightMode").style.height=($(window).height()-40)+"px"
 	for(i=81;i<83;i++){if(!Class("bt")[i])break
 		if(i>80)Class("bt")[i].style.width=sz*4.5+"px"
 		if(!Class("bt")[i+1]&&i==81)Class("bt")[i].style.width=sz*9+"px"
-	}if(scn&&Id("LdA").style.display=="none")Id("QCtrl").style.display=""
+	}
+	if(scn&&Id("LdA").style.display=="none")Id("QCtrl").style.display=""
 	if(Id("QR")){
 		Id("QR").style.top=Math.floor(($(window).height()-40)/2)-75+"px"
 		Id("QR").style.right=Math.floor(($(window).width())/2)-75+"px"
-	}
-	Id("Board").style.display="";Id("UI").style.width=sz*9+"px"
+	}Id("UI").style.width=sz*9+"px"
 	Id("Rule").style.width=sz*9+"px";if(Id("Rule").style.height!="0px")Id("Rule").style.height=sz*9+"px"
 	if(Id("Setting").style.height!="0px")Id("Setting").style.height=($(window).height()-40)+"px"
+	Id("Recrd").style.width=$("#Board").offset().left+"px";Id("Recrd").style.height="100%"
+	if($("#Board").offset().left<70)Id("Recrd").style.display="none"
+	else Id("Recrd").style.display=""
 }
 function Itf(){var bd=""
 	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}Id("Board").innerHTML=bd
@@ -55,13 +58,14 @@ function Itf(){var bd=""
 }
 function Cln(msg,tgt){if(!tgt)tgt="";var ckr=0;if(!msg)ckr=1;else ckr=confirm(msg)
 	if(ckr){Tn=0;Hst={Brd:[],Crd:[],Sel:[],Rut:[]}
-		Qre(Sel("All"),"Sym",2);Brd()
+		Qre(Sel("All"),"Sym",2);Brd();Dft.Win=0
 		Adn();Rul();Hst.Brd[Tn]=Rec();Dft.Tn=Tn
 	}
 }
 function Set(crd){if(!Dft.Set)return;var ckr=Ckr(crd);if(Dft.System.Qsr)ckr=!Lmt(crd)
 	if(ckr){
-		Qre(crd,"Sym",Tn%2);Tn++;Hst.Crd[Tn]=crd;Rul();Hst.Brd[Tn]=Rec()
+		Qre(crd,"Sym",Tn%2);Log("第"+(Tn+1)+"回合:"+Sqr.Sym[Tn%2]+"方將符號設置於"+crd)
+		Tn++;Hst.Crd[Tn]=crd;Rul();Hst.Brd[Tn]=Rec()
 		Hst.Brd.splice(Tn+1,Hst.Brd.length-Tn);if(Dft.System.Oln)Upl(Hst.Brd[Tn]+"/"+Tn+"/"+Hst.Crd[Tn])
 	}
 }
@@ -93,7 +97,9 @@ function Qre(crd,atr,typ){var res=[],ckr=0
 	if(res.length>1)return res;return res[0]
 }
 function Rec(brd){var res=""
-	if(typeof brd=="number"&&Hst.Brd[brd]){Tn=brd;Rec(Hst.Brd[brd]);if(!Dft.System.Qsr)Rul();return}
+	if(typeof brd=="number"&&Hst.Brd[brd]){if(brd!=0)Log("前往至第"+brd+"回合")
+		Tn=brd;Rec(Hst.Brd[brd]);if(!Dft.System.Qsr)Rul();return
+	}
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
 		if(brd)Qre(Chr(cd1)+cd2,"Sym",brd[((cd1-65)*9+cd2-1)])
 		else res+=Qre(Chr(cd1)+cd2,"Sym")
@@ -131,7 +137,7 @@ function Rul(){
 	for(var i=MdQ.length-1;i>-1;i--)if(Jdg(Shl.Rul[MdQ[i]]()))break;Mrk()
 }
 function Opt(){Id("Setting").style.height=($(window).height()-40)+"px";var id=Dft.Oln.Id
-	Id("OptionMenu").innerHTML="系統內建:<br>"
+	Id("OptionMenu").childNodes[0].innerHTML="";OpS("","1","基本設定")
 	if(!Dft.System.Oln){
 		OpS("System-Blk","t","障礙數量:",Dft.System.Blk)
 		OpS("System-Qsr","k","加速查詢",Dft.System.Qsr)
@@ -140,6 +146,7 @@ function Opt(){Id("Setting").style.height=($(window).height()-40)+"px";var id=Df
 	OpS("System-Nxt","k","次回設置",Dft.System.Nxt)
 	OpS("System-iTn","k","上回設置",Dft.System.iTn)
 	OpS("System-Gst","k","手勢操作",Dft.System.Gst)
+	OpS("System-Rec","k","顯示過程",Id("Recrd").style.display!="none")
 	OpS("System-Nit","k","夜間模式",Id("NightMode").style.opacity!=1)
 	OpS("System-Ful","k","全螢幕模式",doc.webkitIsFullScreen||doc.mozFullScreen||doc.fullscreen)
 	OpS("System-Rul","k","顯示規則",Id("Rule").style.height!="0px")
@@ -161,16 +168,26 @@ function OpK(k){Id("Setting").style.height="0px";if(k)return
 		if(doc.webkitCancelFullScreen)doc.webkitCancelFullScreen()
 	}
 	if(Id("System-Rul").checked)Ctl("RSw",1);else Ctl("RSw",0)
+	if(!Id("System-Rec").checked)Id("Recrd").style.display="none";else Id("Recrd").style.display=""
 	Dft.System.Nxt=Id("System-Nxt").checked;Dft.System.Gst=Id("System-Gst").checked;
 	Dft.System.iTn=Id("System-iTn").checked;if(Dft.Tn==Tn)Cln();Mrk();Ctl("Rul")
 }
-function OpS(id,typ,til,dft){var input="",ck="";if(dft)ck="checked"
+function OpS(id,typ,til,dft){var input="",ck="",mg=10,ls=Id("OptionMenu").childNodes[0].childNodes
+	if(dft)ck="checked";
+	if(ls.length>1){mg=Val(ls[ls.length-2].style.marginLeft.split("px")[0])
+		if(ls[ls.length-2].childNodes[0].tagName!="INPUT")mg+=10
+	}
 	switch(typ){
+		case"1":mg=0;input="<font style='font-size:25px'>"+til+":</font>";break
+		case"2":mg=10;input="<font style='font-size:23px'>"+til+":</font>";break
 		case"t":input=til+"<input type='text' id='"+id+"' placeholder='"+dft+"' class='Opt' style='width:40px;text-align:right'/>";break
 		case"r":var tid=id.split("/");input="<input type='radio' "+ck+" id='"+tid[0]+"' class='Opt' name='"+tid[1]+"' style='zoom:1.5'/>"+til;break
 		case"k":input="<input type='checkbox' "+ck+" id='"+id+"' class='Opt' style='zoom:1.5'/>"+til;break
-	}Id("OptionMenu").innerHTML+="<label>"+input+"</label><br>"
+	}Id("OptionMenu").childNodes[0].innerHTML+="<label style='margin-left:"+mg+"px'>"+input+"</label><br>"
 }
 function Jdg(msg){
-	if(msg){if(Dft.System.Oln)Upl(msg);else Cln(msg);return 1}
+	if(msg){Log(msg);if(Dft.System.Oln)Upl(msg);else Cln(msg+",是否再來一局?");Dft.Win=1;return 1}
+}
+function Log(vlu){
+	Id("Recrd").innerHTML+="<div>"+vlu+"</div>";Id("Recrd").scrollTop=Id("Recrd").scrollHeight
 }

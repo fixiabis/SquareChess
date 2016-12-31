@@ -139,10 +139,8 @@ Ara.Rul=function(shl,ara){Shl.Ara[shl]=ara
 	}if(ck)return Scr(ara.O.All.length,ara.X.All.length)
 }
 Ara.Opt=function(shl){
-	Id("OptionMenu").innerHTML+="輔助標記:<br>"
-	OpS(shl+"-Ara","k","雙方區域",Dft[shl].Ara)
-	if(!Dft.System.Oln){
-		Id("OptionMenu").innerHTML+="判定方式:<br>"
+	OpS("","2","輔助標記");OpS(shl+"-Ara","k","雙方區域",Dft[shl].Ara)
+	if(!Dft.System.Oln){OpS("","2","判定方式")
 		OpS(shl+"-QJd-0/"+shl+"-QJd","r","不進行快速判定",Dft[shl].QJd==0)
 		OpS(shl+"-QJd-1/"+shl+"-QJd","r","快速判定初級",Dft[shl].QJd==1)
 		OpS(shl+"-QJd-2/"+shl+"-QJd","r","快速判定中級",Dft[shl].QJd==2)
@@ -183,7 +181,7 @@ function BJd(){var nxt=[],nxn=[]
 	for(var cd1=65;cd1<74;cd1++)for(var cd2=1;cd2<10;cd2++){
 		if(!Ckr(Chr(cd1)+cd2)){if(Qre(Chr(cd1)+cd2,"Sym")==2)nxn.push(Chr(cd1)+cd2)}
 		else nxt.push(Chr(cd1)+cd2)
-	}if(nxt.length==0&&Tn>2&&Tn!=81)Jdg(Sqr.Sym[(Tn+1)%2]+"獲勝");return nxn
+	}if(nxt.length==0&&Tn>2&&Tn!=81&&!Dft.Win)Jdg(Sqr.Sym[(Tn+1)%2]+"獲勝");return nxn
 }
 function Map(crd,sym,typ){if(!typ)typ="4";if(!sym)sym=Qre(Sel(crd),"Sym")
 	if(typeof sym!="object")sym=[sym]
