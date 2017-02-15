@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="Pics/Icon.png" rel="shortcut icon">
+<title>Square Chess Game</title>
+<script src="Impo/jquery.min.js"></script>
+<script src="Core/Prun.js"></script>
+<script src="Core/Rule.js"></script>
+<style>@import "Core/Face.css";
+body{margin:0px;cursor:default}
+.title{
+	width:200px;height:200px;z-index:4;
+	position:fixed;line-height:200px;opacity:0.8;
+	text-align:center;color:white;font-size:20px
+}
+.title div:hover{color:#99bccc}
+#content{border:5px solid #48585f;position:relative;top:0px;left:0px}
+#conten1{top:0px;left:0px;position:absolute;border-bottom:5px solid #758f9b;border-right:5px solid #758f9b}
+#conten2{bottom:0px;right:0px;position:absolute;border-top:5px solid #758f9b;border-left:5px solid #758f9b}
+#conten1,#conten2{
+	text-align:center;background-color:#758f9b;color:white;overflow:hidden;z-index:3;opacity:0.8;
+}
+#t1{background-color:#48585f}
+#conten1:hover{background-color:crimson}
+#conten2:hover{background-color:royalblue}
+#Help{
+	background-image:url(Pics/Rulesh.png);background-size:30px;background-position:bottom left;background-repeat:no-repeat;z-index:4;width:40px;height:40px;position:fixed;bottom:10px;left:10px;overflow:hidden;line-height:1.5;color:#48585f;font-size:16px
+}
+#Help:hover{height:150px;width:300px}
+</style>
+</head>
+<body>
+	<noscript>您的瀏覽器可能不支援JavaScript或是尚未啟動該功能，本網站需要使用JavaScript才能正常運作。</noscript>
+	<div id="NightMode" style="opacity:0;top:0px">
+		<div class="title" style="transform:scale(1.5)" id="t1"></div>
+		<div class="title" id="t2">Square Chess Game</div>
+		<div class="title" id="t3" style="line-height:1;opacity:0;transition:opacity 1s">
+			<div style="position:absolute;bottom:50px;right:0px;width:100%">開始遊戲</div>
+			<div style="position:absolute;bottom:20px;right:0px;width:100%">瞭解規則</div>
+		</div>
+		<div id="content">
+			<div id="conten1" title="混合模式">Random</div>
+			<div id="conten2" title="選擇模式">Select</div>
+		</div>
+		<div id="Help"><br style="line-height:40px">
+			點選Random可隨機導向至一個模式<br>
+			點選Select可選擇導向至一個模式
+		</div>
+		<div id="Home" style="position:absolute;top:10px;right:10px;color:#48585f"><a href="index.html">回首頁</a></div>
+		<div id="Rule" style="height:0px;position:fixed;top:5px;left:5px;z-index:4">
+			<ul></ul>
+			<div id="Rulec" onclick="Id('Rule').style.height='0px'"></div>
+		</div>
+		<div id="Mbx"></div><div id="Mbxv"></div>
+	</div>
+</body>
+<script src="Core/Mgbx.js"></script>
+<script>
+function Ldr(){
+	$("#t1").css("transform","rotate(-45deg)")
+	setTimeout(function(){$("#t1").css("transition","transform 2s")},1000)
+	$("#conten1").click(function(){Srt();$("#t1").css("transition","transform 2s").css("transform","rotate(135deg)")})
+	$("#conten2").click(function(){Srt(1);$("#t1").css("transform","rotate(-45deg)")})
+	$("#t3 div").click(function(){var Md=Id("t2").innerHTML
+		if(this.innerHTML=="開始遊戲"){
+			if(Md!="Square Chess Game")location="chess.html?mode="+Md
+		}else{
+			$("#Rule ul")[0].innerHTML=Rls.Lst(Md.replace("Square.","").split(":"))
+			Id("Rule").style.height=$("#content").height()+"px"
+		}
+	});Rsz();CrC();setTimeout("CrU()",500);Id("NightMode").style.opacity=1
+}
+function Rsz(){
+	Id("NightMode").style.height=$(window).height()+"px"
+	$(".title").css("top",$(window).height()/2-$(".title").height()/2+"px")
+	$(".title").css("left",$(window).width()/2-$(".title").width()/2+"px")
+	$("#content").css("height",$(window).height()-10+"px").css("width",$(window).width()-10+"px")
+	$("#Rule").css("width",$(window).width()-10+"px")
+	if(Id("Rule").style.height!="0px")$("#Rule").css("height",$(window).height()-10+"px")
+	$("#conten1,#conten2").css("height",($("#content").height()-5)/2+"px").css("line-height",($("#content").height()-5)/2+"px").css("width",($("#content").width()-5)/2+"px")
+	$("#conten1,#conten2").css("font-size",$("#conten1").width()/6+"px")
+	Mbx.Rsz()
+}
+function Srt(v){
+	var Mod=[
+		"Square.Kingdom","Kingdom:Anomal","Kingdom:Fallen",
+		"Connect:Defend","Connect:Mirror","Connect:GoLike",
+		"Connect:Castle","Connect:Fallen","Divider:Anomal",
+		"Divider:Fallen","Adapter:Fallen","Adapter:Invert",
+		"Adapter:Attack","Adapter:Follow","Adapter:Gomoku","Connect-Origin"
+	]
+	if(!v){Id("t3").style.opacity=0
+		for(var i=1;i<100;i++){
+			setTimeout("Id('t2').innerHTML='"+Mod[Math.floor(Math.random()*Mod.length)]+"'",20*i)
+			if(i==99)setTimeout(function(){Id("t3").style.opacity=1
+				$("#t1").css("transition","").css("transform","rotate(-45deg)")
+			},20*i)
+		}
+	}
+	else{var l=Mod.indexOf(Id("t2").innerHTML);if(l==-1)l=0
+		Mbx("選擇模式",function(a){location="chess.html?mode="+a},function(){},Mod,l,1)
+	}
+}
+function KDw(e){
+	var k=e.which
+	if(Id("Mbx").style.display!="none"){
+		if(k==13)$("#MbxbY")[0].click()
+		else if(k==27)$("#MbxbN")[0].click()
+	}
+}
+function CrC(v){if(!v)v=0;var s=50
+	if(Id("Cir"+v)){Id("Cir"+v).style.opacity=0
+		setTimeout(function(){Id("content").removeChild(Id("Cir"+v))},s)
+	}
+	setTimeout(function(){
+		var Cir=doc.createElement("div"),sz=sz=Math.floor(Math.random()*($("#content").width()/26)),
+			bg=["lightgray","gray","dimgray","#758f9b","#99bccc","#48585f"]
+		Cir.style.backgroundColor=bg[Math.floor(Math.random()*bg.length)]
+		Cir.id="Cir"+v;Cir.className="Cir";sz+="px"
+		Cir.style.opacity=0;Cir.style.transition="all 1s";Cir.style.width=sz;Cir.style.height=sz
+		Cir.style.top=(Math.floor(Math.random()*$("#content").height())+$("#content").height())+"px"
+		Cir.style.left=Math.floor(Math.random()*$("#content").width())+"px"
+		Cir.style.borderRadius=sz;Cir.style.position="absolute"
+		Id("content").appendChild(Cir);if(v==99)v=-1
+		setTimeout(function(){CrC(v+1);if(v>-1)Id("Cir"+v).style.opacity=1},s)
+	},s)
+}
+function CrU(){
+	$(".Cir").css("transition","all 5s").css("top","-"+($("#content").height()/2)+"px")
+	setTimeout("CrU()",500)
+}
+Mbx.Ldr()
+$(window).load(function(){Ldr()}).keydown(function(){KDw(event)}).resize(function(){Rsz()})
+</script>
+</html>

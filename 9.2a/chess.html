@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="Pics/Icon.png" rel="shortcut icon">
+<title>Square Chess Game</title>
+<script src="Impo/jquery.min.js"></script>
+<script src="Impo/jquery.mobile-1.4.5.min.js"></script>
+<script src="Impo/firebase.js"></script>
+<script src="Core/Prun.js"></script>
+<script src="Core/Core.js"></script>
+<script src="Core/Part.js"></script>
+<script src="Core/Aide.js"></script>
+<script src="Core/Rule.js"></script>
+<style>@import "Core/Face.css";#menu{position:fixed;}</style>
+</head>
+<body>
+	<noscript>您的瀏覽器可能不支援JavaScript或是尚未啟動該功能，本網站需要使用JavaScript才能正常運作。</noscript>
+	<div style="opacity:0" id="NightMode">
+		<header onclick="Ctl('Hom')"><div id="LdB"></div>Square Chess Game</header>
+		<div style="display:table-cell;height:100%;vertical-align:middle">
+			<div id="UI" style="margin:auto;position:relative"><div id="LdA">Creating...</div>
+				<table id="Board" cellpadding="0" cellspacing="0"></table>
+				<table id="QCtrl" style="display:none" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="bt" onclick="Ctl('Udo')" oncontextmenu="Ctl('Gto')" id="Udo">Undo</td>
+						<td class="bt" onclick="Ctl('Cln')" oncontextmenu="Opt()" id="Cln">Clean</td>
+					</tr>
+				</table>
+				<div id="Rule" style="height:0px">
+					<div id="Rulec" onclick="Ctl('RSw')"></div>
+					<ul></ul>
+				</div>
+				<div id="menu" style="left:0px;top:40px;width:0px;height:240px;overflow:hidden;z-index:2">
+					<div class="list" onclick="Ctl('Cln')" title="清除棋盤">Clean</div>
+					<div class="list" onclick="Ctl('Udo')" title="到上一步">Undo</div>
+					<div class="list" onclick="Ctl('Rdo')" title="到下一步">Redo</div>
+					<div class="list" onclick="Ctl('Gto')" title="到指定步">Goto</div>
+					<div class="list" onclick="Opt()" title="功能選單">Addons</div>
+				</div>
+			</div>
+			<div id="Recrd"></div>
+			<div id="Setting" style="height:0px">
+				<div id="OptionMenu"><div style="margin-left:10px"></div></div>
+					<div id="Opc"><div class="Opbt" onclick="OpK()">OK</div><div class="Opbt" onclick="OpK(1)">Cancel</div>
+				</div>
+			</div>
+			<div id="O0" class="bt" style="display:none"></div>
+		</div>
+		<div id="Rsw" onclick="Ctl('RSw',1)" title="顯示規則"><div></div></div>
+		<div id="Mbx"></div><div id="Mbxv"></div><div id="Gear" onclick="if(Id('Setting').style.height=='0px')Opt();else OpK(1)" title="進行設定"></div>
+	</div>
+</body>
+<script src="Core/Mgbx.js"></script>
+</html>
