@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link href="Pics/Icon.png" rel="shortcut icon">
+<title>Square Chess Game</title>
+<script src="Impo/jquery.min.js"></script>
+<script src="Impo/jquery.mobile-1.4.5.min.js"></script>
+<script src="Core/Prun.js"></script>
+<script src="Core/Rule.js"></script>
+<style>
+@import "Core/Face.css";article{background-color:white;width:100%;margin-top:40px}
+#bk{
+	background-image:url(Pics/Back.gif);
+	background-repeat:no-repeat;cursor:pointer;
+	background-position:10px center;float:left;
+	background-size:20px 20px;font-size:16px;
+	width:120px;height:40px;text-align:center;line-height:40px;
+}
+article div{margin:0px 20px;float:left}
+article{overflow:auto;user-select:text;-ms-user-select:text;-moz-user-select:text;-webkit-user-select:text;}
+</style>
+</head>
+<body>
+	<noscript>您的瀏覽器可能不支援JavaScript或是尚未啟動該功能，本網站需要使用JavaScript才能正常運作。</noscript>
+	<header onclick="location='index.html'">
+		<div id="bk">回首頁</div>
+	</header>
+	<article style="color:#758f9b">
+		<div>
+			<h1 style="line-height:2"></h1>
+			<ul>
+			</ul>
+		</div>
+		<div>
+			<table id="Board" style="background:gray;border:none" cellpadding="0" cellspacing="0">
+			</table>
+		</div>
+	</article>
+	<div id="Mbx"></div><div id="Mbxv"></div>
+</body>
+<script src="Core/Mgbx.js"></script>
+<script>
+function Ldr(){
+	if(!location.search||location.search.substr(0,6)!="?mode="){
+		Mbx("要求格式錯誤",function(){location="index.html"})
+	}var mdN=location.search.replace("?mode=",""),bd=""
+	while(Instr(mdN,"%3A")>-1)mdN=mdN.replace("%3A",":")
+	doc.title=mdN.replace(":Newbie","");var MdQ=mdN.replace("Square.","").split(":")
+	$("article h1")[0].innerHTML=doc.title
+	cnt=Rls.Lst(MdQ)
+	for(cd2=1;cd2<10;cd2++){bd+="<tr>";for(cd1=65;cd1<74;cd1++){bd+="<td id='"+Chr(cd1)+cd2+"' class='bt'></td>"}bd+="</tr>"}$("article ul")[0].innerHTML=cnt
+	Id("Board").innerHTML=bd;Rsz();Rls.Brd.Cln();$("article ul")[0].innerHTML+="<li style='color:blue'>點按紅色文字獲得圖解</li><li style='color:blue;cursor:pointer' onclick='Srt(1)'>點此開始進行遊戲</li>"
+	$("li li").click(function(){
+		if(this.style.color=="red"){$("article").animate({scrollTop:$("article")[0].scrollHeight})
+			Rls.Scr[1][this.getAttribute("data-scr")]()
+		}
+	})
+	for(var i=0;i<$("li li").length;i++){
+		for(var j=0;j<Rls.Scr[0].length;j++){
+			if($("li li")[i].innerHTML.search(Rls.Scr[0][j])>-1){
+				$("li li")[i].style.color="red";$("li li")[i].style.cursor="pointer";
+				$("li li")[i].setAttribute("data-scr",j)
+			}
+		}
+	}Mbx.Ldr()
+}
+function Rsz(){
+	$("article").css("height",($(window).height()-40)+"px")
+	if($(window).width()<830)$("article div").css("width",($(window).width()-40)+"px")
+	else $("article div").css("width",($(window).width()/2-40)+"px");
+	var sz=Math.floor($("article div").width()/9);if(sz>Math.floor($("article").height()/9))sz=Math.floor($("article").height()/9)
+	$(".bt").css("width",sz+"px").css("height",sz+"px").css("font-size",(sz-15)+"px");Mbx.Rsz()
+}
+$(window).load(function(){Ldr()}).resize(function(){Rsz()})
+</script>
+</html>
