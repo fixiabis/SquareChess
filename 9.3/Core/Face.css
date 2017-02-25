@@ -1,0 +1,100 @@
+body:after{content:url(../Pics/Settingh.png);display:none}
+body{
+	margin:0px;cursor:default;user-select:none;
+	-ms-user-select:none;font-family:Consolas;
+	-moz-user-select:none;-webkit-user-select:none;
+	overflow:hidden
+}
+a,input,textarea{color:inherit;text-decoration:none;border:none;outline:none}
+div{outline:none}
+noscript{color:#48585f;font-size:20px}
+@font-face{
+  font-family:Consolas;
+  src:url(../Font/Consolas.ttf);
+}
+@font-face{
+  font-family:Centaur;
+  src:url(../Font/Centaur.ttf);
+}
+.ui-icon-loading{opacity:0}
+::selection{background:#758f9b;color:white}
+::-moz-selection{background:#758f9b;color:white}
+::-webkit-selection{background:#758f9b;color:white}
+::-webkit-scrollbar{width:0px;height:0px}
+::-webkit-scrollbar-track{width:5px;height:5px;opacity:0.5}
+::-webkit-scrollbar-thumb{width:5px;height:5px;border-radius:5px;background-color:#99bccc}
+#lLst div::-webkit-scrollbar{width:0px;height:0px}
+#Rule::-webkit-scrollbar{width:0px;height:0px}
+#menu{transition:width 2s;float:right;height:40px}
+.list{
+	float:left;height:40px;line-height:40px;width:160px;font-size:18px;
+	text-align:center;background-color:#758f9b;transition:background 2s;
+}
+.Opt{font-size:inherit}
+.list:hover{background-color:#99bccc;color:#48585f}
+.bt{font-family:Arial;transition:all 0.5s;text-align:center;overflow:hidden;background-color:white}
+#Opc{right:0.5%;position:absolute;bottom:0.5%;width:210px;height:40px}
+.Opbt{height:40px;line-height:40px;text-align:center;background-color:#758f9b;float:right;width:100px;margin-left:5px;opacity:0.5}
+.Opbt:hover{opacity:1}
+#msgc{height:255px;width:100%;background-color:#99bccc;position:absolute;top:25px;left:0px;overflow:auto}
+#msgs{position:absolute;bottom:0px;right:0px;width:98%;height:18px}
+#Message{transition:all 1s;user-select:text;-ms-user-select:text;-moz-user-select:text;-webkit-user-select:text}
+#Message::-webkit-scrollbar{width:5px;height:5px}
+#send{position:absolute;bottom:0px;right:0px;opacity:0.2;width:40px;height:20px;background-color:#48585f;text-align:center;line-height:20px}
+#send:hover{opacity:1}
+#LdA{
+	height:100px;width:100px;color:white;
+	background:#48585f;line-height:100px;
+	text-align:center;border-radius:5px;
+	animation:Load 1s infinite;margin:auto
+}
+#LdB{
+	transition:all 1s;width:0%;height:5px;background-color:#99bccc;position:fixed
+}
+@keyframes Load{0%{transform:rotate(720deg)}}
+#Setting{position:absolute;width:100%;top:0px;left:0px;background-color:#48585f;overflow:auto;transition:all 1s;font-size:20px;z-index:5}
+#OptionMenu{width:99%;height:99%;top:0.5%;left:0.5%;position:absolute;background-color:#99bccc;overflow:auto;user-select:text;-ms-user-select:text;-moz-user-select:text;-webkit-user-select:text;letter-spacing:3px}
+#NightMode{background-color:white;width:100%;height:100%;position:fixed;top:40px;left:0px;display:table;transition:opacity 1s}
+#Rule{position:absolute;background:white;opacity:0.7;overflow:auto;transition:all 1s;font-size:25px;letter-spacing:3px;top:0px;}
+#Rulec{
+	background-image:url(../Pics/Closeh.png);background-position:center center;width:40px;height:40px;background-size:30px;position:absolute;top:0px;right:0px;background-repeat:no-repeat
+}
+#Board{background:gray;border:none}
+#QCtrl{border:none}
+#Recrd{position:absolute;top:0px;right:0px;height:100%;z-index:1;overflow:auto;color:#48585f}
+#Rsw{
+	position:fixed;bottom:10px;left:10px;width:20px;height:20px;background-image:url(../Pics/Rulesh.png);
+	background-position:center center;background-size:100%;background-repeat:no-repeat;
+}
+#Rsw div{overflow:visible;margin-left:25px;color:#48585f}
+#O0{position:fixed;top:0px;left:0px;background-color:#758f9b;z-index:3;opacity:0.8;color:white}
+header{
+	top:0px;
+	left:0px;
+	width:100%;
+	color:white;
+	height:40px;
+	position:fixed;
+	font-size:30px;
+	overflow:hidden;
+	line-height:40px;
+	text-align:center;
+	font-family:Consolas;
+	transition:all 1s;
+	background-color:#758f9b;
+}
+.Mbxb{
+	background:#758f9b;text-align:center;line-height:40px;
+	width:60px;float:right;height:40px;color:#48585f;
+}
+.Mbxb:hover,.Mbxs:hover{background:#99bccc;color:#48585f}
+.Mbxs{height:40px;line-height:40px;background:#758f9b;text-align:center;width:30px;color:#48585f}
+#Mbxt{font-size:inherit;border:none;height:38px;background:#758f9b;width:250px;color:#48585f}
+#Mbxs{font-size:inherit;float:left;margin-left:5px;width:180px;background:#99bccc;height:40px;line-height:40px;text-align:center;border:none;color:#48585f}
+#Mbx{position:fixed;width:400px;height:200px;background:#48585f;font-size:18px;cursor:default;top:0px;left:0px;z-index:6;font-family:Consolas}
+#Mbx input{font-family:inherit}
+#Mbxc{position:absolute;width:95%;top:10px;left:2.5%;background:#99bccc;height:140px;overflow:auto}
+#Mbxp{width:250px;height:40px;overflow:hidden}
+#Mbxv{background-color:black;opacity:0.5;z-index:5;position:fixed;top:0px;left:0px}
+#Gear{background-image:url(../Pics/Setting.png);background-size:60%;width:40px;height:40px;z-index:4;position:fixed;top:0px;right:0px;background-repeat:no-repeat;background-position:center center;transition:all 1s}
+#Gear:hover{background-image:url(../Pics/Settingh.png)}
